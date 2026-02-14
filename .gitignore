@@ -11,6 +11,8 @@ dist/
 
 # Cache / generated files
 cards.json
+images/
+cards.db
 
 # Python cache
 __pycache__/

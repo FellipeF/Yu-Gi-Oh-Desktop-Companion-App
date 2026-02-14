@@ -1,18 +1,25 @@
 import tkinter as tk
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
+from database.database import create_tables
+from database.models import populate_cards
 
 #TODO: SOME TODOS BELOW:
 #TODO: Disable Resize
 #TODO: Add Scroll Bar
 #TODO: Limit Results, Implement Pagination
+#TODO: Requirements.txt
 #TODO: END TODO LIST HERE
 
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Yu-Gi-Oh! Card Database v0.1")
-        self.geometry("600x500")
+
+        create_tables()
+        populate_cards()
+
+        self.title("Yu-Gi-Oh! Card Database v0.2")
+        self.geometry("620x500")
 
         container = tk.Frame(self)
         container.pack(fill="both", expand=True)
