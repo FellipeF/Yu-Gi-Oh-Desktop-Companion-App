@@ -1,0 +1,17 @@
+# Virtual Environment
+.venv/
+
+# Build folders
+build/
+dist/
+.build/
+
+# PyInstaller
+*.spec
+
+# Cache / generated files
+cards.json
+
+# Python cache
+__pycache__/
+*.pyc
