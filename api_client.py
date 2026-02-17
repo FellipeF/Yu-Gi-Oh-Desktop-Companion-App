@@ -2,25 +2,38 @@ import requests
 import json
 import os
 
-URL = "https://db.ygoprodeck.com/api/v7/cardinfo.php?language=pt"
-CACHE = "cards.json"
+URL = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 
-def download_cards():
-    #Message to user here
-    print("Downloading data from API...")
-    response = requests.get(URL)
+def get_cache_filename(language):
+    return f"cards_{language}.json"
+
+def download_cards(language="en"):
+    #TODO: Message to user here
+    #print("Downloading data from API...")
+
+    if language == "en":
+        response = requests.get(URL)
+    else:
+        params = {"language": language}
+        response = requests.get(URL, params=params)
+
+    if response.status_code != 200:
+        raise Exception(f"API Error: {response.status_code}")
+
     data = response.json()
+    cache = get_cache_filename(language)
 
-    with open(CACHE, "w", encoding="utf-8") as f:
+    with open(cache, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False)
 
     return data
 
-def load_cards():
-    if os.path.exists(CACHE):
-        #Message to User Here
-        print("Opening Cached File...")
-        with open(CACHE, "r", encoding="utf-8") as f:
+def load_cards(language="en"):
+    cache = get_cache_filename(language)
+    if os.path.exists(cache):
+        #TODO: Message to User here as well?
+        print(f"Opening {language} Cached File...")
+        with open(cache, "r", encoding="utf-8") as f:
             return json.load(f)
     else:
-        return download_cards()
+        return download_cards(language)

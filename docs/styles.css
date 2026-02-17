@@ -1,0 +1,159 @@
+:root {
+--bg:#0b0f14;
+--card:#121824;
+--text:#e7edf6;
+--muted:#a9b4c3;
+--accent:#7aa2ff;
+--border:#223049;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+margin:0;
+font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+
+header {
+position: sticky;
+top:0;
+background: rgba(11,15,20,.92);
+backdrop-filter: blur(8px);
+border-bottom:1px
+solid var(--border);
+}
+
+.wrap {
+max-width: 980px;
+margin: 0 auto;
+padding: 16px;
+}
+
+.top {
+display:flex;
+gap:12px;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+.brand {
+display:flex;
+flex-direction:column;
+gap:2px;
+}
+
+.brand h1 {
+margin:0;
+font-size: 16px;
+letter-spacing: .2px;
+}
+
+.brand p {
+margin:0;
+color:var(--muted);
+font-size: 12px;
+}
+
+.controls {
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+select {
+background:var(--card);
+color:var(--text);
+border:1px solid var(--border);
+padding:8px 10px;
+border-radius: 10px;
+}
+
+main {
+padding: 22px 0 40px;
+}
+
+.card {
+background:var(--card);
+border:1px solid var(--border);
+border-radius: 16px;
+padding: 18px;
+margin: 14px 0;
+}
+
+h2 {
+margin:0 0 10px;
+font-size: 18px;
+}
+
+h3 {
+margin:16px 0 8px;
+font-size: 15px;
+color: var(--accent);
+}
+
+p, li {
+color:var(--text);
+line-height: 1.55;
+}
+
+.muted {
+color: var(--muted);
+}
+
+ul {
+margin: 8px 0 0 18px;
+}
+
+code {
+background: rgba(122,162,255,.12);
+border:1px solid rgba(122,162,255,.20);
+padding: 2px 6px;
+border-radius: 8px;
+}
+
+.pill {
+display:inline-block;
+font-size: 12px;
+padding: 3px 10px;
+border-radius: 999px;
+border:1px solid var(--border);
+color: var(--muted);
+margin-left: 6px;
+}
+
+footer {
+border-top:1px solid var(--border);
+padding: 18px 0;
+color: var(--muted);
+font-size: 12px;
+}
+
+a {
+color: var(--accent);
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+.note {
+border-left: 3px solid var(--accent);
+padding-left: 12px;
+color: var(--muted);
+}
+
+.credits {
+  list-style: none;
+  padding-left: 0;
+}
+
+.credits li {
+  margin-bottom: 14px;
+  line-height: 1.5;
+}

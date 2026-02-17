@@ -10,9 +10,10 @@ dist/
 *.spec
 
 # Cache / generated files
-cards.json
-images/
-cards.db
+cards_en.json
+cards_pt.json
+images/cards
+yugi.db
 
 # Python cache
 __pycache__/

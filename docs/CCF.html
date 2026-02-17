@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yu-Gi-Oh! Offline Database - Card Consistency File</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div class="brand">
+          <h1 id="title">Yu-Gi-Oh! Offline Database - CCF</h1>
+          <p id="subtitle">Why some cards appear as “anime-only” and deck differences.</p>
+        </div>
+        <div class="controls">
+          <label class="muted" for="langSelect" id="langLabel">Language</label>
+          <select id="langSelect" aria-label="Language">
+            <option value="en" selected>English</option>
+            <option value="pt">Português (Brasil)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="card">
+      <h2 id="section1Title">1) Why some cards are “anime-only”</h2>
+      <p id="section1Body">
+        Some decks (especially early anime arcs) include cards that never existed in the TCG/OCG, have different names, or are not present in the API dataset provided by
+        <a href="https://ygoprodeck.com/" target="_blank" rel="noopener noreferrer">YGOProDeck</a>.
+        When the app can’t match a deck entry to a known card ID, it stores the entry as <code>card_name</code> only.
+        These are displayed as “anime-only”.
+      </p>
+      <p class="note" id="section1Note">
+        Cards are always shown with images when a real <code>card_id</code> exists. If the card is “anime-only”, a placeholder is shown.
+      </p>
+
+      <h3 id="section1h3a">Common reasons</h3>
+      <ul>
+        <li id="s1li1">The card is fictional (anime/manga-only) and was never printed.</li>
+        <li id="s1li2">The card exists, but the deck list name differs from the database name (spelling / punctuation / localized naming).</li>
+        <li id="s1li3">The card exists, but is missing in the selected dataset/language.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 id="section2Title">2) Anime rules vs TCG/OCG rules</h2>
+      <p id="section2Body">
+        The anime often uses “story rules” that do not match the real card game rules (TCG/OCG). That’s why a character’s anime deck list can look “wrong”
+        compared to an official playable deck.
+      </p>
+
+      <h3 id="section2h3a">Example: Fusion monsters used like normal monsters</h3>
+      <p id="section2Example">
+        In early arcs, you may see fusion monsters appear without a fusion spell, or treated like normal summons.
+        This is an anime storytelling choice and not valid under standard TCG/OCG rules.
+      </p>
+
+      <h3 id="section2h3b">Other common differences</h3>
+      <ul>
+        <li id="s2li1">Cards with effects that never existed in print, or effects that were later changed (errata).</li>
+        <li id="s2li2">Early “rule experiments” (field power bonuses, unusual win conditions, etc.).</li>
+        <li id="s2li3">Character-specific cards that were renamed or redesigned when printed.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 id="section3Title">3) Credits</h2>
+      <ul class="credits">
+        <li id="credit1">Konami - for creating Yu-Gi-Oh! </li>
+
+        <!-- Esses 3 itens têm link e serão atualizados via innerHTML pelo JS -->
+        <li id="credit2">
+          YGOProDeck - for providing the public card API.<br>
+          <a href="https://ygoprodeck.com/" target="_blank" rel="noopener noreferrer">
+            https://ygoprodeck.com/
+          </a>
+        </li>
+
+        <li id="credit3">
+          Yu-Gi-Oh! Fandom - for deck list references.<br>
+          <a href="https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Wiki" target="_blank" rel="noopener noreferrer">
+            https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Wiki
+          </a>
+        </li>
+
+        <li id="credit4">
+          Official Yu-Gi-Oh! Website - for character images.<br>
+          <a href="https://www.yugioh.com/characters" target="_blank" rel="noopener noreferrer">
+            https://www.yugioh.com/characters
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span id="footerText">
+          This project is not affiliated with Konami and the Yu-Gi-Oh IP, it being a work of a fan and should not be monetized in any way.
+        </span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    const i18n = {
+      en: {
+        title: "Yu-Gi-Oh! Offline Database - CCF",
+        subtitle: "Why some cards appear as “anime-only” and deck differences.",
+        langLabel: "Language",
+
+        section1Title: "1) Why some cards are “anime-only”",
+        section1Note:
+          "Cards are always shown with images when a real card_id exists. If the card is “anime-only”, a placeholder is shown.",
+        section1h3a: "Common reasons",
+        s1li1: "The card is fictional (anime/manga-only) and was never printed.",
+        s1li2: "The card exists, but the deck list name differs from the database name (spelling / punctuation / localized naming).",
+        s1li3: "The card exists, but is missing in the selected dataset/language.",
+
+        section2Title: "2) Anime rules vs TCG/OCG rules",
+        section2Body:
+          "The anime often uses “story rules” that do not match the real card game rules (TCG/OCG). That’s why a character’s anime deck list can look “wrong” " +
+          "compared to an official playable deck.",
+        section2h3a: "Example: Fusion monsters used like normal monsters",
+        section2Example:
+          "In early arcs, you may see fusion monsters appear without a fusion spell, or treated like normal summons. " +
+          "This is an anime storytelling choice and not valid under standard TCG/OCG rules.",
+        section2h3b: "Other common differences",
+        s2li1: "Cards with effects that never existed in print, or effects that were later changed (errata).",
+        s2li2: "Early “rule experiments” (field power bonuses, unusual win conditions, etc.).",
+        s2li3: "Character-specific cards that were renamed or redesigned when printed.",
+
+        section3Title: "3) Credits",
+        credit1: "Konami - for creating Yu-Gi-Oh!",
+        credit2: "YGOProDeck - for providing the public card API.",
+        credit3: "Yu-Gi-Oh! Fandom - for deck list references.",
+        credit4: "Official Yu-Gi-Oh! Website - for character images.",
+
+        footerText:
+          "This project is not affiliated with Konami and the Yu-Gi-Oh IP, it being a work of a fan and should not be monetized in any way."
+      },
+
+      pt: {
+        title: "Yu-Gi-Oh! Banco Offline - ACC",
+        subtitle: "Por que algumas cartas aparecem como “apenas do anime” e diferenças de decks.",
+        langLabel: "Idioma",
+
+        section1Title: "1) Por que algumas cartas são “apenas do anime”",
+        section1Note:
+          "As cartas sempre aparecem com imagem quando existe um card_id real. Se a carta for “apenas do anime”, um placeholder é exibido.",
+        section1h3a: "Motivos comuns",
+        s1li1: "A carta é fictícia (somente anime/mangá) e nunca foi impressa.",
+        s1li2: "A carta existe, mas o nome no deck é diferente do nome no banco (grafia / pontuação / nome localizado).",
+        s1li3: "A carta existe, mas não está disponível no dataset/idioma selecionado.",
+
+        section2Title: "2) Regras do anime vs regras do TCG/OCG",
+        section2Body:
+          "O anime frequentemente usa “regras de roteiro” que não correspondem às regras reais do jogo (TCG/OCG). Por isso, o deck do personagem no anime pode parecer “errado” " +
+          "comparado a um deck jogável oficial.",
+        section2h3a: "Exemplo: monstros de fusão usados como monstros normais",
+        section2Example:
+          "Em arcos antigos, você pode ver monstros de fusão aparecendo sem uma carta de fusão, ou sendo tratados como invocações normais. " +
+          "Isso é uma escolha narrativa do anime e não é válido nas regras padrão do TCG/OCG.",
+        section2h3b: "Outras diferenças comuns",
+        s2li1: "Cartas com efeitos que nunca existiram em print, ou efeitos alterados depois (errata).",
+        s2li2: "“Experimentos” de regras no começo (bônus de campo, condições estranhas de vitória, etc.).",
+        s2li3: "Cartas exclusivas de personagens que foram renomeadas ou redesenhadas quando impressas.",
+
+        section3Title: "3) Créditos",
+        credit1: "Konami - por criar Yu-Gi-Oh!",
+        credit2: "YGOProDeck - por fornecer a API pública de cartas.",
+        credit3: "Yu-Gi-Oh! Fandom - como referência para listas de decks.",
+        credit4: "Site Oficial do Yu-Gi-Oh! - pelas imagens dos personagens.",
+
+        footerText:
+          "Este projeto não é afiliado com a Konami ou à Propriedade Intelectual Yu-Gi-Oh!, sendo um projeto de fã que não deve ser monetizado de forma alguma."
+      }
+    };
+
+    function applyLanguage(lang) {
+      const dict = i18n[lang] || i18n.en;
+      document.documentElement.lang = lang;
+
+      // textos simples
+      document.getElementById("title").textContent = dict.title;
+      document.getElementById("subtitle").textContent = dict.subtitle;
+      document.getElementById("langLabel").textContent = dict.langLabel;
+
+      document.getElementById("section1Title").textContent = dict.section1Title;
+
+      // section1Body tem link e code, então atualizamos via innerHTML mantendo estrutura
+      document.getElementById("section1Body").innerHTML =
+        (lang === "pt"
+          ? `Alguns decks (principalmente arcos antigos do anime) incluem cartas que nunca existiram no TCG/OCG, possuem nomes diferentes ou não aparecem no dataset da API fornecido pela
+             <a href="https://ygoprodeck.com/" target="_blank" rel="noopener noreferrer">YGOProDeck</a>.
+             Quando o app não consegue associar uma entrada do deck a um ID conhecido, ele salva a entrada apenas como <code>card_name</code>.
+             Essas cartas são exibidas como “apenas do anime”.`
+          : `Some decks (especially early anime arcs) include cards that never existed in the TCG/OCG, have different names, or are not present in the API dataset provided by
+             <a href="https://ygoprodeck.com/" target="_blank" rel="noopener noreferrer">YGOProDeck</a>.
+             When the app can’t match a deck entry to a known card ID, it stores the entry as <code>card_name</code> only.
+             These are displayed as “anime-only”.`
+        );
+
+      document.getElementById("section1Note").innerHTML =
+        dict.section1Note.replaceAll("card_id", "<code>card_id</code>");
+      document.getElementById("section1h3a").textContent = dict.section1h3a;
+      document.getElementById("s1li1").textContent = dict.s1li1;
+      document.getElementById("s1li2").textContent = dict.s1li2;
+      document.getElementById("s1li3").textContent = dict.s1li3;
+
+      document.getElementById("section2Title").textContent = dict.section2Title;
+      document.getElementById("section2Body").textContent = dict.section2Body;
+      document.getElementById("section2h3a").textContent = dict.section2h3a;
+      document.getElementById("section2Example").textContent = dict.section2Example;
+      document.getElementById("section2h3b").textContent = dict.section2h3b;
+      document.getElementById("s2li1").textContent = dict.s2li1;
+      document.getElementById("s2li2").textContent = dict.s2li2;
+      document.getElementById("s2li3").textContent = dict.s2li3;
+
+      document.getElementById("section3Title").textContent = dict.section3Title;
+      document.getElementById("credit1").textContent = dict.credit1;
+
+      // credits com link: sempre via innerHTML (para não apagar o <a>)
+      document.getElementById("credit2").innerHTML = `
+        ${dict.credit2}<br>
+        <a href="https://ygoprodeck.com/" target="_blank" rel="noopener noreferrer">
+          https://ygoprodeck.com/
+        </a>
+      `;
+
+      document.getElementById("credit3").innerHTML = `
+        ${dict.credit3}<br>
+        <a href="https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Wiki" target="_blank" rel="noopener noreferrer">
+          https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Wiki
+        </a>
+      `;
+
+      document.getElementById("credit4").innerHTML = `
+        ${dict.credit4}<br>
+        <a href="https://www.yugioh.com/characters" target="_blank" rel="noopener noreferrer">
+          https://www.yugioh.com/characters
+        </a>
+      `;
+
+      document.getElementById("footerText").textContent = dict.footerText;
+    }
+
+    const select = document.getElementById("langSelect");
+    select.addEventListener("change", (e) => applyLanguage(e.target.value));
+
+    // initial
+    applyLanguage(select.value);
+  </script>
+</body>
+</html>
