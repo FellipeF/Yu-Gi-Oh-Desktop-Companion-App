@@ -1,7 +1,7 @@
 import tkinter as tk
-
 from PIL import Image, ImageTk
 from database.models import get_all_duelists
+from utils.resource_path import resource_path
 
 class DuelistsFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -25,7 +25,7 @@ class DuelistsFrame(tk.Frame):
         for duelist in duelists:
             duelist_id, name, description, img_path = duelist
 
-            img = Image.open(img_path).resize((150,150))
+            img = Image.open(resource_path(img_path)).resize((150,150))
             tk_img = ImageTk.PhotoImage(img)
 
             btn = tk.Button(

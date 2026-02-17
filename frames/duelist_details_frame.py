@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import threading
 import cache_image
 from database.models import get_decks_by_duelist
+from utils.resource_path import resource_path
 
 class DuelistDetailsFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -18,7 +19,7 @@ class DuelistDetailsFrame(tk.Frame):
         self.current_deck_index = None
 
         self.placeholder_image = ImageTk.PhotoImage(
-            Image.open("images/placeholder.jpg").resize((200,290))
+            Image.open(resource_path("images/placeholder.jpg")).resize((200,290))
         )
 
         self.decks_data = []
