@@ -8,6 +8,7 @@ from database.models import populate_cards
 from database.models import populate_duelists
 from database.models import populate_decks_and_cards
 from database.models import populate_deck_type_translations
+from database.models import populate_deck_translations
 from ui.translations import translations
 
 class App(tk.Tk):
@@ -45,6 +46,7 @@ class App(tk.Tk):
         populate_duelists()
         populate_decks_and_cards()
         populate_deck_type_translations()
+        populate_deck_translations()
 
         # =========================
         # MAIN WINDOW

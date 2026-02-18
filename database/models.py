@@ -9,6 +9,7 @@ ARC_NAMES = {
     "Toei - Death-T",
     "Toei - Movie",
     "Duelist Kingdom",
+    "Battle City",
     #TODO: Add More in the future
 }
 
@@ -163,7 +164,7 @@ def populate_decks_and_cards(base_language_for_lookup="en"):
                 cursor.execute("""
                     SELECT card_id
                     FROM cards_translation
-                    WHERE name = ? AND language = ?
+                    WHERE name = ? COLLATE NOCASE AND language = ?
                     LIMIT 1
                 """, (card_name, base_language_for_lookup))
                 row = cursor.fetchone()
@@ -173,7 +174,7 @@ def populate_decks_and_cards(base_language_for_lookup="en"):
                     cursor.execute("""
                         SELECT card_id
                         FROM cards_translation
-                        WHERE name = ?
+                        WHERE name = ? COLLATE NOCASE
                         LIMIT 1
                     """, (card_name,))
                     row = cursor.fetchone()
@@ -196,6 +197,7 @@ def populate_decks_and_cards(base_language_for_lookup="en"):
     conn.close()
 
 def populate_deck_type_translations():
+    """Translate Deck Types, those are anime Arcs, like Battle City"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -203,9 +205,9 @@ def populate_deck_type_translations():
 
     translations = [
         ("Toei - First Series", "pt", "Toei - Primeira Série"),
-        ("Toei - Death-T", "pt", "Toei - Death-T"),
         ("Toei - Movie", "pt", "Toei - Filme"),
         ("Duelist Kingdom", "pt", "Reino dos Duelistas"),
+        ("Battle City", "pt", "Cidade da Batalha")
     ]
 
     for deck_type_name_en, language, translated_name in translations:
@@ -227,24 +229,68 @@ def populate_deck_type_translations():
     conn.commit()
     conn.close()
 
+def populate_deck_translations():
+    """Translate Duelists Specific Deck"""
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    translations = [
+        ("Yugi Muto", "Friendship", "pt", "Amizade"),
+    ]
+
+    for duelist_name, deck_name_en, lang, translated in translations:
+        cursor.execute("SELECT id FROM duelists WHERE name = ?", (duelist_name,))
+        duelist = cursor.fetchone()
+        if not duelist:
+            continue
+
+        cursor.execute("SELECT id FROM decks where duelist_id = ? AND name = ?", (duelist[0], deck_name_en))
+        deck = cursor.fetchone()
+        if not deck:
+            continue
+
+        cursor.execute("""
+            INSERT OR IGNORE INTO decks_translation (deck_id, language, name) 
+            VALUES (?, ?, ?)
+        """, (deck[0], lang, translated))
+
+        conn.commit()
+        conn.close()
+
 def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
     conn = get_connection()
     cursor = conn.cursor()
 
+    # =========================
+    # DECKS
+    # =========================
     cursor.execute("""
         SELECT
             d.id AS deck_id,
-            COALESCE(dttr.name, dtr.name, d.name) AS deck_name,
+            COALESCE(dttr_lang.name, dttr_en.name, dtr_lang.name, dtr_en.name, d.name) AS deck_name,
             d.order_index
         FROM decks d
-        LEFT JOIN decks_translation dtr
-            ON dtr.deck_id = d.id
-            AND dtr.language = ?
+
+        -- deck name translation (optional)
+        LEFT JOIN decks_translation dtr_lang
+            ON dtr_lang.deck_id = d.id
+            AND dtr_lang.language = ?
+        LEFT JOIN decks_translation dtr_en
+            ON dtr_en.deck_id = d.id
+            AND dtr_en.language = 'en'
+
+        -- deck type (arc/category)
         LEFT JOIN deck_types dt
             ON dt.id = d.deck_type_id
-        LEFT JOIN deck_type_translation dttr
-            ON dttr.deck_type_id = dt.id
-            AND dttr.language = ?
+
+        -- deck type translation
+        LEFT JOIN deck_type_translation dttr_lang
+            ON dttr_lang.deck_type_id = dt.id
+            AND dttr_lang.language = ?
+        LEFT JOIN deck_type_translation dttr_en
+            ON dttr_en.deck_type_id = dt.id
+            AND dttr_en.language = 'en'
+
         WHERE d.duelist_id = ?
         ORDER BY d.order_index
     """, (language, language, duelist_id))
@@ -252,29 +298,36 @@ def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
     decks = cursor.fetchall()
     result = []
 
+    # =========================
+    # CARDS ON DECK WITH FALLBACK
+    # =========================
     for deck_id, deck_name, _order_index in decks:
         parts = ["""
             SELECT
                 dc.card_id,
-                COALESCE(ct.name, dc.card_name) AS card_name,
+                COALESCE(ct_lang.name, ct_en.name, dc.card_name) AS card_name,
                 c.atk,
                 c.def,
                 dc.quantity
             FROM deck_cards dc
             LEFT JOIN cards c
                 ON c.id = dc.card_id
-            LEFT JOIN cards_translation ct
-                ON ct.card_id = c.id
-                AND ct.language = ?
+
+            LEFT JOIN cards_translation ct_lang
+                ON ct_lang.card_id = c.id
+                AND ct_lang.language = ?
+
+            LEFT JOIN cards_translation ct_en
+                ON ct_en.card_id = c.id
+                AND ct_en.language = 'en'
+
             WHERE dc.deck_id = ?
         """]
 
-        #This is a checkbox controlled in DuelistDetailsFrame
-
+        #This is the checkbox controlled in DuelistDetailsFrame
         if not show_anime:
             parts.append("AND dc.card_id IS NOT NULL")
 
-        #Alphabetical Order. Could order by Type, like Monster first and Magic/Trap later like the Wiki, but no reason why as of now.
         parts.append("ORDER BY card_name COLLATE NOCASE")
         cards_query = "\n".join(parts)
 
