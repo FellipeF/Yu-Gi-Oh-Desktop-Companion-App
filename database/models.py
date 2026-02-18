@@ -1,7 +1,9 @@
 import sqlite3
 import api_client
 from database.database import get_connection
-from database.deck_data import DECKS_DATA
+from database.decks.yugi import YUGI_DECKS
+from database.decks.kaiba import KAIBA_DECKS
+from database.decks.joey import JOEY_DECKS
 from database.database import DB_NAME
 
 ARC_NAMES = {
@@ -10,7 +12,14 @@ ARC_NAMES = {
     "Toei - Movie",
     "Duelist Kingdom",
     "Battle City",
+    "Virtual World",
     #TODO: Add More in the future
+}
+
+DECKS_DATA = {
+    "Yugi Muto": YUGI_DECKS,
+    "Seto Kaiba": KAIBA_DECKS,
+    "Joey Wheeler": JOEY_DECKS
 }
 
 def populate_cards(language="en"):
@@ -207,7 +216,8 @@ def populate_deck_type_translations():
         ("Toei - First Series", "pt", "Toei - Primeira Série"),
         ("Toei - Movie", "pt", "Toei - Filme"),
         ("Duelist Kingdom", "pt", "Reino dos Duelistas"),
-        ("Battle City", "pt", "Cidade da Batalha")
+        ("Battle City", "pt", "Cidade da Batalha"),
+        ("Virtual World", "pt", "Mundo Virtual")
     ]
 
     for deck_type_name_en, language, translated_name in translations:
@@ -270,27 +280,20 @@ def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
             COALESCE(dttr_lang.name, dttr_en.name, dtr_lang.name, dtr_en.name, d.name) AS deck_name,
             d.order_index
         FROM decks d
-
-        -- deck name translation (optional)
         LEFT JOIN decks_translation dtr_lang
             ON dtr_lang.deck_id = d.id
             AND dtr_lang.language = ?
         LEFT JOIN decks_translation dtr_en
             ON dtr_en.deck_id = d.id
             AND dtr_en.language = 'en'
-
-        -- deck type (arc/category)
         LEFT JOIN deck_types dt
             ON dt.id = d.deck_type_id
-
-        -- deck type translation
         LEFT JOIN deck_type_translation dttr_lang
             ON dttr_lang.deck_type_id = dt.id
             AND dttr_lang.language = ?
         LEFT JOIN deck_type_translation dttr_en
             ON dttr_en.deck_type_id = dt.id
             AND dttr_en.language = 'en'
-
         WHERE d.duelist_id = ?
         ORDER BY d.order_index
     """, (language, language, duelist_id))
