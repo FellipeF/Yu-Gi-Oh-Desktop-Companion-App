@@ -6,6 +6,9 @@ from database.decks.kaiba import KAIBA_DECKS
 from database.decks.joey import JOEY_DECKS
 from database.database import DB_NAME
 
+#TODO: Review db commits and put try except finally blocks
+#TODO: Check for performance on other methods
+
 ARC_NAMES = {
     "Toei - First Series",
     "Toei - Death-T",
@@ -13,7 +16,44 @@ ARC_NAMES = {
     "Duelist Kingdom",
     "Battle City",
     "Virtual World",
-    #TODO: Add More in the future
+    "Waking the Dragons",
+    "Grand Championship",
+    "Dawn of the Duel",
+    "Pyramid of Light",
+    "3D Bonds Beyond Time",
+    "The Dark Side of Dimensions",
+    "Early Manga",
+    "Manga - Duelist Kingdom",
+    "Manga - Battle City",
+    "Manga - Millennium World",
+    "Novel",
+    "North American World Championship Qualifier 2011",
+    "Championship Series Providence 2012",
+    "World Championship 2013",
+    "North American World Championship Qualifier 2014",
+    "World Championship 2016 Special",
+    "V Jump Magazine",
+    "World Championship 2019 Special",
+    "Live-action Speed Duel 2020",
+    "World Championship Qualifier 2024",
+    "Duel Monsters",
+    "Dark Duel Stories",
+    "The Eternal Duelist Soul",
+    "The Sacred Cards",
+    "World Championship 2004",
+    "Dawn of Destiny",
+    "Reshef of Destruction",
+    "7 Trials to Glory: Standard",
+    "7 Trials to Glory: Advanced",
+    "North American World Championship Qualifiers 2012",
+    "North American World Championship Qualifiers 2013",
+    "Worldwide Edition: Stairway to the Destined Duel",
+    "The Falsebound Kingdom - Starter",
+    "Reshef of Destruction (2)",
+    "World Championship 2007",
+    "World Championship 2007 (2)",
+    "Online Duel Accelerator",
+
 }
 
 DECKS_DATA = {
@@ -42,6 +82,8 @@ def populate_cards(language="en"):
 
     data = api_client.load_cards(language)
     cards = data["data"]
+
+    #TODO: Check for cards like Egyptian Gods that ATK and DEF = ???. Currently shows up as -1
 
     for card in cards:
         cursor.execute("""
@@ -137,87 +179,183 @@ def populate_decks_and_cards(base_language_for_lookup="en"):
     conn = get_connection()
     cursor = conn.cursor()
 
-    for duelist_name, decks_by_name in DECKS_DATA.items():
-        cursor.execute("SELECT id FROM duelists WHERE name = ?", (duelist_name,))
-        duelist = cursor.fetchone()
-        if not duelist:
-            continue
-        duelist_id = duelist[0]
+    try:
+        cursor.execute("SELECT id, name FROM duelists")
+        duelist_id_by_name = {name: duelist_id for (duelist_id, name) in cursor.fetchall()}
 
-        for order_index, (deck_name, cards) in enumerate(decks_by_name.items()):
-            deck_type_id = None
+        cursor.execute("SELECT id, key FROM deck_types")
+        deck_type_id_by_key = {key: deck_type_id for (deck_type_id, key) in cursor.fetchall()}
 
-            if deck_name in ARC_NAMES: #Deck is from an Arc, like Battle City? Use this to allow translation!
-                cursor.execute("""
-                    INSERT OR IGNORE INTO deck_types (name, key, order_index)
-                    VALUES (?, ?, ?)
-                """, (deck_name, deck_name, order_index))
+        cursor.execute("SELECT id, duelist_id, name FROM decks")
+        deck_id_by_duelist_and_name = {(duelist_id, name): deck_id for (deck_id, duelist_id, name) in cursor.fetchall()}
 
-                cursor.execute("SELECT id FROM deck_types WHERE key = ?", (deck_name,))
-                row = cursor.fetchone()
-                deck_type_id = row[0] if row else None
+        def get_or_create_deck_type(deck_name: str, order_index: int):
+            #Per DB model, a deck type is the name of the Arc that is shared among duelists, like Battle City.
+            if deck_name not in ARC_NAMES:
+                return None
 
-            cursor.execute("""
+            key = deck_name
+            existing = deck_type_id_by_key.get(key)
+            if existing:
+                return existing
+
+            cursor.execute(
+                "INSERT OR IGNORE INTO deck_types (name, key, order_index) VALUES (?, ?, ?)",
+                (deck_name, key, order_index)
+            )
+            
+            cursor.execute("SELECT id FROM deck_types WHERE key = ?", (key,))
+            deck_type_id = cursor.fetchone()[0]
+            deck_type_id_by_key[key] = deck_type_id
+            return deck_type_id
+
+        def get_or_create_deck(duelist_id: int, deck_name: str, deck_type_id, order_index: int):
+            key = (duelist_id, deck_name)
+            existing = deck_id_by_duelist_and_name.get(key)
+            if existing:
+                return existing
+
+            cursor.execute(
+                """
                 INSERT OR IGNORE INTO decks (duelist_id, deck_type_id, name, order_index)
                 VALUES (?, ?, ?, ?)
-            """, (duelist_id, deck_type_id, deck_name, order_index))
+                """,
+                (duelist_id, deck_type_id, deck_name, order_index)
+            )
+            cursor.execute(
+                "SELECT id FROM decks WHERE duelist_id = ? AND name = ?",
+                (duelist_id, deck_name)
+            )
+            duelist_id = cursor.fetchone()[0]
+            deck_id_by_duelist_and_name[key] = duelist_id
+            return duelist_id
 
-            cursor.execute("""
-                SELECT id
-                FROM decks
-                WHERE duelist_id = ? AND name = ?
-            """, (duelist_id, deck_name))
-            deck_id = cursor.fetchone()[0]
+        for duelist_name, decks_by_name in DECKS_DATA.items():
+            duelist_id = duelist_id_by_name.get(duelist_name)
+            if not duelist_id:
+                continue
 
-            for card_name, quantity in cards:
-                cursor.execute("""
-                    SELECT card_id
-                    FROM cards_translation
-                    WHERE name = ? COLLATE NOCASE AND language = ?
-                    LIMIT 1
-                """, (card_name, base_language_for_lookup))
-                row = cursor.fetchone()
+            for order_index, (deck_name, cards) in enumerate(decks_by_name.items()):
+                deck_type_id = get_or_create_deck_type(deck_name, order_index)
+                deck_id = get_or_create_deck(duelist_id, deck_name, deck_type_id, order_index)
 
-                if not row:
-                    # Fallback. Check TODO in main.py
-                    cursor.execute("""
-                        SELECT card_id
+                card_names = [card_name for (card_name, _qty) in cards]
+                card_id_by_name = {}
+                
+                if card_names:
+                    placeholders = ",".join(["?"] * len(card_names))
+                    
+                    #Search for English first.
+                    cursor.execute(
+                        f"""
+                        SELECT name, card_id
                         FROM cards_translation
-                        WHERE name = ? COLLATE NOCASE
-                        LIMIT 1
-                    """, (card_name,))
-                    row = cursor.fetchone()
+                        WHERE language = ?
+                          AND name COLLATE NOCASE IN ({placeholders})
+                        """,
+                        [base_language_for_lookup, *card_names]
+                    )
+                    for name, card_id in cursor.fetchall():
+                        card_id_by_name[name.lower()] = card_id # Case-insensitive. Fixes issue with dataset inconsistency, like Gamma 'the' Magnet Warrior vs. Gamma The Magnet Warrior
 
-                if row:
-                    card_id = row[0]
-                    cursor.execute("""
+                    # Fallback for cards not translated in dataset.
+                    missing = [n for n in card_names if n.lower() not in card_id_by_name]
+                    if missing:
+                        fallback = ",".join(["?"] * len(missing))
+                        cursor.execute(
+                            f"""
+                            SELECT name, card_id
+                            FROM cards_translation
+                            WHERE name COLLATE NOCASE IN ({fallback})
+                            """,
+                            missing
+                        )
+                        for name, card_id in cursor.fetchall():
+                            card_id_by_name.setdefault(name.lower(), card_id)
+
+                rows_with_id = []
+                rows_with_name = []
+
+                for card_name, quantity in cards:
+                    card_id = card_id_by_name.get(card_name.lower())
+                    if card_id:
+                        rows_with_id.append((deck_id, card_id, quantity))
+                    else:
+                        rows_with_name.append((deck_id, card_name, quantity))
+
+                if rows_with_id:
+                    cursor.executemany(
+                        """
                         INSERT OR IGNORE INTO deck_cards (deck_id, card_id, quantity)
                         VALUES (?, ?, ?)
-                    """, (deck_id, card_id, quantity))
-                else:
-                    #Didn't find the card? Most likely it's an anime deck, which doesn't have an ID on the API.
-                    #We insert its name then.
-                    cursor.execute("""
+                        """,
+                        rows_with_id
+                    )
+
+                if rows_with_name:
+                    cursor.executemany(
+                        """
                         INSERT OR IGNORE INTO deck_cards (deck_id, card_name, quantity)
                         VALUES (?, ?, ?)
-                    """, (deck_id, card_name, quantity))
+                        """,
+                        rows_with_name
+                    )
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+
+    finally:
+        conn.close()
 
 def populate_deck_type_translations():
-    """Translate Deck Types, those are anime Arcs, like Battle City"""
+    """Translate Deck Types, those are anime Arcs, like Battle City, or video games one"""
     conn = get_connection()
     cursor = conn.cursor()
 
     #TODO: When more arcs are created, also modify here. Meanwhile, we're doing Portuguese only.
+    #Reminder: Also modify ARC_NAMES when inserting here.
 
     translations = [
         ("Toei - First Series", "pt", "Toei - Primeira Série"),
         ("Toei - Movie", "pt", "Toei - Filme"),
         ("Duelist Kingdom", "pt", "Reino dos Duelistas"),
         ("Battle City", "pt", "Cidade da Batalha"),
-        ("Virtual World", "pt", "Mundo Virtual")
+        ("Virtual World", "pt", "Mundo Virtual"),
+        ("Waking the Dragons", "pt", "Despertando os Dragões"),
+        ("Dawn of the Duel", "pt", "Alvorecer do Duelo"),
+        ("Pyramid of Light", "pt", "Pirâmide da Luz"),
+        ("3D Bonds Beyond Time", "pt", "Vínculos Além do Tempo"),
+        ("The Dark Side of Dimensions", "pt", "O Lado Negro das Dimensões"),
+        ("Early Manga", "pt", "Manga - Início"),
+        ("Manga - Duelist Kingdom", "pt", "Manga - Reino dos Duelistas"),
+        ("Manga - Battle City", "pt", "Manga - Cidade da Batalha"),
+        ("Manga - Millennium World", "pt", "Manga - Mundo do Milênio"),
+        ("Novel", "pt", "Adaptação Literária"),
+        ("North American World Championship Qualifier 2011", "pt", "Qualificatória Norte-Americana Campeonato Mundial 2011"),
+        ("Championship Series Providence 2012", "pt", "Série de Campeonato em Providence 2012"),
+        ("World Championship 2013", "pt", "Campeonato Mundial 2013"),
+        ("North American World Championship Qualifier 2014", "pt", "Qualificatória Norte-Americana Campeonato Mundial 2014"),
+        ("World Championship 2016 Special", "pt", "Especial Campeonato Mundial 2016"),
+        ("V Jump Magazine", "pt", "Revista V Jump"),
+        ("World Championship 2019 Special", "pt", "Especial Campeonato Mundial 2019"),
+        ("Live-action Speed Duel 2020", "pt", "Duelo Veloz Live-action 2020"),
+        ("World Championship Qualifier 2024", "pt", "Qualificatória Campeonato Mundial 2024"),
+        ("Duel Monsters", "pt", "Monstros de Duelo"),
+        ("Dark Duel Stories", "pt", "Histórias Negras do Duelo"),
+        ("The Eternal Duelist Soul", "pt", "A Alma do Duelista Eterno"),
+        ("The Sacred Cards", "pt", "As Cartas Sagradas"),
+        ("World Championship 2004", "pt", "Campeonato Mundial 2004"),
+        ("Dawn of Destiny", "pt", "Alvorecer do Destino"),
+        ("Reshef of Destruction", "pt", "Rexefe da Destruição"),
+        ("7 Trials to Glory: Standard", "pt", "7 Provas para a Glória: Padrão"),
+        ("7 Trials to Glory: Advanced", "pt", "7 Provas para a Glória: Avançado"),
+        ("North American World Championship Qualifiers 2012", "pt", "Qualificatórias Norte-Americana Campeonato Mundial 2012"),
+        ("North American World Championship Qualifiers 2013", "pt", "Qualificatórias Norte-Americanas Campeonato Mundial 2013"),
+        ("Worldwide Edition: Stairway to the Destined Duel", "pt", "Edição Mundial: Escadaria para o Duelo Destinado"),
+        ("The Falsebound Kingdom - Starter", "pt", "The Falsebound Kingdom - Iniciante"),
+        ("Reshef of Destruction (2)", "pt", "Rexefe da Destruição (2)"),
+        ("World Championship 2007", "pt", "Campeonato Mundial 2007"),
+        ("World Championship 2007 (2)", "pt", "Campeonato Mundial 2007 (2)"),
+        ("Online Duel Accelerator", "pt", "Acelerador de Duelos Online"),
     ]
 
     for deck_type_name_en, language, translated_name in translations:
@@ -244,8 +382,38 @@ def populate_deck_translations():
     conn = get_connection()
     cursor = conn.cursor()
 
+    #TODO: Check for repeat and refactor, testing it meanwhile
+    #TODO: Separate methods/files for each duelist so it won't clutter here
+
     translations = [
         ("Yugi Muto", "Friendship", "pt", "Amizade"),
+        ("Yugi Muto", "Magic Darkness", "pt", "Escuridão Mágica"),
+        ("Yugi Muto", "Give You Courage", "pt", "A Coragem Esteja Contigo"),
+        ("Yugi Muto", "Magic Darkness v1", "pt", "Escuridão Mágica v1"),
+        ("Yugi Muto", "Magic Darkness v2", "pt", "Escuridão Mágica v2"),
+        ("Yugi Muto", "Magic Darkness v3", "pt", "Escuridão Mágica v3"),
+        ("Yugi Muto", "Magnet Power", "pt", "Poder Magnético"),
+        ("Yugi Muto", "Magic Time", "pt", "Hora da Magia"),
+        ("Yugi Muto", "True Friends", "pt", "Amigos de Verdade"),
+        ("Yugi Muto", "GX / Past", "pt", "GX / Passado"),
+        ("Yugi Muto", "GX / Present", "pt", "GX / Presente"),
+        ("Yugi Muto", "3D Bonds Beyond Time - Teaser", "pt", "Prévia - Vínculos Além do Tempo"),
+        ("Seto Kaiba", "Childhood Deck", "pt", "Deck da Infância"),
+        ("Seto Kaiba", "Test Deck", "pt", "Deck de Testes"),
+        ("Seto Kaiba", "First Briefcase", "pt", "Primeira Maleta"),
+        ("Seto Kaiba", "Second Briefcase", "pt", "Segunda Maleta"),
+        ("Seto Kaiba", "Third Briefcase", "pt", "Terceira Maleta"),
+        ("Seto Kaiba", "Fourth Briefcase", "pt", "Quarta Maleta"),
+        ("Seto Kaiba", "Fifth Briefcase", "pt", "Quinta Maleta"),
+        ("Seto Kaiba", "Manga - Test Deck", "pt", "Manga - Deck de Testes"),
+        ("Seto Kaiba", "Test Deck", "pt", "Deck de Testes"),
+        ("Seto Kaiba", "Blue-Eyes Burst", "pt", "Rajada de Olhos Azuis"), #Esse
+        ("Seto Kaiba", "Fist of Fury", "pt", "Punho da Fúria"),
+        ("Seto Kaiba", "Kaiser Impact", "pt", "Impacto Kaiser"),
+        ("Seto Kaiba", "Obelisk Impact", "pt", "Impacto Obelisco"),
+        ("Seto Kaiba", "Ruinous Beast", "pt", "Besta Ruinosa"),
+        ("Seto Kaiba", "Noble Soul", "pt", "Alma Nobre"),
+        ("Seto Kaiba", "Pulse of Trishula", "pt", "Pulso de Trishula"),
     ]
 
     for duelist_name, deck_name_en, lang, translated in translations:
@@ -264,84 +432,79 @@ def populate_deck_translations():
             VALUES (?, ?, ?)
         """, (deck[0], lang, translated))
 
-        conn.commit()
-        conn.close()
+    conn.commit()
+    conn.close()
 
 def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
     conn = get_connection()
     cursor = conn.cursor()
 
-    # =========================
-    # DECKS
-    # =========================
-    cursor.execute("""
+    #Order decks and fetches cards from DB on one query only.
+    query = """
         SELECT
-            d.id AS deck_id,
-            COALESCE(dttr_lang.name, dttr_en.name, dtr_lang.name, dtr_en.name, d.name) AS deck_name,
-            d.order_index
+        d.id AS deck_id,
+        COALESCE(dttr_lang.name, dttr_en.name, dtr_lang.name, dtr_en.name, d.name) AS deck_name,
+        d.order_index AS deck_order,
+        dc.card_id,
+        COALESCE(ct_lang.name, ct_en.name, dc.card_name) AS card_name,
+        c.atk,
+        c.def,
+        dc.quantity
         FROM decks d
         LEFT JOIN decks_translation dtr_lang
-            ON dtr_lang.deck_id = d.id
-            AND dtr_lang.language = ?
+        ON dtr_lang.deck_id = d.id
+        AND dtr_lang.language = :lang
         LEFT JOIN decks_translation dtr_en
-            ON dtr_en.deck_id = d.id
-            AND dtr_en.language = 'en'
+        ON dtr_en.deck_id = d.id
+        AND dtr_en.language = 'en'
         LEFT JOIN deck_types dt
-            ON dt.id = d.deck_type_id
+        ON dt.id = d.deck_type_id
         LEFT JOIN deck_type_translation dttr_lang
-            ON dttr_lang.deck_type_id = dt.id
-            AND dttr_lang.language = ?
+        ON dttr_lang.deck_type_id = dt.id
+        AND dttr_lang.language = :lang
         LEFT JOIN deck_type_translation dttr_en
-            ON dttr_en.deck_type_id = dt.id
-            AND dttr_en.language = 'en'
-        WHERE d.duelist_id = ?
-        ORDER BY d.order_index
-    """, (language, language, duelist_id))
+        ON dttr_en.deck_type_id = dt.id
+        AND dttr_en.language = 'en'
+        LEFT JOIN deck_cards dc
+        ON dc.deck_id = d.id
+    """
 
-    decks = cursor.fetchall()
-    result = []
+    # checkbox filter, controlled by Duelist Details Frame
+    if not show_anime:
+        query += " AND dc.card_id IS NOT NULL\n"
 
-    # =========================
-    # CARDS ON DECK WITH FALLBACK
-    # =========================
-    for deck_id, deck_name, _order_index in decks:
-        parts = ["""
-            SELECT
-                dc.card_id,
-                COALESCE(ct_lang.name, ct_en.name, dc.card_name) AS card_name,
-                c.atk,
-                c.def,
-                dc.quantity
-            FROM deck_cards dc
-            LEFT JOIN cards c
-                ON c.id = dc.card_id
+    query += """
+        LEFT JOIN cards c
+        ON c.id = dc.card_id
+        LEFT JOIN cards_translation ct_lang
+        ON ct_lang.card_id = c.id
+        AND ct_lang.language = :lang
+        LEFT JOIN cards_translation ct_en
+        ON ct_en.card_id = c.id
+        AND ct_en.language = 'en'
+        WHERE d.duelist_id = :duelist_id
+        ORDER BY
+        d.order_index,
+        card_name COLLATE NOCASE
+    """
 
-            LEFT JOIN cards_translation ct_lang
-                ON ct_lang.card_id = c.id
-                AND ct_lang.language = ?
-
-            LEFT JOIN cards_translation ct_en
-                ON ct_en.card_id = c.id
-                AND ct_en.language = 'en'
-
-            WHERE dc.deck_id = ?
-        """]
-
-        #This is the checkbox controlled in DuelistDetailsFrame
-        if not show_anime:
-            parts.append("AND dc.card_id IS NOT NULL")
-
-        parts.append("ORDER BY card_name COLLATE NOCASE")
-        cards_query = "\n".join(parts)
-
-        cursor.execute(cards_query, (language, deck_id))
-        cards = cursor.fetchall()
-
-        result.append({
-            "deck_id": deck_id,
-            "deck_name": deck_name,
-            "cards": cards
-        })
-
+    cursor.execute(query, {"lang": language, "duelist_id": duelist_id})
+    rows = cursor.fetchall()
     conn.close()
-    return result
+
+    decks = []
+    by_deck = {}
+
+    for (deck_id, deck_name, _deck_order,
+         card_id, card_name, atk, defense, qty) in rows:
+
+        if deck_id not in by_deck:
+            obj = {"deck_id": deck_id, "deck_name": deck_name, "cards": []}
+            by_deck[deck_id] = obj
+            decks.append(obj)
+
+        #TODO: Take this out after testing, decks should never be empty on the final version.
+        if qty is not None:
+            by_deck[deck_id]["cards"].append((card_id, card_name, atk, defense, qty))
+
+    return decks

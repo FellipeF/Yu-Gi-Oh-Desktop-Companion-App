@@ -54,7 +54,7 @@ class App(tk.Tk):
 
         #TODO: Check if there's a method to generate window on the center of the user screen
 
-        self.title("Yu-Gi-Oh! Card Database v0.5")
+        self.title("Yu-Gi-Oh! Card Database v0.6")
         self.geometry("620x500")
         self.resizable(False, False)
 

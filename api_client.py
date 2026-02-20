@@ -2,6 +2,8 @@ import requests
 import json
 import os
 
+#TODO: Check for Updates
+
 URL = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 
 def get_cache_filename(language):

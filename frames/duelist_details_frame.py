@@ -12,6 +12,8 @@ class DuelistDetailsFrame(tk.Frame):
 
         #TODO: Use Duelist Description somewhere or delete it.
         #TODO: Check if Refactor is possible with some of the cards_frame.py code
+        #TODO: Add checkbox: Show Complete Decks only
+        #TODO: Show current selected deck
 
         self.current_duelist_id = None
         self.current_duelist_name = None
@@ -49,6 +51,7 @@ class DuelistDetailsFrame(tk.Frame):
         right_frame.pack_propagate(False)
 
         self.show_anime_cards = tk.BooleanVar(value=True)
+        #TODO: There are manga and novel exclusive cards as well. Also, take out text from Constructor.
         self.anime_checkbox = tk.Checkbutton(
             self,
             text = "Show anime only cards",
