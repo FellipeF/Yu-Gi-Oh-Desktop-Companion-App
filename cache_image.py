@@ -12,8 +12,7 @@ def get_card_image(card_id):
     if os.path.exists(local_path):
         return local_path
 
-    url = f"https://images.ygoprodeck.com/images/cards_small/{card_id}.jpg"
-    #TODO: Currently, only miniatures are being imported, but need to fetch larger ones for individual card details frame (currently not created)
+    url = f"https://images.ygoprodeck.com/images/cards/{card_id}.jpg"
 
     response = requests.get(url)
     if response.status_code == 200:

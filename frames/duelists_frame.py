@@ -16,28 +16,28 @@ class DuelistsFrame(tk.Frame):
         container.pack()
 
         duelists = get_all_duelists()
-        #TODO: Meanwhile, there's three duelists: Yugi, Kaiba and Joey. They could be sorted by anime in the future, just like their decks...
-        #TODO: Also, implement pagination or at least resize the screen on main.py so more duelists could fit? 9 per page sounds good.
+        #TODO: Sort by anime
 
         row = 0
         col = 0
 
         for duelist in duelists:
-            duelist_id, name, description, img_path = duelist
+            duelist_id, name, img_path = duelist
 
             img = Image.open(resource_path(img_path)).resize((150,150))
             tk_img = ImageTk.PhotoImage(img)
 
-            btn = tk.Button(
+            duelist_button = tk.Button(
                 container,
                 image=tk_img,
                 text=name,
+                font=("Arial",15),
                 compound="top",
                 command=lambda d=duelist_id, n=name: self.show_duelist_details(d, n)
             )
 
-            btn.image = tk_img
-            btn.grid(row=row, column=col, padx=20, pady=20)
+            duelist_button.image = tk_img
+            duelist_button.grid(row=row, column=col, padx=20, pady=20)
 
             col+=1
             if col == 3:
@@ -48,7 +48,7 @@ class DuelistsFrame(tk.Frame):
             self,
             command=lambda: controller.show_frame("HomeFrame")
         )
-        self.return_button.pack(pady=10)
+        self.return_button.pack()
 
         self.refresh_ui()
 

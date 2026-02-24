@@ -52,10 +52,10 @@ class App(tk.Tk):
         # MAIN WINDOW
         # =========================
 
-        #TODO: Check if there's a method to generate window on the center of the user screen
+        #TODO: Generate on center of user screen
 
-        self.title("Yu-Gi-Oh! Card Database v0.6")
-        self.geometry("620x500")
+        self.title("Yu-Gi-Oh! Card Database v0.7")
+        self.geometry("620x800")
         self.resizable(False, False)
 
         container = tk.Frame(self)
@@ -63,13 +63,13 @@ class App(tk.Tk):
 
         self.frames = {}
 
-        #TODO: Create CardDetailsFrame that is shared between CardsFrame and DuelistDetailsFrame - User can see card details when it is selected.
         for F in (HomeFrame, CardsFrame, DuelistsFrame, DuelistDetailsFrame):
             frame = F(container, self)
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.update_ui_language()
+        self.after(10, self.center_on_screen)
         self.show_frame("HomeFrame")
 
     def show_frame(self, name):
@@ -96,6 +96,14 @@ class App(tk.Tk):
 
     def t (self, key):
         return translations[self.current_language][key]
+
+    def center_on_screen(self):
+        self.update_idletasks()
+        w = self.winfo_width()
+        h = self.winfo_height()
+        x = (self.winfo_screenwidth() // 2) - (w // 2)
+        y = (self.winfo_screenheight() // 2) - (h // 2)
+        self.geometry(f"{w}x{h}+{x}+{y}")
 
 if __name__ == "__main__":
     app = App()

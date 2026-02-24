@@ -1,66 +1,14 @@
 import sqlite3
 import api_client
 from database.database import get_connection
-from database.decks.yugi import YUGI_DECKS
-from database.decks.kaiba import KAIBA_DECKS
-from database.decks.joey import JOEY_DECKS
 from database.database import DB_NAME
+from utils.deck_specific_translation import DECK_SPECIFIC_TRANSLATION
+from utils.deck_type_translation import DECK_TYPE_TRANSLATION
+from database.decks import LIST_OF_DECKS
+from utils.arcs import ARC_NAMES
 
 #TODO: Review db commits and put try except finally blocks
 #TODO: Check for performance on other methods
-
-ARC_NAMES = {
-    "Toei - First Series",
-    "Toei - Death-T",
-    "Toei - Movie",
-    "Duelist Kingdom",
-    "Battle City",
-    "Virtual World",
-    "Waking the Dragons",
-    "Grand Championship",
-    "Dawn of the Duel",
-    "Pyramid of Light",
-    "3D Bonds Beyond Time",
-    "The Dark Side of Dimensions",
-    "Early Manga",
-    "Manga - Duelist Kingdom",
-    "Manga - Battle City",
-    "Manga - Millennium World",
-    "Novel",
-    "North American World Championship Qualifier 2011",
-    "Championship Series Providence 2012",
-    "World Championship 2013",
-    "North American World Championship Qualifier 2014",
-    "World Championship 2016 Special",
-    "V Jump Magazine",
-    "World Championship 2019 Special",
-    "Live-action Speed Duel 2020",
-    "World Championship Qualifier 2024",
-    "Duel Monsters",
-    "Dark Duel Stories",
-    "The Eternal Duelist Soul",
-    "The Sacred Cards",
-    "World Championship 2004",
-    "Dawn of Destiny",
-    "Reshef of Destruction",
-    "7 Trials to Glory: Standard",
-    "7 Trials to Glory: Advanced",
-    "North American World Championship Qualifiers 2012",
-    "North American World Championship Qualifiers 2013",
-    "Worldwide Edition: Stairway to the Destined Duel",
-    "The Falsebound Kingdom - Starter",
-    "Reshef of Destruction (2)",
-    "World Championship 2007",
-    "World Championship 2007 (2)",
-    "Online Duel Accelerator",
-
-}
-
-DECKS_DATA = {
-    "Yugi Muto": YUGI_DECKS,
-    "Seto Kaiba": KAIBA_DECKS,
-    "Joey Wheeler": JOEY_DECKS
-}
 
 def populate_cards(language="en"):
     """Inserts cards and their translation into Database"""
@@ -145,18 +93,25 @@ def populate_duelists():
     conn = get_connection()
     cursor = conn.cursor()
 
-    #TODO: Use descriptions on DuelistDetailsFrame or remove it.
+    #https://www.yugioh.com/characters
+    #https://yugioh.fandom.com/wiki/Portal:Yu-Gi-Oh!_anime_characters
 
     duelists = [
-        ("Yugi Muto", "King of Games", "images/duelists/yugi.png"),
-        ("Seto Kaiba", "CEO, KaibaCorp", "images/duelists/kaiba.png"),
-        ("Joey Wheeler", "Brooklyn Duelist", "images/duelists/joey.png")
+        ("Yugi Muto", "images/duelists/yugi.png"),
+        ("Seto Kaiba", "images/duelists/kaiba.png"),
+        ("Joey Wheeler", "images/duelists/joey.png"),
+        ("Yami Yugi", "images/duelists/yami.png"),
+        ("Téa Gardner", "images/duelists/tea.png"),
+        ("Tristan Taylor", "images/duelists/tristan.png"),
+        ("Solomon Muto", "images/duelists/solomon.png"),
+        ("Mokuba Kaiba", "images/duelists/mokuba.png"),
+        ("Serenity Wheeler", "images/duelists/serenity.webp"),
     ]
 
     for duelist in duelists:
         cursor.execute("""
-        INSERT OR IGNORE INTO duelists (name, description, img_path) 
-        VALUES (?, ?, ?)
+        INSERT OR IGNORE INTO duelists (name, img_path) 
+        VALUES (?, ?)
         """, duelist)
 
     conn.commit()
@@ -167,8 +122,9 @@ def get_all_duelists():
     cursor = conn.cursor()
 
     cursor.execute("""
-    SELECT id, name, description, img_path
+    SELECT id, name, img_path
     FROM duelists
+    ORDER BY name
     """)
 
     results = cursor.fetchall()
@@ -230,7 +186,7 @@ def populate_decks_and_cards(base_language_for_lookup="en"):
             deck_id_by_duelist_and_name[key] = duelist_id
             return duelist_id
 
-        for duelist_name, decks_by_name in DECKS_DATA.items():
+        for duelist_name, decks_by_name in LIST_OF_DECKS.items():
             duelist_id = duelist_id_by_name.get(duelist_name)
             if not duelist_id:
                 continue
@@ -311,54 +267,7 @@ def populate_deck_type_translations():
     conn = get_connection()
     cursor = conn.cursor()
 
-    #TODO: When more arcs are created, also modify here. Meanwhile, we're doing Portuguese only.
-    #Reminder: Also modify ARC_NAMES when inserting here.
-
-    translations = [
-        ("Toei - First Series", "pt", "Toei - Primeira Série"),
-        ("Toei - Movie", "pt", "Toei - Filme"),
-        ("Duelist Kingdom", "pt", "Reino dos Duelistas"),
-        ("Battle City", "pt", "Cidade da Batalha"),
-        ("Virtual World", "pt", "Mundo Virtual"),
-        ("Waking the Dragons", "pt", "Despertando os Dragões"),
-        ("Dawn of the Duel", "pt", "Alvorecer do Duelo"),
-        ("Pyramid of Light", "pt", "Pirâmide da Luz"),
-        ("3D Bonds Beyond Time", "pt", "Vínculos Além do Tempo"),
-        ("The Dark Side of Dimensions", "pt", "O Lado Negro das Dimensões"),
-        ("Early Manga", "pt", "Manga - Início"),
-        ("Manga - Duelist Kingdom", "pt", "Manga - Reino dos Duelistas"),
-        ("Manga - Battle City", "pt", "Manga - Cidade da Batalha"),
-        ("Manga - Millennium World", "pt", "Manga - Mundo do Milênio"),
-        ("Novel", "pt", "Adaptação Literária"),
-        ("North American World Championship Qualifier 2011", "pt", "Qualificatória Norte-Americana Campeonato Mundial 2011"),
-        ("Championship Series Providence 2012", "pt", "Série de Campeonato em Providence 2012"),
-        ("World Championship 2013", "pt", "Campeonato Mundial 2013"),
-        ("North American World Championship Qualifier 2014", "pt", "Qualificatória Norte-Americana Campeonato Mundial 2014"),
-        ("World Championship 2016 Special", "pt", "Especial Campeonato Mundial 2016"),
-        ("V Jump Magazine", "pt", "Revista V Jump"),
-        ("World Championship 2019 Special", "pt", "Especial Campeonato Mundial 2019"),
-        ("Live-action Speed Duel 2020", "pt", "Duelo Veloz Live-action 2020"),
-        ("World Championship Qualifier 2024", "pt", "Qualificatória Campeonato Mundial 2024"),
-        ("Duel Monsters", "pt", "Monstros de Duelo"),
-        ("Dark Duel Stories", "pt", "Histórias Negras do Duelo"),
-        ("The Eternal Duelist Soul", "pt", "A Alma do Duelista Eterno"),
-        ("The Sacred Cards", "pt", "As Cartas Sagradas"),
-        ("World Championship 2004", "pt", "Campeonato Mundial 2004"),
-        ("Dawn of Destiny", "pt", "Alvorecer do Destino"),
-        ("Reshef of Destruction", "pt", "Rexefe da Destruição"),
-        ("7 Trials to Glory: Standard", "pt", "7 Provas para a Glória: Padrão"),
-        ("7 Trials to Glory: Advanced", "pt", "7 Provas para a Glória: Avançado"),
-        ("North American World Championship Qualifiers 2012", "pt", "Qualificatórias Norte-Americana Campeonato Mundial 2012"),
-        ("North American World Championship Qualifiers 2013", "pt", "Qualificatórias Norte-Americanas Campeonato Mundial 2013"),
-        ("Worldwide Edition: Stairway to the Destined Duel", "pt", "Edição Mundial: Escadaria para o Duelo Destinado"),
-        ("The Falsebound Kingdom - Starter", "pt", "The Falsebound Kingdom - Iniciante"),
-        ("Reshef of Destruction (2)", "pt", "Rexefe da Destruição (2)"),
-        ("World Championship 2007", "pt", "Campeonato Mundial 2007"),
-        ("World Championship 2007 (2)", "pt", "Campeonato Mundial 2007 (2)"),
-        ("Online Duel Accelerator", "pt", "Acelerador de Duelos Online"),
-    ]
-
-    for deck_type_name_en, language, translated_name in translations:
+    for deck_type_name_en, language, translated_name in DECK_TYPE_TRANSLATION:
         cursor.execute(
             "SELECT id FROM deck_types WHERE name = ?",
             (deck_type_name_en,)
@@ -382,41 +291,7 @@ def populate_deck_translations():
     conn = get_connection()
     cursor = conn.cursor()
 
-    #TODO: Check for repeat and refactor, testing it meanwhile
-    #TODO: Separate methods/files for each duelist so it won't clutter here
-
-    translations = [
-        ("Yugi Muto", "Friendship", "pt", "Amizade"),
-        ("Yugi Muto", "Magic Darkness", "pt", "Escuridão Mágica"),
-        ("Yugi Muto", "Give You Courage", "pt", "A Coragem Esteja Contigo"),
-        ("Yugi Muto", "Magic Darkness v1", "pt", "Escuridão Mágica v1"),
-        ("Yugi Muto", "Magic Darkness v2", "pt", "Escuridão Mágica v2"),
-        ("Yugi Muto", "Magic Darkness v3", "pt", "Escuridão Mágica v3"),
-        ("Yugi Muto", "Magnet Power", "pt", "Poder Magnético"),
-        ("Yugi Muto", "Magic Time", "pt", "Hora da Magia"),
-        ("Yugi Muto", "True Friends", "pt", "Amigos de Verdade"),
-        ("Yugi Muto", "GX / Past", "pt", "GX / Passado"),
-        ("Yugi Muto", "GX / Present", "pt", "GX / Presente"),
-        ("Yugi Muto", "3D Bonds Beyond Time - Teaser", "pt", "Prévia - Vínculos Além do Tempo"),
-        ("Seto Kaiba", "Childhood Deck", "pt", "Deck da Infância"),
-        ("Seto Kaiba", "Test Deck", "pt", "Deck de Testes"),
-        ("Seto Kaiba", "First Briefcase", "pt", "Primeira Maleta"),
-        ("Seto Kaiba", "Second Briefcase", "pt", "Segunda Maleta"),
-        ("Seto Kaiba", "Third Briefcase", "pt", "Terceira Maleta"),
-        ("Seto Kaiba", "Fourth Briefcase", "pt", "Quarta Maleta"),
-        ("Seto Kaiba", "Fifth Briefcase", "pt", "Quinta Maleta"),
-        ("Seto Kaiba", "Manga - Test Deck", "pt", "Manga - Deck de Testes"),
-        ("Seto Kaiba", "Test Deck", "pt", "Deck de Testes"),
-        ("Seto Kaiba", "Blue-Eyes Burst", "pt", "Rajada de Olhos Azuis"), #Esse
-        ("Seto Kaiba", "Fist of Fury", "pt", "Punho da Fúria"),
-        ("Seto Kaiba", "Kaiser Impact", "pt", "Impacto Kaiser"),
-        ("Seto Kaiba", "Obelisk Impact", "pt", "Impacto Obelisco"),
-        ("Seto Kaiba", "Ruinous Beast", "pt", "Besta Ruinosa"),
-        ("Seto Kaiba", "Noble Soul", "pt", "Alma Nobre"),
-        ("Seto Kaiba", "Pulse of Trishula", "pt", "Pulso de Trishula"),
-    ]
-
-    for duelist_name, deck_name_en, lang, translated in translations:
+    for duelist_name, deck_name_en, lang, translated in DECK_SPECIFIC_TRANSLATION:
         cursor.execute("SELECT id FROM duelists WHERE name = ?", (duelist_name,))
         duelist = cursor.fetchone()
         if not duelist:
@@ -435,7 +310,7 @@ def populate_deck_translations():
     conn.commit()
     conn.close()
 
-def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
+def get_decks_by_duelist(duelist_id, language="en", show_exclusive_cards=True):
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -447,8 +322,6 @@ def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
         d.order_index AS deck_order,
         dc.card_id,
         COALESCE(ct_lang.name, ct_en.name, dc.card_name) AS card_name,
-        c.atk,
-        c.def,
         dc.quantity
         FROM decks d
         LEFT JOIN decks_translation dtr_lang
@@ -470,7 +343,7 @@ def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
     """
 
     # checkbox filter, controlled by Duelist Details Frame
-    if not show_anime:
+    if not show_exclusive_cards:
         query += " AND dc.card_id IS NOT NULL\n"
 
     query += """
@@ -496,7 +369,7 @@ def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
     by_deck = {}
 
     for (deck_id, deck_name, _deck_order,
-         card_id, card_name, atk, defense, qty) in rows:
+         card_id, card_name, qty) in rows:
 
         if deck_id not in by_deck:
             obj = {"deck_id": deck_id, "deck_name": deck_name, "cards": []}
@@ -505,6 +378,32 @@ def get_decks_by_duelist(duelist_id, language="en", show_anime=True):
 
         #TODO: Take this out after testing, decks should never be empty on the final version.
         if qty is not None:
-            by_deck[deck_id]["cards"].append((card_id, card_name, atk, defense, qty))
+            by_deck[deck_id]["cards"].append((card_id, card_name, qty))
 
     return decks
+
+def get_card_details(card_id: int, language="en"):
+    """When card is selected on DuelistDetailsFrame or CardsFrame, user can verify additional info on the card"""
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT
+            c.id,
+            COALESCE(ct_lang.name, ct_en.name) AS name,
+            COALESCE(ct_lang.description, ct_en.description, '') AS description,
+            c.atk,
+            c.def,
+            c.type
+        FROM cards c
+        LEFT JOIN cards_translation ct_lang
+            ON ct_lang.card_id = c.id AND ct_lang.language = ?
+        LEFT JOIN cards_translation ct_en
+            ON ct_en.card_id = c.id AND ct_en.language = 'en'
+        WHERE c.id = ?
+        LIMIT 1
+    """, (language, card_id))
+
+    row = cursor.fetchone()
+    conn.close()
+    return row

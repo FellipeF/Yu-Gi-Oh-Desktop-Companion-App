@@ -52,7 +52,6 @@ def create_tables():
     CREATE TABLE IF NOT EXISTS duelists (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT UNIQUE NOT NULL,
-        description TEXT,
         img_path TEXT
     )
     """)

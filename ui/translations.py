@@ -10,8 +10,9 @@ translations = {
         "select_duelist": "Select Duelist",
         "duelist_decks": "Duelist Decks",
         "duelist_decks_dynamic": "{name} Decks",
-        "show_anime_only": "Show Anime only Cards",
-        "no_decks_found": "No Decks Found for this Duelist"
+        "show_exclusive_cards": "Show exclusive cards",
+        "no_decks_found": "No Decks Found for this Duelist",
+        "card_details": "Show Card Details"
     },
     "pt": {
         "home_title": "Bem-vindo ao Banco de Dados Yu-Gi-Oh!",
@@ -24,7 +25,8 @@ translations = {
         "select_duelist": "Selecionar Duelista",
         "duelist_decks": "Decks de Duelista",
         "duelist_decks_dynamic": "Decks de {name}",
-        "show_anime_only": "Mostrar cartas exclusivas do Anime",
-        "no_decks_found": "Nenhum Deck encontrado para atual Duelista"
+        "show_exclusive_cards": "Mostrar cartas exclusivas",
+        "no_decks_found": "Nenhum Deck encontrado para atual Duelista",
+        "card_details": "Mostrar detalhes da carta"
     }
 }
