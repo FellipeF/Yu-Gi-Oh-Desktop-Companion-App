@@ -839,7 +839,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 2),
         ("Torrential Tribute", 1),
     ],
-    "Dawn of Destiny": [
+    "The Dawn of Destiny": [
         ("Blue-Eyes White Dragon", 3),
         ("Cyber-Tech Alligator", 3),
         ("Hitotsu-Me Giant", 1),

@@ -132,7 +132,7 @@ TÉA_GARDNER_DECKS = {
         ("Numinous Healer", 3),
         ("Solemn Wishes", 1),
     ],
-    "Dawn of Destiny": [
+    "The Dawn of Destiny": [
         ("Amazon of the Seas", 2),
         ("Ancient Elf", 1),
         ("Arlownay", 1),

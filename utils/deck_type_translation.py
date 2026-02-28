@@ -29,7 +29,7 @@ DECK_TYPE_TRANSLATION = [
         ("The Eternal Duelist Soul", "pt", "A Alma do Duelista Eterno"),
         ("The Sacred Cards", "pt", "As Cartas Sagradas"),
         ("World Championship 2004", "pt", "Campeonato Mundial 2004"),
-        ("Dawn of Destiny", "pt", "Alvorecer do Destino"),
+        ("The Dawn of Destiny", "pt", "O Alvorecer do Destino"),
         ("Reshef of Destruction", "pt", "Rexefe da Destruição"),
         ("7 Trials to Glory: Standard", "pt", "7 Provas para a Glória: Padrão"),
         ("7 Trials to Glory: Advanced", "pt", "7 Provas para a Glória: Avançado"),
@@ -43,4 +43,8 @@ DECK_TYPE_TRANSLATION = [
         ("Online Duel Accelerator", "pt", "Acelerador de Duelos Online"),
         ("Capsule Monsters", "pt", "Monstros de Cápsula"),
         ("Possessed", "pt", "Possuído"),
+        ("North American World Championship Qualifiers 2013 Special", "pt", "Especial Qualificatórias Norte-Americanas Campeonato Mundial 2013"),
+        ("North American World Championship Qualifiers 2015 Special", "pt", "Especial Qualificatórias Norte-Americanas Campeonato Mundial 2015"),
+        ("North American World Championship Qualifiers 2017 Special", "pt", "Especial Qualificatórias Norte-Americanas Campeonato Mundial 2017"),
+        ("YCS Origins 2016 Special", "pt", "Especial YCS Origens 2016"),
     ]

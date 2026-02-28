@@ -6,6 +6,7 @@ from utils.deck_specific_translation import DECK_SPECIFIC_TRANSLATION
 from utils.deck_type_translation import DECK_TYPE_TRANSLATION
 from database.decks import LIST_OF_DECKS
 from utils.arcs import ARC_NAMES
+from utils.duelists import DUELISTS
 
 #TODO: Review db commits and put try except finally blocks
 #TODO: Check for performance on other methods
@@ -93,83 +94,7 @@ def populate_duelists():
     conn = get_connection()
     cursor = conn.cursor()
 
-    #https://www.yugioh.com/characters
-    #https://yugioh.fandom.com/wiki/Portal:Yu-Gi-Oh!_anime_characters
-    #https://yugioh.fandom.com/wiki/Category:Characters%27_Decks
-    #TODO: Check other duelists decks that are not listed on character pages.
-    #https://yugioh.fandom.com/wiki/Category:Character_portals
-    #TODO: Check decks that don't have duelists, like Konami Packs or Archetypes Official ones.
-
-    duelists = [
-        ("Yugi Muto", "images/duelists/yugi.png"),
-        ("Seto Kaiba", "images/duelists/kaiba.png"),
-        ("Joey Wheeler", "images/duelists/joey.png"),
-        ("Yami Yugi", "images/duelists/yami.png"), #TODO - Check what decks are exclusive to him
-        ("Téa Gardner", "images/duelists/tea.png"),
-        ("Tristan Taylor", "images/duelists/tristan.png"),
-        ("Solomon Muto", "images/duelists/solomon.png"),
-        ("Leon von Schroeder", "images/duelists/leon.webp"),
-        # =========================
-        # TODO: Below
-        # =========================
-        ("Mokuba Kaiba", "images/duelists/mokuba.png"),
-        ("Serenity Wheeler", "images/duelists/serenity.webp"),
-        ("Mai Valentine", "images/duelists/mai.png"),
-        ("Bakura Ryou", "images/duelists/bakura.webp"),
-        ("Yami Bakura", "images/duelists/yami-bakura.png"),
-        ("Shadi", "images/duelists/yami-bakura.png"),
-        ("Rebecca", "images/duelists/yami-bakura.png"),
-        ("Arthur Hopkins", "images/duelists/yami-bakura.png"),
-        ("Duke Devlin", "images/duelists/yami-bakura.png"),
-        ("Ishizu Ishtar", "images/duelists/yami-bakura.png"),
-        ("Pegasus", "images/duelists/yami-bakura.png"),
-        ("Weevil", "images/duelists/yami-bakura.png"),
-        ("Rex Raptor", "images/duelists/yami-bakura.png"),
-        ("Mako Tsunami", "images/duelists/yami-bakura.png"),
-        ("Ghost Kaiba", "images/duelists/yami-bakura.png"),
-        ("PaniK", "images/duelists/yami-bakura.png"),
-        ("Bandit Keith", "images/duelists/yami-bakura.png"),
-        ("Bonz", "images/duelists/yami-bakura.png"),
-        ("Sid", "images/duelists/yami-bakura.png"),
-        ("Para", "images/duelists/yami-bakura.png"),
-        ("Dox", "images/duelists/yami-bakura.png"),
-        ("Marik Ishtar", "images/duelists/yami-bakura.png"),
-        ("Yami Marik", "images/duelists/yami-bakura.png"),
-        ("Odion", "images/duelists/yami-bakura.png"),
-        ("Seeker", "images/duelists/yami-bakura.png"),
-        ("Arkana", "images/duelists/yami-bakura.png"),
-        ("Strings", "images/duelists/yami-bakura.png"),
-        ("Lumis", "images/duelists/yami-bakura.png"),
-        ("Umbra", "images/duelists/yami-bakura.png"),
-        ("Noah Kaiba", "images/duelists/yami-bakura.png"),
-        ("Gozaburo Kaiba", "images/duelists/yami-bakura.png"),
-        ("Gansley", "images/duelists/yami-bakura.png"),
-        ("Crump", "images/duelists/yami-bakura.png"),
-        ("Johnson", "images/duelists/yami-bakura.png"),
-        ("Nezzbitt", "images/duelists/yami-bakura.png"),
-        ("Leichter", "images/duelists/yami-bakura.png"),
-        ("Dartz", "images/duelists/yami-bakura.png"),
-        ("Rafael", "images/duelists/yami-bakura.png"),
-        ("Valon", "images/duelists/yami-bakura.png"),
-        ("Alister", "images/duelists/yami-bakura.png"),
-        ("Gurimo", "images/duelists/yami-bakura.png"),
-        ("Zigfried von Schroeder", "images/duelists/yami-bakura.png"),
-        ("Vivian Wong", "images/duelists/yami-bakura.png"),
-        ("Shimon Muran", "images/duelists/yami-bakura.png"),
-        ("Kuriboh", "images/duelists/yami-bakura.png"),
-        ("Dark Magician Girl", "images/duelists/yami-bakura.png"),
-        ("Red-Eyes B.Dragon", "images/duelists/yami-bakura.png"),
-        ("Anubis", "images/duelists/yami-bakura.png"),
-        ("Tetsu Trudge", "images/duelists/yami-bakura.png"),
-        ("Johnny Steps", "images/duelists/yami-bakura.png"),
-        ("Roland", "images/duelists/yami-bakura.png"),
-        ("Espa Roba", "images/duelists/yami-bakura.png"),
-        ("Jean-Claude Magnum", "images/duelists/yami-bakura.png"),
-        ("Rick", "images/duelists/yami-bakura.png"),
-        ("KC DuelTek 760", "images/duelists/yami-bakura.png"),
-    ]
-
-    for duelist in duelists:
+    for duelist in DUELISTS:
         cursor.execute("""
         INSERT OR IGNORE INTO duelists (name, img_path) 
         VALUES (?, ?)

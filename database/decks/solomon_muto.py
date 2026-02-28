@@ -184,7 +184,7 @@ SOLOMON_MUTO_DECKS = {
         ("Torrential Tribute", 2),
         ("Trap Hole", 3),
     ],
-    "Dawn of Destiny": [
+    "The Dawn of Destiny": [
         ("Akakieisu", 1),
         ("Ancient Sorcerer", 1),
         ("Aqua Madoor", 1),

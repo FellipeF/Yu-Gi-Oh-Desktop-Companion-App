@@ -160,7 +160,7 @@ TRISTAN_DECKS = {
         ("Sword of Deep-Seated", 1),
         ("United We Stand", 1),
     ],
-    "Dawn of Destiny": [
+    "The Dawn of Destiny": [
         ("Armaill", 2),
         ("Armored Rat", 1),
         ("Battle Ox", 1),

@@ -30,7 +30,7 @@ ARC_NAMES = {
     "The Eternal Duelist Soul",
     "The Sacred Cards",
     "World Championship 2004",
-    "Dawn of Destiny",
+    "The Dawn of Destiny",
     "Reshef of Destruction",
     "7 Trials to Glory: Standard",
     "7 Trials to Glory: Advanced",
@@ -44,4 +44,8 @@ ARC_NAMES = {
     "Online Duel Accelerator",
     "Capsule Monsters",
     "Possessed",
+    "North American World Championship Qualifiers 2013 Special",
+    "North American World Championship Qualifiers 2015 Special",
+    "North American World Championship Qualifiers 2017 Special",
+    "YCS Origins 2016 Special"
 }

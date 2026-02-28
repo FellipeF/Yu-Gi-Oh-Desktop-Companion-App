@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
 from frames.duelists_frame import DuelistsFrame
@@ -10,6 +11,10 @@ from database.models import populate_decks_and_cards
 from database.models import populate_deck_type_translations
 from database.models import populate_deck_translations
 from ui.translations import translations
+
+APP_WIDTH = 620
+APP_HEIGHT = 800
+BG = "#ff0000"
 
 class App(tk.Tk):
     def __init__(self):
@@ -26,6 +31,10 @@ class App(tk.Tk):
         self.language_var = tk.StringVar(value="en")
         self.language_label = tk.Label(top_bar)
         self.language_label.pack(side="left", padx=5)
+        self.app_width = APP_WIDTH
+        self.app_height = APP_HEIGHT
+        style = ttk.Style()
+        style.theme_use("alt")
 
         tk.OptionMenu(
             top_bar,
@@ -52,12 +61,20 @@ class App(tk.Tk):
         # MAIN WINDOW
         # =========================
 
-        self.title("Yu-Gi-Oh! Card Database v0.7")
-        self.geometry("620x800")
+        self.title("Yu-Gi-Oh! Card Database v0.8")
+
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        x = (screen_width // 2) - (self.app_width // 2)
+        y = (screen_height // 2) - (self.app_height // 2)
+        self.geometry(f"{self.app_width}x{self.app_height}+{x}+{y}")
+
         self.resizable(False, False)
 
         container = tk.Frame(self)
         container.pack(fill="both", expand=True)
+        container.rowconfigure(0, weight=1)
+        container.columnconfigure(0, weight=1)
 
         self.frames = {}
 
@@ -67,8 +84,6 @@ class App(tk.Tk):
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.update_ui_language()
-        #TODO: Increase time before resize happens, my other PC actually shows the window first and then the resize...
-        self.after(10, self.center_on_screen)
         self.show_frame("HomeFrame")
 
     def show_frame(self, name):
@@ -95,14 +110,6 @@ class App(tk.Tk):
 
     def t (self, key):
         return translations[self.current_language][key]
-
-    def center_on_screen(self):
-        self.update_idletasks()
-        w = self.winfo_width()
-        h = self.winfo_height()
-        x = (self.winfo_screenwidth() // 2) - (w // 2)
-        y = (self.winfo_screenheight() // 2) - (h // 2)
-        self.geometry(f"{w}x{h}+{x}+{y}")
 
 if __name__ == "__main__":
     app = App()

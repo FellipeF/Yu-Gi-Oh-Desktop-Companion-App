@@ -15,8 +15,12 @@ class DuelistsFrame(tk.Frame):
         self.select_duelist_label = tk.Label(self, font=("Arial", 16))
         self.select_duelist_label.pack(pady=10)
 
-        self.container = tk.Frame(self)
-        self.container.pack()
+        self.container = tk.Frame(self, width=self.controller.app_width)
+        self.container.pack(fill="both", expand=True)
+        self.container.pack_propagate(False)
+
+        for c in range (3):
+            self.container.columnconfigure(c, weight=1, uniform="col")
 
         #TODO: Sort by anime
 
@@ -69,17 +73,22 @@ class DuelistsFrame(tk.Frame):
             img = Image.open(resource_path(img_path)).resize((150,150))
             tk_img = ImageTk.PhotoImage(img)
 
+            cell = tk.Frame(self.container, width=190, height=230)
+            cell.grid(row=row,column=col,padx=20, pady=20, sticky="n")
+            cell.grid_propagate(False)
+
             duelist_button = tk.Button(
-                self.container,
+                cell,
                 image=tk_img,
-                text=name,
+                text=self.truncate(name, 14),
                 font=("Arial",15),
                 compound="top",
+                wraplength=160,
                 command=lambda d=duelist_id, n=name: self.show_duelist_details(d, n)
             )
 
             duelist_button.image = tk_img
-            duelist_button.grid(row=row, column=col, padx=20, pady=20)
+            duelist_button.pack(fill="both", expand=True)
 
             col+=1
             if col == 3:
@@ -89,6 +98,9 @@ class DuelistsFrame(tk.Frame):
         self.prev_button.config(state="disabled" if self.current_page == 0 else "normal")
         is_last_page = (self.current_page + 1) * self.items_per_page >= len(self.duelists)
         self.next_button.config(state="disabled" if is_last_page else "normal")
+
+    def truncate(self, text, max_chars):
+        return text if len(text) <= max_chars else text[:max_chars - 1] + "..."
 
     def next_page(self):
 
@@ -100,7 +112,6 @@ class DuelistsFrame(tk.Frame):
         if self.current_page > 0:
             self.current_page -= 1
             self.render_page()
-
 
     def show_duelist_details(self, duelist_id, duelist_name):
         detail_frame = self.controller.frames["DuelistDetailsFrame"]

@@ -5,7 +5,6 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Yugi Muto", "Give You Courage", "pt", "A Coragem Esteja Contigo"),
         ("Yugi Muto", "Magic Darkness v1", "pt", "Escuridão Mágica v1"),
         ("Yugi Muto", "Magic Darkness v2", "pt", "Escuridão Mágica v2"),
-        ("Yugi Muto", "Magic Darkness v3", "pt", "Escuridão Mágica v3"),
         ("Yugi Muto", "Magnet Power", "pt", "Poder Magnético"),
         ("Yugi Muto", "Magic Time", "pt", "Hora da Magia"),
         ("Yugi Muto", "True Friends", "pt", "Amigos de Verdade"),
@@ -38,7 +37,6 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Joey Wheeler", "Power of Luck", "pt", "Poder da Sorte"),
         ("Joey Wheeler", "Warrior Max v1", "pt", "Guerreiro Máximo v1"),
         ("Joey Wheeler", "Warrior Max v2", "pt", "Guerreiro Máximo v2"),
-        ("Joey Wheeler", "Warrior Max v3", "pt", "Guerreiro Máximo v3"),
         ("Joey Wheeler", "Super Warrior", "pt", "Super Guerreiro"),
         ("Joey Wheeler", "Duel Gambler", "pt", "Duelista Apostador"),
         ("Solomon Muto", "Grandpa", "pt", "Vovô"),
@@ -51,5 +49,15 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Téa Gardner", "Dance Groove", "pt", "Groove da Dança"),
         ("Tristan Taylor", "The Big Five", "pt", "Os Cinco Grandes"),
         ("Leon von Schroeder", "Fairy Tale", "pt", "Conto de Fadas" ),
-
-    ]
+        ("Maximillion Pegasus", "Toonized", "pt", "Cartunizado"),
+        ("Maximillion Pegasus", "Toon World!", "pt", "Mundo Toon!"),
+        ("Maximillion Pegasus", "Toon Channel", "pt", "Canal Toon"),
+        ("Maximillion Pegasus", "Toon Doom", "pt", "Condenação Toon"),
+        ("Maximillion Pegasus", "Future Vision", "pt", "Visão do Futuro"),
+        ("Maximillion Pegasus", "Illusionist Faceless Mage", "pt", "Mago Ilusionista Sem Rosto"),
+        ("Maximillion Pegasus", "Monster Army", "pt", "Exército Monstro"),
+        ("Maximillion Pegasus", "Imperfect Paradise", "pt", "Paraíso Imperfeito"),
+        ("Maximillion Pegasus", "Shrine of Chaos #1", "pt", "Santuário do Caos #1"),
+        ("Maximillion Pegasus", "Shrine of Chaos #2", "pt", "Santuário do Caos #2"),
+        ("Maximillion Pegasus", "Gem-Knights", "pt", "Cavaleiros-Gema")
+]
