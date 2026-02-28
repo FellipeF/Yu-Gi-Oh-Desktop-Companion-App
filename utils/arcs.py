@@ -47,5 +47,6 @@ ARC_NAMES = {
     "North American World Championship Qualifiers 2013 Special",
     "North American World Championship Qualifiers 2015 Special",
     "North American World Championship Qualifiers 2017 Special",
-    "YCS Origins 2016 Special"
+    "YCS Origins 2016 Special",
+    "World Championship 2005"
 }

@@ -1,3 +1,8 @@
+from .anubis import ANUBIS_DECK
+from .dartz import DARTZ_DECKS
+from .duke import DUKE_DECKS
+from .lumis import LUMIS_DECKS
+from .umbra import UMBRA_DECKS
 from .yugi import YUGI_DECKS
 from .kaiba import KAIBA_DECKS
 from .joey import JOEY_DECKS
@@ -16,6 +21,11 @@ LIST_OF_DECKS = {
     "Tristan Taylor": TRISTAN_DECKS,
     "Leon von Schroeder": LEON_DECK,
     "Maximillion Pegasus": PEGASUS_DECKS,
+    "Lumis": LUMIS_DECKS,
+    "Umbra": UMBRA_DECKS,
+    "Dartz": DARTZ_DECKS,
+    "Anubis": ANUBIS_DECK,
+    "Duke Devlin": DUKE_DECKS
 }
 
 __all__ = ["LIST_OF_DECKS"]

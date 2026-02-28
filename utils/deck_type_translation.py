@@ -47,4 +47,5 @@ DECK_TYPE_TRANSLATION = [
         ("North American World Championship Qualifiers 2015 Special", "pt", "Especial Qualificatórias Norte-Americanas Campeonato Mundial 2015"),
         ("North American World Championship Qualifiers 2017 Special", "pt", "Especial Qualificatórias Norte-Americanas Campeonato Mundial 2017"),
         ("YCS Origins 2016 Special", "pt", "Especial YCS Origens 2016"),
+        ("World Championship 2005", "pt", "Campeonato Mundial 2005"),
     ]

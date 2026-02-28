@@ -1,0 +1,20 @@
+DARTZ_DECKS = {
+    "Orichalcos": [
+        ("Divine Serpent Geh", 1),
+        ("Orichalcos Aristeros [A]", 1),
+        ("Orichalcos Dexia [A]", 1),
+        ("Orichalcos Gigas [A]", 1),
+        ("Orichalcos Kyutora [A]", 1),
+        ("Orichalcos Malevolence [A]", 1),
+        ("Orichalcos Shunoros", 1),
+        ("Timeater", 1),
+        ("Mirror Knight Calling [A]", 1),
+        ("Impact Revive [A]", 1),
+        ("Orichalcos Deuteros [A]", 1),
+        ("Orichalcos Mirror [A]", 1),
+        ("Orichalcos Tritos [A]", 1),
+        ("The Seal of Orichalcos", 1),
+        ("Twin Bow Centaur [A]", 1),
+        ("Martyr Curse [A]", 1),
+    ],
+}

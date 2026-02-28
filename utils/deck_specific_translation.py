@@ -20,7 +20,7 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Seto Kaiba", "Fifth Briefcase", "pt", "Quinta Maleta"),
         ("Seto Kaiba", "Manga - Test Deck", "pt", "Manga - Deck de Testes"),
         ("Seto Kaiba", "Test Deck", "pt", "Deck de Testes"),
-        ("Seto Kaiba", "Blue-Eyes Burst", "pt", "Rajada de Olhos Azuis"), #Esse
+        ("Seto Kaiba", "Blue-Eyes Burst", "pt", "Rajada de Olhos Azuis"),
         ("Seto Kaiba", "Fist of Fury", "pt", "Punho da Fúria"),
         ("Seto Kaiba", "Kaiser Impact", "pt", "Impacto Kaiser"),
         ("Seto Kaiba", "Obelisk Impact", "pt", "Impacto Obelisco"),
@@ -59,5 +59,7 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Maximillion Pegasus", "Imperfect Paradise", "pt", "Paraíso Imperfeito"),
         ("Maximillion Pegasus", "Shrine of Chaos #1", "pt", "Santuário do Caos #1"),
         ("Maximillion Pegasus", "Shrine of Chaos #2", "pt", "Santuário do Caos #2"),
-        ("Maximillion Pegasus", "Gem-Knights", "pt", "Cavaleiros-Gema")
+        ("Maximillion Pegasus", "Gem-Knights", "pt", "Cavaleiros-Gema"),
+        ("Lumis", "Mask of Light", "pt", "Máscara da Luz"),
+        ("Umbra", "Mask of Shadow", "pt", "Máscara da Sombra")
 ]
