@@ -1,4 +1,4 @@
-# Yu-Gi-Oh! Offline Database v0.6
+# Yu-Gi-Oh! Offline Database v0.7
 
 Offline application to view cards and duelist decks for the Yu-Gi-Oh Card TCG. Includes support for translation, currently working on PT-BR.
 Cards and their images are obtained via public API from [YGOPRODeck](https://ygoprodeck.com/).
