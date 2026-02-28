@@ -42,4 +42,9 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Joey Wheeler", "Warrior Max v3", "pt", "Guerreiro Máximo v3"),
         ("Joey Wheeler", "Super Warrior", "pt", "Super Guerreiro"),
         ("Joey Wheeler", "Duel Gambler", "pt", "Duelista Apostador"),
+        ("Solomon Muto", "Grandpa", "pt", "Vovô"),
+        ("Solomon Muto", "Casket Guardian", "pt", "Guardião do Caixão"),
+        ("Solomon Muto", "Ancient Pharaoh v1", "pt", "Faraó Antigo v1"),
+        ("Solomon Muto", "Ancient Pharaoh v2", "pt", "Faraó Antigo v2"),
+        ("Solomon Muto", "Apnarg Tactics", "pt", "Táticas Apnarg"),
     ]

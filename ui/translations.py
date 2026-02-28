@@ -12,7 +12,7 @@ translations = {
         "duelist_decks_dynamic": "{name} Decks",
         "show_exclusive_cards": "Show exclusive cards",
         "no_decks_found": "No Decks Found for this Duelist",
-        "card_details": "Show Card Details"
+        "card_details": "Show Card Details",
     },
     "pt": {
         "home_title": "Bem-vindo ao Banco de Dados Yu-Gi-Oh!",
