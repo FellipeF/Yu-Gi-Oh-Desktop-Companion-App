@@ -29,7 +29,6 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Seto Kaiba", "Noble Soul", "pt", "Alma Nobre"),
         ("Seto Kaiba", "Pulse of Trishula", "pt", "Pulso de Trishula"),
         ("Joey Wheeler", "Amateur", "pt", "Amador"),
-        ("Joey Wheeler", "Possessed", "pt", "Possuído"),
         ("Joey Wheeler", "Phantom Pyramid", "pt", "Pirâmide Fantasma"),
         ("Joey Wheeler", "Reshef of Destruction - Possessed", "pt", "Rexefe da Destruição - Possuído"),
         ("Joey Wheeler", "Warrior Max", "pt", "Guerreiro Máximo"),
@@ -47,4 +46,10 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Solomon Muto", "Ancient Pharaoh v1", "pt", "Faraó Antigo v1"),
         ("Solomon Muto", "Ancient Pharaoh v2", "pt", "Faraó Antigo v2"),
         ("Solomon Muto", "Apnarg Tactics", "pt", "Táticas Apnarg"),
+        ("Téa Gardner", "Life Point Recovery", "pt", "Recuperação de Pontos de Vida"),
+        ("Téa Gardner", "Magic Stage!", "pt", "Palco Mágico!"),
+        ("Téa Gardner", "Dance Groove", "pt", "Groove da Dança"),
+        ("Tristan Taylor", "The Big Five", "pt", "Os Cinco Grandes"),
+        ("Leon von Schroeder", "Fairy Tale", "pt", "Conto de Fadas" ),
+
     ]

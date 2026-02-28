@@ -96,15 +96,22 @@ def populate_duelists():
     #https://www.yugioh.com/characters
     #https://yugioh.fandom.com/wiki/Portal:Yu-Gi-Oh!_anime_characters
     #https://yugioh.fandom.com/wiki/Category:Characters%27_Decks
+    #TODO: Check other duelists decks that are not listed on character pages.
+    #https://yugioh.fandom.com/wiki/Category:Character_portals
+    #TODO: Check decks that don't have duelists, like Konami Packs or Archetypes Official ones.
 
     duelists = [
         ("Yugi Muto", "images/duelists/yugi.png"),
         ("Seto Kaiba", "images/duelists/kaiba.png"),
         ("Joey Wheeler", "images/duelists/joey.png"),
-        ("Yami Yugi", "images/duelists/yami.png"), #TODO
+        ("Yami Yugi", "images/duelists/yami.png"), #TODO - Check what decks are exclusive to him
         ("Téa Gardner", "images/duelists/tea.png"),
         ("Tristan Taylor", "images/duelists/tristan.png"),
         ("Solomon Muto", "images/duelists/solomon.png"),
+        ("Leon von Schroeder", "images/duelists/leon.webp"),
+        # =========================
+        # TODO: Below
+        # =========================
         ("Mokuba Kaiba", "images/duelists/mokuba.png"),
         ("Serenity Wheeler", "images/duelists/serenity.webp"),
         ("Mai Valentine", "images/duelists/mai.png"),
@@ -124,7 +131,6 @@ def populate_duelists():
         ("Bandit Keith", "images/duelists/yami-bakura.png"),
         ("Bonz", "images/duelists/yami-bakura.png"),
         ("Sid", "images/duelists/yami-bakura.png"),
-        ("Zyhor", "images/duelists/yami-bakura.png"),
         ("Para", "images/duelists/yami-bakura.png"),
         ("Dox", "images/duelists/yami-bakura.png"),
         ("Marik Ishtar", "images/duelists/yami-bakura.png"),
@@ -147,13 +153,8 @@ def populate_duelists():
         ("Valon", "images/duelists/yami-bakura.png"),
         ("Alister", "images/duelists/yami-bakura.png"),
         ("Gurimo", "images/duelists/yami-bakura.png"),
-        ("Orichalcos", "images/duelists/yami-bakura.png"),
-        ("Zigfried", "images/duelists/yami-bakura.png"),
-        ("Leon", "images/duelists/yami-bakura.png"),
+        ("Zigfried von Schroeder", "images/duelists/yami-bakura.png"),
         ("Vivian Wong", "images/duelists/yami-bakura.png"),
-        ("Atem", "images/duelists/yami-bakura.png"),
-        ("Priest Seto", "images/duelists/yami-bakura.png"),
-        ("Mahad", "images/duelists/yami-bakura.png"),
         ("Shimon Muran", "images/duelists/yami-bakura.png"),
         ("Kuriboh", "images/duelists/yami-bakura.png"),
         ("Dark Magician Girl", "images/duelists/yami-bakura.png"),
@@ -162,12 +163,10 @@ def populate_duelists():
         ("Tetsu Trudge", "images/duelists/yami-bakura.png"),
         ("Johnny Steps", "images/duelists/yami-bakura.png"),
         ("Roland", "images/duelists/yami-bakura.png"),
-        ("Duel Computer", "images/duelists/yami-bakura.png"),
         ("Espa Roba", "images/duelists/yami-bakura.png"),
         ("Jean-Claude Magnum", "images/duelists/yami-bakura.png"),
         ("Rick", "images/duelists/yami-bakura.png"),
         ("KC DuelTek 760", "images/duelists/yami-bakura.png"),
-        #TODO: Capsule Monsters and Beyond
     ]
 
     for duelist in duelists:

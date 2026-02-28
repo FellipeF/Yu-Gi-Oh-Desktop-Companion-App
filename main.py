@@ -67,6 +67,7 @@ class App(tk.Tk):
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.update_ui_language()
+        #TODO: Increase time before resize happens, my other PC actually shows the window first and then the resize...
         self.after(10, self.center_on_screen)
         self.show_frame("HomeFrame")
 

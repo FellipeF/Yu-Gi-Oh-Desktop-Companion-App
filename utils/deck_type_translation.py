@@ -42,4 +42,5 @@ DECK_TYPE_TRANSLATION = [
         ("World Championship 2007 (2)", "pt", "Campeonato Mundial 2007 (2)"),
         ("Online Duel Accelerator", "pt", "Acelerador de Duelos Online"),
         ("Capsule Monsters", "pt", "Monstros de Cápsula"),
+        ("Possessed", "pt", "Possuído"),
     ]

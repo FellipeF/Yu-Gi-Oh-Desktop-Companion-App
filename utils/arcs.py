@@ -43,4 +43,5 @@ ARC_NAMES = {
     "World Championship 2007 (2)",
     "Online Duel Accelerator",
     "Capsule Monsters",
+    "Possessed",
 }
