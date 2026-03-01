@@ -61,5 +61,6 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Maximillion Pegasus", "Shrine of Chaos #2", "pt", "Santuário do Caos #2"),
         ("Maximillion Pegasus", "Gem-Knights", "pt", "Cavaleiros-Gema"),
         ("Lumis", "Mask of Light", "pt", "Máscara da Luz"),
-        ("Umbra", "Mask of Shadow", "pt", "Máscara da Sombra")
+        ("Umbra", "Mask of Shadow", "pt", "Máscara da Sombra"),
+        ("Arkana", "Sleight of Hand", "pt", "Truque de Mágica")
 ]

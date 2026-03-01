@@ -18,6 +18,7 @@ DUELISTS = [
     ("Dartz", "images/duelists/dartz.png"),
     ("Anubis", "images/duelists/anubis.webp"),
     ("Duke Devlin", "images/duelists/duke.webp"),
+    ("Arkana", "images/duelists/arkana.png"),
     # =========================
     # TODO: Below
     # =========================
@@ -44,7 +45,6 @@ DUELISTS = [
     ("Yami Marik", "images/duelists/placeholder.webp"),
     ("Odion", "images/duelists/placeholder.webp"),
     ("Seeker", "images/duelists/placeholder.webp"),
-    ("Arkana", "images/duelists/placeholder.webp"),
     ("Strings", "images/duelists/placeholder.webp"),
     ("Noah Kaiba", "images/duelists/placeholder.webp"),
     ("Gozaburo Kaiba", "images/duelists/placeholder.webp"),
