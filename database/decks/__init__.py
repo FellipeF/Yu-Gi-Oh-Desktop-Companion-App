@@ -4,6 +4,7 @@ from .dartz import DARTZ_DECKS
 from .duke import DUKE_DECKS
 from .lumis import LUMIS_DECKS
 from .umbra import UMBRA_DECKS
+from .weevil import WEEVIL_DECKS
 from .yugi import YUGI_DECKS
 from .kaiba import KAIBA_DECKS
 from .joey import JOEY_DECKS
@@ -27,7 +28,8 @@ LIST_OF_DECKS = {
     "Dartz": DARTZ_DECKS,
     "Anubis": ANUBIS_DECK,
     "Duke Devlin": DUKE_DECKS,
-    "Arkana": ARKANA_DECKS
+    "Arkana": ARKANA_DECKS,
+    "Weevil Underwood": WEEVIL_DECKS
 }
 
 __all__ = ["LIST_OF_DECKS"]

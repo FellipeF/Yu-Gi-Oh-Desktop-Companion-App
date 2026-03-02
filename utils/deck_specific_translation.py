@@ -62,5 +62,13 @@ DECK_SPECIFIC_TRANSLATION = [
         ("Maximillion Pegasus", "Gem-Knights", "pt", "Cavaleiros-Gema"),
         ("Lumis", "Mask of Light", "pt", "Máscara da Luz"),
         ("Umbra", "Mask of Shadow", "pt", "Máscara da Sombra"),
-        ("Arkana", "Sleight of Hand", "pt", "Truque de Mágica")
+        ("Arkana", "Sleight of Hand", "pt", "Truque de Mágica"),
+        ("Weevil Underwood", "Imposter", "pt", "Impostor"),
+        ("Weevil Underwood", "Insects", "pt", "Insetos"),
+        ("Weevil Underwood", "Insect Removal", "pt", "Remoção de Insetos"),
+        ("Weevil Underwood", "Insect", "pt", "Inseto"),
+        ("Weevil Underwood", "Bug Swarm", "pt", "Enxame de Insetos"),
+        ("Weevil Underwood", "Bug Queen", "pt", "Rainha dos Insetos"),
+        ("Weevil Underwood", "Ancient Forest of Origin", "pt", "Floresta Antiga de Origem"),
+
 ]

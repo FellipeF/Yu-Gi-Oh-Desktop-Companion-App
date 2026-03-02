@@ -48,4 +48,9 @@ DECK_TYPE_TRANSLATION = [
         ("North American World Championship Qualifiers 2017 Special", "pt", "Especial Qualificatórias Norte-Americanas Campeonato Mundial 2017"),
         ("YCS Origins 2016 Special", "pt", "Especial YCS Origens 2016"),
         ("World Championship 2005", "pt", "Campeonato Mundial 2005"),
+        ("Grand Championship", "pt", "Grande Prêmio"),
+        ("Battle of Great Duelist", "pt", "Batalha do Melhor Duelista"),
+        ("The Duelist of the Roses", "pt", "O Duelista das Rosas"),
+        ("Reshef of Destruction (3)", "pt", "Rexefe da Destruição (3)")
+
     ]

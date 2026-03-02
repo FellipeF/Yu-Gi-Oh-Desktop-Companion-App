@@ -48,5 +48,9 @@ ARC_NAMES = {
     "North American World Championship Qualifiers 2015 Special",
     "North American World Championship Qualifiers 2017 Special",
     "YCS Origins 2016 Special",
-    "World Championship 2005"
+    "World Championship 2005",
+    "Grand Championship",
+    "Battle of Great Duelist",
+    "The Duelist of the Roses",
+    "Reshef of Destruction (3)",
 }

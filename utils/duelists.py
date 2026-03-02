@@ -19,6 +19,7 @@ DUELISTS = [
     ("Anubis", "images/duelists/anubis.webp"),
     ("Duke Devlin", "images/duelists/duke.webp"),
     ("Arkana", "images/duelists/arkana.png"),
+    ("Weevil Underwood", "images/duelists/weevil.png"),
     # =========================
     # TODO: Below
     # =========================
@@ -32,7 +33,6 @@ DUELISTS = [
     ("Rebecca", "images/duelists/placeholder.webp"),
     ("Arthur Hopkins", "images/duelists/placeholder.webp"),
     ("Ishizu Ishtar", "images/duelists/placeholder.webp"),
-    ("Weevil", "images/duelists/placeholder.webp"),
     ("Rex Raptor", "images/duelists/placeholder.webp"),
     ("Mako Tsunami", "images/duelists/placeholder.webp"),
     ("Ghost Kaiba", "images/duelists/placeholder.webp"),
