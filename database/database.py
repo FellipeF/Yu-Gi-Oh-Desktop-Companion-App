@@ -23,18 +23,17 @@ def create_tables():
         type TEXT,
         archetype TEXT,
         attribute TEXT,
-        atk INTEGER,
+        atk INTEGER  ,
         def INTEGER,
         level INTEGER
     )
     """)
 
-    #In an universal way, cards_translation also include ENGLISH language, so methods that search card by name
+    #In an universal way, cards_translations also include ENGLISH language, so methods that search card by name
     #actually search this table
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS cards_translation (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+    CREATE TABLE IF NOT EXISTS cards_translations (
         card_id INTEGER NOT NULL,
         language TEXT NOT NULL,
         name TEXT NOT NULL,
@@ -101,7 +100,7 @@ def create_tables():
     """)
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS decks_translation (
+    CREATE TABLE IF NOT EXISTS decks_translations (
         deck_id INTEGER NOT NULL,
         language TEXT NOT NULL,
         name TEXT NOT NULL,

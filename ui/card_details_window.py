@@ -41,9 +41,10 @@ class CardDetailsWindow(tk.Toplevel):
         self.name_label.config(text=name)
         self.title(name)
 
-        #Magic/Trap cards
-        if atk is None and defense is None:
+        if type in ["Spell Card, Trap Card"]:
             self.stats_label.config(text=type or "")
+        elif atk is None:
+            self.stats_label.config(text="???")
         else:
             #LINK, no DEF
             self.stats_label.config(

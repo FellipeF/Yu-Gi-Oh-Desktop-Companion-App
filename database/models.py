@@ -1,77 +1,22 @@
 import sqlite3
-import api_client
 from database.database import get_connection
 from database.database import DB_NAME
 from utils.deck_specific_translation import DECK_SPECIFIC_TRANSLATION
 from utils.deck_type_translation import DECK_TYPE_TRANSLATION
-from database.decks import LIST_OF_DECKS
-from utils.arcs import ARC_NAMES
-from utils.duelists import DUELISTS
 
 #TODO: Review db commits and put try except finally blocks
 #TODO: Check for performance on other methods
-
-def populate_cards(language="en"):
-    """Inserts cards and their translation into Database"""
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        SELECT 1
-        FROM cards_translation
-        WHERE language = ?
-        LIMIT 1
-    """, (language, ))
-
-    exists = cursor.fetchone()
-
-    if exists:
-        conn.close()
-        return
-
-    data = api_client.load_cards(language)
-    cards = data["data"]
-
-    #TODO: Check for cards like Egyptian Gods that ATK and DEF = ???. Currently shows up as -1
-
-    for card in cards:
-        cursor.execute("""
-        INSERT OR IGNORE INTO cards (id, type, archetype, attribute, atk, def, level)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, (
-            card.get("id"),
-            card.get("type"),
-            card.get("archetype"),
-            card.get("attribute"),
-            card.get("atk"),
-            card.get("def"),
-            card.get("level")
-            )
-        )
-
-        cursor.execute("""
-        INSERT OR IGNORE INTO cards_translation (card_id, language, name, description)
-        VALUES (?, ?, ?, ?)
-        """, (
-            card.get("id"),
-            language,
-            card.get("name"),
-            card.get("desc")
-        ))
-
-    conn.commit()
-    conn.close()
 
 def search_cards(name=None, language="en"):
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
     query = """
-        SELECT cards.id, cards_translation.name
+        SELECT cards.id, cards_translations.name
         FROM cards
-        JOIN cards_translation
-        ON cards.id = cards_translation.card_id
-        WHERE cards_translation.language = ?
+        JOIN cards_translations
+        ON cards.id = cards_translations.card_id
+        WHERE cards_translations.language = ?
     """
     params = [language]
 
@@ -79,29 +24,16 @@ def search_cards(name=None, language="en"):
     #searchbox
 
     if name:
-        query += " AND LOWER(cards_translation.name) LIKE LOWER(?)"
+        query += " AND LOWER(cards_translations.name) LIKE LOWER(?)"
         params.append(f"%{name}%")
 
-    query += " ORDER BY cards_translation.name COLLATE NOCASE"
+    query += " ORDER BY cards_translations.name COLLATE NOCASE"
 
     cursor.execute(query, params)
     results = cursor.fetchall()
     conn.close()
 
     return results
-
-def populate_duelists():
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    for duelist in DUELISTS:
-        cursor.execute("""
-        INSERT OR IGNORE INTO duelists (name, img_path) 
-        VALUES (?, ?)
-        """, duelist)
-
-    conn.commit()
-    conn.close()
 
 def get_all_duelists():
     conn = get_connection()
@@ -116,137 +48,6 @@ def get_all_duelists():
     results = cursor.fetchall()
     conn.close()
     return results
-
-def populate_decks_and_cards(base_language_for_lookup="en"):
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    try:
-        cursor.execute("SELECT id, name FROM duelists")
-        duelist_id_by_name = {name: duelist_id for (duelist_id, name) in cursor.fetchall()}
-
-        cursor.execute("SELECT id, key FROM deck_types")
-        deck_type_id_by_key = {key: deck_type_id for (deck_type_id, key) in cursor.fetchall()}
-
-        cursor.execute("SELECT id, duelist_id, name FROM decks")
-        deck_id_by_duelist_and_name = {(duelist_id, name): deck_id for (deck_id, duelist_id, name) in cursor.fetchall()}
-
-        def get_or_create_deck_type(deck_name: str, order_index: int):
-            #Per DB model, a deck type is the name of the Arc that is shared among duelists, like Battle City.
-            if deck_name not in ARC_NAMES:
-                return None
-
-            key = deck_name
-            existing = deck_type_id_by_key.get(key)
-            if existing:
-                return existing
-
-            cursor.execute(
-                "INSERT OR IGNORE INTO deck_types (name, key, order_index) VALUES (?, ?, ?)",
-                (deck_name, key, order_index)
-            )
-            
-            cursor.execute("SELECT id FROM deck_types WHERE key = ?", (key,))
-            deck_type_id = cursor.fetchone()[0]
-            deck_type_id_by_key[key] = deck_type_id
-            return deck_type_id
-
-        def get_or_create_deck(duelist_id: int, deck_name: str, deck_type_id, order_index: int):
-            key = (duelist_id, deck_name)
-            existing = deck_id_by_duelist_and_name.get(key)
-            if existing:
-                return existing
-
-            cursor.execute(
-                """
-                INSERT OR IGNORE INTO decks (duelist_id, deck_type_id, name, order_index)
-                VALUES (?, ?, ?, ?)
-                """,
-                (duelist_id, deck_type_id, deck_name, order_index)
-            )
-            cursor.execute(
-                "SELECT id FROM decks WHERE duelist_id = ? AND name = ?",
-                (duelist_id, deck_name)
-            )
-            duelist_id = cursor.fetchone()[0]
-            deck_id_by_duelist_and_name[key] = duelist_id
-            return duelist_id
-
-        for duelist_name, decks_by_name in LIST_OF_DECKS.items():
-            duelist_id = duelist_id_by_name.get(duelist_name)
-            if not duelist_id:
-                continue
-
-            for order_index, (deck_name, cards) in enumerate(decks_by_name.items()):
-                deck_type_id = get_or_create_deck_type(deck_name, order_index)
-                deck_id = get_or_create_deck(duelist_id, deck_name, deck_type_id, order_index)
-
-                card_names = [card_name for (card_name, _qty) in cards]
-                card_id_by_name = {}
-                
-                if card_names:
-                    placeholders = ",".join(["?"] * len(card_names))
-                    
-                    #Search for English first.
-                    cursor.execute(
-                        f"""
-                        SELECT name, card_id
-                        FROM cards_translation
-                        WHERE language = ?
-                          AND name COLLATE NOCASE IN ({placeholders})
-                        """,
-                        [base_language_for_lookup, *card_names]
-                    )
-                    for name, card_id in cursor.fetchall():
-                        card_id_by_name[name.lower()] = card_id # Case-insensitive. Fixes issue with dataset inconsistency, like Gamma 'the' Magnet Warrior vs. Gamma The Magnet Warrior
-
-                    # Fallback for cards not translated in dataset.
-                    missing = [n for n in card_names if n.lower() not in card_id_by_name]
-                    if missing:
-                        fallback = ",".join(["?"] * len(missing))
-                        cursor.execute(
-                            f"""
-                            SELECT name, card_id
-                            FROM cards_translation
-                            WHERE name COLLATE NOCASE IN ({fallback})
-                            """,
-                            missing
-                        )
-                        for name, card_id in cursor.fetchall():
-                            card_id_by_name.setdefault(name.lower(), card_id)
-
-                rows_with_id = []
-                rows_with_name = []
-
-                for card_name, quantity in cards:
-                    card_id = card_id_by_name.get(card_name.lower())
-                    if card_id:
-                        rows_with_id.append((deck_id, card_id, quantity))
-                    else:
-                        rows_with_name.append((deck_id, card_name, quantity))
-
-                if rows_with_id:
-                    cursor.executemany(
-                        """
-                        INSERT OR IGNORE INTO deck_cards (deck_id, card_id, quantity)
-                        VALUES (?, ?, ?)
-                        """,
-                        rows_with_id
-                    )
-
-                if rows_with_name:
-                    cursor.executemany(
-                        """
-                        INSERT OR IGNORE INTO deck_cards (deck_id, card_name, quantity)
-                        VALUES (?, ?, ?)
-                        """,
-                        rows_with_name
-                    )
-
-        conn.commit()
-
-    finally:
-        conn.close()
 
 def populate_deck_type_translations():
     """Translate Deck Types, those are anime Arcs, like Battle City, or video games one"""
@@ -289,7 +90,7 @@ def populate_deck_translations():
             continue
 
         cursor.execute("""
-            INSERT OR IGNORE INTO decks_translation (deck_id, language, name) 
+            INSERT OR IGNORE INTO decks_translations (deck_id, language, name) 
             VALUES (?, ?, ?)
         """, (deck[0], lang, translated))
 
@@ -310,10 +111,10 @@ def get_decks_by_duelist(duelist_id, language="en", show_exclusive_cards=True):
         COALESCE(ct_lang.name, ct_en.name, dc.card_name) AS card_name,
         dc.quantity
         FROM decks d
-        LEFT JOIN decks_translation dtr_lang
+        LEFT JOIN decks_translations dtr_lang
         ON dtr_lang.deck_id = d.id
         AND dtr_lang.language = :lang
-        LEFT JOIN decks_translation dtr_en
+        LEFT JOIN decks_translations dtr_en
         ON dtr_en.deck_id = d.id
         AND dtr_en.language = 'en'
         LEFT JOIN deck_types dt
@@ -335,10 +136,10 @@ def get_decks_by_duelist(duelist_id, language="en", show_exclusive_cards=True):
     query += """
         LEFT JOIN cards c
         ON c.id = dc.card_id
-        LEFT JOIN cards_translation ct_lang
+        LEFT JOIN cards_translations ct_lang
         ON ct_lang.card_id = c.id
         AND ct_lang.language = :lang
-        LEFT JOIN cards_translation ct_en
+        LEFT JOIN cards_translations ct_en
         ON ct_en.card_id = c.id
         AND ct_en.language = 'en'
         WHERE d.duelist_id = :duelist_id
@@ -382,9 +183,9 @@ def get_card_details(card_id: int, language="en"):
             c.def,
             c.type
         FROM cards c
-        LEFT JOIN cards_translation ct_lang
+        LEFT JOIN cards_translations ct_lang
             ON ct_lang.card_id = c.id AND ct_lang.language = ?
-        LEFT JOIN cards_translation ct_en
+        LEFT JOIN cards_translations ct_en
             ON ct_en.card_id = c.id AND ct_en.language = 'en'
         WHERE c.id = ?
         LIMIT 1
