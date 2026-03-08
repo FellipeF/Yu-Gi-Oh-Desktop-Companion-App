@@ -31,11 +31,11 @@ def create_tables():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS cards_translations (
         card_id INTEGER NOT NULL,
-        language TEXT NOT NULL,
+        language_code TEXT NOT NULL,
         name TEXT NOT NULL,
         description TEXT,
         FOREIGN KEY(card_id) REFERENCES cards(id),
-        UNIQUE(card_id, language)
+        UNIQUE(card_id, language_code)
     )
     """)
 
@@ -48,29 +48,28 @@ def create_tables():
     """)
 
     # Categories of decks that are shared between multiple duelists, like anime arcs or video games.
-    # Order index is here to be used with enumerate on the seed when we're populating duelist decks on seed.py
-    # for a consistent approach on deck order when switching duelists.
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS deck_categories (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        key TEXT UNIQUE NOT NULL,
-        order_index INTEGER DEFAULT 0
+        key TEXT UNIQUE NOT NULL
     )
     """)
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS deck_category_translations (
         deck_category_id INTEGER NOT NULL,
-        language TEXT NOT NULL,
+        language_code TEXT NOT NULL,
         name TEXT NOT NULL,
-        PRIMARY KEY (deck_category_id, language),
+        PRIMARY KEY (deck_category_id, language_code),
         FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id)
     )
     """)
 
-    # Decks that are unique to duelists. Order index is also present here, doing the same thing as the deck_categories
-    # table. Since a deck could be part of a category or not, we can configure deck_category_id to be NULL when needed.
+    # Decks that are unique to duelists. Order index is here to be used with enumerate on the seed when we're populating
+    # this table on seed.py for a consistent approach on deck order when switching duelists. The order in which
+    # decks are populated is defined on each duelist deck file.
+    # Since a deck could be part of a category or not, we can configure deck_category_id to be NULL when needed.
     # Example: Kaiba - Battle City. Joey - Battle City. Joey - Super Warrior (Only duelist who has a deck called that)
 
     cursor.execute("""
@@ -89,9 +88,9 @@ def create_tables():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS duelist_deck_translations (
         deck_id INTEGER NOT NULL,
-        language TEXT NOT NULL,
+        language_code TEXT NOT NULL,
         name TEXT NOT NULL,
-        PRIMARY KEY (deck_id, language),
+        PRIMARY KEY (deck_id, language_code),
         FOREIGN KEY (deck_id) REFERENCES duelist_decks(id)
     )
     """)
@@ -114,13 +113,13 @@ def create_tables():
     )
     """)
 
-    # Index for speeding up case-insensitive card name lookups filtered by language.
+    # Index for speeding up case-insensitive card name lookups filtered by language_code.
     cursor.execute("""
     CREATE INDEX IF NOT EXISTS idx_cards_translations_lang_name_nocase
-    ON cards_translations(language, name COLLATE NOCASE)
+    ON cards_translations(language_code, name COLLATE NOCASE)
     """)
 
-    # Speeds up fallback case-insensitive card name lookups across all languages
+    # Speeds up fallback case-insensitive card name lookups across all language_codes
     cursor.execute("""
     CREATE INDEX IF NOT EXISTS idx_cards_translations_name_nocase
     ON cards_translations(name COLLATE NOCASE)

@@ -1,103 +1,12 @@
 """This file populates the database with card data from the YGOPro API and the data folder, where we can find duelists
 and their decks."""
-from database.database import get_connection
-from services.api_client import ApiClient
+
 from data.duelists import DUELISTS
 from data.decks import LIST_OF_DECKS
-from data.arcs import ARC_NAMES
-from data.deck_type_translation import DECK_TYPE_TRANSLATION
+from data.deck_categories import DECK_CATEGORIES_KEYS
+from data.deck_categories_translations import DECK_CATEGORIES_TRANSLATIONS
 
-api = ApiClient()
-
-def _stat(value):
-    """Since the API sets atk and def to -1 values for monster that have those stats as ????, like Egyptian Gods,
-    we treat those values as None instead"""
-    return None if value == -1 else value
-
-def populate_cards(language:str="en"):
-    """Inserts or update cards and their translation in the database. If errata is published, the UPSERT guarantees
-    that the new data retrieved from the API is inserted on respective table. In case no changes were made, since we check
-    if there's an entry on the cards_translation table and if the offline_version is the same as the online one, we don't
-    run the UPSERT."""
-
-    # ON CONFLICT DO UPDATE updates the existing row that conflicts with the row proposed for insertion as
-    # its alternative action (https://www.postgresql.org/docs/current/sql-insert.html#id-1.9.3.152.6.3.3)
-
-    info = api.read_info_file()
-    online_db_version = info.get("database_version") if info else None
-    offline_version = info.get("database_offline_version") if info else None
-
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        SELECT 1
-        FROM cards_translations
-        WHERE language = ?
-        LIMIT 1
-        """, (language, ))
-    language_exists = cursor.fetchone() is not None
-
-    if language_exists and online_db_version and offline_version == online_db_version:
-        conn.close()
-        return
-
-    data = api.load_cards(language)
-    cards = data["data"]
-
-    cards_rows = []
-    translations_rows = []
-
-    for card in cards:
-        cards_rows.append((
-            card.get("id"),
-            card.get("type"),
-            card.get("archetype"),
-            card.get("attribute"),
-            _stat(card.get("atk")),
-            _stat(card.get("def")),
-            card.get("level")
-        ))
-
-        translations_rows.append((
-            card.get("id"),
-            language,
-            card.get("name"),
-            card.get("desc")
-        ))
-
-    # Performance Delta between execute and executemany - https://github.com/oracle/python-oracledb/discussions/300
-    cursor.executemany("""
-    INSERT INTO cards (id, type, archetype, attribute, atk, def, level)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-    ON CONFLICT(id) DO UPDATE SET
-        type = excluded.type,
-        archetype = excluded.archetype,
-        attribute = excluded.attribute,
-        atk = excluded.atk,
-        def = excluded.def,
-        level = excluded.level
-        """, cards_rows)
-
-    cursor.executemany("""
-    INSERT INTO cards_translations (card_id, language, name, description)
-    VALUES (?, ?, ?, ?)
-    ON CONFLICT (card_id, language) DO UPDATE SET
-        name = excluded.name,
-        description = excluded.description
-        """, translations_rows)
-
-    conn.commit()
-    conn.close()
-    
-    # The offline and online versions are now synced, so update that.
-    info = api.read_info_file()
-    current_online_db_version = info.get("database_version")
-    if current_online_db_version:
-        info["database_offline_version"] = current_online_db_version
-        api.write_info_file(info)
-
-def populate_duelists():
+def populate_duelists() -> None:
     """Insert in database Duelists that are contained in the duelists.py file located in the data folder. ON CONFLICT
     DO UPDATE is here if I decide to change any of their portraits at some point."""
     conn = get_connection()
@@ -120,40 +29,37 @@ def _load_duelists_ids(cursor) -> dict[str, int]:
         name: duelist_id for duelist_id, name in cursor.fetchall()
     }
 
-def _load_deck_types_ids(cursor) -> dict[str, int]:
+def _load_deck_category_ids(cursor) -> dict[str, int]:
     """Loads deck_tpes in a dictionary, where we can quickly retrieve them"""
-    cursor.execute("SELECT id, key FROM deck_types")
+    cursor.execute("SELECT id, key FROM deck_categories")
     return {
-        key: deck_type_id for deck_type_id, key in cursor.fetchall()
+        key: category_id for category_id, key in cursor.fetchall()
     }
 
-def _load_decks_ids(cursor) -> dict[tuple[int, str], int]:
+def _load_duelist_decks_ids(cursor) -> dict[tuple[int, str], int]:
     """Loads decks and associate them to duelists_id"""
-    cursor.execute("SELECT id, duelist_id, name FROM decks")
+    cursor.execute("SELECT id, duelist_id, key FROM duelist_decks")
     return {
-        (duelist_id, name): deck_id for deck_id, duelist_id, name in cursor.fetchall()
+        (duelist_id, key): deck_id for deck_id, duelist_id, key in cursor.fetchall()
     }
 
-def _create_missing_deck_types(cursor, deck_type_rows, deck_type_id_by_key: dict [str, int]) -> None:
+def _create_missing_deck_categories(cursor, existing_category_ids: dict [str, int]) -> None:
     """Creates deck_types that are not yet populated. Then, update the dictionary with new ids"""
-    if not deck_type_rows:
-        return
+    rows = [(key,) for key in DECK_CATEGORIES_KEYS if key not in existing_category_ids]
 
-    cursor.executemany("""
-    INSERT INTO deck_types (name, key, order_index)
-    VALUES (?, ?, ?)
-    ON CONFLICT (key) DO UPDATE SET
-        name = excluded.name,
-        order_index = excluded.order_index
-        """, deck_type_rows)
-
-    cursor.execute("SELECT id, key FROM deck_types")
-    deck_type_id_by_key.clear()
-    deck_type_id_by_key.update(
-        {
-            key: deck_type_id for deck_type_id, key in cursor.fetchall()
-        }
-    )
+    if rows:
+        cursor.executemany("""
+        INSERT INTO deck_categories (key)
+        VALUES (?)
+        ON CONFLICT (key) DO NOTHING
+        """, rows)
+        cursor.execute("SELECT id, key FROM deck_types")
+        existing_category_ids.clear()
+        existing_category_ids.update(
+            {
+                key: category_id for category_id, key in cursor.fetchall()
+            }
+        )
 
 def _create_missing_decks(cursor, deck_rows, deck_id_by_duelist_and_name: dict[tuple[int, str], int]) -> None:
     """Creates decks that are specific to a duelist that are not yet populated. Then, update the dictionary with the
@@ -229,7 +135,7 @@ def populate_duelists_decks(base_language_for_lookup="en"):
 
     try:
         duelist_id_by_name = _load_duelists_ids(cursor)
-        deck_type_id_by_key = _load_deck_types_ids(cursor)
+        deck_type_id_by_key = _load_deck_category_ids(cursor)
         deck_id_by_duelist_and_name = _load_decks_ids(cursor)
 
         deck_type_rows: list[tuple[str, str, int]] = []
@@ -237,7 +143,7 @@ def populate_duelists_decks(base_language_for_lookup="en"):
 
         for decks_by_name in LIST_OF_DECKS.values():
             for order_index, deck_name in enumerate(decks_by_name.keys()):
-                if deck_name in ARC_NAMES and deck_name not in deck_type_id_by_key and deck_name not in seen_new_deck_types:
+                if deck_name in DECK_CATEGORY_KEYS and deck_name not in deck_type_id_by_key and deck_name not in seen_new_deck_types:
                     deck_type_rows.append((deck_name, deck_name, order_index))
                     seen_new_deck_types.add(deck_name)
 
@@ -251,7 +157,7 @@ def populate_duelists_decks(base_language_for_lookup="en"):
                 continue
 
             for order_index, deck_name in enumerate(decks_by_name.keys()):
-                deck_type_id = deck_type_id_by_key.get(deck_name) if deck_name in ARC_NAMES else None
+                deck_type_id = deck_type_id_by_key.get(deck_name) if deck_name in DECK_CATEGORY_KEYS else None
                 deck_key = (duelist_id, deck_name)
 
                 if deck_key not in deck_id_by_duelist_and_name:
@@ -326,7 +232,7 @@ def populate_deck_type_translations():
 
     rows = []
 
-    for deck_type_name_en, language, translated_name in DECK_TYPE_TRANSLATION:
+    for deck_type_name_en, language, translated_name in DECK_CATEGORIES_TRANSLATIONS:
         deck_type_id = deck_type_id_by_name.get(deck_type_name_en)
 
         if deck_type_id:

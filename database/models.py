@@ -1,7 +1,7 @@
 import sqlite3
 from database.database import get_connection
 from database.database import DB_NAME
-from data.deck_specific_translation import DECK_SPECIFIC_TRANSLATION
+from data.duelists_decks_translations import DECK_SPECIFIC_TRANSLATION
 
 def search_cards(name=None, language="en"):
     conn = sqlite3.connect(DB_NAME)
