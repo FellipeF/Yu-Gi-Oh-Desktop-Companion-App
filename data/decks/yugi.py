@@ -1,5 +1,5 @@
 YUGI_DECKS = {
-    "Toei - First Series": [
+    "toei_first_series": [
         ("Big Tree [A]", 1),
         ("Black Scorpion [A]", 1),
         ("Blackland Fire Dragon", 1),
@@ -26,7 +26,7 @@ YUGI_DECKS = {
         ("Miraculous Water [A]", 1),
         ("Monster Reborn", 1),
     ],
-    "Toei - Death-T": [
+    "toei_death_t": [
         ("Chimera [A]", 1),
         ("Exodia the Forbidden One", 1),
         ("Gaia The Fierce Knight", 1),
@@ -40,7 +40,7 @@ YUGI_DECKS = {
         ("Winged Dragon, Guardian of the Fortress #1", 1),
         ("Swords of Revealing Light", 1),
     ],
-    "Toei - Movie": [
+    "toei_movie": [
         ("Beaver Warrior", 1),
         ("Celtic Guardian", 1),
         ("Curse of Dragon", 1),
@@ -48,16 +48,16 @@ YUGI_DECKS = {
         ("Feral Imp", 1),
         ("Gaia The Fierce Knight", 1),
         ("Hitotsu-Me Giant", 1),
-        ("Meteor Black Dragon", 1), #Meteor B.Dragon
-        ("Meteor Dragon", 1), #Meteor Dragon (Toei)
-        ("Red-Eyes Black Dragon", 1), #Red-Eyes B.Dragon
+        ("Meteor Black Dragon", 1),
+        ("Meteor Dragon", 1),
+        ("Red-Eyes Black Dragon", 1),
         ("Summoned Skull", 1),
         ("Dragonic Pulse of the Land [A]", 1),
         ("Magical Hats", 1),
         ("Polymerization", 1),
         ("Curse of Dark Cross Star [A]", 1),
     ],
-    "Duelist Kingdom": [
+    "duelist_kingdom": [
         ("Battle Steer", 1),
         ("Beaver Warrior", 1),
         ("Celtic Guardian", 1),
@@ -99,7 +99,7 @@ YUGI_DECKS = {
         ("Dark Hole", 1),
         ("Black Magic Ritual", 1),
         ("De-Spell", 1),
-        ("Mystical Moon", 1), #Full Moon. Equips to Beast-Type in the anime, not Beast-Warrior
+        ("Mystical Moon", 1),
         ("Horn of the Unicorn", 1),
         ("Living Arrow [A]", 1),
         ("Magical Hats", 1),
@@ -116,7 +116,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Spellbinding Circle", 1),
     ],
-    "Friendship": [
+    "friendship": [
         ("Anthrosaurus", 1),
         ("Basic Insect", 1),
         ("Claw Reacher", 1),
@@ -135,7 +135,7 @@ YUGI_DECKS = {
         ("Monster Reborn", 1),
         ("Horn of Heaven", 1),
     ],
-    "Battle City": [
+    "battle_city": [
         ("Alpha The Magnet Warrior", 1),
         ("Beaver Warrior", 1),
         ("Beta The Magnet Warrior", 1),
@@ -213,7 +213,7 @@ YUGI_DECKS = {
         ("Shift", 1),
         ("Soul Rope", 1),
     ],
-    "Virtual World": [
+    "virtual_world": [
         ("Alpha The Magnet Warrior", 1),
         ("Blue-Eyes White Dragon", 3),
         ("Celtic Guardian", 1),
@@ -265,7 +265,7 @@ YUGI_DECKS = {
         ("Nutrient Z", 1),
         ("Spellbinding Circle", 1),
     ],
-    "Waking the Dragons": [
+    "waking_the_dragons": [
         ("Alpha The Magnet Warrior", 1),
         ("Beta The Magnet Warrior", 1),
         ("Dark Magician", 1),
@@ -324,7 +324,7 @@ YUGI_DECKS = {
         ("Soul Rope", 1),
         ("Zero Gravity", 1),
     ],
-    "Grand Championship": [
+    "grand_championship": [
         ("Curse of Dragon", 1),
         ("Dark Magician", 1),
         ("Gazelle the King of Mythical Beasts", 1),
@@ -363,7 +363,7 @@ YUGI_DECKS = {
         ("Dark Magic Retribution [A]", 1),
         ("Mirror Force", 1),
     ],
-    "Dawn of the Duel": [
+    "dawn_of_the_duel": [
         ("Alpha The Magnet Warrior", 1),
         ("Beta The Magnet Warrior", 1),
         ("Curse of Dragon", 1),
@@ -415,7 +415,7 @@ YUGI_DECKS = {
         ("Soul Shield [A]", 1),
         ("Stronghold the Moving Fortress", 1),
     ],
-    "Pyramid of Light": [
+    "pyramid_of_light": [
         ("Dark Magician", 1),
         ("Gemini Elf", 1),
         ("Jack's Knight", 1),
@@ -455,7 +455,7 @@ YUGI_DECKS = {
         ("Reverse of Reverse [A]", 1),
         ("Ultimate Offering", 1),
     ],
-    "GX / Past": [
+    "gx_past": [
         ("Alpha The Magnet Warrior", 1),
         ("Dark Magician", 1),
         ("Mystical Elf", 1),
@@ -481,7 +481,7 @@ YUGI_DECKS = {
         ("Mystical Refpanel", 1),
         ("Shift", 1),
     ],
-    "GX / Present": [
+    "gx_present": [
         ("Dark Magician", 1),
         ("Gazelle the King of Mythical Beasts", 1),
         ("Berfomet", 1),
@@ -520,7 +520,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Mystical Refpanel", 1),
     ],
-    "3D Bonds Beyond Time": [
+    "bonds_beyond_time_3d": [
         ("Dark Magician", 1),
         ("Dark Magician Girl", 1),
         ("Kuriboh", 1),
@@ -531,7 +531,7 @@ YUGI_DECKS = {
         ("Magic Gate of Miracles", 1),
         ("Dark Spiral Force [A]", 1),
     ],
-    "3D Bonds Beyond Time - Teaser": [
+    "bonds_beyond_time_teaser": [
         ("Alpha The Magnet Warrior", 1),
         ("Beta The Magnet Warrior", 1),
         ("Celtic Guardian", 1),
@@ -545,7 +545,7 @@ YUGI_DECKS = {
         ("Black Luster Soldier", 1),
         ("Magician of Black Chaos", 1),
     ],
-    "The Dark Side of Dimensions": [
+    "the_dark_side_of_dimensions": [
         ("Celtic Guardian", 1),
         ("Dark Magician", 1),
         ("Apple Magician Girl", 1),
@@ -587,7 +587,7 @@ YUGI_DECKS = {
         ("Time Chain [A]", 1),
         ("Warrior's Devotion [A]", 1),
     ],
-    "Early Manga": [
+    "early_manga": [
         ("Beaver Warrior", 1),
         ("Blackland Fire Dragon", 1),
         ("Dark Magician", 1),
@@ -607,7 +607,7 @@ YUGI_DECKS = {
         ("Monster Reborn", 1),
         ("Swords of Revealing Light", 1),
     ],
-    "Manga - Duelist Kingdom": [
+    "manga_duelist_kingdom": [
         ("Baby Dragon", 1),
         ("Beaver Warrior", 1),
         ("Celtic Guardian", 1),
@@ -653,7 +653,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Spellbinding Circle", 1),
     ],
-    "Manga - Battle City": [
+    "manga_battle_city": [
         ("Alpha the Magnet Warrior", 1),
         ("Beta the Magnet Warrior", 1),
         ("Dark Magician", 1),
@@ -701,7 +701,7 @@ YUGI_DECKS = {
         ("Soul Rope", 1),
         ("Spellbinding Circle", 1),
     ],
-    "Manga - Millennium World": [
+    "manga_millennium_world": [
         ("Green Gadget", 1),
         ("Red Gadget", 1),
         ("Yellow Gadget", 1),
@@ -766,7 +766,7 @@ YUGI_DECKS = {
         ("Spellbinding Circle", 1),
         ("Time Wizard", 1),
     ],
-    "North American World Championship Qualifier 2011": [
+    "na_world_championship_qualifier_2011": [
         ("Alpha The Magnet Warrior", 1),
         ("Dark Magician", 1),
         ("Gazelle the King of Mythical Beasts", 1),
@@ -791,7 +791,7 @@ YUGI_DECKS = {
         ("Magical Hats", 1),
         ("Spellbinding Circle", 1),
     ],
-    "Championship Series Providence 2012": [
+    "YCS Providence 2012": [
         ("Alpha the Magnet Warrior", 1),
         ("Beta the Magnet Warrior", 1),
         ("Catapult Turtle", 1),
@@ -822,7 +822,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Mystical Refpanel", 1),
     ],
-    "World Championship 2013": [
+    "world_championship_2013": [
         ("Dark Magician", 1),
         ("Feral Imp", 1),
         ("Jack's Knight", 1),
@@ -855,7 +855,7 @@ YUGI_DECKS = {
         ("Zero Gravity", 1),
         ("Magical Hats", 4),
     ],
-    "North American World Championship Qualifier 2014": [
+    "na_world_championship_qualifier_2014": [
         ("Beta The Magnet Warrior", 1),
         ("Dark Magician", 1),
         ("Feral Imp", 1),
@@ -893,7 +893,7 @@ YUGI_DECKS = {
         ("Soul Rope", 1),
         ("Spellbinding Circle", 1),
     ],
-    "World Championship 2016 Special": [
+    "world_championship_2016_special": [
         ("Dark Magician", 1),
         ("Kuriboh", 1),
         ("Watapon", 1),
@@ -939,7 +939,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Nutrient Z", 1),
     ],
-    "V Jump Magazine": [
+    "v_jump_magazine": [
         ("Dark Magician", 1),
         ("Buster Blader", 1),
         ("Giant Germ", 3),
@@ -963,7 +963,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Ultimate Offering", 3),
     ],
-    "World Championship 2019 Special": [
+    "world_championship_2019_special": [
         ("Dark Magician", 1),
         ("Mystical Elf", 1),
         ("Apprentice Illusion Magician", 1),
@@ -1009,7 +1009,7 @@ YUGI_DECKS = {
         ("Magical Hats", 1),
         ("Mirror Force", 1),
     ],
-    "Live-action Speed Duel 2020": [
+    "live_action_speed_duel_2020": [
         ("Beaver Warrior", 1),
         ("Celtic Guardian", 1),
         ("Curse of Dragon", 1),
@@ -1047,7 +1047,7 @@ YUGI_DECKS = {
         ("Soul Servant", 1),
         ("Shift", 1),
     ],
-    "World Championship Qualifier 2024": [
+    "world_championship_qualifier_2024": [
         ("Big-Winged Berfomet", 1),
         ("Dark Magician the Magician of Black Magic", 1),
         ("Gandora-G the Dragon of Destruction", 1),
@@ -1069,7 +1069,7 @@ YUGI_DECKS = {
         ("Turn Silence", 1),
         ("Mirage Mirror Force", 1),
     ],
-    "Duel Monsters": [
+    "duel_monsters": [
         ("Archfiend Marmot of Nefariousness", 1),
         ("Candle of Fate", 1),
         ("Change Slime", 1),
@@ -1097,7 +1097,7 @@ YUGI_DECKS = {
         ("Wings of Wicked Flame", 1),
         ("Yashinoki", 1),
     ],
-    "Dark Duel Stories": [
+    "dark_duel_stories": [
         ("Dark Magician", 1),
         ("Dark Magician Girl", 1),
         ("Gaia The Fierce Knight", 1),
@@ -1115,7 +1115,7 @@ YUGI_DECKS = {
         ("Dark Hole", 2),
         ("Mooyan Curry", 2),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Ancient Jar", 1),
         ("Archfiend Marmot of Nefariousness", 1),
         ("Baby Dragon", 1),
@@ -1155,7 +1155,7 @@ YUGI_DECKS = {
         ("Swords of Revealing Light", 1),
         ("Trap Hole", 1),
     ],
-    "The Sacred Cards": [
+    "the_sacred_cards": [
         ("Dark Magician", 1),
         ("Droll Bird", 3),
         ("Key Mace", 3),
@@ -1176,7 +1176,7 @@ YUGI_DECKS = {
         ("Black Magic Ritual", 1),
         ("Multiply", 1),
     ],
-    "World Championship 2004": [
+    "world_championship_2004": [
         ("Cyber Soldier", 1),
         ("Fire Reaper", 1),
         ("Firegrass", 1),
@@ -1214,7 +1214,7 @@ YUGI_DECKS = {
         ("Royal Decree", 1),
         ("Trap Hole", 2),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Alpha the Magnet Warrior", 1),
         ("Beaver Warrior", 1),
         ("Beta the Magnet Warrior", 1),
@@ -1250,7 +1250,7 @@ YUGI_DECKS = {
         ("Royal Decree", 1),
         ("Trap Hole", 1),
     ],
-    "Reshef of Destruction": [
+    "reshef_of_destruction": [
         ("Ancient Jar", 3),
         ("Curse of Dragon", 1),
         ("Dark Magician", 1),
@@ -1277,7 +1277,7 @@ YUGI_DECKS = {
         ("House of Adhesive Tape", 1),
         ("Spellbinding Circle", 2),
     ],
-    "7 Trials to Glory: Standard": [
+    "seven_trials_to_glory_standard": [
         ("Gemini Elf", 1),
         ("Summoned Skull", 3),
         ("Hane-Hane", 1),
@@ -1308,7 +1308,7 @@ YUGI_DECKS = {
         ("Trap Hole", 3),
         ("Torrential Tribute", 1),
     ],
-    "7 Trials to Glory: Advanced": [
+    "seven_trials_to_glory_advanced": [
         ("Archfiend Soldier", 3),
         ("Aqua Madoor", 1),
         ("Dark Magician", 3),
@@ -1343,7 +1343,7 @@ YUGI_DECKS = {
         ("Trap Hole", 3),
         ("Torrential Tribute", 1),
     ],
-    "Magic Darkness": [
+    "magic_darkness": [
         ("D.D. Warrior Lady", 1),
         ("Kuriboh", 1),
         ("Magician of Faith", 1),
@@ -1374,7 +1374,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Waboku", 2),
     ],
-    "Give You Courage": [
+    "give_you_courage": [
         ("D.D. Warrior Lady", 1),
         ("Kuriboh", 1),
         ("Magician of Faith", 1),
@@ -1405,7 +1405,7 @@ YUGI_DECKS = {
         ("Mirror Force", 1),
         ("Waboku", 2),
     ],
-    "Magic Darkness v1": [
+    "magic_darkness_v1": [
         ("Beaver Warrior", 2),
         ("Celtic Guardian", 2),
         ("Curse of Dragon", 1),
@@ -1438,7 +1438,7 @@ YUGI_DECKS = {
         ("Magical Hats", 2),
         ("Spellbinding Circle", 2),
     ],
-    "Magic Darkness v2": [
+    "magic_darkness_v2": [
         ("Celtic Guardian", 2),
         ("Curse of Dragon", 1),
         ("Dark Magician", 1),
@@ -1472,7 +1472,7 @@ YUGI_DECKS = {
         ("Magical Hats", 1),
         ("Spellbinding Circle", 2),
     ],
-    "Magnet Power": [
+    "magnet_power": [
         ("Alpha The Magnet Warrior", 1),
         ("Beta The Magnet Warrior", 2),
         ("Dark Magician", 1),
@@ -1502,7 +1502,7 @@ YUGI_DECKS = {
         ("Rock Bombardment", 2),
         ("Soul Rope", 1),
     ],
-    "Magic Time": [
+    "magic_time": [
         ("Dark Magician", 3),
         ("Gemini Elf", 1),
         ("Breaker the Magical Warrior", 1),
@@ -1533,7 +1533,7 @@ YUGI_DECKS = {
         ("Magical Arm Shield", 1),
         ("Mirror Force", 1),
     ],
-    "True Friends": [
+    "true_friends": [
         ("Curse of Dragon", 1),
         ("Dark Magician", 1),
         ("Dunames Dark Witch", 2),

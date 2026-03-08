@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import ttk
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION
+from database.seed.seed_all import seed_all
+from database.seed.seed_cards import populate_cards
+from database.database import create_tables
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
 from frames.duelists_frame import DuelistsFrame
 from frames.duelist_details_frame import DuelistDetailsFrame
-from database.database import create_tables
-from database.seed import *
-from database.models import populate_deck_translations
 from ui.translations import translations
 from utils.resource_path import resource_path
 
@@ -39,8 +39,10 @@ class App(tk.Tk):
         self.title(f"Yu-Gi-Oh! Card Database v{CURRENT_VERSION}")
         self.resizable(False, False)
         self.frames = {}
+
         style = ttk.Style()
         style.theme_use("alt")
+
         self.center_screen()
 
     def center_screen(self):
@@ -52,16 +54,14 @@ class App(tk.Tk):
 
     def start_database(self):
         create_tables()
-        populate_cards(self.current_language)
-        populate_duelists()
-        populate_duelists_decks()
-        populate_deck_type_translations()
-        populate_deck_translations()
+        seed_all(self.current_language)
 
     def create_top_bar(self):
         top_bar = tk.Frame(self)
         top_bar.pack(fill="x")
-        self.language_var = tk.StringVar(value="en")
+
+        self.language_var = tk.StringVar(value=self.current_language)
+
         self.language_label = tk.Label(top_bar)
         self.language_label.pack(side="left", padx=5)
 
@@ -85,6 +85,8 @@ class App(tk.Tk):
 
     def change_language(self, lang):
         self.current_language = lang
+        self.language_var.set(lang)
+
         populate_cards(lang)
 
         self.update_ui_language()
@@ -102,4 +104,4 @@ class App(tk.Tk):
                 frame.load_duelist()
 
     def t (self, key):
-        return translations[self.current_language][key]
+        return translations.get(self.current_language, {}).get(key, key)

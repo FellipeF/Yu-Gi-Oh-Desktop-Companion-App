@@ -1,5 +1,5 @@
 LUMIS_DECKS = {
-    "Anime": [
+    "anime": [
         ("Grand Tiki Elder", 1),
         ("Melchid the Four-Face Beast", 1),
         ("Card Exchange [A]", 1),
@@ -14,7 +14,7 @@ LUMIS_DECKS = {
         ("Mask of Weakness", 1),
         ("Mirror Force", 1),
     ],
-    "Manga": [
+    "manga": [
         ("Grand Tiki Elder", 1),
         ("Melchid the Four-Face Beast", 1),
         ("Chosen One", 1),
@@ -26,7 +26,7 @@ LUMIS_DECKS = {
         ("Mask of Restrict", 1),
         ("Mask of Weakness", 1),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Gemini Elf", 2),
         ("Labyrinth Wall", 1),
         ("Millennium Golem", 2),
@@ -57,7 +57,7 @@ LUMIS_DECKS = {
         ("Trap Hole", 1),
         ("Widespread Ruin", 1),
     ],
-    "The Sacred Cards": [
+    "the_sacred_cards": [
         ("Dark Assailant", 3),
         ("Dark Rabbit", 3),
         ("Darkworld Thorns", 3),
@@ -77,7 +77,7 @@ LUMIS_DECKS = {
         ("Monster Reborn", 1),
         ("Yami", 1),
     ],
-    "World Championship 2004": [
+    "world_championship_2004": [
         ("Dark King of the Abyss", 1),
         ("Gradius", 1),
         ("Grand Tiki Elder", 2),
@@ -103,7 +103,7 @@ LUMIS_DECKS = {
         ("Mirror Force", 1),
         ("Ring of Destruction", 2),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Grand Tiki Elder", 3),
         ("Masked Clown", 3),
         ("Melchid the Four-Face Beast", 3),
@@ -125,7 +125,7 @@ LUMIS_DECKS = {
         ("Negate Attack", 2),
         ("Widespread Ruin", 2),
     ],
-    "World Championship 2005": [
+    "world_championship_2005": [
         ("Grand Tiki Elder", 2),
         ("Summoned Skull", 3),
         ("Vorse Raider", 3),
@@ -145,7 +145,7 @@ LUMIS_DECKS = {
         ("Mirror Force", 1),
         ("Ring of Destruction", 2),
     ],
-    "Mask of Light": [
+    "mask_of_light": [
         ("Dunames Dark Witch", 2),
         ("Grand Tiki Elder", 2),
         ("Melchid the Four-Face Beast", 2),

@@ -1,5 +1,5 @@
 PEGASUS_DECKS = {
-    "Manga": [
+    "manga": [
         ("Bickuribox", 1),
         ("Dark Rabbit", 1),
         ("Illusionist Faceless Mage", 1),
@@ -33,7 +33,7 @@ PEGASUS_DECKS = {
         ("Prophecy [M]", 1),
         ("Trap Displacement [M]", 1),
     ],
-    "Duelist Kingdom": [
+    "duelist_kingdom": [
         ("Bickuribox", 1),
         ("Dark Rabbit", 1),
         ("Flying Elephant", 1),
@@ -68,7 +68,7 @@ PEGASUS_DECKS = {
         ("Tears of a Mermaid [A]", 1),
         ("Trap Displacement [A]", 1),
     ],
-    "Waking the Dragons": [
+    "waking_the_dragons": [
         ("Toon Alligator", 1),
         ("Blue-Eyes Toon Dragon", 1),
         ("Toon Dark Magician Girl", 1),
@@ -79,7 +79,7 @@ PEGASUS_DECKS = {
         ("Toon World", 1),
         ("Toon Mask", 1),
     ],
-    "Pyramid of Light": [
+    "pyramid_of_light": [
         ("Thousand-Eyes Idol", 1),
         ("Toon Alligator", 1),
         ("Manju of the Ten Thousand Hands", 1),
@@ -112,7 +112,7 @@ PEGASUS_DECKS = {
         ("Toon Defense", 1),
         ("Ultimate Offering", 1),
     ],
-    "GX": [
+    "Yu-Gi-Oh! GX": [
         ("Toon Alligator", 1),
         ("Toon Dark Magician Girl", 1),
         ("Toon Ancient Gear Golem", 1),
@@ -123,7 +123,7 @@ PEGASUS_DECKS = {
         ("Gorgon's Eye", 1),
         ("Toon Briefcase", 1),
     ],
-    "Championship Series Providence 2012": [
+    "YCS Providence 2012": [
         ("Dark Rabbit", 1),
         ("Gemini Elf", 1),
         ("Red Archery Girl", 1),
@@ -149,7 +149,7 @@ PEGASUS_DECKS = {
         ("Toon World", 1),
         ("Solemn Judgment", 1),
     ],
-    "North American World Championship Qualifiers 2013 Special": [
+    "na_world_championship_qualifiers_2013_special": [
         ("Gorz the Emissary of Darkness", 1),
         ("Wind-Up Dog", 1),
         ("Wind-Up Magician", 1),
@@ -170,7 +170,7 @@ PEGASUS_DECKS = {
         ("Dimensional Prison", 2),
         ("Mirror Force", 2),
     ],
-    "North American World Championship Qualifiers 2015 Special": [
+    "na_world_championship_qualifiers_2015_special": [
         ("Toon Alligator", 1),
         ("Toon Cyber Dragon", 1),
         ("Toon Masked Sorcerer", 1),
@@ -187,7 +187,7 @@ PEGASUS_DECKS = {
         ("Toon Briefcase", 1),
         ("Toon Mask", 1),
     ],
-    "YCS Origins 2016 Special": [
+    "ycs_origins_2016_special": [
         ("Tour Guide From the Underworld", 1),
         ("Graff, Malebranche of the Burning Abyss", 1),
         ("Scarm, Malebranche of the Burning Abyss", 1),
@@ -212,7 +212,7 @@ PEGASUS_DECKS = {
         ("The Traveler and the Burning Abyss", 2),
         ("Fire Lake of the Burning Abyss", 2),
     ],
-    "North American World Championship Qualifiers 2017 Special": [
+    "na_world_championship_qualifiers_2017_special": [
         ("Blue-Eyes Toon Dragon", 1),
         ("Red-Eyes Toon Dragon", 1),
         ("Toon Barrel Dragon", 1),
@@ -225,7 +225,7 @@ PEGASUS_DECKS = {
         ("Toon Kingdom", 1),
         ("Judgment of Anubis", 1),
     ],
-    "Live-action Speed Duel 2020": [
+    "live_action_speed_duel_2020": [
         ("Illusionist Faceless Mage", 1),
         ("Thousand-Eyes Idol", 1),
         ("Sonic Bird", 1),
@@ -240,7 +240,7 @@ PEGASUS_DECKS = {
         ("Security Orb", 1),
         ("Toon Mask", 1),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Dark-Eyes Illusionist", 2),
         ("Red Archery Girl", 3),
         ("Rogue Doll", 2),
@@ -269,7 +269,7 @@ PEGASUS_DECKS = {
         ("Solemn Judgment", 1),
         ("Time Machine", 1),
     ],
-    "Worldwide Edition: Stairway to the Destined Duel": [
+    "worldwide_edition_stairway_to_the_destined_duel": [
         ("Thousand-Eyes Idol", 3),
         ("Nimble Momonga", 1),
         ("Sinister Serpent", 1),
@@ -296,7 +296,7 @@ PEGASUS_DECKS = {
         ("Mirror Wall", 1),
         ("Numinous Healer", 3),
     ],
-    "Toonized": [
+    "toonized": [
         ("Summoned Skull", 2),
         ("Thousand-Eyes Idol", 1),
         ("Vorse Raider", 3),
@@ -325,7 +325,7 @@ PEGASUS_DECKS = {
         ("Numinous Healer", 2),
         ("Ring of Destruction", 1),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Aqua Madoor", 2),
         ("Parrot Dragon", 1),
         ("Red Archery Girl", 1),
@@ -358,7 +358,7 @@ PEGASUS_DECKS = {
         ("Ring of Destruction", 1),
         ("Solemn Wishes", 2),
     ],
-    "Reshef of Destruction": [
+    "reshef_of_destruction": [
         ("Big Shield Gardna", 3),
         ("Castle of Dark Illusions", 3),
         ("Blue-Eyes Toon Dragon", 3),
@@ -373,7 +373,7 @@ PEGASUS_DECKS = {
         ("Swords of Revealing Light", 3),
         ("Torrential Tribute", 3),
     ],
-    "Toon World!": [
+    "toon_world": [
         ("Dark Rabbit", 2),
         ("Parrot Dragon", 1),
         ("Thousand-Eyes Idol", 1),
@@ -403,7 +403,7 @@ PEGASUS_DECKS = {
         ("Toon Defense", 1),
         ("Ultimate Offering", 2),
     ],
-    "Toon Channel": [
+    "toon_channel": [
         ("Thousand-Eyes Idol", 1),
         ("Blue-Eyes Toon Dragon", 1),
         ("Toon Cannon Soldier", 3),
@@ -429,7 +429,7 @@ PEGASUS_DECKS = {
         ("Toon Defense", 1),
         ("Ultimate Offering", 2),
     ],
-    "Toon Doom": [
+    "toon_doom": [
         ("Thousand-Eyes Idol", 1),
         ("Blue-Eyes Toon Dragon", 1),
         ("Toon Cannon Soldier", 2),
@@ -456,7 +456,7 @@ PEGASUS_DECKS = {
         ("Toon Defense", 1),
         ("Ultimate Offering", 2),
     ],
-    "Future Vision": [
+    "future_vision": [
         ("Dandylion", 1),
         ("Spirit Reaper", 1),
         ("Blue-Eyes Toon Dragon", 1),
@@ -483,7 +483,7 @@ PEGASUS_DECKS = {
         ("Toon Defense", 1),
         ("Ultimate Offering", 1),
     ],
-    "Illusionist Faceless Mage": [
+    "illusionist_faceless_mage": [
         ("Dark Rabbit", 1),
         ("Parrot Dragon", 1),
         ("Saggi the Dark Clown", 1),
@@ -494,12 +494,12 @@ PEGASUS_DECKS = {
         ("Magical Neutralizing Force Field [G]", 1),
         ("Toon World", 1),
     ],
-    "Monster Army": [
+    "monster_army": [
         ("Dark Rabbit", 1),
         ("Parrot Dragon", 1),
         ("Bickuribox", 1),
     ],
-    "Imperfect Paradise": [
+    "imperfect_paradise": [
         ("Lucky Trinket", 1),
         ("Rogue Doll", 1),
         ("Ancient Tree of Enlightenment", 1),
@@ -507,7 +507,7 @@ PEGASUS_DECKS = {
         ("Haniwa", 1),
         ("Penguin Soldier", 1),
     ],
-    "Shrine of Chaos #1": [
+    "shrine_of_chaos_1": [
         ("Carat Idol [G]", 1),
         ("Lucky Trinket", 1),
         ("Magician of Faith", 1),
@@ -518,7 +518,7 @@ PEGASUS_DECKS = {
         ("Rock Ogre Grotto #1", 1),
         ("Torike", 1),
     ],
-    "Shrine of Chaos #2": [
+    "shrine_of_chaos_2": [
         ("Parrot Dragon", 1),
         ("Carat Idol [G]", 1),
         ("Lucky Trinket", 1),
@@ -529,7 +529,7 @@ PEGASUS_DECKS = {
         ("Wattkid", 2),
         ("Illusionist Faceless Mage", 1),
     ],
-    "Gem-Knights": [
+    "gem_knights": [
         ("Gem-Knight Alexandrite", 1),
         ("Gem-Knight Crystal", 1),
         ("Gem-Knight Prismaura", 1),

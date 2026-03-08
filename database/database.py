@@ -67,7 +67,7 @@ def create_tables():
     """)
 
     # Decks that are unique to duelists. Order index is here to be used with enumerate on the seed when we're populating
-    # this table on seed.py for a consistent approach on deck order when switching duelists. The order in which
+    # this table on seed_decks.py for a consistent approach on deck order when switching duelists. The order in which
     # decks are populated is defined on each duelist deck file.
     # Since a deck could be part of a category or not, we can configure deck_category_id to be NULL when needed.
     # Example: Kaiba - Battle City. Joey - Battle City. Joey - Super Warrior (Only duelist who has a deck called that)

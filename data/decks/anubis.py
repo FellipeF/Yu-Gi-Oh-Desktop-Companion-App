@@ -1,5 +1,5 @@
 ANUBIS_DECK = {
-    "Pyramid of Light": [
+    "pyramid_of_light": [
         ("Andro Sphinx", 1),
         ("Sphinx Teleia", 1),
         ("Theinen the Great Sphinx", 1),

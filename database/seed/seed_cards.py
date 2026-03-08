@@ -1,3 +1,5 @@
+"""File for populating cards and cards_translations table"""
+
 from database.database import get_connection
 from services.api_client import ApiClient
 
@@ -34,7 +36,7 @@ def _should_skip_cards_seed(cursor, language_code: str) -> bool:
 def _build_cards_rows(cards: list[dict], language_code: str) -> tuple[list[tuple], list[tuple]]:
     """Prepare API payload to UPSERT cards and cards_translations Tables"""
     cards_rows: list[tuple] = []
-    translations_rows = list[tuple] = []
+    translations_rows: list[tuple] = []
 
     for card in cards:
         card_id = card.get("id")
@@ -44,6 +46,7 @@ def _build_cards_rows(cards: list[dict], language_code: str) -> tuple[list[tuple
                 card_id,
                 card.get("type"),
                 card.get("archetype"),
+                card.get("attribute"),
                 _normalize_stat(card.get("atk")),
                 _normalize_stat(card.get("def")),
                 card.get("level"),
@@ -73,7 +76,7 @@ def _upsert_cards(cursor, cards_rows: list[tuple]) -> None:
     # Performance Delta between execute and executemany - https://github.com/oracle/python-oracledb/discussions/300
     cursor.executemany("""
     INSERT INTO cards (id, type, archetype, attribute, atk, def, level)
-    VALUES (?, ?, ?, ?, ?, ?, ?
+    VALUES (?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT (id) DO UPDATE SET
         type = excluded.type,
         archetype = excluded.archetype,
@@ -81,7 +84,7 @@ def _upsert_cards(cursor, cards_rows: list[tuple]) -> None:
         atk = excluded.atk,
         def = excluded.def,
         level = excluded.level
-        """, cards_rows,)
+        """, cards_rows, )
 
 def _upsert_cards_translations(cursor, translation_rows: list[tuple]) -> None:
     """Inserts or update cards in the cards_translation Table. If errata is published, the UPSERT guarantees that the
@@ -93,7 +96,7 @@ def _upsert_cards_translations(cursor, translation_rows: list[tuple]) -> None:
     cursor.executemany("""
     INSERT INTO cards_translations (card_id, language_code, name, description)
     VALUES (?, ?, ?, ?)
-    ON CONFLICT (card_id, language) DO UPDATE SET
+    ON CONFLICT (card_id, language_code) DO UPDATE SET
         name = excluded.name,
         description = excluded.description
         """, translation_rows,)

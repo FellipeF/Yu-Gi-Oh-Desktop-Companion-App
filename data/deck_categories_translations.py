@@ -43,13 +43,21 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "3D Bonds Beyond Time",
         "pt": "Laços Além do Tempo (3D)",
     },
-    "dark_side_of_dimensions": {
+    "the_dark_side_of_dimensions": {
         "en": "The Dark Side of Dimensions",
         "pt": "O Lado Sombrio das Dimensões",
     },
     "early_manga": {
         "en": "Early Manga",
         "pt": "Mangá - Inicial",
+    },
+    "anime": {
+        "en": "Anime",
+        "pt": "Anime",
+    },
+    "manga": {
+        "en": "Manga",
+        "pt": "Mangá",
     },
     "manga_duelist_kingdom": {
         "en": "Manga - Duelist Kingdom",
@@ -62,10 +70,6 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "manga_millennium_world": {
         "en": "Manga - Millennium World",
         "pt": "Mangá - Mundo do Milênio",
-    },
-    "novel": {
-        "en": "Novel",
-        "pt": "Novel",
     },
     "world_championship_2004": {
         "en": "World Championship 2004",
@@ -86,10 +90,6 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "na_world_championship_qualifier_2011": {
         "en": "North American World Championship Qualifier 2011",
         "pt": "Classificatória Norte-Americana do Mundial 2011",
-    },
-    "ycs_providence_2012": {
-        "en": "YCS Providence 2012",
-        "pt": "YCS Providence 2012",
     },
     "na_world_championship_qualifiers_2012": {
         "en": "North American World Championship Qualifiers 2012",
@@ -133,7 +133,7 @@ DECK_CATEGORIES_TRANSLATIONS = {
     },
     "live_action_speed_duel_2020": {
         "en": "Live-action Speed Duel 2020",
-        "pt": "Speed Duel Live-action 2020",
+        "pt": "Duelo Veloz em Live-action 2020",
     },
     "world_championship_qualifier_2024": {
         "en": "World Championship Qualifier 2024",
@@ -145,23 +145,23 @@ DECK_CATEGORIES_TRANSLATIONS = {
     },
     "duel_monsters": {
         "en": "Duel Monsters",
-        "pt": "Duel Monsters",
+        "pt": "Monstros de Duelo",
     },
     "dark_duel_stories": {
         "en": "Dark Duel Stories",
-        "pt": "Dark Duel Stories",
+        "pt": "Histórias Sombrias de Duelo",
     },
-    "eternal_duelist_soul": {
+    "the_eternal_duelist_soul": {
         "en": "The Eternal Duelist Soul",
-        "pt": "The Eternal Duelist Soul",
+        "pt": "A Alma do Duelista Eterno",
     },
-    "sacred_cards": {
+    "the_sacred_cards": {
         "en": "The Sacred Cards",
-        "pt": "The Sacred Cards",
+        "pt": "As Cartas Sagradas",
     },
-    "dawn_of_destiny": {
+    "the_dawn_of_destiny": {
         "en": "The Dawn of Destiny",
-        "pt": "The Dawn of Destiny",
+        "pt": "O Alvorecer do Destino",
     },
     "reshef_of_destruction": {
         "en": "Reshef of Destruction",
@@ -185,9 +185,9 @@ DECK_CATEGORIES_TRANSLATIONS = {
     },
     "worldwide_edition_stairway_to_the_destined_duel": {
         "en": "Worldwide Edition: Stairway to the Destined Duel",
-        "pt": "Edição Mundial: Escada para o Duelo Destinado",
+        "pt": "Edição Mundial: Escadaria para o Duelo Destinado",
     },
-    "falsebound_kingdom_starter": {
+    "the_falsebound_kingdom_starter": {
         "en": "The Falsebound Kingdom - Starter",
         "pt": "The Falsebound Kingdom - Inicial",
     },
@@ -207,7 +207,7 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Battle of Great Duelist",
         "pt": "Batalha do Grande Duelista",
     },
-    "duelist_of_the_roses": {
+    "the_duelist_of_the_roses": {
         "en": "The Duelist of the Roses",
         "pt": "O Duelista das Rosas",
     },

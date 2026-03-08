@@ -1,5 +1,5 @@
 JOEY_DECKS = {
-    "Amateur": [
+    "amateur": [
         ("Anthrosaurus", 1),
         ("Claw Reacher", 1),
         ("Destroyer Golem", 1),
@@ -13,7 +13,7 @@ JOEY_DECKS = {
         ("Stone Armadiller", 1),
         ("The Furious Sea King", 1),
     ],
-    "Manga - Duelist Kingdom": [
+    "manga_duelist_kingdom": [
         ("Armored Lizard", 1),
         ("Axe Raider", 1),
         ("Baby Dragon", 1),
@@ -43,7 +43,7 @@ JOEY_DECKS = {
         ("Graverobber", 1),
         ("Kunai with Chain", 1),
     ],
-    "Duelist Kingdom": [
+    "duelist_kingdom": [
         ("Anthrosaurus", 1),
         ("Armored Lizard", 1),
         ("Axe Raider", 1),
@@ -92,7 +92,7 @@ JOEY_DECKS = {
         ("Mad Sword Beast", 1),
         ("Sword Hunter", 1),
     ],
-    "Manga - Battle City": [
+    "manga_battle_city": [
         ("Alligator's Sword", 1),
         ("Baby Dragon", 1),
         ("Fortress Whale", 1),
@@ -127,7 +127,7 @@ JOEY_DECKS = {
         ("Magical Arm Shield", 1),
         ("Skull Dice", 1),
     ],
-    "Battle City": [
+    "battle_city": [
         ("Alligator's Sword", 1),
         ("Axe Raider", 1),
         ("Baby Dragon", 1),
@@ -174,7 +174,7 @@ JOEY_DECKS = {
         ("Magical Arm Shield", 1),
         ("Nutrient Z", 1),
     ],
-    "Possessed": [
+    "possessed": [
         ("Alligator's Sword", 1),
         ("Gearfried the Iron Knight", 1),
         ("Panther Warrior", 1),
@@ -200,7 +200,7 @@ JOEY_DECKS = {
         ("Legendary Sword", 1),
         ("Shield & Sword", 1),
     ],
-    "Virtual World": [
+    "virtual_world": [
         ("Alligator's Sword", 1),
         ("Axe Raider", 1),
         ("Baby Dragon", 1),
@@ -236,7 +236,7 @@ JOEY_DECKS = {
         ("Kunai with Chain", 1),
         ("Silver Dollar [A]", 1),
     ],
-    "Waking the Dragons": [
+    "waking_the_dragons": [
         ("Alligator's Sword", 1),
         ("Battle Warrior", 1),
         ("Brigadier of Landstar [A]", 1),
@@ -285,7 +285,7 @@ JOEY_DECKS = {
         ("Take One Chance [A]", 1),
         ("Vow of Tribe [A]", 1),
     ],
-    "Grand Championship": [
+    "grand_championship": [
         ("Alligator's Sword", 1),
         ("Brigadier of Landstar [A]", 1),
         ("Grappler of Landstar [A]", 1),
@@ -319,7 +319,7 @@ JOEY_DECKS = {
         ("Compensation Mediation [A]", 1),
         ("Silver Dollar [A]", 1),
     ],
-    "Dawn of the Duel": [
+    "dawn_of_the_duel": [
         ("Flame Swordsman", 1),
         ("Red-Eyes Black Dragon", 1),
         ("Gearfried the Iron Knight", 1),
@@ -358,14 +358,14 @@ JOEY_DECKS = {
         ("Relentless Attacks [M]", 1),
         ("Time Machine", 1),
     ],
-    "Pyramid of Light": [
+    "pyramid_of_light": [
         ("Baby Dragon", 1),
         ("Gearfried the Iron Knight", 1),
         ("Gilford the Lightning", 1),
         ("Rocket Warrior", 1),
         ("Little-Winguard", 1),
     ],
-    "Championship Series Providence 2012": [
+    "YCS Providence 2012": [
         ("Alligator's Sword", 1),
         ("Axe Raider", 1),
         ("Baby Dragon", 1),
@@ -379,7 +379,7 @@ JOEY_DECKS = {
         ("Nutrient Z", 1),
         ("Kunai with Chain", 1),
     ],
-    "North American World Championship Qualifiers 2012": [
+    "na_world_championship_qualifiers_2012": [
         ("Alligator's Sword", 1),
         ("Axe Raider", 1),
         ("Baby Dragon", 1),
@@ -406,7 +406,7 @@ JOEY_DECKS = {
         ("Trap Hole", 1),
         ("Skull Dice", 1),
     ],
-    "YCS Origins 2016 Special": [
+    "ycs_origins_2016_special": [
         ("Red-Eyes Black Dragon", 1),
         ("Beast of Talwar", 1),
         ("Flame Manipulator", 1),
@@ -455,7 +455,7 @@ JOEY_DECKS = {
         ("Polymerization", 1),
         ("Skull Dice", 1),
     ],
-    "Dark Duel Stories": [
+    "dark_duel_stories": [
         ("Archfiend Marmot of Nefariousness", 3),
         ("Ancient Jar", 3),
         ("Armed Ninja", 3),
@@ -474,7 +474,7 @@ JOEY_DECKS = {
         ("Sogen", 1),
         ("Sparks", 2),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Alligator's Sword", 3),
         ("Axe Raider", 1),
         ("Baby Dragon", 2),
@@ -511,7 +511,7 @@ JOEY_DECKS = {
         ("Mirror Force", 1),
         ("Skull Dice", 1),
     ],
-    "Worldwide Edition: Stairway to the Destined Duel": [
+    "worldwide_edition_stairway_to_the_destined_duel": [
         ("Alligator's Sword", 3),
         ("Axe Raider", 3),
         ("Baby Dragon", 1),
@@ -539,7 +539,7 @@ JOEY_DECKS = {
         ("Magical Arm Shield", 2),
         ("Mirror Force", 1),
     ],
-    "Phantom Pyramid": [
+    "phantom_pyramid": [
         ("Cannon Soldier", 2),
         ("D.D. Warrior", 3),
         ("Needle Worm", 3),
@@ -569,11 +569,11 @@ JOEY_DECKS = {
         ("Negate Attack", 1),
         ("Trap Hole", 3),
     ],
-    "The Falsebound Kingdom - Starter": [
+    "the_falsebound_kingdom_starter": [
         ("Flame Swordsman", 1),
         ("Giltia the D. Knight", 1),
     ],
-    "The Sacred Cards": [
+    "the_sacred_cards": [
         ("Ancient Jar", 2),
         ("Bat", 3),
         ("Eyearmor", 3),
@@ -612,7 +612,7 @@ JOEY_DECKS = {
         ("Tremendous Fire", 2),
         ("Kunai with Chain", 1),
     ],
-    "World Championship 2004": [
+    "world_championship_2004": [
         ("Alligator's Sword", 3),
         ("Axe Raider", 3),
         ("Baby Dragon", 1),
@@ -642,7 +642,7 @@ JOEY_DECKS = {
         ("Mirror Force", 1),
         ("Ring of Destruction", 2),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Alligator's Sword", 2),
         ("Ansatsu", 1),
         ("Armored Lizard", 1),
@@ -679,7 +679,7 @@ JOEY_DECKS = {
         ("United We Stand", 1),
         ("Mirror Force", 1),
     ],
-    "Reshef of Destruction": [
+    "reshef_of_destruction": [
         ("Baby Dragon", 1),
         ("Battle Warrior", 3),
         ("Dancing Elf", 3),
@@ -699,7 +699,7 @@ JOEY_DECKS = {
         ("Eatgaboon", 1),
         ("Kunai with Chain", 1),
     ],
-    "Reshef of Destruction - Possessed": [
+    "reshef_possessed": [
         ("Red-Eyes Black Dragon", 1),
         ("Steel Fan Fighter [R]", 1),
         ("Boar Soldier", 3),
@@ -719,7 +719,7 @@ JOEY_DECKS = {
         ("Swords of Revealing Light", 3),
         ("Torrential Tribute", 3),
     ],
-    "7 Trials to Glory: Standard": [
+    "seven_trials_to_glory_standard": [
         ("Alligator's Sword", 3),
         ("Axe Raider", 3),
         ("Baby Dragon", 3),
@@ -749,7 +749,7 @@ JOEY_DECKS = {
         ("Skull Dice", 1),
         ("Torrential Tribute", 1),
     ],
-    "7 Trials to Glory: Advanced": [
+    "seven_trials_to_glory_advanced": [
         ("Archfiend Soldier", 3),
         ("Gemini Elf", 3),
         ("Luster Dragon #2", 3),
@@ -771,7 +771,7 @@ JOEY_DECKS = {
         ("United We Stand", 1),
         ("Ring of Destruction", 1),
     ],
-    "Warrior Max": [
+    "warrior_max": [
         ("Alligator's Sword", 1),
         ("Baby Dragon", 1),
         ("Red-Eyes Black Dragon", 2),
@@ -809,7 +809,7 @@ JOEY_DECKS = {
         ("Mirror Force", 1),
         ("Ring of Destruction", 1),
     ],
-    "Display of Courage": [
+    "display_of_courage": [
         ("Alligator's Sword", 1),
         ("Baby Dragon", 1),
         ("Red-Eyes Black Dragon", 2),
@@ -847,7 +847,7 @@ JOEY_DECKS = {
         ("Mirror Force", 1),
         ("Sakuretsu Armor", 1),
     ],
-    "Ideal Partner": [
+    "ideal_partner": [
         ("Alligator's Sword", 1),
         ("Baby Dragon", 1),
         ("Red-Eyes Black Dragon", 2),
@@ -884,7 +884,7 @@ JOEY_DECKS = {
         ("Mirror Force", 1),
         ("Widespread Ruin", 1),
     ],
-    "Dice Power": [
+    "dice_power": [
         ("Alligator's Sword", 2),
         ("Axe Raider", 2),
         ("Baby Dragon", 3),
@@ -915,7 +915,7 @@ JOEY_DECKS = {
         ("Needle Wall", 2),
         ("Skull Dice", 2),
     ],
-    "Power of Luck": [
+    "power_of_luck": [
         ("Alligator's Sword", 2),
         ("Axe Raider", 2),
         ("Baby Dragon", 3),
@@ -946,7 +946,7 @@ JOEY_DECKS = {
         ("Needle Wall", 2),
         ("Skull Dice", 1),
     ],
-    "Warrior Max v1": [
+    "warrior_max_v1": [
         ("Alligator's Sword", 2),
         ("Axe Raider", 2),
         ("Baby Dragon", 1),
@@ -984,7 +984,7 @@ JOEY_DECKS = {
         ("Magical Arm Shield", 1),
         ("Skull Dice", 2),
     ],
-    "Warrior Max v2": [
+    "warrior_max_v2": [
         ("Baby Dragon", 1),
         ("Red-Eyes Black Dragon", 1),
         ("D.D. Assailant", 2),
@@ -1022,7 +1022,7 @@ JOEY_DECKS = {
         ("Sixth Sense", 1),
         ("Skull Dice", 1),
     ],
-    "Super Warrior": [
+    "super_warrior": [
         ("Command Knight", 3),
         ("D.D. Assailant", 2),
         ("D.D. Warrior Lady", 1),
@@ -1050,7 +1050,7 @@ JOEY_DECKS = {
         ("Raigeki Break", 1),
         ("Ring of Destruction", 1),
     ],
-    "Duel Gambler": [
+    "duel_gambler": [
         ("Alligator's Sword", 1),
         ("Axe Raider", 1),
         ("Baby Dragon", 1),

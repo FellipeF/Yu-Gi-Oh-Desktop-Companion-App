@@ -1,5 +1,5 @@
 UMBRA_DECKS = {
-    "Anime": [
+    "anime": [
         ("Jellyfish", 1),
         ("Rogue Doll", 1),
         ("Shining Abyss", 1),
@@ -12,7 +12,7 @@ UMBRA_DECKS = {
         ("Masquerade [A]", 1),
         ("Spell Transfer [A]", 1),
     ],
-    "Manga": [
+    "manga": [
         ("Nuvia the Wicked", 1),
         ("Shining Abyss", 1),
         ("Masked Beast Des Gardius", 1),
@@ -20,7 +20,7 @@ UMBRA_DECKS = {
         ("Curse of the Masked Beast", 1),
         ("Mask of Impregnability [M]", 1),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Gemini Elf", 2),
         ("Labyrinth Wall", 1),
         ("Millennium Golem", 2),
@@ -51,7 +51,7 @@ UMBRA_DECKS = {
         ("Trap Hole", 1),
         ("Widespread Ruin", 1),
     ],
-    "The Sacred Cards": [
+    "the_sacred_cards": [
         ("Akakieisu", 3),
         ("Ancient Brain", 3),
         ("Claw Reacher", 3),
@@ -71,7 +71,7 @@ UMBRA_DECKS = {
         ("Monster Reborn", 1),
         ("Yami", 1),
     ],
-    "World Championship 2004": [
+    "world_championship_2004": [
         ("Dark King of the Abyss", 1),
         ("Gradius", 1),
         ("Grand Tiki Elder", 2),
@@ -97,7 +97,7 @@ UMBRA_DECKS = {
         ("Mirror Force", 1),
         ("Ring of Destruction", 2),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Grand Tiki Elder", 3),
         ("Masked Clown", 3),
         ("Melchid the Four-Face Beast", 3),
@@ -119,7 +119,7 @@ UMBRA_DECKS = {
         ("Negate Attack", 2),
         ("Widespread Ruin", 2),
     ],
-    "World Championship 2005": [
+    "world_championship_2005": [
         ("Grand Tiki Elder", 2),
         ("Summoned Skull", 3),
         ("Vorse Raider", 3),
@@ -139,7 +139,7 @@ UMBRA_DECKS = {
         ("Mirror Force", 1),
         ("Ring of Destruction", 2),
     ],
-    "Mask of Shadow": [
+    "mask_of_shadow": [
         ("Shining Abyss", 3),
         ("Breaker the Magical Warrior", 1),
         ("Kycoo the Ghost Destroyer", 1),

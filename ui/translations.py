@@ -13,6 +13,8 @@ translations = {
         "show_exclusive_cards": "Show exclusive cards",
         "no_decks_found": "No Decks Found for this Duelist",
         "card_details": "Show Card Details",
+        "spell_card": "Spell Card",
+        "trap_card": "Trap Card",
     },
     "pt": {
         "home_title": "Bem-vindo ao Banco de Dados Yu-Gi-Oh!",
@@ -27,6 +29,8 @@ translations = {
         "duelist_decks_dynamic": "Decks de {name}",
         "show_exclusive_cards": "Mostrar cartas exclusivas",
         "no_decks_found": "Nenhum Deck encontrado para atual Duelista",
-        "card_details": "Mostrar detalhes da carta"
+        "card_details": "Mostrar detalhes da carta",
+        "spell_card": "Carta Mágica",
+        "trap_card": "Carta Armadilha",
     }
 }

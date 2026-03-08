@@ -2,7 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import cache_image
 import threading
-from database.models import search_cards
+from database.queries import search_cards
 from ui.card_details_window import CardDetailsWindow
 
 CARD_WIDTH = 250
