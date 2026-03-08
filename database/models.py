@@ -1,11 +1,7 @@
 import sqlite3
 from database.database import get_connection
 from database.database import DB_NAME
-from utils.deck_specific_translation import DECK_SPECIFIC_TRANSLATION
-from utils.deck_type_translation import DECK_TYPE_TRANSLATION
-
-#TODO: Review db commits and put try except finally blocks
-#TODO: Check for performance on other methods
+from data.deck_specific_translation import DECK_SPECIFIC_TRANSLATION
 
 def search_cards(name=None, language="en"):
     conn = sqlite3.connect(DB_NAME)
@@ -48,30 +44,6 @@ def get_all_duelists():
     results = cursor.fetchall()
     conn.close()
     return results
-
-def populate_deck_type_translations():
-    """Translate Deck Types, those are anime Arcs, like Battle City, or video games one"""
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    for deck_type_name_en, language, translated_name in DECK_TYPE_TRANSLATION:
-        cursor.execute(
-            "SELECT id FROM deck_types WHERE name = ?",
-            (deck_type_name_en,)
-        )
-        row = cursor.fetchone()
-        if not row:
-            continue
-
-        deck_type_id = row[0]
-
-        cursor.execute("""
-            INSERT OR IGNORE INTO deck_type_translation (deck_type_id, language, name)
-            VALUES (?, ?, ?)
-        """, (deck_type_id, language, translated_name))
-
-    conn.commit()
-    conn.close()
 
 def populate_deck_translations():
     """Translate Duelists Specific Deck"""

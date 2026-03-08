@@ -7,7 +7,6 @@ from frames.duelists_frame import DuelistsFrame
 from frames.duelist_details_frame import DuelistDetailsFrame
 from database.database import create_tables
 from database.seed import *
-from database.models import populate_deck_type_translations
 from database.models import populate_deck_translations
 from ui.translations import translations
 from utils.resource_path import resource_path
@@ -55,7 +54,7 @@ class App(tk.Tk):
         create_tables()
         populate_cards(self.current_language)
         populate_duelists()
-        populate_decks_and_cards()
+        populate_duelists_decks()
         populate_deck_type_translations()
         populate_deck_translations()
 
