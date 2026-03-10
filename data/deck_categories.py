@@ -23,10 +23,7 @@ DECK_CATEGORIES_KEYS = [
     "world_championship_2007",
     "world_championship_2007_2",
     "na_world_championship_qualifier_2011",
-<<<<<<< HEAD
-=======
     "ycs_providence_2012",
->>>>>>> project-refactoring
     "na_world_championship_qualifiers_2012",
     "na_world_championship_qualifiers_2013",
     "na_world_championship_qualifiers_2013_special",

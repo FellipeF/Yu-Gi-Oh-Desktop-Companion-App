@@ -177,11 +177,8 @@ DECK_CATEGORIES_TRANSLATIONS = {
     },
     "seven_trials_to_glory_standard": {
         "en": "7 Trials to Glory: Standard",
-<<<<<<< HEAD
         "pt": "7 Provas para a Glória: Padrão",
-=======
         "pt": "7 Provas para a Glória: Standard",
->>>>>>> project-refactoring
     },
     "seven_trials_to_glory_advanced": {
         "en": "7 Trials to Glory: Advanced",
