@@ -1,6 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-from database.models import get_all_duelists
+from database.queries import get_all_duelists
 from utils.resource_path import resource_path
 
 class DuelistsFrame(tk.Frame):

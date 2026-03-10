@@ -8,7 +8,7 @@ DUKE_DECKS = {
         ("Limiter Removal", 1),
         ("Michizure", 1),
     ],
-    "Virtual World": [
+    "virtual_world": [
         ("Dark Assailant", 1),
         ("The 13th Grave", 1),
         ("Yaranzo", 1),
@@ -18,7 +18,7 @@ DUKE_DECKS = {
         ("Dimensionhole", 1),
         ("Dimension Dice", 1),
     ],
-    "Waking the Dragons": [
+    "waking_the_dragons": [
         ("Diamond Head Dragon [A]", 1),
         ("Orgoth the Relentless", 1),
         ("Adamantine Sword Revival [A]", 1),

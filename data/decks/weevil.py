@@ -1,5 +1,5 @@
 WEEVIL_DECKS = {
-    "Duelist Kingdom": [
+    "duelist_kingdom": [
         ("Basic Insect", 1),
         ("Big Insect", 1),
         ("Gokibore", 1),
@@ -17,7 +17,7 @@ WEEVIL_DECKS = {
         ("Parasite Worm [A]", 1),
         ("Infinite Dismissal", 1),
     ],
-    "Battle City": [
+    "battle_city": [
         ("Flying Kamakiri #2", 1),
         ("Soldier Ant [A]", 1),
         ("Cockroach Knight", 1),
@@ -37,7 +37,7 @@ WEEVIL_DECKS = {
         ("Multiplication of Ants", 1),
         ("Reckless Parasite [A]", 1),
     ],
-    "Waking the Dragons": [
+    "waking_the_dragons": [
         ("Armored Centipede [A]", 1),
         ("Insect Queen", 1),
         ("Leghul", 1),
@@ -51,12 +51,12 @@ WEEVIL_DECKS = {
         ("Infestation [A]", 1),
         ("Mimesis [A]", 1),
     ],
-    "Grand Championship": [
+    "grand_championship": [
         ("Insect Queen", 1),
         ("Pinch Hopper", 1),
         ("Eradicating Aerosol", 1),
     ],
-    "Manga - Duelist Kingdom": [
+    "manga_duelist_kingdom": [
         ("Basic Insect", 1),
         ("Big Insect", 1),
         ("Giant Flea", 1),
@@ -70,7 +70,7 @@ WEEVIL_DECKS = {
         ("Laser Cannon Armor", 1),
         ("Infinite Dismissal", 1),
     ],
-    "Duel Monsters": [
+    "duel_monsters": [
         ("Basic Insect", 1),
         ("Big Insect", 1),
         ("Giant Flea", 1),
@@ -84,7 +84,7 @@ WEEVIL_DECKS = {
         ("Wodan the Resident of the Forest", 1),
         ("Wood Clown", 1),
     ],
-    "Dark Duel Stories": [
+    "dark_duel_stories": [
         ("Aqua Snake", 3),
         ("Basic Insect", 1),
         ("Big Insect", 1),
@@ -110,7 +110,7 @@ WEEVIL_DECKS = {
         ("Laser Cannon Armor", 2),
         ("Insect Armor with Laser Cannon", 2),
     ],
-    "Battle of Great Duelist": [
+    "battle_of_great_duelist": [
         ("Basic Insect", 3),
         ("Bladefly", 3),
         ("Dragon Pirate Soldier", 2),
@@ -132,7 +132,7 @@ WEEVIL_DECKS = {
         ("Insect Armor with Laser Cannon", 1),
         ("Infinite Dismissal", 1),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Flying Kamakiri #2", 3),
         ("Gemini Elf", 2),
         ("Gokibore", 2),
@@ -160,7 +160,7 @@ WEEVIL_DECKS = {
         ("Magic Jammer", 2),
         ("Mirror Force", 1),
     ],
-    "The Duelist of the Roses": [
+    "the_duelist_of_the_roses": [
         ("Basic Insect", 1),
         ("Big Insect", 1),
         ("Giant Flea", 1),
@@ -191,7 +191,7 @@ WEEVIL_DECKS = {
         ("Infinite Dismissal", 2),
         ("Negate Attack", 1),
     ],
-    "Worldwide Edition: Stairway to the Destined Duel": [
+    "worldwide_edition_stairway_to_the_destined_duel": [
         ("Acid Crawler", 1),
         ("Alinsection", 1),
         ("Flying Kamakiri #2", 3),
@@ -223,7 +223,7 @@ WEEVIL_DECKS = {
         ("Mirror Force", 1),
         ("Torrential Tribute", 1),
     ],
-    "The Sacred Cards": [
+    "the_sacred_cards": [
         ("Basic Insect", 3),
         ("Bladefly", 3),
         ("Gale Dogra", 3),
@@ -243,7 +243,7 @@ WEEVIL_DECKS = {
         ("Fake Trap", 1),
         ("Infinite Dismissal", 1),
     ],
-    "Reshef of Destruction": [
+    "reshef_of_destruction": [
         ("Basic Insect", 3),
         ("Big Insect", 2),
         ("Drill Bug", 2),
@@ -269,7 +269,7 @@ WEEVIL_DECKS = {
         ("Laser Cannon Armor", 2),
         ("Infinite Dismissal", 2),
     ],
-    "Reshef of Destruction (2)": [
+    "reshef_of_destruction_2": [
         ("Big Insect", 2),
         ("Cocoon of Evolution", 3),
         ("Flying Kamakiri #1", 2),
@@ -292,7 +292,7 @@ WEEVIL_DECKS = {
         ("Infinite Dismissal", 2),
         ("Invisible Wire [G]", 1),
     ],
-    "Reshef of Destruction (3)": [
+    "reshef_of_destruction_3": [
         ("Big Insect", 2),
         ("Cocoon of Evolution", 2),
         ("Flying Kamakiri #1", 2),
@@ -312,7 +312,7 @@ WEEVIL_DECKS = {
         ("Swords of Revealing Light", 3),
         ("Infinite Dismissal", 3),
     ],
-    "Imposter": [
+    "imposter": [
         ("Bean Soldier", 3),
         ("Darkworld Thorns", 3),
         ("Drill Bug", 3),
@@ -331,7 +331,7 @@ WEEVIL_DECKS = {
         ("Vile Germs", 2),
         ("Acid Trap Hole", 2),
     ],
-    "Insects": [
+    "insects": [
         ("Crawling Dragon", 1),
         ("Empress Mantis", 2),
         ("Kageningen", 1),
@@ -362,7 +362,7 @@ WEEVIL_DECKS = {
         ("Torrential Tribute", 2),
         ("Trap Hole", 3),
     ],
-    "Insect Removal": [
+    "insect_removal": [
         ("Dragon Statue", 1),
         ("Empress Mantis", 2),
         ("Grand Tiki Elder", 1),
@@ -392,7 +392,7 @@ WEEVIL_DECKS = {
         ("Torrential Tribute", 1),
         ("Trap Hole", 3),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Acid Crawler", 1),
         ("Basic Insect", 2),
         ("Big Insect", 2),
@@ -427,7 +427,7 @@ WEEVIL_DECKS = {
         ("Trap Hole", 2),
         ("Widespread Ruin", 2),
     ],
-    "Insect": [
+    "insect": [
         ("Basic Insect", 1),
         ("Big Insect", 1),
         ("Giant Flea", 2),
@@ -460,7 +460,7 @@ WEEVIL_DECKS = {
         ("Pineapple Blast", 1),
         ("Trap Hole", 1),
     ],
-    "Bug Swarm": [
+    "bug_swarm": [
         ("Big Insect", 1),
         ("Giant Flea", 2),
         ("Gokibore", 1),
@@ -490,7 +490,7 @@ WEEVIL_DECKS = {
         ("Ring of Destruction", 1),
         ("Trap Hole", 1),
     ],
-    "Bug Queen": [
+    "bug_queen": [
         ("A Cat of Ill Omen", 1),
         ("Cocoon of Evolution", 2),
         ("Giant Rat", 1),
@@ -519,7 +519,7 @@ WEEVIL_DECKS = {
         ("Dust Tornado", 1),
         ("Sixth Sense", 1),
     ],
-    "Ancient Forest of Origin": [
+    "ancient_forest_of_origin": [
         ("Cockroach Knight", 1),
         ("Larvae Moth", 1),
         ("Petit Moth", 1),

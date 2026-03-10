@@ -1,5 +1,5 @@
 SOLOMON_MUTO_DECKS = {
-    "Grandpa": [
+    "grandpa": [
         ("Battle Steer", 1),
         ("Beaver Warrior", 1),
         ("Celtic Guardian", 1),
@@ -59,7 +59,7 @@ SOLOMON_MUTO_DECKS = {
         ("Mirror Force", 1),
         ("Spellbinding Circle", 1),
     ],
-    "Grand Championship": [
+    "grand_championship": [
         ("Ancient Dragon", 1),
         ("Ancient Giant [A]", 1),
         ("Sinister Serpent", 1),
@@ -75,11 +75,11 @@ SOLOMON_MUTO_DECKS = {
         ("Ordeal of a Traveler", 1),
         ("The Legendary Gambler [A]", 1),
     ],
-    "Capsule Monsters": [
+    "capsule_monsters": [
         ("Curse of Dragon", 1),
         ("Summoned Skull", 1),
     ],
-    "World Championship Qualifier 2024": [
+    "world_championship_qualifier_2024": [
         ("Left Arm of the Forbidden One", 1),
         ("Left Leg of the Forbidden One", 1),
         ("Right Arm of the Forbidden One", 1),
@@ -97,7 +97,7 @@ SOLOMON_MUTO_DECKS = {
         ("Wedju Temple", 1),
         ("Exxod Fires of Rage", 1),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Blue-Eyes White Dragon", 1),
         ("Gazelle the King of Mythical Beasts", 1),
         ("Gemini Elf", 3),
@@ -128,7 +128,7 @@ SOLOMON_MUTO_DECKS = {
         ("Spellbinding Circle", 2),
         ("White Hole", 1),
     ],
-    "Worldwide Edition: Stairway to the Destined Duel": [
+    "worldwide_edition_stairway_to_the_destined_duel": [
         ("Left Arm of the Forbidden One", 1),
         ("Left Leg of the Forbidden One", 1),
         ("Prisman", 1),
@@ -184,7 +184,7 @@ SOLOMON_MUTO_DECKS = {
         ("Torrential Tribute", 2),
         ("Trap Hole", 3),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Akakieisu", 1),
         ("Ancient Sorcerer", 1),
         ("Aqua Madoor", 1),
@@ -224,7 +224,7 @@ SOLOMON_MUTO_DECKS = {
         ("Torrential Tribute", 2),
         ("Trap Hole", 2),
     ],
-    "Casket Guardian": [
+    "casket_guardian": [
         ("Firewing Pegasus", 1),
         ("Horn Imp", 3),
         ("Left Arm of the Forbidden One", 1),
@@ -250,7 +250,7 @@ SOLOMON_MUTO_DECKS = {
         ("Ordeal of a Traveler", 2),
         ("Tutan Mask", 1),
     ],
-    "Ancient Pharaoh v1": [
+    "ancient_pharaoh_v1": [
         ("Firewing Pegasus", 1),
         ("Horn Imp", 3),
         ("Left Arm of the Forbidden One", 1),
@@ -276,7 +276,7 @@ SOLOMON_MUTO_DECKS = {
         ("Ordeal of a Traveler", 2),
         ("Tutan Mask", 1),
     ],
-    "Ancient Pharaoh v2": [
+    "ancient_pharaoh_v2": [
         ("Left Arm of the Forbidden One", 1),
         ("Left Leg of the Forbidden One", 1),
         ("Right Arm of the Forbidden One", 1),
@@ -303,7 +303,7 @@ SOLOMON_MUTO_DECKS = {
         ("Non Aggression Area", 2),
         ("Ordeal of a Traveler", 2),
     ],
-    "Apnarg Tactics": [
+    "apnarg_tactics": [
         ("Firewing Pegasus", 1),
         ("Horn Imp", 3),
         ("Left Arm of the Forbidden One", 1),

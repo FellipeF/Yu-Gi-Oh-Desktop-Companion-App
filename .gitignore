@@ -10,8 +10,7 @@ dist/
 *.spec
 
 # Cache / generated files
-cards_en.json
-cards_pt.json
+cache/
 images/cards
 yugi.db
 

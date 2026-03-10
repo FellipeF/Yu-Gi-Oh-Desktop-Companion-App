@@ -3,7 +3,7 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 import threading
 import cache_image
-from database.models import get_decks_by_duelist
+from database.queries import get_decks_by_duelist
 from utils.resource_path import resource_path
 from ui.card_details_window import CardDetailsWindow
 from ui.tooltip import Tooltip
@@ -143,7 +143,7 @@ class DuelistDetailsFrame(tk.Frame):
         self.image_label.config(image="", text=self.controller.t("select_card"))
 
         self.decks_data = get_decks_by_duelist(self.current_duelist_id,
-                                               language=self.controller.current_language,
+                                               self.controller.current_language,
                                                show_exclusive_cards=self.show_exclusive_cards.get()
                                                )
 
@@ -219,7 +219,7 @@ class DuelistDetailsFrame(tk.Frame):
             return
 
         self.decks_data = get_decks_by_duelist(self.current_duelist_id,
-                                     language=self.controller.current_language,
+                                     self.controller.current_language,
                                      show_exclusive_cards = self.show_exclusive_cards.get()
                                      )
 

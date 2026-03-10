@@ -1,5 +1,5 @@
 ARKANA_DECKS = {
-    "Anime": [
+    "anime": [
         ("Dark Magician", 3),
         ("Malice Doll of Demise", 2),
         ("Legion the Fiend Jester", 1),
@@ -15,7 +15,7 @@ ARKANA_DECKS = {
         ("Nightmare's Chains [A]", 1),
         ("Shadow Balance [A]", 1),
     ],
-    "Dark Duel Stories": [
+    "dark_duel_stories": [
         ("Dark Magician", 3),
         ("Malice Doll of Demise", 3),
         ("Leo Wizard", 3),
@@ -31,7 +31,7 @@ ARKANA_DECKS = {
         ("Dark Hole", 1),
         ("Yami", 3),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Dark Magician", 3),
         ("Dark Rabbit", 1),
         ("Giant Soldier of Stone", 3),
@@ -58,7 +58,7 @@ ARKANA_DECKS = {
         ("Mirror Force", 1),
         ("Seven Tools of the Bandit", 1),
     ],
-    "Reshef of Destruction": [
+    "reshef_of_destruction": [
         ("Ancient Elf", 3),
         ("Big Eye", 3),
         ("Dark Magician", 3),
@@ -75,7 +75,7 @@ ARKANA_DECKS = {
         ("Yami", 2),
         ("Bear Trap [G]", 2),
     ],
-    "World Championship 2004": [
+    "world_championship_2004": [
         ("Barrel Lily", 1),
         ("Corroding Shark", 1),
         ("Dark Magician", 3),
@@ -100,7 +100,7 @@ ARKANA_DECKS = {
         ("Negate Attack", 1),
         ("Ring of Destruction", 3),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Aqua Madoor", 3),
         ("Dark Magician", 3),
         ("Illusionist Faceless Mage", 2),
@@ -121,7 +121,7 @@ ARKANA_DECKS = {
         ("Trap Hole", 3),
         ("Widespread Ruin", 3),
     ],
-    "World Championship 2005": [
+    "world_championship_2005": [
         ("Archfiend Soldier", 3),
         ("Dark Magician", 3),
         ("Gemini Elf", 3),
@@ -137,7 +137,7 @@ ARKANA_DECKS = {
         ("Torrential Tribute", 3),
         ("Trap Hole", 3),
     ],
-    "Sleight of Hand": [
+    "sleight_of_hand": [
         ("Aqua Madoor", 2),
         ("Dark Magician", 3),
         ("Gemini Elf", 1),

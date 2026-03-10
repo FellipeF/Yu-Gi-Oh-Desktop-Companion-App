@@ -67,6 +67,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Máscara da Luz",
         },
     },
+<<<<<<< HEAD
     "Mai Valentine": {
         "harpie": {
             "en": "Harpie",
@@ -101,6 +102,8 @@ DUELISTS_DECKS_KEYS = {
             "pt": "A Justiça Contra-Ataca!!",
         },
     },
+=======
+>>>>>>> project-refactoring
     "Maximillion Pegasus": {
         "toonized": {
             "en": "Toonized",

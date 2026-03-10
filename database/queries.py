@@ -1,12 +1,17 @@
 from database.database import get_connection
 
 def search_cards(name: str | None = None, language: str = "en") -> list[tuple]:
+<<<<<<< HEAD
     """Search cards, filtered by language. Also implements fallback in case selected language doesn't have a translation
     for the card"""
+=======
+    """Search cards, filtered by language"""
+>>>>>>> project-refactoring
     conn = get_connection()
     cursor = conn.cursor()
 
     query = """
+<<<<<<< HEAD
         SELECT cards.id, 
             COALESCE (cards_translations_lang.name, cards_translations_en.name) AS resolved_name
         FROM cards
@@ -17,14 +22,28 @@ def search_cards(name: str | None = None, language: str = "en") -> list[tuple]:
             ON cards.id = cards_translations_en.card_id
             AND cards_translations_en.language_code = 'en'
         WHERE COALESCE (cards_translations_lang.name, cards_translations_en.name) IS NOT NULL
+=======
+        SELECT cards.id, cards_translations.name
+        FROM cards
+        JOIN cards_translations
+        ON cards.id = cards_translations.card_id
+        WHERE cards_translations.language_code = ?
+>>>>>>> project-refactoring
     """
     params = [language]
 
     if name:
+<<<<<<< HEAD
         query += " AND COALESCE (cards_translations_lang.name, cards_translations_en.name) LIKE ? COLLATE NOCASE"
         params.append(f"%{name}%")
 
     query += " ORDER BY COALESCE (cards_translations_lang.name, cards_translations_en.name) COLLATE NOCASE"
+=======
+        query += " AND cards_translations.name LIKE ? COLLATE NOCASE"
+        params.append(f"%{name}%")
+
+    query += " ORDER BY cards_translations.name COLLATE NOCASE"
+>>>>>>> project-refactoring
 
     try:
         cursor.execute(query, params)

@@ -1,5 +1,5 @@
 LEON_DECK = {
-    "Fairy Tale": [
+    "fairy_tale": [
         ("Tom Thumb [A]", 1),
         ("Prinzessin", 1),
         ("Forest Hunter [A]", 1),

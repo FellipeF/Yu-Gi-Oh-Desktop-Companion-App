@@ -1,5 +1,5 @@
 TRISTAN_DECKS = {
-    "Virtual World": [
+    "virtual_world": [
         ("Cyber Commander", 1),
         ("Launcher Spider", 1),
         ("Sengenjin", 1),
@@ -11,7 +11,7 @@ TRISTAN_DECKS = {
         ("Rare Metal Soul [A]", 1),
         ("The A. Forces", 1),
     ],
-    "The Big Five": [
+    "the_big_five": [
         ("Judge Man", 1),
         ("Robotic Knight", 1),
         ("Berserk Dragon", 1),
@@ -40,7 +40,7 @@ TRISTAN_DECKS = {
         ("Driving Snow", 1),
         ("Gravity Bind", 1),
     ],
-    "Possessed": [
+    "possessed": [
         ("Doomcaliber Knight", 1),
         ("Necro Mannequin [A]", 3),
         ("Disgraced Mage [A]", 1),
@@ -57,18 +57,18 @@ TRISTAN_DECKS = {
         ("Necro Cycle [A]", 1),
         ("Zoma the Spirit", 1),
     ],
-    "Dawn of the Duel": [
+    "dawn_of_the_duel": [
         ("Gagagigo", 1),
         ("Lava Battleguard", 1),
         ("Swamp Battleguard", 1),
         ("Super Roboyarou", 1),
     ],
-    "Capsule Monsters": [
+    "capsule_monsters": [
         ("Thunder Kid", 1),
         ("Thunder Dragon", 1),
         ("Shovel Crusher", 1),
     ],
-    "Dark Duel Stories": [
+    "dark_duel_stories": [
         ("Armed Ninja", 2),
         ("Dark-Eyes Illusionist", 3),
         ("Kattapillar", 3),
@@ -84,7 +84,7 @@ TRISTAN_DECKS = {
         ("Monster Eye", 3),
         ("Relinquished", 3),
     ],
-    "The Sacred Cards": [
+    "the_sacred_cards": [
         ("Bat", 3),
         ("Dancing Elf", 3),
         ("Dark-Eyes Illusionist", 1),
@@ -100,7 +100,7 @@ TRISTAN_DECKS = {
         ("Thousand-Eyes Idol", 1),
         ("Zone Eater", 3),
     ],
-    "Reshef of Destruction": [
+    "reshef_of_destruction": [
         ("Ameba", 3),
         ("Ancient Jar", 1),
         ("Armed Ninja", 3),
@@ -118,7 +118,7 @@ TRISTAN_DECKS = {
         ("The Unhappy Maiden", 3),
         ("Zone Eater", 3),
     ],
-    "World Championship 2004": [
+    "world_championship_2004": [
         ("30,000-Year White Turtle", 1),
         ("Basic Insect", 1),
         ("Bolt Escargot", 1),
@@ -160,7 +160,7 @@ TRISTAN_DECKS = {
         ("Sword of Deep-Seated", 1),
         ("United We Stand", 1),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Armaill", 2),
         ("Armored Rat", 1),
         ("Battle Ox", 1),

@@ -1,5 +1,5 @@
 KAIBA_DECKS = {
-    "Toei - First Series": [
+    "toei_first_series": [
         ("Battle Ox", 1),
         ("Blue-Eyes White Dragon", 3),
         ("Blue-Eyes White Dragon's 3-Body Connection [A]", 1),
@@ -15,7 +15,7 @@ KAIBA_DECKS = {
         ("Stop Defense", 1),
         ("Wicked Chain", 1),
     ],
-    "Childhood Deck": [
+    "childhood_deck": [
         ("Baby Dragon", 1),
         ("Basic Insect", 1),
         ("Blue-Eyes White Dragon", 1),
@@ -25,7 +25,7 @@ KAIBA_DECKS = {
         ("The Furious Sea King", 1),
         ("Torike", 1),
     ],
-    "Duelist Kingdom": [
+    "duelist_kingdom": [
         ("Aqua Madoor", 1),
         ("Battle Ox", 1),
         ("Blue-Eyes White Dragon", 3),
@@ -58,7 +58,7 @@ KAIBA_DECKS = {
         ("Crush Card Virus", 1),
         ("Stop Defense", 1),
     ],
-    "Test Deck": [
+    "test_deck": [
         ("Battle Ox", 1),
         ("Hitotsu-Me Giant", 1),
         ("Boar Soldier", 1),
@@ -68,7 +68,7 @@ KAIBA_DECKS = {
         ("Maha Vailo", 1),
         ("Obelisk the Tormentor", 1),
     ],
-    "Battle City": [
+    "battle_city": [
         ("Battle Ox", 1),
         ("Blue-Eyes White Dragon", 3),
         ("Des Feral Imp", 1),
@@ -125,7 +125,7 @@ KAIBA_DECKS = {
         ("Power Balance [A]", 1),
         ("Ring of Destruction", 1),
     ],
-    "Virtual World": [
+    "virtual_world": [
         ("Blue-Eyes White Dragon", 3),
         ("Hyozanryu", 1),
         ("La Jinn the Mystical Genie of the Lamp", 1),
@@ -170,7 +170,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 1),
         ("Soul Demolition", 1),
     ],
-    "Waking the Dragons": [
+    "waking_the_dragons": [
         ("Blue-Eyes White Dragon", 3),
         ("Gadget Soldier", 1),
         ("Judge Man", 1),
@@ -214,7 +214,7 @@ KAIBA_DECKS = {
         ("Tyrant Wing", 1),
         ("Wish of Final Effort [A]", 1),
     ],
-    "Grand Championship": [
+    "grand_championship": [
         ("Blue-Eyes White Dragon", 3),
         ("Luster Dragon #2", 1),
         ("X-Head Cannon", 1),
@@ -244,7 +244,7 @@ KAIBA_DECKS = {
         ("Flat Lv 4 [A]", 1),
         ("Magical Trick Mirror", 1),
     ],
-    "Dawn of the Duel": [
+    "dawn_of_the_duel": [
         ("Blue-Eyes White Dragon", 3),
         ("Vorse Raider", 1),
         ("Lord of D.", 1),
@@ -259,7 +259,7 @@ KAIBA_DECKS = {
         ("Attack Guidance Armor", 1),
         ("Cloning", 1),
     ],
-    "First Briefcase": [
+    "first_briefcase": [
         ("Air Eater", 1),
         ("Anthrosaurus", 1),
         ("B. Dragon Jungle King", 1),
@@ -286,7 +286,7 @@ KAIBA_DECKS = {
         ("Red Medicine", 1),
         ("Remove Trap", 1),
     ],
-    "Second Briefcase": [
+    "second_briefcase": [
         ("Armored Lizard", 1),
         ("Axe Raider", 1),
         ("Basic Insect", 1),
@@ -321,7 +321,7 @@ KAIBA_DECKS = {
         ("Laser Cannon Armor", 1),
         ("Stop Defense", 1),
     ],
-    "Third Briefcase": [
+    "third_briefcase": [
         ("Alligator's Sword", 1),
         ("Gyakutenno Megami", 1),
         ("Hyozanryu", 1),
@@ -341,7 +341,7 @@ KAIBA_DECKS = {
         ("Skull Dice", 1),
         ("Tears of a Mermaid [A]", 1),
     ],
-    "Fourth Briefcase": [
+    "fourth_briefcase": [
         ("Blue-Eyes White Dragon", 1),
         ("Curse of Dragon", 1),
         ("Vorse Raider", 2),
@@ -376,7 +376,7 @@ KAIBA_DECKS = {
         ("Negate Attack", 1),
         ("Ring of Destruction", 1),
     ],
-    "Fifth Briefcase": [
+    "fifth_briefcase": [
         ("Beast of Talwar", 1),
         ("Dark Blade", 1),
         ("Black Tyranno", 1),
@@ -408,7 +408,7 @@ KAIBA_DECKS = {
         ("Sixth Sense", 1),
         ("Spell Shield Type-8", 1),
     ],
-    "Early Manga": [
+    "early_manga": [
         ("Battle Ox", 1),
         ("Blue-Eyes White Dragon", 3),
         ("Hitotsu-me Giant", 1),
@@ -419,7 +419,7 @@ KAIBA_DECKS = {
         ("Dark Energy", 1),
         ("Megamorph", 1),
     ],
-    "Manga - Duelist Kingdom": [
+    "manga_duelist_kingdom": [
         ("Battle Ox", 1),
         ("Blue-Eyes White Dragon", 3),
         ("Grappler", 1),
@@ -443,14 +443,14 @@ KAIBA_DECKS = {
         ("Stop Defense", 1),
         ("Crush Card Virus", 1),
     ],
-    "Manga - Test Deck": [
+    "manga_test_deck": [
         ("Invitation to a Dark Sleep", 1),
         ("Steel Ogre Grotto #2", 1),
         ("Obelisk the Tormentor", 1),
         ("Monster Reborn", 1),
         ("Negate Attack", 1),
     ],
-    "Manga - Battle City": [
+    "manga_battle_city": [
         ("Blade Knight", 1),
         ("Blue-Eyes White Dragon", 3),
         ("Des Feral Imp", 1),
@@ -530,7 +530,7 @@ KAIBA_DECKS = {
         ("White Dragon Ritual", 1),
         ("Crush Card Virus", 1),
     ],
-    "Pyramid of Light": [
+    "pyramid_of_light": [
         ("Blue-Eyes White Dragon", 3),
         ("Luster Dragon", 2),
         ("Vorse Raider", 1),
@@ -571,7 +571,7 @@ KAIBA_DECKS = {
         ("Return from the Different Dimension", 1),
         ("Ring of Destruction", 1),
     ],
-    "The Dark Side of Dimensions": [
+    "the_dark_side_of_dimensions": [
         ("Blue-Eyes White Dragon", 3),
         ("Saggi the Dark Clown", 1),
         ("Assault Wyvern", 1),
@@ -595,7 +595,7 @@ KAIBA_DECKS = {
         ("Induced Explosion", 1),
         ("Krystal Avatar", 1),
     ],
-    "North American World Championship Qualifiers 2012": [
+    "na_world_championship_qualifiers_2012": [
         ("Alexandrite Dragon", 1),
         ("Battle Ox", 1),
         ("Blue-Eyes White Dragon", 3),
@@ -619,7 +619,7 @@ KAIBA_DECKS = {
         ("Negate Attack", 1),
         ("Soul Demolition", 1),
     ],
-    "North American World Championship Qualifiers 2013": [
+    "na_world_championship_qualifiers_2013": [
         ("Blue-Eyes White Dragon", 3),
         ("Hitotsu-me Giant", 1),
         ("La Jinn the Mystical Genie of the Lamp", 1),
@@ -650,7 +650,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 1),
         ("Shadow Spell", 1),
     ],
-    "World Championship 2016 Special": [
+    "world_championship_2016_special": [
         ("Alexandrite Dragon", 1),
         ("Blue-Eyes White Dragon", 3),
         ("Luster Dragon", 1),
@@ -688,7 +688,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 1),
         ("Shadow Spell", 1),
     ],
-    "World Championship 2019 Special": [
+    "world_championship_2019_special": [
         ("Blue-Eyes White Dragon", 3),
         ("Luster Dragon #2", 1),
         ("Blue-Eyes Alternative White Dragon", 1),
@@ -731,7 +731,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 1),
         ("Shadow Spell", 1),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Blue-Eyes White Dragon", 3),
         ("Hyozanryu", 1),
         ("Koumori Dragon", 3),
@@ -759,7 +759,7 @@ KAIBA_DECKS = {
         ("Mirror Force", 1),
         ("Solemn Judgment", 1),
     ],
-    "Worldwide Edition: Stairway to the Destined Duel": [
+    "worldwide_edition_stairway_to_the_destined_duel": [
         ("Blue-Eyes White Dragon", 3),
         ("Cyber-Tech Alligator", 2),
         ("Gadget Soldier", 2),
@@ -785,12 +785,12 @@ KAIBA_DECKS = {
         ("Mirror Force", 1),
         ("Negate Attack", 2),
     ],
-    "The Falsebound Kingdom - Starter": [
+    "the_falsebound_kingdom_starter": [
         ("Crawling Dragon", 1),
         ("Hitotsu-Me Giant", 1),
         ("Saggi the Dark Clown", 1),
     ],
-    "The Sacred Cards": [
+    "the_sacred_cards": [
         ("Blue-Eyes White Dragon", 3),
         ("Fairy Dragon", 3),
         ("Grappler", 3),
@@ -812,7 +812,7 @@ KAIBA_DECKS = {
         ("Crush Card Virus", 1),
         ("Widespread Ruin", 1),
     ],
-    "World Championship 2004": [
+    "world_championship_2004": [
         ("Blue-Eyes White Dragon", 3),
         ("Cyber-Tech Alligator", 2),
         ("Vorse Raider", 3),
@@ -839,7 +839,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 2),
         ("Torrential Tribute", 1),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Blue-Eyes White Dragon", 3),
         ("Cyber-Tech Alligator", 3),
         ("Hitotsu-Me Giant", 1),
@@ -872,7 +872,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 1),
         ("Torrential Tribute", 1),
     ],
-    "Reshef of Destruction": [
+    "reshef_of_destruction": [
         ("Blue-Eyes White Dragon", 3),
         ("Steel Ogre Grotto #2", 1),
         ("Swordstalker", 1),
@@ -898,7 +898,7 @@ KAIBA_DECKS = {
         ("Crush Card Virus", 2),
         ("Shadow Spell", 2),
     ],
-    "Reshef of Destruction (2)": [
+    "reshef_of_destruction_2": [
         ("Blue-Eyes White Dragon", 3),
         ("Vorse Raider", 3),
         ("X-Head Cannon", 3),
@@ -922,7 +922,7 @@ KAIBA_DECKS = {
         ("Swords of Revealing Light", 3),
         ("Torrential Tribute", 3),
     ],
-    "7 Trials to Glory: Standard": [
+    "seven_trials_to_glory_standard": [
         ("Archfiend Soldier", 3),
         ("Blue-Eyes White Dragon", 3),
         ("Cyber-Tech Alligator", 3),
@@ -954,7 +954,7 @@ KAIBA_DECKS = {
         ("Trap Hole", 1),
         ("Call of the Haunted", 1),
     ],
-    "7 Trials to Glory: Advanced": [
+    "seven_trials_to_glory_advanced": [
         ("Archfiend Soldier", 3),
         ("Beast of Talwar", 1),
         ("Blue-Eyes White Dragon", 3),
@@ -1016,7 +1016,7 @@ KAIBA_DECKS = {
         ("Negate Attack", 2),
         ("Ring of Destruction", 1),
     ],
-    "Blue-Eyes Burst": [
+    "blue_eyes_burst": [
         ("Blue-Eyes White Dragon", 3),
         ("La Jinn the Mystical Genie of the Lamp", 2),
         ("Vorse Raider", 3),
@@ -1048,7 +1048,7 @@ KAIBA_DECKS = {
         ("Soul Resurrection", 1),
         ("Trap Jammer", 1),
     ],
-    "Fist of Fury": [
+    "fist_of_fury": [
         ("Cyber-Tech Alligator", 2),
         ("La Jinn the Mystical Genie of the Lamp", 2),
         ("Vorse Raider", 3),
@@ -1077,7 +1077,7 @@ KAIBA_DECKS = {
         ("Soul Resurrection", 1),
         ("Trap Jammer", 1),
     ],
-    "Kaiser Impact": [
+    "kaiser_impact": [
         ("Blue-Eyes White Dragon", 2),
         ("Vorse Raider", 2),
         ("X-Head Cannon", 2),
@@ -1111,7 +1111,7 @@ KAIBA_DECKS = {
         ("Sakuretsu Armor", 1),
         ("Trap Jammer", 1),
     ],
-    "Obelisk Impact": [
+    "obelisk_impact": [
         ("Cyber-Tech Alligator", 2),
         ("La Jinn the Mystical Genie of the Lamp", 2),
         ("Vorse Raider", 3),
@@ -1144,7 +1144,7 @@ KAIBA_DECKS = {
         ("Blue-Eyes White Dragon", 1),
         ("Crush Card Virus", 1),
     ],
-    "World Championship 2007": [
+    "world_championship_2007": [
         ("La Jinn the Mystical Genie of the Lamp", 2),
         ("Vorse Raider", 3),
         ("D.D. Assailant", 1),
@@ -1177,7 +1177,7 @@ KAIBA_DECKS = {
         ("Ring of Destruction", 1),
         ("Ultimate Offering", 1),
     ],
-    "World Championship Tournament 2007 (2)": [
+    "world_championship_2007_2": [
         ("Blue-Eyes White Dragon", 3),
         ("La Jinn the Mystical Genie of the Lamp", 2),
         ("Vorse Raider", 3),
@@ -1208,7 +1208,7 @@ KAIBA_DECKS = {
         ("Raigeki Break", 1),
         ("Ring of Destruction", 1),
     ],
-    "Ruinous Beast": [
+    "ruinous_beast": [
         ("Blue-Eyes White Dragon", 3),
         ("La Jinn the Mystical Genie of the Lamp", 2),
         ("Vorse Raider", 3),
@@ -1236,7 +1236,7 @@ KAIBA_DECKS = {
         ("Mirror Force", 1),
         ("Sakuretsu Armor", 2),
     ],
-    "Noble Soul": [
+    "noble_soul": [
         ("Blue-Eyes White Dragon", 3),
         ("La Jinn the Mystical Genie of the Lamp", 2),
         ("Vorse Raider", 3),
@@ -1267,7 +1267,7 @@ KAIBA_DECKS = {
         ("Raigeki Break", 1),
         ("Widespread Ruin", 1),
     ],
-    "Online Duel Accelerator": [
+    "online_duel_accelerator": [
         ("Blue-Eyes White Dragon", 3),
         ("Divine Dragon Ragnarok", 3),
         ("Axe Dragonute", 2),
@@ -1290,7 +1290,7 @@ KAIBA_DECKS = {
         ("Crush Card Virus", 1),
         ("Ring of Destruction", 1),
     ],
-    "Pulse of Trishula": [
+    "pulse_of_trishula": [
         ("Blue-Eyes White Dragon", 3),
         ("Kaibaman", 1),
         ("King of the Swamp", 1),

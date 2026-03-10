@@ -1,5 +1,5 @@
-TÉA_GARDNER_DECKS = {
-    "Duelist Kingdom": [
+TEA_GARDNER_DECKS = {
+    "duelist_kingdom": [
         ("Fairy's Gift", 2),
         ("Happy Lover", 1),
         ("Petit Angel", 2),
@@ -11,7 +11,7 @@ TÉA_GARDNER_DECKS = {
         ("Silver Bow and Arrow", 1),
         ("Waboku", 1),
     ],
-    "Virtual World": [
+    "virtual_world": [
         ("Ancient Elf", 1),
         ("Gemini Elf", 1),
         ("Petit Angel", 1),
@@ -30,12 +30,12 @@ TÉA_GARDNER_DECKS = {
         ("Michizure", 1),
         ("Mirror Force", 1),
     ],
-    "Capsule Monsters": [
+    "capsule_monsters": [
         ("Dark Witch", 1),
         ("Happy Lover", 1),
         ("Seiyaryu", 1),
     ],
-    "The Eternal Duelist Soul": [
+    "the_eternal_duelist_soul": [
         ("Beautiful Headhuntress", 1),
         ("Beaver Warrior", 1),
         ("Cyber-Tech Alligator", 1),
@@ -72,7 +72,7 @@ TÉA_GARDNER_DECKS = {
         ("Monster Reborn", 1),
         ("Raigeki", 1),
     ],
-    "Worldwide Edition: Stairway to the Destined Duel": [
+    "worldwide_edition_stairway_to_the_destined_duel": [
         ("Ancient Elf", 2),
         ("Beautiful Headhuntress", 3),
         ("Dancing Elf", 1),
@@ -98,7 +98,7 @@ TÉA_GARDNER_DECKS = {
         ("Swords of Revealing Light", 1),
         ("Magic Jammer", 1),
     ],
-    "Life Point Recovery": [
+    "life_point_recovery": [
         ("Archfiend Marmot of Nefariousness", 1),
         ("Flame Viper", 1),
         ("Haniwa", 1),
@@ -132,7 +132,7 @@ TÉA_GARDNER_DECKS = {
         ("Numinous Healer", 3),
         ("Solemn Wishes", 1),
     ],
-    "The Dawn of Destiny": [
+    "the_dawn_of_destiny": [
         ("Amazon of the Seas", 2),
         ("Ancient Elf", 1),
         ("Arlownay", 1),
@@ -174,7 +174,7 @@ TÉA_GARDNER_DECKS = {
         ("Solemn Wishes", 1),
         ("Trap Hole", 1),
     ],
-    "Magic Stage!": [
+    "magic_stage": [
         ("Mokey Mokey", 3),
         ("Wattkid", 3),
         ("Petit Moth", 3),
@@ -197,7 +197,7 @@ TÉA_GARDNER_DECKS = {
         ("Pikeru's Circle of Enchantment", 2),
         ("Solemn Wishes", 2),
     ],
-    "Dance Groove": [
+    "dance_groove": [
         ("Dark Magician", 1),
         ("Mokey Mokey", 3),
         ("Wattkid", 2),
