@@ -20,13 +20,13 @@ DUELISTS = [
     ("Duke Devlin", "images/duelists/duke.webp"),
     ("Arkana", "images/duelists/arkana.png"),
     ("Weevil Underwood", "images/duelists/weevil.png"),
+    ("Mai Valentine", "images/duelists/mai.png"),
     # =========================
     # TODO: Below
     # =========================
     ("Yami Yugi", "images/duelists/placeholder.webp"), #TODO - Check what decks are exclusive to him
     ("Mokuba Kaiba", "images/duelists/placeholder.webp"),
     ("Serenity Wheeler", "images/duelists/placeholder.webp"),
-    ("Mai Valentine", "images/duelists/placeholder.webp"),
     ("Bakura Ryou", "images/duelists/placeholder.webp"),
     ("Yami Bakura", "images/duelists/placeholder.webp"),
     ("Shadi", "images/duelists/placeholder.webp"),
