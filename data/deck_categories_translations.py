@@ -178,7 +178,6 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "seven_trials_to_glory_standard": {
         "en": "7 Trials to Glory: Standard",
         "pt": "7 Provas para a Glória: Padrão",
-        "pt": "7 Provas para a Glória: Standard",
     },
     "seven_trials_to_glory_advanced": {
         "en": "7 Trials to Glory: Advanced",
@@ -211,6 +210,26 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "the_duelist_of_the_roses": {
         "en": "The Duelist of the Roses",
         "pt": "O Duelista das Rosas",
+    },
+    "duel_arena": {
+        "en": "Duel Arena",
+        "pt": "Arena de Duelo",
+    },
+    "yu-gi_oh_r": {
+        "en": "Yu-Gi-Oh! R",
+        "pt": "Yu-Gi-Oh! R",
+    },
+    "yu_gi_oh_gx": {
+        "en": "Yu-Gi-Oh! GX",
+        "pt": "Yu-Gi-Oh! GX",
+    },
+    "jump_ultimate_stars": {
+        "en": "Jump Ultimate Stars",
+        "pt": "Jump Ultimate Stars"
+    },
+    "duel_links": {
+        "en": "Duel Links",
+        "pt": "Duel Links",
     },
 }
 

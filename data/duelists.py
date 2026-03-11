@@ -1,9 +1,3 @@
-#https://www.yugioh.com/characters
-#https://yugioh.fandom.com/wiki/Portal:Yu-Gi-Oh!_anime_characters
-#https://yugioh.fandom.com/wiki/Category:Characters%27_Decks
-#TODO: Check other duelists decks that are not listed on character pages.
-#https://yugioh.fandom.com/wiki/Category:Character_portals
-#TODO: Check decks that don't have duelists, like Konami Packs or Archetypes Official ones.
 DUELISTS = [
     ("Yugi Muto", "images/duelists/yugi.png"),
     ("Seto Kaiba", "images/duelists/kaiba.png"),
@@ -24,7 +18,7 @@ DUELISTS = [
     # =========================
     # TODO: Below
     # =========================
-    ("Yami Yugi", "images/duelists/placeholder.webp"), #TODO - Check what decks are exclusive to him
+    ("Yami Yugi", "images/duelists/placeholder.webp"),
     ("Mokuba Kaiba", "images/duelists/placeholder.webp"),
     ("Serenity Wheeler", "images/duelists/placeholder.webp"),
     ("Bakura Ryou", "images/duelists/placeholder.webp"),

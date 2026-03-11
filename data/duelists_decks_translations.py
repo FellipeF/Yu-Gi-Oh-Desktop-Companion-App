@@ -208,6 +208,178 @@ DUELISTS_DECKS_KEYS = {
             "en": "Pulse of Trishula",
             "pt": "Pulso de Trishula",
         },
+        "a_new_path": {
+            "en": "A New Path",
+            "pt": "Um Novo Caminho",
+        },
+        "way_of_the_d": {
+            "en": "Way of the D.",
+            "pt": "Caminho do D.",
+        },
+        "way_of_the_blue_eyes": {
+            "en": "Way of the Blue-Eyes",
+            "pt": "Caminho dos Olhos Azuis",
+        },
+        "way_of_the_ultimate_dragon": {
+            "en": "Way of the Ultimate Dragon",
+            "pt": "Caminho do Dragão Definitivo",
+        },
+        "evolution_of_blue_eyes": {
+            "en": "Evolution of Blue-Eyes",
+            "pt": "Evolução do Olhos Azuis",
+        },
+        "roar_of_the_destroyer": {
+            "en": "Roar of the Destroyer",
+            "pt": "Rugido do Destruidor",
+        },
+        "roar_of_the_destroyer_2": {
+            "en": "Roar of The Destroyer (2)",
+            "pt": "Rugido do Destruidor (2)",
+        },
+        "path_of_beginnings": {
+            "en": "Path of Beginnings",
+            "pt": "Caminho dos Começos",
+        },
+        "path_of_power": {
+            "en": "Path of Power",
+            "pt": "Caminho do Poder",
+        },
+        "path_of_feral_power": {
+            "en": "Path of Feral Power",
+            "pt": "Caminho do Poder Feroz",
+        },
+        "path_of_blue_eyes": {
+            "en": "Path of Blue-Eyes",
+            "pt": "Caminho do Olhos Azuis",
+        },
+        "destined_for_victory": {
+            "en": "Destined for Victory",
+            "pt": "Destinado à Vitória",
+        },
+        "undeniable_victory": {
+            "en": "Undeniable Victory",
+            "pt": "Vitória Inegável",
+        },
+        "path_of_destiny": {
+            "en": "Path of Destiny",
+            "pt": "Caminho do Destino",
+        },
+        "destined_for_glory": {
+            "en": "Destined for Glory",
+            "pt": "Destinado à Glória",
+        },
+        "stormy_kingdom": {
+            "en": "Stormy Kingdom",
+            "pt": "Reino Tempestuoso",
+        },
+        "roar_of_blue_eyes": {
+            "en": "Roar of Blue-Eyes",
+            "pt": "Rugido do Olhos Azuis",
+        },
+        "return_of_blue_eyes": {
+            "en": "Return of Blue-Eyes",
+            "pt": "Retorno do Olhos Azuis",
+        },
+        "transformed_duo": {
+            "en": "Transformed Duo",
+            "pt": "Dupla Transformada",
+        },
+        "ultimate_toons": {
+            "en": "Ultimate Toons",
+            "pt": "Toons Definitivos",
+        },
+        "dm_cup": {
+            "en": "DM Cup",
+            "pt": "Copa DM",
+        },
+        "the_past_is_but_a_burden": {
+            "en": "The Past is but a Burden",
+            "pt": "O Passado é Apenas Um Fardo",
+        },
+        "kaiser_sea_horse": {
+            "en": "Kaiser Sea Horse",
+            "pt": "Cavalo-marinho de Kaiser",
+        },
+        "ouroboros_wicked_dragon_of_destruction_v1": {
+            "en": "Ouroboros Wicked Dragon of Destruction v1",
+            "pt": "Perverso Dragão Ouroboros da Destruição v1",
+        },
+        "ouroboros_wicked_dragon_of_destruction_v2": {
+            "en": "Ouroboros Wicked Dragon of Destruction v2",
+            "pt": "Perverso Dragão Ouroboros da Destruição v2",
+        },
+        "legendary_blue_eyes": {
+            "en": "Legendary Blue-Eyes",
+            "pt": "Olhos Azuis Lendário",
+        },
+        "the_ultimate_dragon": {
+            "en": "The Ultimate Dragon",
+            "pt": "O Dragão Definitivo",
+        },
+        "crushing_victory": {
+            "en": "Crushing Victory",
+            "pt": "Vitória Esmagadora",
+        },
+        "summoning_dragons": {
+            "en": "Summoning Dragons",
+            "pt": "Invocando Dragões",
+        },
+        "the_tormentor": {
+            "en": "The Tormentor",
+            "pt": "O Atormentador",
+        },
+        "the_legendary_critias": {
+            "en": "The Legendary Critias",
+            "pt": "O Lendário Critias",
+        },
+        "wrath_of_the_dragon": {
+            "en": "Wrath of the Dragon",
+            "pt": "Fúria do Dragão",
+        },
+        "xyz_dragon": {
+            "en": "XYZ Dragon",
+            "pt": "Dragão XYZ",
+        },
+        "blue_eyes": {
+            "en": "Blue-Eyes",
+            "pt": "Olhos Azuis",
+        },
+        "road_to_our_battle": {
+            "en": "Road to Our Battle",
+            "pt": "Estrada para Nossa Batalha",
+        },
+        "pulverize_them_blue_eyes": {
+            "en": "Pulverize them, Blue-Eyes!",
+            "pt": "Pulverize-os, Olhos Azuis!",
+        },
+        "be_crushed_by_blue_eyes": {
+            "en": "Be Crushed by Blue-Eyes!",
+            "pt": "Seja Esmagado pelos Olhos Azuis!",
+        },
+        "come_now_blue_eyes": {
+            "en": "Come Now, Blue-Eyes!",
+            "pt": "Venha Agora, Olhos Azuis!",
+        },
+        "neo_kc": {
+            "en": "Neo KC",
+            "pt": "Neo KC"
+        },
+        "x_y_z": {
+            "en": "X-Y-Z",
+            "pt": "X-Y-Z",
+        },
+        "kaiba": {
+            "en": "Kaiba",
+            "pt": "Kaiba",
+        },
+        "kc": {
+            "en": "KC",
+            "pt": "KC",
+        },
+        "beatdown": {
+            "en": "Beatdown",
+            "pt": "Beatdown",
+        },
     },
     "Solomon Muto": {
         "grandpa": {

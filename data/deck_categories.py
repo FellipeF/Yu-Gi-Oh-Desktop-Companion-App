@@ -55,6 +55,11 @@ DECK_CATEGORIES_KEYS = [
     "possessed",
     "battle_of_great_duelist",
     "the_duelist_of_the_roses",
+    "duel_arena",
+    "yu_gi_oh_r",
+    "yu_gi_oh_gx",
+    "jump_ultimate_stars",
+    "duel_links",
 ]
 
 def translate_category(category_key, lang="pt"):
