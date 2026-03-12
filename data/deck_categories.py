@@ -60,6 +60,12 @@ DECK_CATEGORIES_KEYS = [
     "yu_gi_oh_gx",
     "jump_ultimate_stars",
     "duel_links",
+    "ycs_providence_2012",
+    "duel_opera_2020",
+    "duel_terminal",
+    "ouroboros_wicked_dragon_of_destruction_v1",
+    "ouroboros_wicked_dragon_of_destruction_v2",
+    "project_ra",
 ]
 
 def translate_category(category_key, lang="pt"):

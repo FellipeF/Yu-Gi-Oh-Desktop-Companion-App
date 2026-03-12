@@ -215,7 +215,7 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Duel Arena",
         "pt": "Arena de Duelo",
     },
-    "yu-gi_oh_r": {
+    "yu_gi_oh_r": {
         "en": "Yu-Gi-Oh! R",
         "pt": "Yu-Gi-Oh! R",
     },
@@ -230,6 +230,30 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "duel_links": {
         "en": "Duel Links",
         "pt": "Duel Links",
+    },
+    "ycs_providence_2012": {
+        "en": "YCS Providence 2012",
+        "pt": "YCS Providence 2012",
+    },
+    "duel_opera_2020": {
+        "en": "Duel Opera 2020",
+        "pt": "Duel Opera 2020",
+    },
+    "duel_terminal": {
+        "en": "Duel Terminal",
+        "pt": "Duel Terminal",
+    },
+    "ouroboros_wicked_dragon_of_destruction_v1": {
+        "en": "Ouroboros Wicked Dragon of Destruction v1",
+        "pt": "Perverso Dragão Ouroboros da Destruição v1",
+    },
+    "ouroboros_wicked_dragon_of_destruction_v2": {
+        "en": "Ouroboros Wicked Dragon of Destruction v2",
+        "pt": "Perverso Dragão Ouroboros da Destruição v2",
+    },
+    "project_ra": {
+        "en": "Project R.A.",
+        "pt": "Projeto R.A.",
     },
 }
 

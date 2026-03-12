@@ -54,6 +54,234 @@ DUELISTS_DECKS_KEYS = {
             "en": "Duel Gambler",
             "pt": "Duelista Apostador",
         },
+        "joey_vs_duke_devlin": {
+            "en": "Joey vs. Duke Devlin",
+            "pt": "Joey vs. Duke Devlin",
+        },
+        "flashback": {
+            "en": "Flashback",
+            "pt": "Flashback",
+        },
+        "dark_joey": {
+            "en": "Dark Joey",
+            "pt": "Dark Joey",
+        },
+        "forbidden_pain": {
+            "en": "Forbidden Pain",
+            "pt": "Dor Proibida",
+        },
+        "forbidden_pain_2": {
+            "en": "Forbidden Pain (2)",
+            "pt": "Dor Proibida (2)",
+        },
+        "forbidden_punishment": {
+            "en": "Forbidden Punishment",
+            "pt": "Punição Proibida",
+        },
+        "forbidden_punishment_2": {
+            "en": "Forbidden Punishment (2)",
+            "pt": "Punição Proibida (2)",
+        },
+        "joey": {
+            "en": "Joey",
+            "pt": "Joey",
+        },
+        "servants_in_battle": {
+            "en": "Servants in Battle",
+            "pt": "Servos em Batalha",
+        },
+        "super_strong_fighters": {
+            "en": "Super Strong Fighters",
+            "pt": "Lutadores Super Fortes",
+        },
+        "ritual_red_eyes": {
+            "en": "Ritual Red-Eyes",
+            "pt": "Ritual de Olhos Vermelhos",
+        },
+        "red_eyes_overdrive": {
+            "en": "Red-Eyes Overdrive",
+            "pt": "Sobrecarga de Olhos Vermelhos",
+        },
+        "a_day_in_the_magical_citadel": {
+            "en": "A Day in the Magical Citadel",
+            "pt": "Um Dia na Cidadela Mágica",
+        },
+        "tag_across_dimensions": {
+            "en": "Tag Across Dimensions",
+            "pt": "Dupla Através das Dimensões",
+        },
+        "duelist_level_max": {
+            "en": "Duelist Level MAX!",
+            "pt": "Duelista Nível MÁXIMO!",
+        },
+        "duelist_level_max_2": {
+            "en": "Duelist Level MAX! (2)",
+            "pt": "Duelista Nível MÁXIMO! (2)",
+        },
+        "duelist_level_max_3": {
+            "en": "Duelist Level MAX! (3)",
+            "pt": "Duelista Nível MÁXIMO! (3)",
+        },
+        "duelist_level_max_4": {
+            "en": "Duelist Level MAX! (4)",
+            "pt": "Duelista Nível MÁXIMO! (4)",
+        },
+        "swords_and_sorcery": {
+            "en": "Swords and Sorcery",
+            "pt": "Espadas e Feitiçaria",
+        },
+        "soul_of_red_eyes": {
+            "en": "Soul of Red-Eyes",
+            "pt": "Alma do Olhos Vermelhos",
+        },
+        "fierce_fighters": {
+            "en": "Fierce Fighters",
+            "pt": "Lutadores Ferozes",
+        },
+        "fierce_fighters_max": {
+            "en": "Fierce Fighters Max",
+            "pt": "Lutadores Ferozes Máximos",
+        },
+        "fusion_fighters": {
+            "en": "Fusion Fighters",
+            "pt": "Lutadores de Fusão",
+        },
+        "fusion_fighters_max": {
+            "en": "Fusion Fighters Max",
+            "pt": "Lutadores de Fusão Máximos",
+        },
+        "soul_of_a_true_duelist": {
+            "en": "Soul of a True Duelist",
+            "pt": "Alma de um Verdadeiro Duelista",
+        },
+        "soul_of_a_true_duelist_2": {
+            "en": "Soul of a True Duelist (2)",
+            "pt": "Alma de um Verdadeiro Duelista (2)",
+        },
+        "a_duelist_oath": {
+            "en": "A Duelist's Oath",
+            "pt": "O Juramento de um Duelista",
+        },
+        "legendary_warriors": {
+            "en": "Legendary Warriors",
+            "pt": "Guerreiros Lendários",
+        },
+        "power_of_friendship": {
+            "en": "Power of Friendship",
+            "pt": "Poder da Amizade",
+        },
+        "red_eyes_fusion": {
+            "en": "Red-Eyes Fusion",
+            "pt": "Fusão de Olhos Vermelhos",
+        },
+        "field_of_the_warriors": {
+            "en": "Field of the Warriors",
+            "pt": "Campos dos Guerreiros",
+        },
+        "dragon_of_luster": {
+            "en": "Dragon of Luster",
+            "pt": "Dragão Brilhante",
+        },
+        "monster_raider": {
+            "en": "Monster Raider",
+            "pt": "Atacante Monstro",
+        },
+        "thousand_years": {
+            "en": "Thousand Years",
+            "pt": "Mil Anos",
+        },
+        "thousand_years_2": {
+            "en": "Thousand Years (2)",
+            "pt": "Mil Anos (2)",
+        },
+        "twin_battleguards": {
+            "en": "Twin Battleguards",
+            "pt": "Guardas de Batalha Gêmeos",
+        },
+        "shields_and_swords": {
+            "en": "Shields and Swords",
+            "pt": "Escudos e Espadas",
+        },
+        "shields_and_swords_2": {
+            "en": "Shields and Swords (2)",
+            "pt": "Escudos e Espadas (2)",
+        },
+        "armed_metal_dragon": {
+            "en": "Armed Metal Dragon",
+            "pt": "Dragão Armado com Metal",
+        },
+        "armed_metal_dragon_2": {
+            "en": "Armed Metal Dragon (2)",
+            "pt": "Dragão Armado com Metal (2)",
+        },
+        "classic_fusion": {
+            "en": "Classic Fusion",
+            "pt": "Fusão Clássica",
+        },
+        "baby_dragon_fusion": {
+            "en": "Baby Dragon Fusion",
+            "pt": "Fusão do Bebê Dragão",
+        },
+        "rocket_powered": {
+            "en": "Rocket Powered",
+            "pt": "Poder de Foguete",
+        },
+        "lord_with_red_eyes": {
+            "en": "Lord With Red Eyes",
+            "pt": "Lorde com Olhos Vermelhos",
+        },
+        "lord_with_red_eyes_2": {
+            "en": "Lord With Red Eyes (2)",
+            "pt": "Lorde com Olhos Vermelhos (2)",
+        },
+        "the_legendary_hermos": {
+            "en": "The Legendary Hermos",
+            "pt": "O Lendário Hermos",
+        },
+        "the_legendary_hermos_2": {
+            "en": "The Legendary Hermos (2)",
+            "pt": "O Lendário Hermos (2)",
+        },
+        "new_red_eyes": {
+            "en": "New Red-Eyes",
+            "pt": "Novo Olhos Vermelhos",
+        },
+        "restraint_of_jinzo": {
+            "en": "Restraint of Jinzo",
+            "pt": "Repressão de Jinzo",
+        },
+        "red_eyes": {
+            "en": "Red-Eyes",
+            "pt": "Olhos Vermelhos",
+        },
+        "jinzo": {
+            "en": "Jinzo",
+            "pt": "Jinzo",
+        },
+        "proof_of_our_friendship": {
+            "en": "Proof of Our Friendship",
+            "pt": "Prova de Nossa Amizade",
+        },
+        "duelist_level_mouse": {
+            "en": "Duelist Level Mouse",
+            "pt": "Duelista Nível Rato",
+        },
+        "duelist_level_nobody": {
+            "en": "Duelist Level Nobody",
+            "pt": "Duelista Nível Ninguém",
+        },
+        "duelist_level_max_tag_force": {
+            "en": "Duelist Level Max!",
+            "pt": "Duelista Nível Máximo!",
+        },
+        "stairway_possessed": {
+            "en": "Stairway to the Destined Duel - Possessed",
+            "pt": "Escadaria para o Duelo Destinado - Possuído",
+        },
+        "brainwashed": {
+            "en": "Brainwashed",
+            "pt": "Lavagem Cerebral",
+        }
     },
     "Leon von Schroeder": {
         "fairy_tale": {
@@ -299,14 +527,6 @@ DUELISTS_DECKS_KEYS = {
         "kaiser_sea_horse": {
             "en": "Kaiser Sea Horse",
             "pt": "Cavalo-marinho de Kaiser",
-        },
-        "ouroboros_wicked_dragon_of_destruction_v1": {
-            "en": "Ouroboros Wicked Dragon of Destruction v1",
-            "pt": "Perverso Dragão Ouroboros da Destruição v1",
-        },
-        "ouroboros_wicked_dragon_of_destruction_v2": {
-            "en": "Ouroboros Wicked Dragon of Destruction v2",
-            "pt": "Perverso Dragão Ouroboros da Destruição v2",
         },
         "legendary_blue_eyes": {
             "en": "Legendary Blue-Eyes",
