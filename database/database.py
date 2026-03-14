@@ -113,6 +113,28 @@ def create_tables():
     )
     """)
 
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS user_decks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT UNIQUE NOT NULL,
+        is_used INTEGER NOT NULL DEFAULT 0
+        )
+        """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS user_deck_contents (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        deck_id INTEGER NOT NULL,
+        card_id INTEGER,
+        card_name TEXT,
+        quantity INTEGER NOT NULL,
+        FOREIGN KEY(deck_id) REFERENCES user_decks(id) ON DELETE CASCADE,
+        FOREIGN KEY(card_id) REFERENCES cards(id),
+        UNIQUE(deck_id, card_id),
+        UNIQUE(deck_id, card_name)
+        )
+        """)
+
     # Index for speeding up case-insensitive card name lookups filtered by language_code.
     cursor.execute("""
     CREATE INDEX IF NOT EXISTS idx_cards_translations_lang_name_nocase

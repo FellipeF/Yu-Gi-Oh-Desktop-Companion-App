@@ -1,77 +1,89 @@
 import tkinter as tk
-from PIL import Image, ImageTk
-import cache_image
 import threading
+
+from tkinter import ttk
+from PIL import ImageTk
 from database.queries import search_cards
 from ui.card_details_window import CardDetailsWindow
-
-CARD_WIDTH = 250
-CARD_HEIGHT = 420
+from utils.card_image_loader import load_card_pil_image
+from config import CARD_WIDTH, CARD_HEIGHT
 
 class CardsFrame(tk.Frame):
     def __init__(self, parent, controller):
         super().__init__(parent)
 
-        #TODO: Add Scroll Bar so that user is able to see card list progress
-        #TODO: Implement Pagination?
-        #TODO: Add Filters
-        #TODO: Order by different parameters
-        #TODO: Since most of this is actually used on DuelistDetailsFrame, see if there's a refactoring approach for this.
+        #TODO: Add Filters and Order by different parameters
 
         self.current_cards = []
         self.controller = controller
         self.tk_image = None
         self.selected_card_id = None
 
-        #Top - Title and Search Box
-        self.title_label = tk.Label(self, font=("Arial", 14))
-        self.title_label.pack(pady=10)
+        main_container = tk.Frame(self)
+        main_container.pack(fill="both", expand=True, padx=5, pady=10)
+
+        main_container.columnconfigure(0, weight=0)
+        main_container.columnconfigure(1, weight=0)
+        main_container.rowconfigure(0, weight=0)
+        main_container.rowconfigure(1, weight=1)
+
+        #Left Side - Title and Search Box
+        left_header = tk.Frame(main_container, width=640)
+        left_header.grid(row=0, column=0, sticky="w", padx=(0, 20), pady=(0, 10))
+        left_header.grid_propagate(False)
+
+        self.title_label = tk.Label(left_header, font=("Arial", 14))
+        self.title_label.pack(anchor="w", pady=(0, 5))
 
         self.search_var = tk.StringVar()
         self.search_var.trace_add("write", self.filter_cards)
 
-        tk.Entry(self, textvariable=self.search_var, width=45).pack(pady=5)
+        self.search_entry = tk.Entry(left_header, textvariable=self.search_var, width=50)
+        self.search_entry.pack(anchor="w")
 
-        main_container = tk.Frame(self)
-        main_container.pack(fill="both", expand=True)
+        # Left Side - Card List
+        cards_container = tk.Frame(main_container, width=640, height=660)
+        cards_container.grid(row=1, column=0, sticky="nsew", padx=(0,20))
+        cards_container.grid_propagate(False)
 
-        #Left - Card list
-        left_frame = tk.Frame(main_container)
-        left_frame.pack(side="left", padx=5, fill="both", expand=True)
+        self.searchable_list = tk.Listbox(
+            cards_container,
+            width=50,
+            font=("Tahoma", 12)
+        )
+        self.searchable_list.pack(side="left",fill="both", expand = True)
 
-        self.searchable_list = tk.Listbox(left_frame, width=50, height=20)
-        self.searchable_list.pack(fill="both", expand = True, pady=10)
+        self.cards_scroll = ttk.Scrollbar(cards_container, orient="vertical",)
+        self.cards_scroll.pack(side="right", fill="y")
+
+        self.searchable_list.config(yscrollcommand=self.cards_scroll.set)
+        self.cards_scroll.config(command=self.searchable_list.yview)
+
         self.searchable_list.bind("<<ListboxSelect>>", self.show_card_image)
 
-        #Creating fixed frame for image, preventing frame resizing when it first shows up
-        right_frame = tk.Frame(main_container, width=220)
-        right_frame.pack(side="right", padx=10, fill="y")
-        right_frame.pack_propagate(False)
+        #Right Side - Image and Button for Card Details
+        right_frame = tk.Frame(main_container, width=300)
+        right_frame.grid(row=1, column=1, sticky="n", padx=(10,0))
+        right_frame.grid_propagate(False)
 
         image_container = tk.Frame(right_frame, width=CARD_WIDTH, height=CARD_HEIGHT)
-        image_container.grid(row=0, column=0, pady=(10,6))
-        image_container.grid_propagate(False)
-
-        image_container.rowconfigure(0, weight=1)
-        image_container.columnconfigure(0, weight=1)
+        image_container.pack(pady=(0,10))
+        image_container.pack_propagate(False)
 
         self.image_label = tk.Label(image_container,text="",anchor="center")
-        self.image_label.grid(row=0, column=0, sticky="nsew")
+        self.image_label.pack(fill="both", expand=True)
 
         self.show_card_details = tk.Button(
             right_frame,
+            font=("Tahoma", 12),
             command= self.open_card_details_window
         )
-
-        self.show_card_details.grid(row=1, column=0, sticky="s", pady=(0,10))
-        self.show_card_details.grid_remove() #Not on refresh UI so that button doesn't disappear when switching language
-
-        right_frame.columnconfigure(0, weight=1)
-        right_frame.rowconfigure(0, weight=0)
-        right_frame.rowconfigure(1, weight=0)
+        self.show_card_details.pack(pady=(0,10))
+        self.show_card_details.pack_forget()    #Not on refresh UI so that button doesn't disappear when switching language
 
         self.return_button = tk.Button(
             self,
+            font=("Tahoma", 12),
             command=lambda: controller.show_frame("HomeFrame")
         )
         self.return_button.pack(pady=10)
@@ -111,36 +123,32 @@ class CardsFrame(tk.Frame):
             daemon=True #Background Processing
         ).start()
 
-
-    #With threading implemented, the application won't momentarily freeze
-    #after clicking a card which image was not previously fetched.
-
-    #TODO: Maybe implement loading spinning wheel instead?
+    # With threading implemented, the application won't momentarily freeze
+    # after clicking a card which image was not previously fetched.
 
     def load_image_async(self, card_id):
-        img_path = cache_image.get_card_image(card_id)
+        pil_img = load_card_pil_image(card_id, CARD_WIDTH, CARD_HEIGHT)
 
-        if not img_path:
+        if pil_img is None:
             return
 
-        img = Image.open(img_path).resize((CARD_WIDTH, CARD_HEIGHT))
-        tk_img = ImageTk.PhotoImage(img)
+        self.after(0, self.update_image_label, pil_img)
 
-        self.after(0, self.update_image_label, tk_img)
-
-    def update_image_label(self, tk_img):
-        self.tk_image = tk_img  # Prevents Garbage Collection. Card won't show up if this is not here
-        self.image_label.config(image=self.tk_image)
-        self.show_card_details.grid()
+    def update_image_label(self, pil_img):
+        """Places card image in place"""
+        self.tk_image = ImageTk.PhotoImage(pil_img)  # Prevents Garbage Collection. Card won't show up if this is not here
+        self.image_label.config(image=self.tk_image, text="")
+        self.show_card_details.pack(pady=(0,10))
 
     def refresh_ui(self):
-        self.title_label.config(text=self.controller.t("card_list"))
+        self.title_label.config(text=self.controller.t("search_card"))
         self.image_label.config(text=self.controller.t("select_card"))
         self.show_card_details.config(text=self.controller.t("card_details"))
         self.return_button.config(text=self.controller.t("return"))
 
     def load_cards(self, preserve_selection=False):
-        #In case user knows the name only in the original version, allow to search for the card and preserve his selection.
+        """Load cards in the list based on the currently selected language. In case user knows the name only in the
+        original version, allows to search for the card and preserve selection when returning to their language."""
         language = self.controller.current_language
         selected_card_id = None
 

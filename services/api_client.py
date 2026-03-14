@@ -2,11 +2,23 @@
 import requests
 import json
 import os
-from typing import Any, Dict, Optional, List
+from typing import Any, Dict, Optional
 from datetime import date
 
 URL_CARDS = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 URL_VERSION = "https://db.ygoprodeck.com/api/v7/checkDBVer.php"
+
+#----------------------------------------------------- IMPORTANT -------------------------------------------------------
+# The checkDBVer endpoint is written as follows:                                                                       #
+#[                                                                                                                     #
+#    {                                                                                                                 #
+#        "database_version": "144.17",                                                                                 #
+#        "last_update": "2026-03-04 09:22:52"                                                                          #
+#    }                                                                                                                 #
+#]                                                                                                                     #
+# As to not mix things up between the actual database being modeled on this app, I refer to that as a *dataset*        #
+# instead,but still call database_version whenever I'm referring to this file in particular.                           #
+#-----------------------------------------------------------------------------------------------------------------------
 
 def _check_created_dir(path:str) -> None:
     """Create directory if it doesn't already exist"""
@@ -38,11 +50,11 @@ class ApiClient:
             return json.load(f)
 
     def write_info_file(self, meta: Dict[str, Any]) -> None:
-        """Writes current database_version on a JSON File."""
+        """Writes current dataset_version on a JSON File."""
         self._write_json_file(self._info_file_path(), meta, indent=2)
 
     def read_info_file(self) -> Optional[Dict[str, Any]]:
-        """Reads the current version of the database info file. In case it's missing, we return None"""
+        """Reads the current version of the dataset info file. In case it's missing, we return None"""
         path = self._info_file_path()
         if not os.path.exists(path):
             return None
@@ -54,15 +66,8 @@ class ApiClient:
     def _today(self) -> str:
         return date.today().isoformat()
 
-    def get_db_details(self) -> Dict[str, Any]:
-        """Gets database details from Endpoint. It's currently written like so:
-        [
-            {
-                "database_version": "144.17",
-                "last_update": "2026-03-04 09:22:52"
-            }
-        ]
-        """
+    def get_dataset_details(self) -> Dict[str, Any]:
+        """Gets dataset details from Endpoint"""
         r = requests.get(URL_VERSION, timeout = 20)
         r.raise_for_status()
         data = r.json()
@@ -80,7 +85,7 @@ class ApiClient:
         self._write_json_file(self._cards_cache_path(language), data)
 
         try:
-            db_details = self.get_db_details()
+            db_details = self.get_dataset_details()
             info = {
                 "database_version": db_details.get("database_version"),
                 "last_checked": today
@@ -107,7 +112,7 @@ class ApiClient:
             return self._read_json_file(cards_cache_path)
 
         try:
-            online_db_details = self.get_db_details()
+            online_db_details = self.get_dataset_details()
             online_db_version = online_db_details.get("database_version")
 
             local_version = local_info.get("database_version") if local_info else None

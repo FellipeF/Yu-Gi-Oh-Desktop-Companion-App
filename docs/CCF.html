@@ -74,7 +74,6 @@
       <ul class="credits">
         <li id="credit1">Konami - for creating Yu-Gi-Oh! </li>
 
-        <!-- Esses 3 itens têm link e serão atualizados via innerHTML pelo JS -->
         <li id="credit2">
           YGOProDeck - for providing the public card API.<br>
           <a href="https://ygoprodeck.com/" target="_blank" rel="noopener noreferrer">
@@ -187,14 +186,12 @@
       const dict = i18n[lang] || i18n.en;
       document.documentElement.lang = lang;
 
-      // textos simples
       document.getElementById("title").textContent = dict.title;
       document.getElementById("subtitle").textContent = dict.subtitle;
       document.getElementById("langLabel").textContent = dict.langLabel;
 
       document.getElementById("section1Title").textContent = dict.section1Title;
 
-      // section1Body tem link e code, então atualizamos via innerHTML mantendo estrutura
       document.getElementById("section1Body").innerHTML =
         (lang === "pt"
           ? `Alguns decks (principalmente arcos antigos do anime) incluem cartas que nunca existiram no TCG/OCG, possuem nomes diferentes ou não aparecem no dataset da API fornecido pela
@@ -226,7 +223,6 @@
       document.getElementById("section3Title").textContent = dict.section3Title;
       document.getElementById("credit1").textContent = dict.credit1;
 
-      // credits com link: sempre via innerHTML (para não apagar o <a>)
       document.getElementById("credit2").innerHTML = `
         ${dict.credit2}<br>
         <a href="https://ygoprodeck.com/" target="_blank" rel="noopener noreferrer">
@@ -254,7 +250,6 @@
     const select = document.getElementById("langSelect");
     select.addEventListener("change", (e) => applyLanguage(e.target.value));
 
-    // initial
     applyLanguage(select.value);
   </script>
 </body>

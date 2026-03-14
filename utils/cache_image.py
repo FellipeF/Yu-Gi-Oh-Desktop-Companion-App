@@ -4,6 +4,7 @@ import requests
 IMG_FOLDER = "images/cards"
 
 def get_card_image(card_id):
+    """Fetches currently selected card image from the API"""
     #exist_ok prevents OSError when fetching images
     os.makedirs(IMG_FOLDER, exist_ok = True)
 
@@ -14,10 +15,13 @@ def get_card_image(card_id):
 
     url = f"https://images.ygoprodeck.com/images/cards/{card_id}.jpg"
 
-    response = requests.get(url)
-    if response.status_code == 200:
-        with open (local_path, "wb") as f:
-            f.write(response.content)
-        return local_path
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+    except requests.RequestException:
+        return None
 
-    return None
+    with open (local_path, "wb") as f:
+        f.write(response.content)
+
+    return local_path

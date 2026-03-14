@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import threading
-import cache_image
+from utils import cache_image
 from database.queries import get_card_details
 
 """Controls window that is displayed when "show cards details" button is pressed. Since the button is disabled when
@@ -29,7 +29,7 @@ class CardDetailsWindow(tk.Toplevel):
         self.stats_label = tk.Label(self, font=("Arial", 12))
         self.stats_label.pack(pady=(0, 8), padx=12)
 
-        self.description_label = tk.Label(self, wraplength=520, justify="left")
+        self.description_label = tk.Label(self, wraplength=520, justify="left", font=("Tahoma", 12))
         self.description_label.pack(padx=12, pady=(0, 12), fill="x")
 
         self.refresh_ui()
