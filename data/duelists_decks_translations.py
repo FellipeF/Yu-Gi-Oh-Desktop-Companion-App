@@ -166,10 +166,6 @@ DUELISTS_DECKS_KEYS = {
             "en": "Legendary Warriors",
             "pt": "Guerreiros Lendários",
         },
-        "power_of_friendship": {
-            "en": "Power of Friendship",
-            "pt": "Poder da Amizade",
-        },
         "red_eyes_fusion": {
             "en": "Red-Eyes Fusion",
             "pt": "Fusão de Olhos Vermelhos",
@@ -641,6 +637,42 @@ DUELISTS_DECKS_KEYS = {
         "the_big_five": {
             "en": "The Big Five",
             "pt": "Os Cinco Grandes",
+        },
+        "tristan": {
+            "en": "Tristan",
+            "pt": "Tristan",
+        },
+        "rituals_and_tributes": {
+            "en": "Rituals and Tributes",
+            "pt": "Rituais e Tributos",
+        },
+        "battleguard_bros": {
+            "en": "Battleguard Bros.",
+            "pt": "Brothers Guardas de Batalha",
+        },
+        "the_a_forces": {
+            "en": "The A. Forces",
+            "pt": "A Força A.",
+        },
+        "robo_power": {
+            "en": "Robo-Power",
+            "pt": "Poder Robô",
+        },
+        "draw_sense_earth": {
+            "en": "Draw Sense: EARTH",
+            "pt": "Compra Sensorial: TERRA",
+        },
+        "raremetal_barbarian": {
+            "en": "Raremetal Barbarian",
+            "pt": "Bárbaro Metal Raro",
+        },
+        "extradimensional_raremetal": {
+            "en": "Extradimensional Rare Metal",
+            "pt": "Metal Raro Extradimensional",
+        },
+        "super_steel_fighting_machine_king": {
+            "en": "Super Steel Fighting Machine King",
+            "pt": "Super Lutador de Aço Rei Máquina",
         },
     },
     "Umbra": {

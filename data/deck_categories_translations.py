@@ -227,9 +227,9 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Jump Ultimate Stars",
         "pt": "Jump Ultimate Stars"
     },
-    "duel_links": {
-        "en": "Duel Links",
-        "pt": "Duel Links",
+    "duel_links_dark_side_of_dimensions": {
+        "en": "Duel Links - The Dark Side of Dimensions",
+        "pt": "Duel Links - O Lado Sombrio das Dimensões",
     },
     "ycs_providence_2012": {
         "en": "YCS Providence 2012",
@@ -254,6 +254,10 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "project_ra": {
         "en": "Project R.A.",
         "pt": "Projeto R.A.",
+    },
+    "power_of_friendship": {
+        "en": "Power of Friendship",
+        "pt": "Poder da Amizade",
     },
 }
 

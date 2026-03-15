@@ -1334,7 +1334,7 @@ KAIBA_DECKS = {
         ("Shadow Spell", 1),
         ("White Hole", 1),
     ],
-    "duel_links": [
+    "duel_links_dark_side_of_dimensions": [
         ("Blue-Eyes White Dragon", 1),
         ("Swordstalker", 1),
         ("Saggi the Dark Clown", 3),

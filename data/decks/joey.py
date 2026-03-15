@@ -1428,7 +1428,7 @@ JOEY_DECKS = {
         ("Skull Dice", 3),
         ("Trap Hole", 2),
     ],
-    "duel_links": [
+    "duel_links_dark_side_of_dimensions": [
         ("Baby Dragon", 2),
         ("Battle Warrior", 3),
         ("Flame Manipulator", 2),
