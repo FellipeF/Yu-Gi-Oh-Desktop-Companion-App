@@ -31,6 +31,12 @@ After cloning the repository, just run
 
 Please read the Card Consistency File - CFF on the /docs folder. It explains some decisions as to why some decks are inconsistent with their Anime Counterparts, especially those in the First Toei Series or first seasons of the anime.
 
+## Credits
+* [AlanOC91](https://github.com/AlanOC91) for developing the YGOPRODeck API.
+* [AlanMac95](https://www.deviantart.com/alanmac95) for the Millennium Puzzle Icon used on placeholder images.
+* [Konami](https://www.yugioh.com/) for creating Yu-Gi-Oh! Trading Card Game and for character images.
+* [Yu-Gi-Oh! Fandom](https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Wiki) for decks lists.
+
 ## Legal Disclaimer
 
 This project is not affiliated with Konami or the Yu-Gi-Oh! IP. This is just a fan project, all images and rights belong to them.

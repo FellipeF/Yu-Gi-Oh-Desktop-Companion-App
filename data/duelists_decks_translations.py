@@ -325,6 +325,48 @@ DUELISTS_DECKS_KEYS = {
             "pt": "A Justiça Contra-Ataca!!",
         },
     },
+    "Mako Tsunami": {
+        "a_legendary_ocean": {
+            "en": "A Legendary Ocean",
+            "pt": "Um Oceano Lendário",
+        },
+        "big_catch": {
+            "en": "Big Catch",
+            "pt": "Grande Captura",
+        },
+        "legendary_ocean": {
+            "en": "Legendary Ocean",
+            "pt": "Oceano Lendário",
+        },
+        "sea_stealth": {
+            "en": "Sea Stealth",
+            "pt": "Ocultamento Marítimo",
+        },
+        "sea_of_miracles": {
+            "en": "Sea of Miracles",
+            "pt": "Mar dos Milagres",
+        },
+        "great_ocean": {
+            "en": "Great Ocean",
+            "pt": "Grande Oceano",
+        },
+        "mermail_abyss": {
+            "en": "Mermail Abyss",
+            "pt": "Abismo de Sirenas",
+        },
+        "fishing_thunder": {
+            "en": "Fishing Thunder",
+            "pt": "Trovão Pescador",
+        },
+        "stronghold_distortion": {
+            "en": "Stronghold Distortion",
+            "pt": "Distorção de Fortaleza",
+        },
+        "climatic_daedalus": {
+            "en": "Climatic Daedalus",
+            "pt": "Daedalus Climático",
+        },
+    },
     "Maximillion Pegasus": {
         "toonized": {
             "en": "Toonized",

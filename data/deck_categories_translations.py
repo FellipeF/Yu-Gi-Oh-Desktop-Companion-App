@@ -75,10 +75,6 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "World Championship 2004",
         "pt": "Campeonato Mundial 2004",
     },
-    "world_championship_2005": {
-        "en": "World Championship 2005",
-        "pt": "Campeonato Mundial 2005",
-    },
     "world_championship_2007": {
         "en": "World Championship 2007",
         "pt": "Campeonato Mundial 2007",
@@ -174,6 +170,10 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "reshef_of_destruction_3": {
         "en": "Reshef of Destruction (3)",
         "pt": "Rexefe da Destruição (3)",
+    },
+    "seven_trials_to_glory": {
+        "en": "7 Trials to Glory",
+        "pt": "7 Provas para a Glória",
     },
     "seven_trials_to_glory_standard": {
         "en": "7 Trials to Glory: Standard",

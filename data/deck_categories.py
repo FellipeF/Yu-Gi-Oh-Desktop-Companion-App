@@ -19,7 +19,6 @@ DECK_CATEGORIES_KEYS = [
     "anime",
     "novel",
     "world_championship_2004",
-    "world_championship_2005",
     "world_championship_2007",
     "world_championship_2007_2",
     "na_world_championship_qualifier_2011",
@@ -46,6 +45,7 @@ DECK_CATEGORIES_KEYS = [
     "reshef_of_destruction",
     "reshef_of_destruction_2",
     "reshef_of_destruction_3",
+    "seven_trials_to_glory"
     "seven_trials_to_glory_standard",
     "seven_trials_to_glory_advanced",
     "worldwide_edition_stairway_to_the_destined_duel",

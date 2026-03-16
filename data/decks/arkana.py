@@ -121,7 +121,7 @@ ARKANA_DECKS = {
         ("Trap Hole", 3),
         ("Widespread Ruin", 3),
     ],
-    "world_championship_2005": [
+    "seven_trials_to_glory": [
         ("Archfiend Soldier", 3),
         ("Dark Magician", 3),
         ("Gemini Elf", 3),

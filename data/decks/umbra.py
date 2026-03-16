@@ -119,7 +119,7 @@ UMBRA_DECKS = {
         ("Negate Attack", 2),
         ("Widespread Ruin", 2),
     ],
-    "world_championship_2005": [
+    "seven_trials_to_glory": [
         ("Grand Tiki Elder", 2),
         ("Summoned Skull", 3),
         ("Vorse Raider", 3),

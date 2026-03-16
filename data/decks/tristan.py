@@ -377,7 +377,7 @@ TRISTAN_DECKS = {
         ("Roll Out!", 2),
         ("Trap Hole", 2),
     ],
-    "world_championship_2005": [
+    "seven_trials_to_glory": [
         ("Ancient Brain", 3),
         ("Curse of Dragon", 2),
         ("Faith Bird", 3),

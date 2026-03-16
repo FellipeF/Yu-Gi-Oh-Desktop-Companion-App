@@ -4,6 +4,7 @@ from .dartz import DARTZ_DECKS
 from .duke import DUKE_DECKS
 from .lumis import LUMIS_DECKS
 from .mai import MAI_DECKS
+from .mako import MAKO_DECKS
 from .umbra import UMBRA_DECKS
 from .weevil import WEEVIL_DECKS
 from .yugi import YUGI_DECKS
@@ -32,6 +33,7 @@ LIST_OF_DECKS = {
     "Arkana": ARKANA_DECKS,
     "Weevil Underwood": WEEVIL_DECKS,
     "Mai Valentine": MAI_DECKS,
+    "Mako Tsunami": MAKO_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]
