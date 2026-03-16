@@ -5,6 +5,48 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Truque de Mágica",
         }
     },
+    "Duke Devlin": {
+        "duke": {
+            "en": "Duke",
+            "pt": "Duke",
+        },
+        "set_up_the_dice": {
+            "en": "Set up the Dice",
+            "pt": "Coloque o Dado",
+        },
+        "go_attack": {
+            "en": "Go, Attack!",
+            "pt": "Vá, Ataque!",
+        },
+        "i_strike_fast_and_hard": {
+            "en": "I Strike Fast and Hard!",
+            "pt": "Eu Ataco Rápido e Forte!",
+        },
+        "relentless_sword_clash": {
+            "en": "Relentless Sword Clash!",
+            "pt": "Confronto Implacável de Espadas!",
+        },
+        "lucky_dice": {
+            "en": "Dado da Sorte",
+            "pt": "Dado da Sorte",
+        },
+        "gradius": {
+            "en": "Gradius",
+            "pt": "Gradius",
+        },
+        "i_hate_magic": {
+            "en": "I Hate Magic",
+            "pt": "Eu Odeio Mágica",
+        },
+        "a_man_with_dice_as_earrings": {
+            "en": "A Man With Dice As Earrings",
+            "pt": "Um Homem com Brinco de Dado",
+        },
+        "token_labyrinth": {
+            "en": "Token Labyrinth",
+            "pt": "Labirinto de Fichas",
+        },
+    },
     "Joey Wheeler": {
         "amateur": {
             "en": "Amateur",
@@ -53,10 +95,6 @@ DUELISTS_DECKS_KEYS = {
         "duel_gambler": {
             "en": "Duel Gambler",
             "pt": "Duelista Apostador",
-        },
-        "joey_vs_duke_devlin": {
-            "en": "Joey vs. Duke Devlin",
-            "pt": "Joey vs. Duke Devlin",
         },
         "flashback": {
             "en": "Flashback",

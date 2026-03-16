@@ -259,6 +259,10 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Power of Friendship",
         "pt": "Poder da Amizade",
     },
+    "joey_vs_duke_devlin": {
+        "en": "Joey vs. Duke Devlin",
+        "pt": "Joey vs. Duke Devlin",
+    },
 }
 
 def translate_category(category_key: str, lang: str, default_lang: str = "en") -> str:

@@ -45,7 +45,7 @@ DECK_CATEGORIES_KEYS = [
     "reshef_of_destruction",
     "reshef_of_destruction_2",
     "reshef_of_destruction_3",
-    "seven_trials_to_glory"
+    "seven_trials_to_glory",
     "seven_trials_to_glory_standard",
     "seven_trials_to_glory_advanced",
     "worldwide_edition_stairway_to_the_destined_duel",
@@ -67,6 +67,7 @@ DECK_CATEGORIES_KEYS = [
     "ouroboros_wicked_dragon_of_destruction_v2",
     "project_ra",
     "power_of_friendship",
+    "joey_vs_duke_devlin",
 ]
 
 def translate_category(category_key, lang="pt"):
