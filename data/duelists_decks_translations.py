@@ -698,6 +698,58 @@ DUELISTS_DECKS_KEYS = {
             "en": "Apnarg Tactics",
             "pt": "Táticas Apnarg",
         },
+        "exodia": {
+            "en": "Exodia",
+            "pt": "Exodia",
+        },
+        "solomon": {
+            "en": "Solomon",
+            "pt": "Solomon",
+        },
+        "cards_of_the_soul": {
+            "en": "Cards of the Soul",
+            "pt": "Cartas da Alma",
+        },
+        "the_embodiment_of_ancients": {
+            "en": "The Embodiment of Ancients",
+            "pt": "A Encorporação dos Anciões",
+        },
+        "i_can_still_keep_up_with_youths": {
+            "en": "I Can Still Keep Up With Youths",
+            "pt": "Ainda Consigo Acompanhar os Jovens",
+        },
+        "obliterate": {
+            "en": "Obliterate",
+            "pt": "Obliterar",
+        },
+        "i_am_still_active": {
+            "en": "I am Still Active!",
+            "pt": "Ainda Estou na Ativa!",
+        },
+        "my_treasure_blue_eyes_white_dragon": {
+            "en": "My Treasure, \"Blue-Eyes White Dragon!\"",
+            "pt": "Meu Tesouro, \"Dragão Branco de Olhos Azuis!\"",
+        },
+        "warrior_dragon": {
+            "en": "Warrior Dragon",
+            "pt": "Guerreiro Dragão",
+        },
+        "forbidden_one": {
+            "en": "Forbidden One",
+            "pt": "Proibido",
+        },
+        "sugorokus_dice_games": {
+            "en": "Sugoroku's Dice Games",
+            "pt": "Jogos de Dados do Sugoroku",
+        },
+        "escape_of_the_old_man": {
+            "en": "Escape of the Old Man",
+            "pt": "Fuga do Velhote",
+        },
+        "rule_breaking_exodia": {
+            "en": "Rule-Breaking Exodia",
+            "pt": "Exodia Quebrador de Regras",
+        },
     },
     "Téa Gardner": {
         "life_point_recovery": {
