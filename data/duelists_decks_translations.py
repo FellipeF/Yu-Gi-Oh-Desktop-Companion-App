@@ -450,6 +450,134 @@ DUELISTS_DECKS_KEYS = {
             "en": "Gem-Knights",
             "pt": "Cavaleiros-Gema",
         },
+        "toon_world_2": {
+            "en": "Toon World! (2)",
+            "pt": "Mundo Toon! (2)",
+        },
+        "pegasus": {
+            "en": "Pegasus",
+            "pt": "Pegasus",
+        },
+        "amateur_mind": {
+            "en": "Amateur Mind",
+            "pt": "Mente Amadora",
+        },
+        "peace_of_mind": {
+            "en": "Peace of Mind",
+            "pt": "Paz de Espírito",
+        },
+        "toon_mind": {
+            "en": "Toon Mind",
+            "pt": "Mente Toon",
+        },
+        "toon_world_duel_links": {
+            "en": "Toon World",
+            "pt": "Mundo Toon",
+        },
+        "toon_mind_2": {
+            "en": "Toon Mind (2)",
+            "pt": "Mente Toon (2)",
+        },
+        "toon_world_duel_links_2": {
+            "en": "Toon World (2)",
+            "pt": "Mundo Toon (2)",
+        },
+        "relinquished": {
+            "en": "Relinquished",
+            "pt": "Renunciado",
+        },
+        "toon_invitation": {
+            "en": "Toon Invitation",
+            "pt": "Convite Toon",
+        },
+        "welcome_to_toon_world": {
+            "en": "Welcome to Toon World",
+            "pt": "Bem-Vindo ao Mundo Toon",
+        },
+        "ritual_of_illusions": {
+            "en": "Ritual of Illusions",
+            "pt": "Ritual de Ilusões",
+        },
+        "ultimate_illusion": {
+            "en": "Ultimate Illusion",
+            "pt": "Ilusão Final",
+        },
+        "beginning_of_the_fear": {
+            "en": "Beginning of the Fear",
+            "pt": "Início do Medo",
+        },
+        "no_counterattack": {
+            "en": "No Counterattack",
+            "pt": "Sem Contra-Ataque",
+        },
+        "offerings_to_the_deceased": {
+            "en": "Offering to the Deceased",
+            "pt": "Oferendas aos Mortos",
+        },
+        "ultimate_toons": {
+            "en": "Ultimate Toons",
+            "pt": "Toons Definitivos",
+        },
+        "illusion_land": {
+            "en": "Illusion Land",
+            "pt": "Terra da Ilusão",
+        },
+        "ancient_toons": {
+            "en": "Ancient Toons",
+            "pt": "Toons Antigos",
+        },
+        "i_see_you_checking_out_my_deck": {
+            "en": "I See You Checking Out My Deck",
+            "pt": "Vejo Você Olhando Para o Meu Deck",
+        },
+        "phantom_of_toon_world": {
+            "en": "Phantom of Toon World",
+            "pt": "Fantasma do Mundo Toon",
+        },
+        "nightmare_of_toon_world": {
+            "en": "Nightmare of Toon World",
+            "pt": "Pesadelo do Mundo Toon",
+        },
+        "nightmare_of_toon_world_2": {
+            "en": "Nightmare of Toon World (2)",
+            "pt": "Pesadelo do Mundo Toon (2)",
+        },
+        "millenium_eye_guidance": {
+            "en": "Millenium Eye Guidance",
+            "pt": "Orientação do Olho do Milênio",
+        },
+        "its_a_toon_world": {
+            "en": "It's a Toon World",
+            "pt": "É um Mundo Toon",
+        },
+        "cartooned": {
+            "en": "Car-tooned",
+            "pt": "Cartunado",
+        },
+        "entering_toon_world": {
+            "en": "Entering Toon World",
+            "pt": "Entrando no Mundo Toon",
+        },
+        "return_to_toon_world": {
+            "en": "Return to Toon World",
+            "pt": "Retorno ao Mundo Toon",
+        },
+        "sweets_from_madolche": {
+            "en": "Sweets from Madolche",
+            "pt": "Doces das Magidoces",
+        },
+        "ultimate_lifeforms": {
+            "en": "Ultimate Lifeforms",
+            "pt": "Formas de Vida Supremas",
+        },
+        "ultimate_kingdom": {
+            "en": "Ultimate Kingdom",
+            "pt": "Reino Supremo",
+        },
+        "god_of_evil_eyes": {
+            "en": "God of Evil Eyes",
+            "pt": "Deus de Olhos Malignos",
+        },
     },
     "Seto Kaiba": {
         "childhood_deck": {
@@ -805,6 +933,14 @@ DUELISTS_DECKS_KEYS = {
         "super_steel_fighting_machine_king": {
             "en": "Super Steel Fighting Machine King",
             "pt": "Super Lutador de Aço Rei Máquina",
+        },
+        "commander": {
+            "en": "Commander",
+            "pt": "Comandante",
+        },
+        "legendary_six": {
+            "en": "Legendary Six",
+            "pt": "Seis Lendários",
         },
     },
     "Umbra": {
