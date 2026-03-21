@@ -892,6 +892,78 @@ DUELISTS_DECKS_KEYS = {
             "en": "Dance Groove",
             "pt": "Groove da Dança",
         },
+        "stand_by_for_duel": {
+            "en": "Stand By for Duel!",
+            "pt": "Prepare-se para o Duelo!",
+        },
+        "tea": {
+            "en": "Téa",
+            "pt": "Téa",
+        },
+        "symbol_of_friendship": {
+            "en": "Symbol of Friendship",
+            "pt": "Símbolo da Amizade",
+        },
+        "symbol_of_friendship_2": {
+            "en": "Symbol of Friendship (2)",
+            "pt": "Símbolo da Amizade (2)",
+        },
+        "angel_and_friendship": {
+            "en": "Angel and Friendship",
+            "pt": "Anjo e Amizade",
+        },
+        "brilliant_angel_ring": {
+            "en": "Brilliant Angel Ring",
+            "pt": "Anel de Anjo Brilhante",
+        },
+        "triumphant_fairies": {
+            "en": "Triumphant Fairies",
+            "pt": "Fadas Triunfantes",
+        },
+        "judgement_of_the_fairies": {
+            "en": "Judgement of the Fairies",
+            "pt": "Julgamento das Fadas",
+        },
+        "dont_underestimate_me": {
+            "en": "Don't Underestimate Me!",
+            "pt": "Não me Subestime!",
+        },
+        "spellcasters_exchange": {
+            "en": "Spellcaster's Exchange",
+            "pt": "Troca do Mago",
+        },
+        "angel_fairy": {
+            "en": "Angel Fairy",
+            "pt": "Anjo Fada",
+        },
+        "madolche": {
+            "en": "Madolche",
+            "pt": "Magidoce",
+        },
+        "little_fairies": {
+            "en": "Little Fairies",
+            "pt": "Pequenas Fadas",
+        },
+        "little_fairies_2": {
+            "en": "Little Fairies (2)",
+            "pt": "Pequenas Fadas (2)",
+        },
+        "the_master_herald": {
+            "en": "The Master Herald",
+            "pt": "O Arauto Mestre",
+        },
+        "the_sages_stone_first_act": {
+            "en": "The Sage's Stone - First Act",
+            "pt": "Pedra da Magia - Primeiro Ato",
+        },
+        "the_sages_stone_third_act": {
+            "en": "The Sage's Stone - Third Act",
+            "pt": "Pedra da Magia - Terceiro Ato",
+        },
+        "the_sages_stone_the_end": {
+            "en": "The Sage's Stone - The End",
+            "pt": "Pedra da Magia - O Fim",
+        },
     },
     "tristan_taylor": {
         "the_big_five": {
