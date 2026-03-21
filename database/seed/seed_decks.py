@@ -5,10 +5,10 @@ from data.decks import LIST_OF_DECKS
 from data.deck_categories import DECK_CATEGORIES_KEYS
 
 def _load_duelist_ids(cursor) -> dict[str, int]:
-    """Returns a mapping of duelist name to database id"""
-    cursor.execute("SELECT id, name FROM duelists")
+    """Returns a mapping of duelist key to database id"""
+    cursor.execute("SELECT id, key FROM duelists")
     return {
-        name: duelist_id for duelist_id, name in cursor.fetchall()
+        key: duelist_id for duelist_id, key in cursor.fetchall()
     }
 
 def _load_deck_category_ids (cursor) -> dict[str, int]:
@@ -47,16 +47,16 @@ def _insert_missing_deck_categories(cursor, existing_category_ids: dict[str, int
     )
 
 def _build_duelist_decks_rows(
-        duelist_id_by_name: dict[str, int], deck_category_id_by_key: dict[str, int],
+        duelist_id_by_key: dict[str, int], deck_category_id_by_key: dict[str, int],
 ) -> list[tuple[int, int | None, str, int]]:
     """Prepare rows to UPSERT. As seen in the database model, deck_category_id is populated if this is a shared
     category key"""
 
     rows: list[tuple[int, int | None, str, int]] = []
 
-    for duelist_name, decks_by_key in LIST_OF_DECKS.items():
-        duelist_id = duelist_id_by_name.get(duelist_name)
-        if not duelist_id:
+    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+        duelist_id = duelist_id_by_key.get(duelist_key)
+        if duelist_id is None:
             continue
 
         for order_index, deck_key in enumerate(decks_by_key.keys()):
@@ -77,6 +77,28 @@ def _upsert_duelist_decks(cursor, deck_rows: list[tuple[int, int | None, str, in
         deck_category_id = excluded.deck_category_id,
         order_index = excluded.order_index
         """, deck_rows, )
+
+def _delete_removed_duelist_decks(cursor, duelist_id_by_key: dict[str, int]) -> None:
+    """Deletes dec that no longer exist if LIST_OF_DECKS ever change"""
+    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+        duelist_id = duelist_id_by_key.get(duelist_key)
+        if duelist_id is None:
+            continue
+
+        expected_deck_keys = list(decks_by_key.keys())
+
+        if expected_deck_keys:
+            placeholders = ",".join("?" * len(expected_deck_keys))
+            cursor.execute(f"""
+            DELETE FROM duelist_decks
+            WHERE duelist_id = ?
+                AND KEY NOT IN ({placeholders})
+            """, [duelist_id, *expected_deck_keys])
+        else:
+            cursor.execute("""
+            DELETE FROM duelist_decks
+            WHERE duelist_id = ?
+            """, (duelist_id, ))
 
 def _find_card_ids_by_name(cursor, card_names: list[str], base_language_code_for_lookup: str, ) -> dict[str, int]:
     """Map card names to their IDs. If an ID is known, that means it's a TCG Card and has an image and details to be
@@ -129,14 +151,14 @@ def _collect_all_card_names() -> list[str]:
     return list(all_card_names)
 
 def _build_deck_content_rows(
-        duelist_id_by_name: dict[str, int], deck_id_by_duelist_and_key: dict[tuple[int, str], int],
+        duelist_id_by_key: dict[str, int], deck_id_by_duelist_and_key: dict[tuple[int, str], int],
         card_id_by_name: dict [str, int], ) -> tuple[list[tuple[int, int, int]], list[tuple[int, str, int]]]:
     """Creates 2 rows for UPSERT: one for TCG Official cards, other for exclusive not found in the dataset"""
     rows_with_id: list[tuple[int, int, int]] = []
     rows_with_name: list[tuple[int, str, int]] = []
 
-    for duelist_name, decks_by_key in LIST_OF_DECKS.items():
-        duelist_id = duelist_id_by_name.get(duelist_name)
+    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+        duelist_id = duelist_id_by_key.get(duelist_key)
         if not duelist_id:
             continue
 
@@ -174,19 +196,71 @@ def _upsert_deck_contents(
             quantity = excluded.quantity
             """, rows_with_name, )
 
+def _delete_removed_deck_contents(
+        cursor,
+        duelist_id_by_key: dict[str, int],
+        deck_id_by_duelist_and_key: dict[tuple[int, str], int],
+        card_id_by_name: dict[str, int],
+) -> None:
+    """If card is deleted from deck on the file, delete it from the database as well"""
+    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+        duelist_id = duelist_id_by_key.get(duelist_key)
+        if duelist_id is None:
+            continue
+
+        for deck_key, cards in decks_by_key.items():
+            deck_id = deck_id_by_duelist_and_key.get((duelist_id, deck_key))
+            if deck_id is None:
+                continue
+
+            expected_card_ids: set[int] = set()
+            expected_card_names: set[str] = set()
+
+            for card_name, _quantity in cards:
+                card_id = card_id_by_name.get(card_name.lower())
+                if card_id is not None:
+                    expected_card_ids.add(card_id)
+                else:
+                    expected_card_names.add(card_name)
+
+            cursor.execute("""
+            SELECT id, card_id, card_name
+            FROM deck_contents
+            WHERE deck_id = ?
+            """, (deck_id, ))
+
+            rows_to_delete: list[int] = []
+
+            for row_id, card_id, card_name in cursor.fetchall():
+                if card_id is not None:
+                    if card_id not in expected_card_ids:
+                        rows_to_delete.append(row_id)
+                else:
+                    if card_name not in expected_card_names:
+                        rows_to_delete.append(row_id)
+
+            if rows_to_delete:
+                placeholders = ",".join("?" * len(rows_to_delete))
+                cursor.execute(f"""
+                DELETE FROM deck_contents
+                WHERE id IN ({placeholders})
+                """, rows_to_delete)
+
 def populate_decks(base_language_code_for_lookup: str = "en") -> None:
     """Populate duelist_decks, deck_categories and deck contents Tables"""
     conn = get_connection()
     cursor = conn.cursor()
 
     try:
-        duelist_id_by_name = _load_duelist_ids(cursor)
+        duelist_id_by_key = _load_duelist_ids(cursor)
         deck_category_id_by_key = _load_deck_category_ids(cursor)
 
         _insert_missing_deck_categories(cursor, deck_category_id_by_key)
 
-        deck_rows = _build_duelist_decks_rows(duelist_id_by_name, deck_category_id_by_key, )
+        deck_rows = _build_duelist_decks_rows(duelist_id_by_key, deck_category_id_by_key, )
         _upsert_duelist_decks(cursor, deck_rows)
+
+        _delete_removed_duelist_decks(cursor, duelist_id_by_key)
 
         deck_id_by_duelist_and_key = _load_duelist_deck_ids(cursor)
 
@@ -194,9 +268,13 @@ def populate_decks(base_language_code_for_lookup: str = "en") -> None:
         card_id_by_name = _find_card_ids_by_name(cursor, all_card_names, base_language_code_for_lookup, )
 
         rows_with_id, rows_with_name = _build_deck_content_rows(
-            duelist_id_by_name, deck_id_by_duelist_and_key, card_id_by_name, )
-
+            duelist_id_by_key,
+            deck_id_by_duelist_and_key,
+            card_id_by_name,
+        )
         _upsert_deck_contents(cursor, rows_with_id, rows_with_name)
+
+        _delete_removed_deck_contents(cursor, duelist_id_by_key, deck_id_by_duelist_and_key, card_id_by_name)
 
         conn.commit()
     finally:

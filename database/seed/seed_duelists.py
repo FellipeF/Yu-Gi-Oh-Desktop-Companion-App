@@ -10,9 +10,10 @@ def _upsert_duelists(cursor, duelist_rows: list[tuple[str, str | None]]) -> None
         return
 
     cursor.executemany("""
-    INSERT INTO duelists (name, img_path)
-    VALUES (?, ?)
-    ON CONFLICT (name) DO UPDATE SET
+    INSERT INTO duelists (key, name, img_path)
+    VALUES (?, ?, ?)
+    ON CONFLICT (key) DO UPDATE SET
+        name = excluded.name,
         img_path = excluded.img_path
     """, duelist_rows, )
 

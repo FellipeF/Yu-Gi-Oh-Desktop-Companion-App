@@ -96,11 +96,24 @@ class CardsFrame(tk.Frame):
         name = self.search_var.get()
         language = self.controller.current_language
 
+        previous_card_id = self.selected_card_id
+
         self.current_cards = search_cards(name = name, language=language)
         self.searchable_list.delete(0, tk.END)
 
-        for card in self.current_cards:
+        new_index = None
+
+        for index, card in enumerate(self.current_cards):
             self.searchable_list.insert(tk.END, card[1])
+
+            if previous_card_id and card[0] == previous_card_id:
+                new_index = index
+
+        if new_index is not None:
+            self.searchable_list.selection_clear(0, tk.END)
+            self.searchable_list.selection_set(new_index)
+            self.searchable_list.activate(new_index)
+            self.searchable_list.see(new_index)
 
     def open_card_details_window(self):
         if not self.selected_card_id:

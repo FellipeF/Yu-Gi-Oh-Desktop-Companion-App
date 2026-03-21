@@ -12,7 +12,6 @@ from frames.custom_deck_editor_frame import CustomDeckEditorFrame
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
 from frames.duelists_frame import DuelistsFrame
-from frames.duelist_details_frame import DuelistDetailsFrame
 from frames.custom_decks_frame import CustomDecksFrame
 from frames.loading_frame import LoadingFrame
 from ui.translations import translations
@@ -151,7 +150,7 @@ class App(tk.Tk):
         self.loading_frame.set_status(f"{self.t('loading_error')}: {error}")
 
     def finish_initialization(self):
-        for F in (HomeFrame, CardsFrame, DuelistsFrame, DuelistDetailsFrame, CustomDecksFrame, CustomDeckEditorFrame):
+        for F in (HomeFrame, CardsFrame, DuelistsFrame, CustomDecksFrame, CustomDeckEditorFrame):
             frame = F(self.container, self)
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky="nsew")

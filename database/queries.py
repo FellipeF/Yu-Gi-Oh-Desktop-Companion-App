@@ -33,29 +33,35 @@ def search_cards(name: str | None = None, language: str = "en") -> list[tuple]:
         conn.close()
 
 def get_all_duelists() -> list[tuple]:
-    """Returns all duelists ordered by name"""
+    """Returns all duelists ordered by name and their columns"""
     conn = get_connection()
     cursor = conn.cursor()
 
+    # For performance issues, better do this than a SELECT COUNT(*) for each duelist on the Frame
     try:
         cursor.execute("""
-        SELECT id, name, img_path
-        FROM duelists
-        ORDER BY name COLLATE NOCASE""")
+        SELECT 
+            d.id, d.key, d.name, d.img_path, COUNT(dd.id) AS deck_count
+        FROM duelists d
+        LEFT JOIN duelist_decks dd ON dd.duelist_id = d.id
+        GROUP BY d.id, d.key, d.name, d.img_path
+        ORDER BY d.name COLLATE NOCASE""")
 
         return cursor.fetchall()
     finally:
         conn.close()
 
 def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusive_cards: bool =True) -> list[dict]:
-    """Returns all decks for a duelist, with translated deck and card names. Implements fallback for english if card
-    has no translation in the dataset (not yet updated or not found, such as exclusive cards not present in the TCG)"""
+    """Returns all decks for a duelist, with translated deck, keys and card names. Implements fallback for english if
+    card has no translation in the dataset
+    (not yet updated or not found, such as exclusive cards not present in the TCG)"""
     conn = get_connection()
     cursor = conn.cursor()
 
     query = """
             SELECT
                 dd.id AS deck_id,
+                dd.key AS deck_key,
                 COALESCE(
                     dct_lang.name,
                     dct_en.name,
@@ -114,24 +120,25 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
     decks: list[dict] = []
     by_deck: dict[int, dict] = {}
 
-    for deck_id, deck_name, _deck_order, card_id, card_name, qty in rows:
+    for deck_id, deck_key, deck_name, _deck_order, card_id, card_name, qty in rows:
         if deck_id not in by_deck:
             deck_obj = {
                 "deck_id": deck_id,
+                "deck_key": deck_key,
                 "deck_name": deck_name,
                 "cards": []
             }
             by_deck[deck_id] = deck_obj
             decks.append(deck_obj)
 
-        #TODO: Take this out after testing, decks should never be empty on the final version.
+        # Doesn't hurt to check, leaving this here for future-proof
         if qty is not None:
             by_deck[deck_id]["cards"].append((card_id, card_name, qty))
 
     return decks
 
 def get_card_details(card_id: int, language_code="en"):
-    """When card is selected on DuelistDetailsFrame or CardsFrame, user can verify additional info on the card"""
+    """When card is selected on the Frame, user can check additional info, like stats and description"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -162,6 +169,7 @@ def get_card_details(card_id: int, language_code="en"):
         conn.close()
 
 def get_cards_count() -> int:
+    """Counts all cards present in the database"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -172,6 +180,7 @@ def get_cards_count() -> int:
         conn.close()
 
 def get_duelists_count() -> int:
+    """Counts all duelists present in the database"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -182,6 +191,7 @@ def get_duelists_count() -> int:
         conn.close()
 
 def get_user_decks_count() -> int:
+    """Counts how many decks user has created or imported"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -192,7 +202,7 @@ def get_user_decks_count() -> int:
         conn.close()
 
 def get_all_user_decks() -> list[tuple]:
-    """Returns a list of all custom decks created or imported by the user"""
+    """Returns a list of name, sum of total cards, used status for all custom decks created or imported by the user"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -216,6 +226,7 @@ def get_all_user_decks() -> list[tuple]:
         conn.close()
 
 def get_user_deck_by_id(deck_id: int) -> tuple | None:
+    """Gets ID from the controller and searches for deck with that corresponding id"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -286,17 +297,8 @@ def rename_user_deck(deck_id: int, new_name: str):
         conn.close()
 
 def get_cards_by_user_deck(deck_id: int, language_code: str = "en") -> list[tuple]:
-    """
-    Returns all cards from a user deck, with translated card names when possible.
-    Fallback:
-    translated name in selected language -> english translation -> stored card_name
-
-    Output:
-        [
-            (card_id, resolved_card_name, quantity),
-            ...
-        ]
-    """
+    """Returns all cards from a user deck, with translated card names when possible. Also implements Fallback for when
+    translated name in selected language doesn't exist."""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -329,14 +331,11 @@ def add_card_to_user_deck(
     card_id: int | None = None,
     card_name: str | None = None,
 ) -> bool:
-    """
-    Adds a card to a user deck.
+    """Adds selected card to User Deck. If the card already exists, do a +1. Also stops user from adding more than
+    3 copies of a card, per Yu-Gi-Oh! Rules"""
 
-    Rules:
-    - Use card_id when the card exists in the API/database.
-    - Use card_name when the card is exclusive and has no official ID.
-    - If the card already exists in the deck, increase quantity.
-    """
+    # This won't check for current banlists or limited cards, since it's meant to be an universal app.
+
     if card_id is None and not card_name:
         raise ValueError("You must provide either card_id or card_name.")
 
@@ -420,12 +419,7 @@ def update_user_deck_card_quantity(
     card_id: int | None = None,
     card_name: str | None = None,
 ) -> bool:
-    """
-    Sets the quantity of a card in a user deck.
-    If quantity <= 0, removes the card from the deck.
-    """
-    if card_id is None and not card_name:
-        raise ValueError("You must provide either card_id or card_name.")
+    """Updates deck card quantity on the user Deck. Removes card if user removes one copy when there is only that one"""
 
     if quantity > 3:
         return False
@@ -474,11 +468,6 @@ def remove_card_from_user_deck(
     card_id: int | None = None,
     card_name: str | None = None,
 ):
-    """
-    Removes a card from a user deck.
-    """
-    if card_id is None and not card_name:
-        raise ValueError("You must provide either card_id or card_name.")
 
     conn = get_connection()
     cursor = conn.cursor()
@@ -498,5 +487,33 @@ def remove_card_from_user_deck(
             """, (deck_id, card_name))
 
         conn.commit()
+    finally:
+        conn.close()
+
+def add_cards_bulk_import(deck_id, cards):
+    """Inserts multiple cards into a deck using a single transaction. Used when importing decks"""
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        rows = []
+
+        for card in cards:
+            card_id = card.get("id")
+            card_name = card.get("name")
+            quantity = card.get("quantity")
+
+            rows.append((deck_id, card_id, card_name if card_id is None else None, quantity))
+
+        cursor.executemany("""
+        INSERT INTO user_deck_contents (deck_id, card_id, card_name, quantity)
+        VALUES (?, ?, ?, ?)
+        """, rows)
+
+        conn.commit()
+
+    except Exception:
+        conn.rollback()
+        raise
     finally:
         conn.close()

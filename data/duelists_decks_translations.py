@@ -1,11 +1,11 @@
 DUELISTS_DECKS_KEYS = {
-    "Arkana": {
+    "arkana": {
         "sleight_of_hand": {
             "en": "Sleight of Hand",
             "pt": "Truque de Mágica",
         }
     },
-    "Duke Devlin": {
+    "duke_devlin": {
         "duke": {
             "en": "Duke",
             "pt": "Duke",
@@ -47,7 +47,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Labirinto de Fichas",
         },
     },
-    "Joey Wheeler": {
+    "joey_wheeler": {
         "amateur": {
             "en": "Amateur",
             "pt": "Amador",
@@ -317,19 +317,19 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Lavagem Cerebral",
         }
     },
-    "Leon von Schroeder": {
+    "leon_von_schroeder": {
         "fairy_tale": {
             "en": "Fairy Tale",
             "pt": "Conto de Fadas",
         },
     },
-    "Lumis": {
+    "lumis": {
         "mask_of_light": {
             "en": "Mask of Light",
             "pt": "Máscara da Luz",
         },
     },
-    "Mai Valentine": {
+    "mai_valentine": {
         "harpie": {
             "en": "Harpie",
             "pt": "Harpia",
@@ -363,7 +363,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "A Justiça Contra-Ataca!!",
         },
     },
-    "Mako Tsunami": {
+    "mako_tsunami": {
         "a_legendary_ocean": {
             "en": "A Legendary Ocean",
             "pt": "Um Oceano Lendário",
@@ -405,7 +405,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Daedalus Climático",
         },
     },
-    "Maximillion Pegasus": {
+    "maximillion_pegasus": {
         "toonized": {
             "en": "Toonized",
             "pt": "Cartunizado",
@@ -579,7 +579,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Deus de Olhos Malignos",
         },
     },
-    "Seto Kaiba": {
+    "seto_kaiba": {
         "childhood_deck": {
             "en": "Childhood Deck",
             "pt": "Deck da Infância",
@@ -805,7 +805,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Beatdown",
         },
     },
-    "Solomon Muto": {
+    "solomon_muto": {
         "grandpa": {
             "en": "Grandpa",
             "pt": "Vovô",
@@ -879,7 +879,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Exodia Quebrador de Regras",
         },
     },
-    "Téa Gardner": {
+    "tea_gardner": {
         "life_point_recovery": {
             "en": "Life Point Recovery",
             "pt": "Recuperação de Pontos de Vida",
@@ -893,7 +893,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Groove da Dança",
         },
     },
-    "Tristan Taylor": {
+    "tristan_taylor": {
         "the_big_five": {
             "en": "The Big Five",
             "pt": "Os Cinco Grandes",
@@ -943,13 +943,13 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Seis Lendários",
         },
     },
-    "Umbra": {
+    "umbra": {
         "mask_of_shadow": {
             "en": "Mask of Shadow",
             "pt": "Máscara da Sombra",
         }
     },
-    "Weevil Underwood": {
+    "weevil_underwood": {
         "imposter": {
             "en": "Imposter",
             "pt": "Impostor",
@@ -979,7 +979,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Floresta Antiga de Origem",
         },
     },
-    "Yugi Muto": {
+    "yugi_muto": {
         "friendship": {
             "en": "Friendship",
             "pt": "Amizade",
@@ -1027,13 +1027,13 @@ DUELISTS_DECKS_KEYS = {
     },
 }
 
-def translate_deck(character: str, deck_key: str, lang: str, default_lang: str="en") -> str:
-    character_data = DUELISTS_DECKS_KEYS.get(character)
+def translate_deck(duelist_key: str, deck_key: str, lang: str, default_lang: str="en") -> str:
+    duelist_data = DUELISTS_DECKS_KEYS.get(duelist_key)
 
-    if not character_data:
+    if not duelist_data:
         return deck_key
 
-    deck_data = character_data.get(deck_key)
+    deck_data = duelist_data.get(deck_key)
 
     if not deck_data:
         return deck_key

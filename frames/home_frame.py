@@ -50,8 +50,7 @@ class HomeFrame(tk.Frame):
             pady=button_pady,
             command=lambda: controller.show_frame("CustomDecksFrame")
         )
-        #TODO: Not ready yet
-        #self.user_decks_button.pack(pady=button_pady)
+        self.user_decks_button.pack(pady=button_pady)
 
         self.stats_label = tk.Label(self.content_frame, font=("Arial, 10"))
         self.stats_label.pack(pady=(25))

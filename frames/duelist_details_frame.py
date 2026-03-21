@@ -1,7 +1,8 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, filedialog, messagebox
 from PIL import Image, ImageTk
 import threading
+import json
 
 from database.queries import get_decks_by_duelist
 from utils.card_image_loader import load_card_pil_image
@@ -16,6 +17,7 @@ class DuelistDetailsFrame(tk.Frame):
 
         self.current_duelist_id = None
         self.current_duelist_name = None
+        self.current_duelist_key = None
         self.tk_image = None
         self.current_deck_index = None
         self.selected_card_id = None
@@ -51,6 +53,14 @@ class DuelistDetailsFrame(tk.Frame):
         )
         self.decks_scroll.pack(side="right", fill="y")
         self.decks_listbox.config(yscrollcommand=self.decks_scroll.set, font=("Tahoma", 12))
+
+        self.export_deck_button = tk.Button(
+            left_frame,
+            width=14,
+            command = self.export_selected_deck
+        )
+        self.export_deck_button.pack(anchor="e", pady=(0, 8), padx=10)
+        self.export_deck_button.pack_forget()
 
         cards_container = tk.Frame(left_frame)
         cards_container.pack(fill="both", expand=True, pady=5)
@@ -108,13 +118,65 @@ class DuelistDetailsFrame(tk.Frame):
         )
         self.exclusive_cards_checkbox.pack(pady=5)
 
-        self.return_button = tk.Button(
-            self,
-            command=lambda: controller.show_frame("DuelistsFrame")
-        )
-        self.return_button.pack(pady=10)
-
         self.refresh_ui()
+
+    def export_selected_deck(self):
+        """Exports selected deck to a .json file."""
+
+        # Since button is not available when a deck is not selected, no need for checking this:
+
+        #if self.current_deck_index is None:
+        #    messagebox.showwarning(self.controller.t("export_deck"),self.controller.t("select_deck_first"))
+        #    return
+
+        if not self.decks_data or self.current_deck_index >= len(self.decks_data):
+            messagebox.showwarning(self.controller.t("export_deck"), self.controller.t("no_deck_to_export"))
+            return
+
+        selected_deck = self.decks_data[self.current_deck_index]
+        # Using deck key to suggest name of the file when exporting alongside Duelist Name
+        deck_key = selected_deck["deck_key"]
+        # Deck name is used to suggest name of the file when importing alongside Duelist Name
+        deck_name = selected_deck["deck_name"]
+
+        export_data = {
+            "duelist": self.current_duelist_name,
+            "deck_name": deck_name,
+            "cards": []
+        }
+
+        for card_id, card_name, qty in selected_deck["cards"]:
+            export_data["cards"].append({
+                "id": card_id,
+                "name": card_name,
+                "quantity": qty
+            })
+
+        # Checks if duelist has a space on their names
+        default_filename = f"{self.current_duelist_name}_{deck_key}.json".lower().replace(" ", "_")
+
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".json",
+            filetypes=[("JSON files", "*.json")],
+            initialfile=default_filename,
+            title=self.controller.t("export_deck")
+        )
+
+        if not file_path:
+            return
+
+        try:
+            with open(file_path, "w", encoding="utf-8") as f:
+                json.dump(export_data, f, ensure_ascii=False, indent=4)
+
+            messagebox.showinfo(
+                self.controller.t("export_deck"),
+                self.controller.t("deck_export_success").format(path=file_path)
+            )
+        except Exception as e:
+            messagebox.showerror(self.controller.t("export_deck"),
+                                 self.controller.t("deck_export_fail").format(error=str(e))
+            )
 
     def clear_right_panel(self):
         """Prevents Image, Status and card details button to show up when changing duelist"""
@@ -140,9 +202,10 @@ class DuelistDetailsFrame(tk.Frame):
             return
         CardDetailsWindow(self.controller, self.selected_card_id)
 
-    def set_duelist(self, duelist_id, duelist_name):
+    def set_duelist(self, duelist_id, duelist_key, duelist_name):
         self.current_duelist_id = duelist_id
         self.current_duelist_name = duelist_name
+        self.current_duelist_key = duelist_key
 
         self.refresh_ui()
         self.load_duelist()
@@ -163,6 +226,7 @@ class DuelistDetailsFrame(tk.Frame):
 
         self.cards_listbox.pack_forget()
         self.cards_scroll.pack_forget()
+        self.export_deck_button.pack_forget()
 
         self.clear_right_panel()
 
@@ -182,17 +246,12 @@ class DuelistDetailsFrame(tk.Frame):
 
         self.update_scroll_visibility(self.decks_listbox, self.decks_scroll)
 
-    def on_deck_select(self, event):
-        """When a deck is selected, shows deck contents. If a card is currently selected and currently selected deck is
-        changed, clear card details"""
-        selection = self.decks_listbox.curselection()
-        if not selection:
+    def load_selected_deck_cards(self):
+        """Load cards from deck that is currently selected"""
+        if self.current_deck_index is None:
             return
 
-        index = selection[0]
-        self.current_deck_index = index
-        selected_deck = self.decks_data[index]
-
+        selected_deck = self.decks_data[self.current_deck_index]
         self.cards_listbox.delete(0, tk.END)
         self.current_cards = selected_deck["cards"]
 
@@ -201,14 +260,45 @@ class DuelistDetailsFrame(tk.Frame):
 
         self.cards_listbox.pack(side="left", fill="both", expand=True)
         self.update_scroll_visibility(self.cards_listbox, self.cards_scroll)
-
         self.update_deck_status()
 
+    def clear_card_selection(self):
+        """Clear details when other deck is selected"""
         self.selected_card_id = None
         self.tk_image = None
+        self.cards_listbox.selection_clear(0, tk.END)
         self.image_label.image = None
         self.image_label.config(image="", text=self.controller.t("select_card"))
         self.show_card_details.pack_forget()
+
+    def restore_selected_card(self, previous_card_id):
+        """Preserves card selection only if it's not an exclusive card, so to not have inconsistent details
+        being passed when the show exclusive cards checkbox is checked"""
+        if not previous_card_id:
+            self.clear_card_selection()
+            return
+
+        for index, (card_id, card_name, qty) in enumerate(self.current_cards):
+            if card_id == previous_card_id:
+                self.selected_card_id = card_id
+                self.cards_listbox.selection_clear(0, tk.END)
+                self.cards_listbox.select_set(index)
+                self.cards_listbox.activate(index)
+                self.cards_listbox.see(index)
+                self.show_card_image(None)
+                return
+
+        self.clear_card_selection()
+
+    def on_deck_select(self, event):
+        selection = self.decks_listbox.curselection()
+        if not selection:
+            return
+
+        self.current_deck_index = selection[0]
+        self.export_deck_button.pack(anchor="e", pady=(0, 8), padx=10)
+        self.load_selected_deck_cards()
+        self.clear_card_selection()
 
     def update_deck_status(self):
         """Controls label to show decks status. Since it counts the total of shown items instead of doing a
@@ -218,12 +308,12 @@ class DuelistDetailsFrame(tk.Frame):
 
         if total_cards >= 40:
             self.deck_status_label.config(
-                text=f"{self.controller.t("complete_deck")}",
+                text=self.controller.t("complete_deck"),
                 fg="green"
             )
         else:
             self.deck_status_label.config(
-                text=f"{self.controller.t("incomplete_deck")}",
+                text=self.controller.t("incomplete_deck"),
                 fg="red"
             )
 
@@ -272,6 +362,10 @@ class DuelistDetailsFrame(tk.Frame):
         if self.current_deck_index is None:
             return
 
+        previous_index = self.current_deck_index
+        previous_scroll = self.decks_listbox.yview()
+        previous_card_id = self.selected_card_id
+
         self.decks_data = get_decks_by_duelist(
             self.current_duelist_id,
             self.controller.current_language,
@@ -279,23 +373,35 @@ class DuelistDetailsFrame(tk.Frame):
         )
 
         self.decks_listbox.delete(0, tk.END)
-        self.cards_listbox.delete(0, tk.END)
 
         for deck in self.decks_data:
             self.decks_listbox.insert(tk.END, deck["deck_name"])
 
-        if self.current_deck_index < len(self.decks_data):
-            self.decks_listbox.select_set(self.current_deck_index)
-            self.decks_listbox.event_generate("<<ListboxSelect>>")
+        self.update_scroll_visibility(self.decks_listbox, self.decks_scroll)
+
+        if previous_index < len(self.decks_data):
+            self.current_deck_index = previous_index
+
+            self.decks_listbox.selection_clear(0, tk.END)
+            self.decks_listbox.select_set(previous_index)
+            self.decks_listbox.activate(previous_index)
+            self.decks_listbox.see(previous_index)
+
+            if previous_scroll:
+                self.decks_listbox.yview_moveto(previous_scroll[0])
+
+            self.load_selected_deck_cards()
+            self.restore_selected_card(previous_card_id)
         else:
             self.current_deck_index = None
             self.current_cards = []
+            self.cards_listbox.delete(0, tk.END)
             self.clear_right_panel()
 
     def refresh_ui(self):
         self.exclusive_cards_checkbox.config(text=self.controller.t("show_exclusive_cards"))
-        self.return_button.config(text=self.controller.t("return"))
         self.show_card_details.config(text=self.controller.t("card_details"))
+        self.export_deck_button.config(text=self.controller.t("export_deck"))
         self.duelist_decks_label.config(
             text=self.controller.t("duelist_decks").format(name=self.current_duelist_name)
         )

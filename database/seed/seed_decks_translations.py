@@ -14,13 +14,13 @@ def _load_deck_category_ids(cursor) -> dict[str, int]:
 def _load_duelist_deck_ids(cursor) -> dict[tuple[str, str], int]:
     """Maps duelist name and key to a duelist_decks.id"""
     cursor.execute("""
-    SELECT duelist_decks.id, duelists.name, duelist_decks.key
+    SELECT duelist_decks.id, duelists.key, duelist_decks.key
     FROM duelist_decks
     JOIN duelists ON duelists.id = duelist_decks.duelist_id
     """)
 
     return {
-        (duelist_name, deck_key): deck_id for deck_id, duelist_name, deck_key in cursor.fetchall()
+        (duelist_key, deck_key): deck_id for deck_id, duelist_key, deck_key in cursor.fetchall()
     }
 
 def _build_deck_category_translation_rows(deck_category_id_by_key: dict[str, int], ) -> list[tuple[int, str, str]]:
@@ -42,9 +42,9 @@ def _build_duelist_deck_translation_rows(
     """Builds translation rows for decks that are unique to a duelist"""
     rows: list[tuple[int, str, str]] = []
 
-    for duelist_name, decks in DUELISTS_DECKS_KEYS.items():
+    for duelist_key, decks in DUELISTS_DECKS_KEYS.items():
         for deck_key, translations in decks.items():
-            deck_id = deck_id_by_duelist_and_key.get((duelist_name, deck_key))
+            deck_id = deck_id_by_duelist_and_key.get((duelist_key, deck_key))
             if not deck_id:
                 continue
 

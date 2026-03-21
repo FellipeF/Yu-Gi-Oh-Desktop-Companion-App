@@ -1,8 +1,8 @@
 import tkinter as tk
-from PIL import Image, ImageTk
 import threading
+from tkinter import ttk
 
-from utils import cache_image
+from PIL import Image, ImageTk
 
 from database.queries import search_cards
 from database.queries import (
@@ -13,9 +13,9 @@ from database.queries import (
     update_user_deck_card_quantity,
 )
 from ui.card_details_window import CardDetailsWindow
-
-CARD_WIDTH = 320
-CARD_HEIGHT = 470
+from utils.card_image_loader import load_card_pil_image
+from config import CARD_WIDTH, CARD_HEIGHT
+from utils.resource_path import resource_path
 
 
 class CustomDeckEditorFrame(tk.Frame):
@@ -27,11 +27,14 @@ class CustomDeckEditorFrame(tk.Frame):
         self.current_found_cards = []
         self.current_deck_cards = []
 
-        self.selected_search_card_id = None
+        self.active_card_id = None
         self.selected_deck_card_id = None
         self.selected_deck_card_name = None
 
         self.tk_image = None
+        self.placeholder_image = ImageTk.PhotoImage(
+            Image.open(resource_path("images/placeholder.jpg")).resize((CARD_WIDTH, CARD_HEIGHT))
+        )
 
         self.title_label = tk.Label(self, font=("Arial", 14))
         self.title_label.pack(pady=(10, 2))
@@ -42,31 +45,50 @@ class CustomDeckEditorFrame(tk.Frame):
         main_container = tk.Frame(self)
         main_container.pack(fill="both", expand=True, padx=10, pady=5)
 
-        # LEFT SIDE - Search cards
-        left_frame = tk.Frame(main_container, width=300)
-        left_frame.pack(side="left", fill="both", expand=True, padx=(0, 5))
+        # Left Side - Card List and Search
+        left_frame = tk.Frame(main_container, width=420)
+        left_frame.pack(side="left", fill="both", expand=False, padx=(0, 10))
         left_frame.pack_propagate(False)
 
-        self.search_label = tk.Label(left_frame)
-        self.search_label.pack(pady=(0, 5))
+        self.search_label = tk.Label(left_frame, font=("Tahoma", 12))
+        self.search_label.pack(anchor="w", pady=(0,5))
 
         self.search_var = tk.StringVar()
         self.search_var.trace_add("write", self.filter_cards)
 
-        self.search_entry = tk.Entry(left_frame, textvariable=self.search_var, width=40)
-        self.search_entry.pack(pady=(0, 8))
+        self.search_entry = tk.Entry(left_frame, textvariable=self.search_var, width=40, font=("Tahoma", 12))
+        self.search_entry.pack(anchor="w", pady=(0,8))
 
-        self.search_results_list = tk.Listbox(left_frame, width=40, height=18)
-        self.search_results_list.pack(fill="both", expand=True)
-        self.search_results_list.bind("<<ListboxSelect>>", self.on_search_card_selected)
+        search_container = tk.Frame(left_frame)
+        search_container.pack(fill="both", expand=True)
+
+        self.search_results_list = tk.Listbox(
+            search_container,
+            width=40,
+            height=18,
+            font=("Tahoma", 12),
+            exportselection=False
+        )
+        self.search_results_list.pack(side="left", fill="both", expand=True)
+
+        self.search_scroll = ttk.Scrollbar(
+            search_container,
+            orient="vertical",
+            command=self.search_results_list.yview
+        )
+        self.search_scroll.pack(side="right", fill="y")
+
+        self.search_results_list.config(yscrollcommand=self.search_scroll.set)
+
+        self.search_results_list.bind("<<ListboxSelect>>", self.show_card_image)
 
         # CENTER - Card preview and actions
-        center_frame = tk.Frame(main_container, width=360)
-        center_frame.pack(side="left", fill="y", padx=5)
+        center_frame = tk.Frame(main_container, width=CARD_WIDTH + 40)
+        center_frame.pack(side="left", fill="both", expand=False, padx=(0,10))
         center_frame.pack_propagate(False)
 
         image_container = tk.Frame(center_frame, width=CARD_WIDTH, height=CARD_HEIGHT)
-        image_container.pack(pady=(10, 6))
+        image_container.pack(expand=True)
         image_container.pack_propagate(False)
 
         self.image_label = tk.Label(image_container, text="", anchor="center")
@@ -74,6 +96,7 @@ class CustomDeckEditorFrame(tk.Frame):
 
         self.show_card_details_button = tk.Button(
             center_frame,
+            font=("Tahoma", 12),
             command=self.open_card_details_window
         )
         self.show_card_details_button.pack(pady=(0, 8))
@@ -81,21 +104,42 @@ class CustomDeckEditorFrame(tk.Frame):
 
         self.add_to_deck_button = tk.Button(
             center_frame,
+            font=("Tahoma", 12),
             command=self.add_selected_card_to_deck
         )
         self.add_to_deck_button.pack(pady=(0, 8))
         self.add_to_deck_button.pack_forget()
 
-        # RIGHT SIDE - Current deck cards
-        right_frame = tk.Frame(main_container, width=300)
-        right_frame.pack(side="left", fill="both", expand=True, padx=(5, 0))
-        left_frame.pack_propagate(False)
+        # Right Side - Current selected deck cards
+        right_frame = tk.Frame(main_container, width=420)
+        right_frame.pack(side="left", fill="both", expand=False, padx=(0, 10))
+        right_frame.pack_propagate(False)
 
-        self.deck_cards_label = tk.Label(right_frame)
+        self.deck_cards_label = tk.Label(right_frame, font=("Tahoma", 12))
         self.deck_cards_label.pack(pady=(0, 5))
 
-        self.deck_cards_list = tk.Listbox(right_frame, width=45, height=18)
-        self.deck_cards_list.pack(fill="both", expand=True)
+        deck_container = tk.Frame(right_frame, height=360)
+        deck_container.pack(fill="x", expand=False)
+        deck_container.pack_propagate(False)
+
+        self.deck_cards_list = tk.Listbox(
+            deck_container,
+            width=45,
+            height=18,
+            font=("Tahoma", 12),
+            exportselection=False
+        )
+        self.deck_cards_list.pack(side="left", fill="both", expand=True)
+
+        self.deck_scroll = ttk.Scrollbar(
+            deck_container,
+            orient="vertical",
+            command=self.deck_cards_list.yview
+        )
+        self.deck_scroll.pack(side="right", fill="y")
+
+        self.deck_cards_list.config(yscrollcommand=self.deck_scroll.set)
+
         self.deck_cards_list.bind("<<ListboxSelect>>", self.on_deck_card_selected)
 
         deck_buttons_frame = tk.Frame(right_frame)
@@ -103,12 +147,14 @@ class CustomDeckEditorFrame(tk.Frame):
 
         self.remove_one_button = tk.Button(
             deck_buttons_frame,
+            font=("Tahoma", 12),
             command=self.remove_one_copy
         )
         self.remove_one_button.grid(row=0, column=0, padx=5)
 
         self.remove_card_button = tk.Button(
             deck_buttons_frame,
+            font=("Tahoma", 12),
             command=self.remove_selected_card_from_deck
         )
         self.remove_card_button.grid(row=0, column=1, padx=5)
@@ -119,37 +165,49 @@ class CustomDeckEditorFrame(tk.Frame):
 
         self.return_button = tk.Button(
             bottom_buttons,
+            font=("Tahoma", 12),
             command=self.go_back
         )
         self.return_button.grid(row=0, column=0, padx=5)
 
         self.refresh_ui()
+        self.filter_cards()
 
     def refresh_ui(self):
         """Controls Text when frame appears and when switching language"""
-        self.title_label.config(text=self.controller.t("custom_deck_editor"))
-        self.search_label.config(text=self.controller.t("search_cards"))
+        previous_search_card_id = self.active_card_id
+        previous_deck_card_id = self.selected_deck_card_id
+        previous_deck_card_name = self.selected_deck_card_name
+
+        self.search_label.config(text=self.controller.t("search_card"))
         self.deck_cards_label.config(text=self.controller.t("deck_cards"))
-        self.image_label.config(text=self.controller.t("select_card"))
+
+        if self.tk_image is None and self.image_label.cget("image") == "":
+            self.image_label.config(text=self.controller.t("select_card"))
+
         self.show_card_details_button.config(text=self.controller.t("card_details"))
         self.add_to_deck_button.config(text=self.controller.t("add_to_deck"))
         self.remove_one_button.config(text=self.controller.t("remove_one"))
         self.remove_card_button.config(text=self.controller.t("remove_card"))
         self.return_button.config(text=self.controller.t("return"))
 
+        # Change currently populated list for current deck and card list while restoring choice
+        self.filter_cards()
         self.load_user_deck()
 
+        self.restore_search_selection(previous_search_card_id)
+        self.restore_deck_selection(previous_deck_card_id, previous_deck_card_name)
+
     def load_user_deck(self):
+        """Load currently selected deck and contents. """
         deck_id = self.controller.current_user_deck_id
 
-        if not deck_id:
-            self.deck_info_label.config(text=self.controller.t("no_deck_selected"))
-            return
+        # No need to check if deck_id exists, since user only enters this Frame if they select a deck from Custom Decks
 
         deck = get_user_deck_by_id(deck_id)
 
         if not deck:
-            self.deck_info_label.config(text=self.controller.t("deck_not_found"))
+            # Prevents error if deck list is empty
             return
 
         _deck_id, deck_name, is_used = deck
@@ -157,29 +215,40 @@ class CustomDeckEditorFrame(tk.Frame):
 
         used_text = self.controller.t("yes") if is_used else self.controller.t("no")
 
+        self.title_label.config(
+            text=f"{self.controller.t('editing_deck')}: {deck_name}"
+        )
+
         self.deck_info_label.config(
-            text=f"{deck_name} | {self.controller.t('total_cards')}: {total_cards} | {self.controller.t('used')}: {used_text}"
+            text=f"{self.controller.t('total_cards')}: {total_cards} | "
+                 f"{self.controller.t('used')}: {used_text}"
         )
 
         self.load_deck_cards()
-        self.filter_cards()
 
     def get_current_total_cards(self, deck_id: int) -> int:
+        """Returns current total number of cards"""
         cards = get_cards_by_user_deck(deck_id, self.controller.current_language)
         return sum(card[2] for card in cards)
 
     def filter_cards(self, *args):
+        """Controls search box"""
         name = self.search_var.get()
         language = self.controller.current_language
 
-        self.current_found_cards = search_cards(name=name, language=language)
+        previous_card_id = self.active_card_id
 
+        self.current_found_cards = search_cards(name=name, language=language)
         self.search_results_list.delete(0, tk.END)
 
         for card in self.current_found_cards:
             self.search_results_list.insert(tk.END, card[1])
 
+        #self.update_scroll_visibility(self.search_results_list, self.search_scroll)
+        self.restore_search_selection(previous_card_id)
+
     def load_deck_cards(self):
+        """Loads cards that belong to the currently selected deck"""
         deck_id = self.controller.current_user_deck_id
 
         if not deck_id:
@@ -193,18 +262,20 @@ class CustomDeckEditorFrame(tk.Frame):
         self.deck_cards_list.delete(0, tk.END)
 
         for card_id, card_name, quantity in self.current_deck_cards:
-            self.deck_cards_list.insert(tk.END, f"{card_name} x{quantity}")
+            self.deck_cards_list.insert(tk.END, f"{quantity}x {card_name}")
 
-    def on_search_card_selected(self, event):
+        self.update_scroll_visibility(self.deck_cards_list, self.deck_scroll)
+
+    def show_card_image(self, event):
+        """Load card image async"""
         selection = self.search_results_list.curselection()
-
         if not selection:
             return
 
         card = self.current_found_cards[selection[0]]
         card_id = card[0]
 
-        self.selected_search_card_id = card_id
+        self.active_card_id = card_id
 
         threading.Thread(
             target=self.load_image_async,
@@ -213,46 +284,46 @@ class CustomDeckEditorFrame(tk.Frame):
         ).start()
 
     def load_image_async(self, card_id):
-        img_path = cache_image.get_card_image(card_id)
+        pil_img = load_card_pil_image(card_id, CARD_WIDTH, CARD_HEIGHT)
 
-        if not img_path:
+        if pil_img is None:
             return
 
-        img = Image.open(img_path).resize((CARD_WIDTH, CARD_HEIGHT))
-        tk_img = ImageTk.PhotoImage(img)
+        self.after(0, self.update_image_label, pil_img)
 
-        self.after(0, self.update_image_label, tk_img)
-
-    def update_image_label(self, tk_img):
-        self.tk_image = tk_img
+    def update_image_label(self, pil_img):
+        self.tk_image = ImageTk.PhotoImage(pil_img)
         self.image_label.config(image=self.tk_image, text="")
         self.show_card_details_button.pack(pady=(0, 8))
         self.add_to_deck_button.pack(pady=(0, 8))
 
     def open_card_details_window(self):
-        if not self.selected_search_card_id:
+        if not self.active_card_id:
             return
 
-        CardDetailsWindow(self.controller, self.selected_search_card_id)
+        CardDetailsWindow(self.controller, self.active_card_id)
 
     def add_selected_card_to_deck(self):
+        """Adds one copy of selected card to the user deck"""
         deck_id = self.controller.current_user_deck_id
 
-        if not deck_id or not self.selected_search_card_id:
+        if not deck_id or not self.active_card_id:
             return
 
         success = add_card_to_user_deck(
             deck_id=deck_id,
-            card_id=self.selected_search_card_id,
+            card_id=self.active_card_id,
             quantity=1
         )
 
         if not success:
             return
 
-        self.load_user_deck()
+        # Preserves selection in both lists
+        self.refresh_deck_view(preserve_search=True, preserve_deck=True, target_deck_card_id = self.active_card_id)
 
     def on_deck_card_selected(self, event):
+        """Stores currently selected card from the user's deck list and loads image"""
         selection = self.deck_cards_list.curselection()
 
         if not selection:
@@ -263,6 +334,22 @@ class CustomDeckEditorFrame(tk.Frame):
         card_id, card_name, quantity = self.current_deck_cards[selection[0]]
         self.selected_deck_card_id = card_id
         self.selected_deck_card_name = card_name
+        self.active_card_id = card_id
+
+        if not card_id:
+            self.tk_image = None
+            self.image_label.config(image=self.placeholder_image, text="")
+            self.image_label.image = self.placeholder_image
+            self.show_card_details_button.pack_forget()
+            self.add_to_deck_button.pack_forget()
+            return
+
+        threading.Thread(
+            target=self.load_image_async,
+            args=(card_id,),
+            daemon=True  # Background Processing
+        ).start()
+
 
     def remove_one_copy(self):
         deck_id = self.controller.current_user_deck_id
@@ -290,9 +377,10 @@ class CustomDeckEditorFrame(tk.Frame):
             card_name=None if card_id is not None else card_name
         )
 
-        self.load_user_deck()
+        self.refresh_deck_view(preserve_search=True, preserve_deck=True)
 
     def remove_selected_card_from_deck(self):
+        """Removes all copies of card from deck"""
         deck_id = self.controller.current_user_deck_id
 
         if not deck_id or (self.selected_deck_card_id is None and not self.selected_deck_card_name):
@@ -304,8 +392,74 @@ class CustomDeckEditorFrame(tk.Frame):
             card_name=None if self.selected_deck_card_id is not None else self.selected_deck_card_name
         )
 
+        self.refresh_deck_view(preserve_search=True, preserve_deck=True)
+
+    def refresh_deck_view(self, preserve_search=True, preserve_deck=True, target_deck_card_id = None):
+        """Refreshes deck area while preserving previous selections if one copy of card is removed"""
+        previous_search_card_id = self.active_card_id if preserve_search else None
+
+        if target_deck_card_id is not None:
+            previous_deck_card_id = target_deck_card_id
+            previous_deck_card_name = None
+        else:
+            previous_deck_card_id = self.selected_deck_card_id if preserve_deck else None
+            previous_deck_card_name = self.selected_deck_card_name if preserve_deck else None
+
         self.load_user_deck()
 
+        if preserve_search:
+            self.restore_search_selection(previous_search_card_id)
+
+        if preserve_deck:
+            self.restore_deck_selection(previous_deck_card_id, previous_deck_card_name)
+
+    def restore_search_selection(self, previous_card_id):
+        """Restores previous search selection after list is refreshed"""
+        if not previous_card_id:
+            return
+
+        for index, card in enumerate(self.current_found_cards):
+            if card[0] == previous_card_id:
+                self.search_results_list.selection_clear(0, tk.END)
+                self.search_results_list.selection_set(index)
+                self.search_results_list.activate(index)
+                self.search_results_list.see(index)
+                self.active_card_id = previous_card_id
+
+                return
+
+    def restore_deck_selection(self, previous_card_id, previous_card_name=None):
+        """Restores deck selection if deck list is refreshed. When adding cards by the left side, we add by ID instead"""
+        if previous_card_id is None and not previous_card_name:
+            return
+
+        for index, (card_id, card_name, quantity) in enumerate(self.current_deck_cards):
+            match_by_id = previous_card_id is not None and card_id == previous_card_id
+            match_by_name = previous_card_id is None and previous_card_name and card_name == previous_card_name
+
+            if match_by_id or match_by_name:
+                self.deck_cards_list.selection_clear(0, tk.END)
+                self.deck_cards_list.selection_set(index)
+                self.deck_cards_list.activate(index)
+                self.deck_cards_list.see(index)
+                self.selected_deck_card_id = card_id
+                self.selected_deck_card_name = card_name
+                return
+
+        self.selected_deck_card_id = None
+        self.selected_deck_card_name = None
+
     def go_back(self):
+        """Returns to User Decks Screen and loads all their decks"""
         self.controller.frames["CustomDecksFrame"].load_user_decks()
         self.controller.show_frame("CustomDecksFrame")
+
+    def update_scroll_visibility(self, listbox, scrollbar):
+        """Hide scrollbar when all items fit in the listbox."""
+        listbox.update_idletasks()
+        first, last = listbox.yview()
+
+        if first <= 0.0 and last >= 1.0:
+            scrollbar.pack_forget()
+        else:
+            scrollbar.pack(side="right", fill="y")

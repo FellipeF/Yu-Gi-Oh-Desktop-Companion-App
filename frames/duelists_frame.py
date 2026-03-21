@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from database.queries import get_all_duelists
+from ui.duelist_details_window import DuelistDetailsWindow
 from utils.resource_path import resource_path
 
 class DuelistsFrame(tk.Frame):
@@ -69,7 +70,7 @@ class DuelistsFrame(tk.Frame):
         col = 0
 
         for duelist in page_duelists:
-            duelist_id, name, img_path = duelist
+            duelist_id, duelist_key, name, img_path, deck_count = duelist
 
             img = Image.open(resource_path(img_path)).resize((200,200))
             tk_img = ImageTk.PhotoImage(img)
@@ -81,11 +82,11 @@ class DuelistsFrame(tk.Frame):
             duelist_button = tk.Button(
                 cell,
                 image=tk_img,
-                text=self.truncate(name, 14),
+                text=f"{self.truncate(name, 14)}\n({deck_count})",
                 font=("Arial",15),
                 compound="top",
                 wraplength=160,
-                command=lambda d=duelist_id, n=name: self.show_duelist_details(d, n)
+                command=lambda d=duelist_id, k=duelist_key, n=name: self.show_duelist_details(d,k,n)
             )
 
             duelist_button.image = tk_img
@@ -117,10 +118,8 @@ class DuelistsFrame(tk.Frame):
             self.current_page -= 1
             self.render_page()
 
-    def show_duelist_details(self, duelist_id, duelist_name):
-        detail_frame = self.controller.frames["DuelistDetailsFrame"]
-        detail_frame.set_duelist(duelist_id, duelist_name)
-        self.controller.show_frame("DuelistDetailsFrame")
+    def show_duelist_details(self, duelist_id, duelist_key, duelist_name):
+        DuelistDetailsWindow(self.controller, duelist_id, duelist_key, duelist_name)
 
     def refresh_ui(self):
         self.select_duelist_label.config(text=self.controller.t("select_duelist"))

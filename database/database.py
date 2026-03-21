@@ -4,8 +4,16 @@ DB_NAME = "yugi.db"
 
 def get_connection():
     conn = sqlite3.connect(DB_NAME)
+    # ----------------------------------------------------------------------------------------------------
+    # Enable Foreign Keys:
+    # https://stackoverflow.com/questions/6288871/foreign-key-support-in-sqlite3?answertab=oldest#tab-top
+    # ----------------------------------------------------------------------------------------------------
     conn.execute("PRAGMA foreign_keys = ON")
-    # Enable Foreign Keys -> https://stackoverflow.com/questions/6288871/foreign-key-support-in-sqlite3?answertab=oldest#tab-top
+    conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA journal_mode = WAL")
+    conn.execute("PRAGMA synchronous = NORMAL")
+    conn.execute("PRAGMA temp_store = MEMORY")
+    conn.execute("PRAGMA cache_size = -10000")  # ~10 MB
     return conn
 
 def create_tables():
@@ -42,6 +50,7 @@ def create_tables():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS duelists (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        key TEXT UNIQUE NOT NULL,
         name TEXT UNIQUE NOT NULL,
         img_path TEXT
     )
@@ -80,7 +89,7 @@ def create_tables():
         key TEXT NOT NULL,
         order_index INTEGER DEFAULT 0,
         FOREIGN KEY (duelist_id) REFERENCES duelists(id),
-        FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id),
+        FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id) ON DELETE SET NULL,
         UNIQUE(duelist_id, key)
     )
     """)
@@ -91,7 +100,7 @@ def create_tables():
         language_code TEXT NOT NULL,
         name TEXT NOT NULL,
         PRIMARY KEY (deck_id, language_code),
-        FOREIGN KEY (deck_id) REFERENCES duelist_decks(id)
+        FOREIGN KEY (deck_id) REFERENCES duelist_decks(id) ON DELETE CASCADE
     )
     """)
 
@@ -106,7 +115,7 @@ def create_tables():
         card_id INTEGER,
         card_name TEXT,
         quantity INTEGER NOT NULL,
-        FOREIGN KEY(deck_id) REFERENCES duelist_decks(id),
+        FOREIGN KEY(deck_id) REFERENCES duelist_decks(id) ON DELETE CASCADE,
         FOREIGN KEY(card_id) REFERENCES cards(id),
         UNIQUE(deck_id, card_id),
         UNIQUE(deck_id, card_name)
@@ -145,6 +154,36 @@ def create_tables():
     cursor.execute("""
     CREATE INDEX IF NOT EXISTS idx_cards_translations_name_nocase
     ON cards_translations(name COLLATE NOCASE)
+    """)
+
+    # Index for all the decks of a particular duelist
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_duelist_decks_duelist_id_order
+    ON duelist_decks(duelist_id, order_index)
+    """)
+
+    # Searching translation by language
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_duelist_deck_translations_deck_lang
+    ON duelist_deck_translations(deck_id, language_code)
+    """)
+
+    # Searching translated category by language
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_deck_category_translations_category_lang
+    ON deck_category_translations(deck_category_id, language_code)
+    """)
+
+    # Load Duelist deck contents
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_deck_contents_deck_id
+    ON deck_contents(deck_id)
+    """)
+
+    # Load User Deck Contents
+    cursor.execute("""
+    CREATE INDEX IF NOT EXISTS idx_user_deck_contents_deck_id
+    ON user_deck_contents(deck_id)
     """)
 
     conn.commit()
