@@ -68,12 +68,5 @@ DECK_CATEGORIES_KEYS = [
     "project_ra",
     "power_of_friendship",
     "joey_vs_duke_devlin",
+    "imposter",
 ]
-
-def translate_category(category_key, lang="pt"):
-    category = DECK_CATEGORIES_KEYS.get(category_key)
-
-    if not category:
-        return category_key
-
-    return category.get(lang, category.get("en", category_key))

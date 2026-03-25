@@ -5,6 +5,77 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Truque de Mágica",
         }
     },
+    "bonz": {
+        "spook_and_boo": {
+            "en": "Spook and Boo",
+            "pt": "Assombração e Susto",
+        },
+        "zombie": {
+            "en": "Zombie",
+            "pt": "Zumbi",
+        },
+        "bonz": {
+            "en": "Bonz",
+            "pt": "Bonz",
+        },
+        "the_unearthed": {
+            "en": "The Unearthed",
+            "pt": "Os Desenterrados",
+        },
+        "a_tomb_uncovered": {
+            "en": "A Tomb Uncovered",
+            "pt": "Uma Tumba Descoberta",
+        },
+        "raving_cemetery": {
+            "en": "Raving Cemetery",
+            "pt": "Cemitério Furioso",
+        },
+        "king_of_the_skull_servants": {
+            "en": "King of the Skull Servants",
+            "pt": "Rei dos Servos Caveira",
+        },
+
+        "living_beyond_the_grave": {
+            "en": "Living Beyond the Grave",
+            "pt": "Vivendo Além da Cova",
+        },
+        "realm_of_the_pumpking": {
+            "en": "Realm of the Pumpking",
+            "pt": "Reino do Pumpking",
+        },
+        "zombie_army_onslaught": {
+            "en": "Zombie Army Onslaught",
+            "pt": "Massacre de Exército Zumbi",
+        },
+        "overwhelming_zombie_army": {
+            "en": "Overwhelming Zombie Army",
+            "pt": "Exército Zumbi Esmagador",
+        },
+        "greetings_from_the_grave": {
+            "en": "Greetings from the Grave",
+            "pt": "Saudações da Cova",
+        },
+        "graveyard_gunfire": {
+            "en": "Graveyard Gunfire",
+            "pt": "Tiroteio no Cemitério",
+        },
+        "rise_of_the_zombies": {
+            "en": "Rise of the Zombies",
+            "pt": "Ascensão dos Zumbis",
+        },
+        "rise_of_the_zombies_2": {
+            "en": "Rise of the Zombies (2)",
+            "pt": "Ascensão dos Zumbis (2)",
+        },
+        "the_dark_master": {
+            "en": "The Dark Master",
+            "pt": "O Mestre das Sombras",
+        },
+        "armageddon": {
+            "en": "Armageddon",
+            "pt": "Armagedom",
+        },
+    },
     "duke_devlin": {
         "duke": {
             "en": "Duke",
@@ -308,14 +379,6 @@ DUELISTS_DECKS_KEYS = {
             "en": "Duelist Level Max!",
             "pt": "Duelista Nível Máximo!",
         },
-        "stairway_possessed": {
-            "en": "Stairway to the Destined Duel - Possessed",
-            "pt": "Escadaria para o Duelo Destinado - Possuído",
-        },
-        "brainwashed": {
-            "en": "Brainwashed",
-            "pt": "Lavagem Cerebral",
-        }
     },
     "leon_von_schroeder": {
         "fairy_tale": {
@@ -623,10 +686,6 @@ DUELISTS_DECKS_KEYS = {
         "kaiser_impact": {
             "en": "Kaiser Impact",
             "pt": "Impacto Kaiser",
-        },
-        "obelisk_impact": {
-            "en": "Obelisk Impact",
-            "pt": "Impacto Obelisco",
         },
         "ruinous_beast": {
             "en": "Ruinous Beast",
@@ -1022,10 +1081,6 @@ DUELISTS_DECKS_KEYS = {
         }
     },
     "weevil_underwood": {
-        "imposter": {
-            "en": "Imposter",
-            "pt": "Impostor",
-        },
         "insects": {
             "en": "Insects",
             "pt": "Insetos",
@@ -1098,16 +1153,3 @@ DUELISTS_DECKS_KEYS = {
         },
     },
 }
-
-def translate_deck(duelist_key: str, deck_key: str, lang: str, default_lang: str="en") -> str:
-    duelist_data = DUELISTS_DECKS_KEYS.get(duelist_key)
-
-    if not duelist_data:
-        return deck_key
-
-    deck_data = duelist_data.get(deck_key)
-
-    if not deck_data:
-        return deck_key
-
-    return deck_data.get(lang, deck_data.get(default_lang, deck_key))

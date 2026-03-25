@@ -263,11 +263,8 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Joey vs. Duke Devlin",
         "pt": "Joey vs. Duke Devlin",
     },
+    "imposter": {
+        "en": "Imposter",
+        "pt": "Impostor",
+    },
 }
-
-def translate_category(category_key: str, lang: str, default_lang: str = "en") -> str:
-    category_data = DECK_CATEGORIES_TRANSLATIONS.get(category_key)
-    if not category_data:
-        return category_key
-
-    return category_data.get(lang, category_data.get(default_lang, category_key))

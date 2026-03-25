@@ -16,7 +16,7 @@ DUELISTS = [
     ("weevil_underwood", "Weevil Underwood", "images/duelists/weevil.png"),
     ("mai_valentine", "Mai Valentine", "images/duelists/mai.png"),
     ("mako_tsunami", "Mako Tsunami", "images/duelists/mako.webp"),
-
+    ("bonz", "Bonz", "images/duelists/bonz.png"),
     # =========================
     # TODO: Below
     # =========================
@@ -34,7 +34,6 @@ DUELISTS = [
     ("ghost_kaiba", "Ghost Kaiba", "images/duelists/placeholder.webp"),
     ("panik", "PaniK", "images/duelists/placeholder.webp"),
     ("bandit_keith", "Bandit Keith", "images/duelists/placeholder.webp"),
-    ("bonz", "Bonz", "images/duelists/placeholder.webp"),
     ("para", "Para", "images/duelists/placeholder.webp"),
     ("dox", "Dox", "images/duelists/placeholder.webp"),
     ("marik_ishtar", "Marik Ishtar", "images/duelists/placeholder.webp"),
