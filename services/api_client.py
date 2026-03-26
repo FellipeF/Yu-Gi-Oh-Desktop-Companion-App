@@ -3,7 +3,7 @@ import requests
 import json
 import os
 from typing import Any, Dict, Optional
-from datetime import date
+from datetime import date, datetime
 
 URL_CARDS = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 URL_VERSION = "https://db.ygoprodeck.com/api/v7/checkDBVer.php"
@@ -70,8 +70,17 @@ class ApiClient:
         """Gets dataset details from Endpoint"""
         r = requests.get(URL_VERSION, timeout = 20)
         r.raise_for_status()
-        data = r.json()
-        return data[0]
+        data = r.json()[0]
+        last_update = data.get("last_update")
+
+        if last_update:
+            try:
+                dt = datetime.strptime(last_update, "%Y-%m-%d %H:%M:%S")
+                data["last_update"] = dt.strftime("%Y-%m-%d")
+            except ValueError:
+                pass
+
+        return data
 
     def download_cards(self, language:str="en") -> Dict[str,Any]:
         """Downloads cards dataset for a given language (defaults english) and updates local cache. There's no parameter

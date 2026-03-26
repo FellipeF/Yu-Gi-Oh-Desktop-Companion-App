@@ -32,7 +32,7 @@ translations = {
         "user_decks_total": "User Decks Total",
         "dataset_version": "Dataset Version",
         "dataset_version_unknown": "Dataset Version: Unknown",
-        "last_checked": "Last Updated",
+        "last_update": "Last Updated",
         # ================================
         #  CARDS FRAME
         # ================================
@@ -126,7 +126,7 @@ translations = {
         "user_decks_total": "Total de Decks de Usuário",
         "dataset_version": "Versão do Dataset",
         "dataset_version_unknown": "Versão do Dataset: Desconhecida",
-        "last_checked": "Atualizado em:",
+        "last_update": "Atualizado em",
         # ================================
         #  CARDS FRAME
         # ================================

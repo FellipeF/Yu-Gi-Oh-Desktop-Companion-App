@@ -71,18 +71,18 @@ class HomeFrame(tk.Frame):
             return self.controller.t("dataset_version_unknown")
 
         dataset_version = info.get("database_version") #Check api_client for explanation
-        last_checked = info.get("last_checked")
+        last_update = info.get("last_update")
 
         if self.controller.current_language != "en":
-            last_checked = self.format_date(last_checked)
+            last_update = self.format_date(last_update)
 
         if not dataset_version:
             return self.controller.t("dataset_version_unknown")
 
-        if last_checked:
+        if last_update:
             return (
                 f"{self.controller.t("dataset_version")}: {dataset_version} | "
-                f"{self.controller.t("last_checked")}: {last_checked}"
+                f"{self.controller.t("last_update")}: {last_update}"
             )
 
         return f"{self.controller.t("dataset_version")}: {dataset_version}"
