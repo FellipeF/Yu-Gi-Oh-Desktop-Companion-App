@@ -13,7 +13,22 @@ def _normalize_stat(value) -> int | None:
 def _get_database_version() -> tuple[str | None, str | None]:
     """Returns the online and offline database versions from the info file"""
     info = api.read_info_file() or {}
-    return info.get("database_version"), info.get("database_offline_version")
+    offline_version = info.get("database_offline_version")
+
+    try:
+        db_details = api.get_dataset_details()
+        online_version = db_details.get("database_version")
+
+        info["database_version"] = online_version
+        info["last_checked"] = api._today()
+        if "last_update" in db_details:
+            info["last_update"] = db_details.get("last_update")
+        api.write_info_file(info)
+
+    except Exception:
+        online_version = info.get("database_version")
+
+    return online_version, offline_version
 
 def _is_language_already_seeded(cursor, language_code: str) -> bool:
     """Check if at least one translation row already exists """

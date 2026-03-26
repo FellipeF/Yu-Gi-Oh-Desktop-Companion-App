@@ -99,7 +99,7 @@ class ApiClient:
     def load_cards(self, language: str="en", force_refresh: bool = False) -> Dict [str, Any]:
         """Load cards from cache. When force_refresh is enabled, it checks if the YGOPro Database version has changed.
         If the file doesn't exist, it means we're starting the program for the first time or it was deleted.
-        In both cases, download the dataset. A new data set version is checked every 24h"""
+        In both cases, download the dataset. A new data set version is checked every day"""
         cards_cache_path = self._cards_cache_path(language)
 
         if force_refresh or not os.path.exists(cards_cache_path):
