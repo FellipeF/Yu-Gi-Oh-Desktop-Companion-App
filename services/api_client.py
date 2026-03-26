@@ -86,11 +86,14 @@ class ApiClient:
 
         try:
             db_details = self.get_dataset_details()
-            info = {
-                "database_version": db_details.get("database_version"),
-                "last_checked": today
-            }
+            local_info = self.read_info_file()
+            info = local_info.copy() if local_info else {}
+
+            info["database_version"] = db_details.get("database_version")
+            info["last_checked"] = today
+            info["last_update"] = db_details.get("last_update")
             self.write_info_file(info)
+
         except requests.RequestException:
             pass
 
@@ -117,10 +120,9 @@ class ApiClient:
 
             local_version = local_info.get("database_version") if local_info else None
 
-            info = {
-                "database_version": online_db_version,
-                "last_checked": today
-            }
+            info = local_info.copy() if local_info else {}
+            info["database_version"] = online_db_version
+            info["last_checked"] = today
             self.write_info_file(info)
 
             if local_version != online_db_version:
