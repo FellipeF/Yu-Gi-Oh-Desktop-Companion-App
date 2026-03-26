@@ -76,6 +76,20 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Armagedom",
         },
     },
+    "dartz": {
+        "orichalcos": {
+            "en": "Orichalcos",
+            "pt": "Orichalcos",
+        },
+        "power_of_orichalcos": {
+            "en": "Power of Orichalcos",
+            "pt": "Poder de Orichalcos",
+        },
+        "serene_aroma": {
+            "en": "Serene Aroma",
+            "pt": "Aroma Sereno",
+        },
+    },
     "duke_devlin": {
         "duke": {
             "en": "Duke",

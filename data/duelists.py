@@ -9,7 +9,7 @@ DUELISTS = [
     ("maximillion_pegasus", "Maximillion Pegasus", "images/duelists/pegasus.png"),
     ("lumis", "Lumis", "images/duelists/lumis.png"),
     ("umbra", "Umbra", "images/duelists/umbra.png"),
-    ("dartz", "Dartz", "images/duelists/dartz.png"),
+    ("dartz", "Dartz", "images/duelists/dartz.webp"),
     ("anubis", "Anubis", "images/duelists/anubis.webp"),
     ("duke_devlin", "Duke Devlin", "images/duelists/duke.webp"),
     ("arkana", "Arkana", "images/duelists/arkana.png"),
