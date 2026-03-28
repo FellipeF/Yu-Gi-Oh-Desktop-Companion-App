@@ -17,10 +17,10 @@ DUELISTS = [
     ("mai_valentine", "Mai Valentine", "images/duelists/mai.png"),
     ("mako_tsunami", "Mako Tsunami", "images/duelists/mako.webp"),
     ("bonz", "Bonz", "images/duelists/bonz.png"),
+    ("alister", "Alister", "images/duelists/alister.webp"),
     # =========================
     # TODO: Below
     # =========================
-
     ("yami_yugi", "Yami Yugi", "images/duelists/placeholder.webp"),
     ("mokuba_kaiba", "Mokuba Kaiba", "images/duelists/placeholder.webp"),
     ("serenity_wheeler", "Serenity Wheeler", "images/duelists/placeholder.webp"),
@@ -50,7 +50,6 @@ DUELISTS = [
     ("leichter", "Leichter", "images/duelists/placeholder.webp"),
     ("rafael", "Rafael", "images/duelists/placeholder.webp"),
     ("valon", "Valon", "images/duelists/placeholder.webp"),
-    ("alister", "Alister", "images/duelists/placeholder.webp"),
     ("gurimo", "Gurimo", "images/duelists/placeholder.webp"),
     ("zigfried_von_schroeder", "Zigfried von Schroeder", "images/duelists/placeholder.webp"),
     ("vivian_wong", "Vivian Wong", "images/duelists/placeholder.webp"),

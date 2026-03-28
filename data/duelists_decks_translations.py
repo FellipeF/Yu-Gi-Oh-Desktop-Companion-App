@@ -1,4 +1,22 @@
 DUELISTS_DECKS_KEYS = {
+    "alister": {
+        "toon_gorlag": {
+            "en": "Toon/Gorlag",
+            "pt": "Toon/Gorlag",
+        },
+        "army": {
+            "en": "Army",
+            "pt": "Exército",
+        },
+        "soldier_of_orichalcos": {
+            "en": "Soldier of Orichalcos",
+            "pt": "Soldado de Orichalcos",
+        },
+        "dragon_buster": {
+            "en": "Dragon Buster",
+            "pt": "Dragão Notável",
+        },
+    },
     "arkana": {
         "sleight_of_hand": {
             "en": "Sleight of Hand",

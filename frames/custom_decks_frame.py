@@ -192,7 +192,7 @@ class CustomDecksFrame(tk.Frame):
                 "",
                 tk.END,
                 iid=str(new_deck_id),
-                values=(deck_name, 0, self.controller.t("no"))
+                values=(deck_name, 0, "⬜")
             )
 
             self.tree.selection_set(str(new_deck_id))
@@ -414,7 +414,7 @@ class CustomDecksFrame(tk.Frame):
                 "",
                 tk.END,
                 iid=str(new_deck_id),
-                values=(new_deck_name, total_cards, self.controller.t("no"))
+                values=(new_deck_name, total_cards, "⬜")
             )
 
             self.tree.selection_set(str(new_deck_id))

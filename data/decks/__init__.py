@@ -1,3 +1,4 @@
+from .alister import ALISTER_DECKS
 from .anubis import ANUBIS_DECK
 from .arkana import ARKANA_DECKS
 from .bonz import BONZ_DECKS
@@ -36,6 +37,7 @@ LIST_OF_DECKS = {
     "mai_valentine": MAI_DECKS,
     "mako_tsunami": MAKO_DECKS,
     "bonz": BONZ_DECKS,
+    "alister": ALISTER_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]
