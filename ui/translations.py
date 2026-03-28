@@ -70,7 +70,7 @@ translations = {
         "delete": "Delete Deck",
         "add_to_deck": "Add to Deck",
         "remove_one": "Remove one Copy",
-        "remove_card": "Remover Cards",
+        "remove_card": "Remove Cards",
         "yes": "Yes",
         "no": "No",
         "editing_deck": "Now Editing",

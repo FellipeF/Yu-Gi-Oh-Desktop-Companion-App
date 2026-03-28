@@ -106,7 +106,7 @@ class CustomDecksFrame(tk.Frame):
         self.return_button = tk.Button(
             self,
             font=("Tahoma", 12),
-            command=lambda: controller.show_frame("HomeFrame")
+            command=lambda: self.return_home_screen()
         )
         self.return_button.pack(pady=10)
 
@@ -201,10 +201,7 @@ class CustomDecksFrame(tk.Frame):
             self.selected_deck_id = new_deck_id
 
         except Exception as e:
-            messagebox.showerror(
-                self.controller.t("error"),
-                f"{self.controller.t('could_not_create_deck')}\n{e}"
-            )
+            self.treat_exception(e)
 
     def toggle_used_selected_deck(self):
         if not self.selected_deck_id:
@@ -272,18 +269,7 @@ class CustomDecksFrame(tk.Frame):
             self.tree.item(item_id, values=values)
 
         except Exception as e:
-            error_msg = str(e).lower()
-
-            if "unique" in error_msg:
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    self.controller.t("deck_name_already_exists")
-                )
-            else:
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    str(e)
-                )
+            self.treat_exception(e)
 
     def open_selected_deck(self, event=None):
         if not self.selected_deck_id:
@@ -428,7 +414,6 @@ class CustomDecksFrame(tk.Frame):
             )
 
         except Exception as e:
-            error_msg = str(e).lower()
 
             # Rollback for in case deck is created, but still fails importing
             if new_deck_id is not None:
@@ -437,17 +422,7 @@ class CustomDecksFrame(tk.Frame):
                 except Exception:
                     pass
 
-            # If the Unique Constraint has been violated on the database, report that to user
-            if "unique" in error_msg or "duplicate" in error_msg:
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    self.controller.t("deck_name_already_exists")
-                )
-            else:
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    self.controller.t("deck_import_failed").format(error=str(e))
-                )
+            self.treat_exception(e)
 
     def export_deck(self):
         """Export selected deck to a JSON file."""
@@ -519,4 +494,24 @@ class CustomDecksFrame(tk.Frame):
             messagebox.showerror(
                 self.controller.t("export_deck"),
                 self.controller.t("deck_export_fail").format(error=str(e))
+            )
+
+    def return_home_screen(self):
+        # This refresh_ui is here to avoid newly added decks not showing up on the count
+        self.controller.frames["HomeFrame"].refresh_ui()
+        self.controller.show_frame("HomeFrame")
+
+    def treat_exception(self, e):
+        """Exceptions when creating decks.
+        Also reports to the user when UNIQUE Constraint for deck name is being violated."""
+        error_msg = str(e).lower()
+        if "unique" in error_msg:
+            messagebox.showerror(
+                self.controller.t("error"),
+                self.controller.t("deck_name_already_exists")
+            )
+        else:
+            messagebox.showerror(
+                self.controller.t("error"),
+                self.controller.t("deck_import_failed").format(error=str(error_msg))
             )

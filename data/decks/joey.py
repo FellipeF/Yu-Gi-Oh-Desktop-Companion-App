@@ -1373,7 +1373,7 @@ JOEY_DECKS = {
         ("Time Wizard", 1),
         ("Alligator's Sword Dragon", 1),
         ("Flame Swordsman", 1),
-        ("Meteor B. Dragon", 1),
+        ("Meteor Black Dragon", 1),
         ("Thousand Dragon", 1),
         ("Graceful Dice", 1),
         ("Inferno Fire Blast", 1),
