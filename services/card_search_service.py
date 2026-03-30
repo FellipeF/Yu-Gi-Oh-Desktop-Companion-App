@@ -19,14 +19,19 @@ class CardSearchService:
 
     def search(self, text: str= "", language_code: str = "en") -> list[tuple[int, str]]:
         """Case-insensitive filtering for cards on search boxes"""
-        cards = self.get_all_cards(language_code)
+        self.get_all_cards(language_code)
         search_text = text.strip().lower()
 
         if not search_text:
             # Currently, no bottleneck detected for showing all cards when list is loaded, but could always
             # Use a limit parameter if needed.
-            return cards[:]
+            return [
+                (card_id, card_name)
+                for card_id, card_name, _ in self._cards_cache[language_code]
+            ]
 
-        filtered_cards = [card for card in cards if search_text in card[1].lower()]
-
-        return filtered_cards
+        return [
+            (card_id, card_name)
+            for card_id, card_name, lowercase_name in self._cards_cache[language_code]
+            if search_text in lowercase_name
+        ]
