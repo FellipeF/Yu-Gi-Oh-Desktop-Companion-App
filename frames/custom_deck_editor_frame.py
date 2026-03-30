@@ -4,7 +4,6 @@ from tkinter import ttk
 
 from PIL import Image, ImageTk
 
-from database.queries import search_cards
 from database.queries import (
     get_user_deck_by_id,
     get_cards_by_user_deck,
@@ -54,7 +53,9 @@ class CustomDeckEditorFrame(tk.Frame):
         self.search_label.pack(anchor="w", pady=(0,5))
 
         self.search_var = tk.StringVar()
-        self.search_var.trace_add("write", self.filter_cards)
+        # Implementing debounce
+        self._filter_after_id = None
+        self.search_var.trace_add("write", self.on_search_text_changed)
 
         self.search_entry = tk.Entry(left_frame, textvariable=self.search_var, width=40, font=("Tahoma", 12))
         self.search_entry.pack(anchor="w", pady=(0,8))
@@ -231,14 +232,28 @@ class CustomDeckEditorFrame(tk.Frame):
         cards = get_cards_by_user_deck(deck_id, self.controller.current_language)
         return sum(card[2] for card in cards)
 
-    def filter_cards(self, *args):
+    def on_search_text_changed(self, *args):
+        if self._filter_after_id is not None:
+            self.after_cancel(self._filter_after_id)
+
+        self._filter_after_id = self.after(250, self.filter_cards)
+
+    def filter_cards(self):
         """Controls search box"""
+        self._filter_after_id = None
         name = self.search_var.get()
         language = self.controller.current_language
 
         previous_card_id = self.active_card_id
 
-        self.current_found_cards = search_cards(name=name, language=language)
+        if name.strip():
+            self.current_found_cards = self.controller.card_search_service.search(
+                text=name,
+                language_code=language,
+            )
+        else:
+            self.current_found_cards = self.controller.card_search_service.get_all_cards(language)
+
         self.search_results_list.delete(0, tk.END)
 
         for card in self.current_found_cards:

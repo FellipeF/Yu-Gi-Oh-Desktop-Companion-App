@@ -18,6 +18,7 @@ from ui.translations import translations
 from ui.loading_modal import LoadingDialog
 from utils.resource_path import resource_path
 from pathlib import Path
+from services.card_search_service import CardSearchService
 
 class App(tk.Tk):
     def __init__(self):
@@ -43,8 +44,9 @@ class App(tk.Tk):
         self.after(100, self.start_initialization_thread)
 
     def start_app_and_configure(self):
-        """Styles, title and current OS language"""
+        """Styles, title, current OS language and Cache"""
         self.current_language = self.detect_os_language()
+        self.card_search_service = CardSearchService()
         self.app_width = APP_WIDTH
         self.app_height = APP_HEIGHT
         self.title(f"Yu-Gi-Oh! Card Database v{CURRENT_VERSION}")

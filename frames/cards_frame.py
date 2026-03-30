@@ -3,7 +3,6 @@ import threading
 
 from tkinter import ttk
 from PIL import ImageTk
-from database.queries import search_cards
 from ui.card_details_window import CardDetailsWindow
 from utils.card_image_loader import load_card_pil_image
 from config import CARD_WIDTH, CARD_HEIGHT
@@ -36,7 +35,9 @@ class CardsFrame(tk.Frame):
         self.title_label.pack(anchor="w", pady=(0, 5))
 
         self.search_var = tk.StringVar()
-        self.search_var.trace_add("write", self.filter_cards)
+        # Implementing debounce
+        self._filter_after_id = None
+        self.search_var.trace_add("write", self.on_search_text_changed)
 
         self.search_entry = tk.Entry(left_header, textvariable=self.search_var, width=50)
         self.search_entry.pack(anchor="w")
@@ -91,14 +92,29 @@ class CardsFrame(tk.Frame):
         self.refresh_ui()
         self.load_cards()
 
-    def filter_cards(self, *args):
+    def on_search_text_changed(self, *args):
+        if self._filter_after_id is not None:
+            self.after_cancel(self._filter_after_id)
+
+        self._filter_after_id = self.after(250, self.filter_cards)
+
+    def filter_cards(self):
         """Controls the Search Box"""
+        self._filter_after_id = None
+
         name = self.search_var.get()
         language = self.controller.current_language
 
         previous_card_id = self.selected_card_id
 
-        self.current_cards = search_cards(name = name, language=language)
+        if name.strip():
+            self.current_cards = self.controller.card_search_service.search(
+                text=name,
+                language_code=language,
+            )
+        else:
+            self.current_cards = self.controller.card_search_service.get_all_cards(language)
+
         self.searchable_list.delete(0, tk.END)
 
         new_index = None
@@ -170,7 +186,7 @@ class CardsFrame(tk.Frame):
             if selection:
                 selected_card_id = self.current_cards[selection[0]][0]
 
-        self.current_cards = search_cards(language=language)
+        self.current_cards = self.controller.card_search_service.get_all_cards(language)
         self.searchable_list.delete(0, tk.END)
 
         new_index = None
