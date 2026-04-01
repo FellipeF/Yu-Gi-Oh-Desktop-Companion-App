@@ -429,6 +429,10 @@ DUELISTS_DECKS_KEYS = {
             "en": "Harpie",
             "pt": "Harpia",
         },
+        "harpie_2": {
+            "en": "Harpie (2)",
+            "pt": "Harpia (2)",
+        },
         "imposter": {
             "en": "Imposter",
             "pt": "Impostora",
@@ -456,6 +460,138 @@ DUELISTS_DECKS_KEYS = {
         "justice_strikes_back": {
             "en": "Justice Strikes Back!!",
             "pt": "A Justiça Contra-Ataca!!",
+        },
+        "gracious_dance_of_harpies": {
+            "en": "Gracious Dance of Harpies",
+            "pt": "Dança Graciosa de Harpias",
+        },
+        "gracious_dance_of_harpies_2": {
+            "en": "Gracious Dance of Harpies (2)",
+            "pt": "Dança Graciosa de Harpias (2)",
+        },
+        "gracious_dance_of_harpies_3": {
+            "en": "Gracious Dance of Harpies (3)",
+            "pt": "Dança Graciosa de Harpias (3)",
+        },
+        "gracious_dance_of_harpies_4": {
+            "en": "Gracious Dance of Harpies (4)",
+            "pt": "Dança Graciosa de Harpias (4)",
+        },
+        "gracious_dance_of_harpies_5": {
+            "en": "Gracious Dance of Harpies (5)",
+            "pt": "Dança Graciosa de Harpias (5)",
+        },
+        "hysteric_dance_of_harpies": {
+            "en": "Histeric Dance of Harpies",
+            "pt": "Dança Histérica de Harpias",
+        },
+        "mai": {
+            "en": "Mai",
+            "pt": "Mai",
+        },
+        "scent_of_the_wind": {
+            "en": "Scent of the Wind",
+            "pt": "Aroma do Vento",
+        },
+        "harpie_lady": {
+            "en": "Harpie Lady",
+            "pt": "Dama Harpia",
+        },
+        "harpie_lady_2": {
+            "en": "Harpie Lady (2)",
+            "pt": "Dama Harpia (2)",
+        },
+        "harpie_lady_3": {
+            "en": "Harpie Lady (3)",
+            "pt": "Dama Harpia (3)",
+        },
+        "harpie_lady_4": {
+            "en": "Harpie Lady (4)",
+            "pt": "Dama Harpia (4)",
+        },
+        "scent_of_the_amazoness": {
+            "en": "Scent of the Amazoness",
+            "pt": "Aroma das Amazoness",
+        },
+        "pride_of_the_amazoness": {
+            "en": "Pride of the Amazoness",
+            "pt": "Orgulho das Amazoness",
+        },
+        "pride_of_the_amazoness_2": {
+            "en": "Pride of the Amazoness (2)",
+            "pt": "Orgulho das Amazoness (2)",
+        },
+        "elegant_storm": {
+            "en": "Elegant Storm",
+            "pt": "Tempestade Elegante",
+        },
+        "elegant_storm_2": {
+            "en": "Elegant Storm (2)",
+            "pt": "Tempestade Elegante (2)",
+        },
+        "beautiful_minions": {
+            "en": "Beautiful Minions",
+            "pt": "Belos Lacaios",
+        },
+        "flight_of_beauty": {
+            "en": "Flight of Beauty",
+            "pt": "Voo da Beleza",
+        },
+        "power_of_the_amazoness": {
+            "en": "Power of the Amazoness",
+            "pt": "Poder das Amazoness",
+        },
+        "mystical_lady": {
+            "en": "Mystical Lady",
+            "pt": "Dama Mística",
+        },
+        "alluring_tactics": {
+            "en": "Alluring Tactics",
+            "pt": "Táticas Sedutoras",
+        },
+        "amazoness_fighting_spirit": {
+            "en": "Amazoness Fighting Spirit",
+            "pt": "Espírito Lutador das Amazoness",
+        },
+        "harpies_hunting_ground": {
+            "en": "Harpies' Hunting Ground",
+            "pt": "Terreno de Caça das Harpias",
+        },
+        "harpie_lady_sisters": {
+            "en": "Harpie Lady Sisters",
+            "pt": "Irmãs da Dama Harpia",
+        },
+        "harpie_of_orichalcos": {
+            "en": "Harpie of Orichalcos",
+            "pt": "Harpia de Orichalcos",
+        },
+        "harpie_of_orichalcos_2": {
+            "en": "Harpie of Orichalcos (2)",
+            "pt": "Harpia de Orichalcos (2)",
+        },
+        "sign_of_the_harpie": {
+            "en": "Sign of the Harpie",
+            "pt": "Sinal da Harpia",
+        },
+        "amazoness": {
+            "en": "Amazoness",
+            "pt": "Amazoness",
+        },
+        "tough_ladies": {
+            "en": "Tough Ladies",
+            "pt": "Damas Fortes",
+        },
+        "amazoness_battle_tribe": {
+            "en": "Amazoness Battle Tribe",
+            "pt": "Tribo de Batalha Amazoness",
+        },
+        "aroma_tactics": {
+            "en": "Aroma Tactics",
+            "pt": "Táticas Aromáticas",
+        },
+        "hysteric_harpie": {
+            "en": "Hysteric Harpies",
+            "pt": "Harpia Histérica",
         },
     },
     "mako_tsunami": {

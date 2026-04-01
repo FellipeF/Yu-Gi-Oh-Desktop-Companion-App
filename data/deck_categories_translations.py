@@ -267,4 +267,8 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Imposter",
         "pt": "Impostor",
     },
+    "yu_gi_oh_bam": {
+        "en": "Yu-Gi-Oh! BAM",
+        "pt": "Yu-Gi-Oh! BAM",
+    },
 }

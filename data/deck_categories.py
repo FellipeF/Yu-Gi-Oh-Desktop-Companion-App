@@ -69,4 +69,5 @@ DECK_CATEGORIES_KEYS = [
     "power_of_friendship",
     "joey_vs_duke_devlin",
     "imposter",
+    "yu_gi_oh_bam",
 ]
