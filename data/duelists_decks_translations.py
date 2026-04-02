@@ -23,6 +23,16 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Truque de Mágica",
         }
     },
+    "arthur_hopkins": {
+        "past": {
+            "en": "Past",
+            "pt": "Passado",
+        },
+        "ancient": {
+            "en": "Ancient",
+            "pt": "Antigo",
+        },
+    },
     "bonz": {
         "spook_and_boo": {
             "en": "Spook and Boo",
@@ -808,6 +818,40 @@ DUELISTS_DECKS_KEYS = {
         "god_of_evil_eyes": {
             "en": "God of Evil Eyes",
             "pt": "Deus de Olhos Malignos",
+        },
+    },
+    "rebecca": {
+        "big_bang_usa": {
+            "en": "Big Bang USA",
+            "pt": "Big Bang Americano",
+        },
+        "us_champion": {
+            "en": "U.S. Champion",
+            "pt": "Campeã Americana",
+        },
+        "rebecca": {
+            "en": "Rebecca",
+            "pt": "Rebecca",
+        },
+        "fire_princess_tactics": {
+            "en": "Fire Princess Tactics",
+            "pt": "Táticas da Princesa de Fogo",
+        },
+        "we_are_victorious": {
+            "en": "We Are Victorious!",
+            "pt": "Nós Somos Vitoriosos!",
+        },
+        "divine_healing": {
+            "en": "Divine Healing",
+            "pt": "Cura Divina",
+        },
+        "life_shadow": {
+            "en": "Life Shadow",
+            "pt": "Sombra da Vida",
+        },
+        "ghostrick_night": {
+            "en": "Ghostrick Night",
+            "pt": "Noite Fantardil",
         },
     },
     "seto_kaiba": {

@@ -18,17 +18,18 @@ DUELISTS = [
     ("mako_tsunami", "Mako Tsunami", "images/duelists/mako.webp"),
     ("bonz", "Bonz", "images/duelists/bonz.png"),
     ("alister", "Alister", "images/duelists/alister.webp"),
+    ("arthur_hopkins", "Arthur Hawkins", "images/duelists/arthur.webp"),
+    ("rebecca", "Rebecca Hawkins", "images/duelists/rebecca.webp"),
     # =========================
     # TODO: Below
     # =========================
+    ("dark_magician_girl", "Dark Magician Girl", "images/duelists/placeholder.webp"),
     ("yami_yugi", "Yami Yugi", "images/duelists/placeholder.webp"),
     ("mokuba_kaiba", "Mokuba Kaiba", "images/duelists/placeholder.webp"),
     ("serenity_wheeler", "Serenity Wheeler", "images/duelists/placeholder.webp"),
     ("bakura_ryou", "Bakura Ryou", "images/duelists/placeholder.webp"),
     ("yami_bakura", "Yami Bakura", "images/duelists/placeholder.webp"),
     ("shadi", "Shadi", "images/duelists/placeholder.webp"),
-    ("rebecca", "Rebecca", "images/duelists/placeholder.webp"),
-    ("arthur_hopkins", "Arthur Hopkins", "images/duelists/placeholder.webp"),
     ("ishizu_ishtar", "Ishizu Ishtar", "images/duelists/placeholder.webp"),
     ("rex_raptor", "Rex Raptor", "images/duelists/placeholder.webp"),
     ("ghost_kaiba", "Ghost Kaiba", "images/duelists/placeholder.webp"),

@@ -1,12 +1,14 @@
 from .alister import ALISTER_DECKS
 from .anubis import ANUBIS_DECK
 from .arkana import ARKANA_DECKS
+from .arthur import ARTHUR_DECKS
 from .bonz import BONZ_DECKS
 from .dartz import DARTZ_DECKS
 from .duke import DUKE_DECKS
 from .lumis import LUMIS_DECKS
 from .mai import MAI_DECKS
 from .mako import MAKO_DECKS
+from .rebecca import REBECCA_DECKS
 from .umbra import UMBRA_DECKS
 from .weevil import WEEVIL_DECKS
 from .yugi import YUGI_DECKS
@@ -38,6 +40,8 @@ LIST_OF_DECKS = {
     "mako_tsunami": MAKO_DECKS,
     "bonz": BONZ_DECKS,
     "alister": ALISTER_DECKS,
+    "arthur_hopkins": ARTHUR_DECKS,
+    "rebecca": REBECCA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

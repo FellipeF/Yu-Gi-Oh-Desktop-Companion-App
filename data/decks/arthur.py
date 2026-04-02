@@ -1,0 +1,25 @@
+ARTHUR_DECKS = {
+    "past": [
+        ("Blue-Eyes White Dragon", 1),
+        ("Giant Soldier of Stone", 1),
+        ("Millennium Shield", 1),
+        ("Cannon Soldier", 2),
+        ("Electric Snake", 1),
+        ("Sangan", 3),
+        ("Shadow Ghoul", 1),
+        ("Skelengel", 1),
+        ("Witch of the Black Forest", 3),
+        ("Judgment Blaster [A]", 1),
+        ("Ring of Magnetism", 1),
+        ("Stop Defense", 2),
+        ("Tribute to The Doomed", 2),
+    ],
+    "ancient": [
+        ("Ancient Dragon [A]", 1),
+        ("Ancient Giant [A]", 1),
+        ("Stone Giant [A]", 2),
+        ("Ancient Key [A]", 1),
+        ("Ancient Gate [A]", 1),
+        ("Ancient Tome [A]", 1),
+    ],
+}
