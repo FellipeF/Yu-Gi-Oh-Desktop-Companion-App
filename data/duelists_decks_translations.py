@@ -160,6 +160,100 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Labirinto de Fichas",
         },
     },
+    "ishizu_ishtar": {
+        "crimson_valley": {
+            "en": "Crimson Valley",
+            "pt": "Vale Carmesim",
+        },
+        "neverending_site": {
+            "en": "Neverending Site",
+            "pt": "Local Infindável",
+        },
+        "lightning": {
+            "en": "Lightning",
+            "pt": "Relâmpago",
+        },
+        "call_from_below": {
+            "en": "Call from Below",
+            "pt": "Chamado de Baixo",
+        },
+        "lead_into_zero": {
+            "en": "Lead into Zero",
+            "pt": "Levar ao Zero",
+        },
+        "the_keepers": {
+            "en": "The Keepers",
+            "pt": "Os Cuidadores",
+        },
+        "sacred_star_knights": {
+            "en": "Sacred Star Knights!!",
+            "pt": "Cavaleiros Estelares Sagrados!!",
+        },
+        "ishizu": {
+            "en": "Ishizu",
+            "pt": "Ishizu",
+        },
+        "calamity_supression": {
+            "en": "Calamity Suppression",
+            "pt": "Supressão de Calamidade",
+        },
+        "defender_of_a_secret_art": {
+            "en": "Defender of a Secret Art",
+            "pt": "Defensora de uma Arte Secreta",
+        },
+        "gravekeepers_destiny": {
+            "en": "Gravekeeper's Destiny",
+            "pt": "Destino do Coveiro",
+        },
+        "gravekeepers_destiny_2": {
+            "en": "Gravekeeper's Destiny (2)",
+            "pt": "Destino do Coveiro (2)",
+        },
+        "gravekeepers_path": {
+            "en": "Gravekeeper's Path",
+            "pt": "Caminho do Coveiro",
+        },
+        "exchange_of_the_spirit": {
+            "en": "Exchange of the Spirit",
+            "pt": "Troca de Espírito",
+        },
+        "beyond_the_grave": {
+            "en": "Beyond the Grave",
+            "pt": "Além da Cova",
+        },
+        "beyond_the_grave_2": {
+            "en": "Beyond the Grave (2)",
+            "pt": "Além da Cova (2)",
+        },
+        "spellbook_prophecy": {
+            "en": "Spellbook Prophecy",
+            "pt": "Profecia do Livro de Magia",
+        },
+        "grave_fairy": {
+            "en": "Grave Fairy",
+            "pt": "Fada Coveira",
+        },
+        "lightsworn": {
+            "en": "Lightsworn",
+            "pt": "Luminosa",
+        },
+        "angel_of_the_gravekeepers": {
+            "en": "Angel of the Gravekeepers",
+            "pt": "Anjo dos Coveiros",
+        },
+        "ancestors_of_the_gravekeepers": {
+            "en": "Ancestors of the Gravekeepers",
+            "pt": "Ancestrais dos Coveiros",
+        },
+        "companions_of_the_gravekeepers": {
+            "en": "Companions of the Gravekeepers",
+            "pt": "Companheiros dos Coveiros",
+        },
+        "descendants_of_the_gravekeepers": {
+            "en": "Descendants of the Gravekeepers",
+            "pt": "Descendentes dos Coveiros",
+        },
+    },
     "joey_wheeler": {
         "amateur": {
             "en": "Amateur",
@@ -554,10 +648,6 @@ DUELISTS_DECKS_KEYS = {
         "mystical_lady": {
             "en": "Mystical Lady",
             "pt": "Dama Mística",
-        },
-        "alluring_tactics": {
-            "en": "Alluring Tactics",
-            "pt": "Táticas Sedutoras",
         },
         "amazoness_fighting_spirit": {
             "en": "Amazoness Fighting Spirit",

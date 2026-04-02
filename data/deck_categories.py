@@ -70,4 +70,6 @@ DECK_CATEGORIES_KEYS = [
     "joey_vs_duke_devlin",
     "imposter",
     "yu_gi_oh_bam",
+    "forbidden_memories",
+    "alluring_tactics",
 ]

@@ -20,6 +20,7 @@ DUELISTS = [
     ("alister", "Alister", "images/duelists/alister.webp"),
     ("arthur_hopkins", "Arthur Hawkins", "images/duelists/arthur.webp"),
     ("rebecca", "Rebecca Hawkins", "images/duelists/rebecca.webp"),
+    ("ishizu_ishtar", "Ishizu Ishtar", "images/duelists/ishizu.png"),
     # =========================
     # TODO: Below
     # =========================
@@ -30,7 +31,6 @@ DUELISTS = [
     ("bakura_ryou", "Bakura Ryou", "images/duelists/placeholder.webp"),
     ("yami_bakura", "Yami Bakura", "images/duelists/placeholder.webp"),
     ("shadi", "Shadi", "images/duelists/placeholder.webp"),
-    ("ishizu_ishtar", "Ishizu Ishtar", "images/duelists/placeholder.webp"),
     ("rex_raptor", "Rex Raptor", "images/duelists/placeholder.webp"),
     ("ghost_kaiba", "Ghost Kaiba", "images/duelists/placeholder.webp"),
     ("panik", "PaniK", "images/duelists/placeholder.webp"),

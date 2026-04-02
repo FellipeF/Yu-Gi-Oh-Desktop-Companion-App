@@ -271,4 +271,12 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Yu-Gi-Oh! BAM",
         "pt": "Yu-Gi-Oh! BAM",
     },
+    "forbidden_memories": {
+        "en": "Forbidden Memories",
+        "pt": "Memórias Proibidas",
+    },
+    "alluring_tactics": {
+        "en": "Alluring Tactics",
+        "pt": "Táticas Sedutoras",
+    },
 }

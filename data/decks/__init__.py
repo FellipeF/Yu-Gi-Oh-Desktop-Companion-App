@@ -5,6 +5,7 @@ from .arthur import ARTHUR_DECKS
 from .bonz import BONZ_DECKS
 from .dartz import DARTZ_DECKS
 from .duke import DUKE_DECKS
+from .ishizu import ISHIZU_DECKS
 from .lumis import LUMIS_DECKS
 from .mai import MAI_DECKS
 from .mako import MAKO_DECKS
@@ -42,6 +43,8 @@ LIST_OF_DECKS = {
     "alister": ALISTER_DECKS,
     "arthur_hopkins": ARTHUR_DECKS,
     "rebecca": REBECCA_DECKS,
+    "ishizu_ishtar": ISHIZU_DECKS,
+
 }
 
 __all__ = ["LIST_OF_DECKS"]
