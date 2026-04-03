@@ -1,3 +1,6 @@
+# Currently, Duelists have no display names key, since most of EN -> PT translates the same. Currently, Duel Computer
+# Is treated as duel_computer as its name, but may need to investigate further if other language is added.
+
 DUELISTS = [
     ("yugi_muto", "Yugi Muto", "images/duelists/yugi.png"),
     ("seto_kaiba", "Seto Kaiba", "images/duelists/kaiba.png"),
@@ -21,6 +24,7 @@ DUELISTS = [
     ("arthur_hopkins", "Arthur Hawkins", "images/duelists/arthur.webp"),
     ("rebecca", "Rebecca Hawkins", "images/duelists/rebecca.webp"),
     ("ishizu_ishtar", "Ishizu Ishtar", "images/duelists/ishizu.png"),
+    ("duel_computers", "duel_computers", "images/duelists/duel_computer.webp"),
     # =========================
     # TODO: Below
     # =========================
@@ -63,5 +67,4 @@ DUELISTS = [
     ("espa_roba", "Espa Roba", "images/duelists/placeholder.webp"),
     ("jean_claude_magnum", "Jean-Claude Magnum", "images/duelists/placeholder.webp"),
     ("rick", "Rick", "images/duelists/placeholder.webp"),
-    ("kc_dueltek_760", "KC DuelTek 760", "images/duelists/placeholder.webp"),
 ]

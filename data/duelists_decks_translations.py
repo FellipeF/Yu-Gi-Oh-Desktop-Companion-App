@@ -118,6 +118,32 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Aroma Sereno",
         },
     },
+    "duel_computers": {
+        "kaiba_computer_anime": {
+            "en": "Kaiba's Computer (Anime)",
+            "pt": "Computador do Kaiba (Anime)",
+        },
+        "kaiba_computer_manga": {
+            "en": "Kaiba's Computer (Manga)",
+            "pt": "Computador do Kaiba (Mangá)",
+        },
+        "kc_dueltek_760": {
+            "en": "KC DuelTek 760",
+            "pt": "KC DuelTek 760",
+        },
+        "duel_machine": {
+            "en": "Duel Machine",
+            "pt": "Máquina de Duelo",
+        },
+        "duel_machine_2": {
+            "en": "Duel Machine (2)",
+            "pt": "Máquina de Duelo (2)",
+        },
+        "duel_machine_3": {
+            "en": "Duel Machine (3)",
+            "pt": "Máquina de Duelo (3)",
+        },
+    },
     "duke_devlin": {
         "duke": {
             "en": "Duke",

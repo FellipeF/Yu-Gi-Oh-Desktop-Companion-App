@@ -33,7 +33,7 @@ def search_cards(name: str | None = None, language: str = "en") -> list[tuple]:
         conn.close()
 
 def get_all_duelists() -> list[tuple]:
-    """Returns all duelists ordered by name and their columns"""
+    """Returns all duelists and their deck count"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -45,7 +45,7 @@ def get_all_duelists() -> list[tuple]:
         FROM duelists d
         LEFT JOIN duelist_decks dd ON dd.duelist_id = d.id
         GROUP BY d.id, d.key, d.name, d.img_path
-        ORDER BY d.name COLLATE NOCASE""")
+        ORDER BY d.name COLLATE NOCASE""") # For testing purposes, still leaving this ORDER BY here.
 
         return cursor.fetchall()
     finally:

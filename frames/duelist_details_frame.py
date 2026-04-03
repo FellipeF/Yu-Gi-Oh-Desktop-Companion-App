@@ -403,7 +403,7 @@ class DuelistDetailsFrame(tk.Frame):
         self.show_card_details.config(text=self.controller.t("card_details"))
         self.export_deck_button.config(text=self.controller.t("export_deck"))
         self.duelist_decks_label.config(
-            text=self.controller.t("duelist_decks").format(name=self.current_duelist_name)
+            text=self.controller.t("duelist_decks").format(name=self.controller.t(self.current_duelist_name))
         )
 
         if self.tk_image is None and self.image_label.cget("image") == "":

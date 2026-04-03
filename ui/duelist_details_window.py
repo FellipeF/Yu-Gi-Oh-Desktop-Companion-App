@@ -7,7 +7,7 @@ class DuelistDetailsWindow(tk.Toplevel):
         super().__init__(controller)
 
         self.controller = controller
-        self.title(f"{duelist_name}")
+        self.title(controller.t(duelist_name))
         self.geometry("900x800")
         self.minsize(800,800)
 

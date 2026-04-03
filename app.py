@@ -7,7 +7,7 @@ from tkinter import ttk, messagebox
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION
 from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
-from database.database import create_tables
+from database.database import create_tables, run_migrations
 from frames.custom_deck_editor_frame import CustomDeckEditorFrame
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
@@ -134,6 +134,7 @@ class App(tk.Tk):
         try:
             self.after(0, lambda: self.loading_frame.set_status(self.t("loading_database")))
             create_tables()
+            run_migrations()
 
             self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
             seed_all("en")
@@ -145,7 +146,11 @@ class App(tk.Tk):
             self.after(0, self.finish_initialization)
 
         except Exception as e:
-            self.after(0, lambda: self.handle_initialization_error (e))
+            # When exceptions is created, we need to "freeze it" before using it instead of passing straight to lambda
+            # Prevents:
+            # NameError: cannot access free variable 'e' where it is not associated with a value in enclosing scope
+            error = e
+            self.after(0, lambda: self.handle_initialization_error (error))
 
     def handle_initialization_error(self, error):
         self.loading_frame.stop()

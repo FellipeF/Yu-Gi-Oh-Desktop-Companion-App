@@ -10,6 +10,7 @@ class DuelistsFrame(tk.Frame):
         self.controller = controller
 
         self.duelists = get_all_duelists()
+        self.sort_duelists()
         self.current_page = 0
         self.items_per_page = 8
 
@@ -82,7 +83,7 @@ class DuelistsFrame(tk.Frame):
             duelist_button = tk.Button(
                 cell,
                 image=tk_img,
-                text=f"{self.truncate(name, 14)}\n({deck_count})",
+                text=f"{self.truncate(self.controller.t(name), 14)}\n({deck_count})",
                 font=("Arial",15),
                 compound="top",
                 wraplength=160,
@@ -118,9 +119,19 @@ class DuelistsFrame(tk.Frame):
             self.current_page -= 1
             self.render_page()
 
+    def sort_duelists(self):
+        """Sorts duelist by Display name instead of name saved in the DB. Helps with cases
+        when display name is different in other languages."""
+        language_code = self.controller.current_language
+        self.duelists.sort(
+            key = lambda d: self.controller.t(d[2]).casefold()
+        )
+
     def show_duelist_details(self, duelist_id, duelist_key, duelist_name):
         DuelistDetailsWindow(self.controller, duelist_id, duelist_key, duelist_name)
 
     def refresh_ui(self):
         self.select_duelist_label.config(text=self.controller.t("select_duelist"))
         self.return_button.config(text=self.controller.t("return"))
+        self.sort_duelists()
+        self.render_page()

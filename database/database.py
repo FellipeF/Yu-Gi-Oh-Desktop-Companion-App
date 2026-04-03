@@ -88,7 +88,7 @@ def create_tables():
         deck_category_id INTEGER,
         key TEXT NOT NULL,
         order_index INTEGER DEFAULT 0,
-        FOREIGN KEY (duelist_id) REFERENCES duelists(id),
+        FOREIGN KEY (duelist_id) REFERENCES duelists(id) ON DELETE CASCADE,
         FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id) ON DELETE SET NULL,
         UNIQUE(duelist_id, key)
     )
@@ -188,3 +188,91 @@ def create_tables():
 
     conn.commit()
     conn.close()
+
+def _foreign_key_matches(
+        cursor, table_name: str, from_column: str, referenced_table:str, referenced_column: str, on_delete: str,
+) -> bool:
+    """Does a specific FK exists with the ON DELETE behavior?"""
+    cursor.execute(f"PRAGMA foreign_key_list({table_name})")
+    rows = cursor.fetchall()
+
+    for row in rows:
+        _id, _seq, ref_table, from_col, to_col, _on_update, on_delete_rule, _match = row
+
+        if (
+            ref_table == referenced_table and
+            from_col == from_column
+            and to_col == referenced_column
+            and on_delete_rule.upper() == on_delete.upper()
+        ):
+            return True
+
+        return False
+
+def _recreate_duelist_decks_table(cursor):
+    """Recreates duelist decks table with correct FK ON DELETE CASCADE Constraint for duelist_id. Then, copies contents
+    from old table to this new one, drop the old table and rename the new table to be the same name as the old table."""
+    cursor.execute("""
+        CREATE TABLE duelist_decks_new (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            duelist_id INTEGER NOT NULL,
+            deck_category_id INTEGER,
+            key TEXT NOT NULL,
+            order_index INTEGER DEFAULT 0,
+            FOREIGN KEY (duelist_id) REFERENCES duelists(id) ON DELETE CASCADE,
+            FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id) ON DELETE SET NULL,
+            UNIQUE(duelist_id, key)
+        )
+        """)
+
+    cursor.execute("""
+        INSERT INTO duelist_decks_new (id, duelist_id, deck_category_id, key, order_index)
+        SELECT id, duelist_id, deck_category_id, key, order_index
+        FROM duelist_decks
+        """)
+
+    cursor.execute("DROP TABLE duelist_decks")
+    cursor.execute("ALTER TABLE duelist_decks_new RENAME TO duelist_decks")
+
+    cursor.execute("""
+        CREATE INDEX IF NOT EXISTS idx_duelist_decks_duelist_id_order
+        ON duelist_decks(duelist_id, order_index)
+        """)
+
+def run_migrations():
+    """Run migrations on DB only if needed"""
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        needs_duelist_decks_migration = not _foreign_key_matches(
+            cursor,
+            table_name="duelist_decks",
+            from_column="duelist_id",
+            referenced_table="duelists",
+            referenced_column="id",
+            on_delete="CASCADE",
+        )
+        if not needs_duelist_decks_migration:
+            return
+
+        cursor.execute("PRAGMA foreign_keys = OFF")
+        cursor.execute("BEGIN")
+
+        try:
+            _recreate_duelist_decks_table(cursor)
+            cursor.execute("COMMIT")
+        except Exception:
+            cursor.execute("ROLLBACK")
+            raise
+        finally:
+            cursor.execute("PRAGMA foreign_keys = ON")
+
+        cursor.execute("PRAGMA foreign_key_check")
+        fk_issues = cursor.fetchall()
+        if fk_issues:
+            raise RuntimeError(f"FK check failed after migration: {fk_issues}")
+
+        conn.commit()
+    finally:
+        conn.close()

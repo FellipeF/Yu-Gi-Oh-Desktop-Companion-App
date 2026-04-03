@@ -91,6 +91,7 @@ translations = {
         "select_card": "Select a Card",
         "spell_card": "Spell Card",
         "trap_card": "Trap Card",
+        "duel_computers": "Duel Computers",
     },
     "pt": {
         #================================
@@ -185,5 +186,6 @@ translations = {
         "card_details": "Mostrar detalhes da carta",
         "spell_card": "Carta Mágica",
         "trap_card": "Carta Armadilha",
+        "duel_computers": "Computadores de Duelo",
     }
 }
