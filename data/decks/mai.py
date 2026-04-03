@@ -414,7 +414,7 @@ MAI_DECKS = {
         ("Swords of Revealing Light", 3),
         ("Amazoness Archers", 3),
     ],
-    "imposter": [
+    "imposter_mai": [
         ("Dark Witch", 3),
         ("Faith Bird", 3),
         ("Fiend Reflection #2", 3),

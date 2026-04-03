@@ -563,7 +563,7 @@ DUELISTS_DECKS_KEYS = {
             "en": "Harpie (2)",
             "pt": "Harpia (2)",
         },
-        "imposter": {
+        "imposter_mai": {
             "en": "Imposter",
             "pt": "Impostora",
         },
