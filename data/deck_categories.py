@@ -17,6 +17,7 @@ DECK_CATEGORIES_KEYS = [
     "manga_millennium_world",
     "manga",
     "anime",
+    "anime-manga",
     "novel",
     "world_championship_2004",
     "world_championship_2007",
@@ -72,4 +73,5 @@ DECK_CATEGORIES_KEYS = [
     "yu_gi_oh_bam",
     "forbidden_memories",
     "alluring_tactics",
+    "neo_kc"
 ]

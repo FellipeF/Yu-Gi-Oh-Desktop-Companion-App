@@ -1,0 +1,27 @@
+VENTRILOQUIST_DECKS = {
+    "manga": [
+        ("Battle Ox", 1),
+        ("Blue-Eyes White Dragon", 3),
+        ("Grappler", 1),
+        ("Negate Attack", 1),
+        ("Stop Defense", 1),
+    ],
+    "reshef_of_destruction": [
+        ("Ansatsu", 2),
+        ("Blue-Eyed Silver Zombie", 3),
+        ("Doll of Demise [G]", 2),
+        ("Gate Deeg", 3),
+        ("Giant Mech-Soldier", 2),
+        ("Megirus Light", 3),
+        ("Needle Ball", 3),
+        ("Phantom Dewan", 3),
+        ("The Last Warrior from Another Planet", 2),
+        ("Two-Mouth Darkruler", 3),
+        ("Vishwar Randi", 3),
+        ("Wicked Dragon with the Ersatz Head", 3),
+        ("Final Flame", 2),
+        ("Malevolent Nuzzler", 2),
+        ("Yami", 2),
+        ("Eatgaboon", 2),
+    ],
+}

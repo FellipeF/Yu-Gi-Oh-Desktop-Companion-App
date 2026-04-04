@@ -59,6 +59,10 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Manga",
         "pt": "Mangá",
     },
+    "anime-manga": {
+        "en": "Anime/Manga",
+        "pt": "Anime/Mangá"
+    },
     "manga_duelist_kingdom": {
         "en": "Manga - Duelist Kingdom",
         "pt": "Mangá - Reino dos Duelistas",
@@ -278,5 +282,9 @@ DECK_CATEGORIES_TRANSLATIONS = {
     "alluring_tactics": {
         "en": "Alluring Tactics",
         "pt": "Táticas Sedutoras",
+    },
+    "neo_kc": {
+        "en": "Neo KC",
+        "pt": "Neo KC"
     },
 }

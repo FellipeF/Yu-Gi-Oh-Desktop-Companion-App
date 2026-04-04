@@ -10,8 +10,12 @@ from .ishizu import ISHIZU_DECKS
 from .lumis import LUMIS_DECKS
 from .mai import MAI_DECKS
 from .mako import MAKO_DECKS
+from .mokuba_kaiba import MOKUBA_DECKS
+from .panik import PANIK_DECKS
 from .rebecca import REBECCA_DECKS
+from .serenity import SERENITY_DECKS
 from .umbra import UMBRA_DECKS
+from .ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
 from .weevil import WEEVIL_DECKS
 from .yugi import YUGI_DECKS
 from .kaiba import KAIBA_DECKS
@@ -46,6 +50,10 @@ LIST_OF_DECKS = {
     "rebecca": REBECCA_DECKS,
     "ishizu_ishtar": ISHIZU_DECKS,
     "duel_computers": DUEL_COMPUTERS_DECKS,
+    "ventriloquist_of_the_dead": VENTRILOQUIST_DECKS,
+    "serenity_wheeler": SERENITY_DECKS,
+    "panik": PANIK_DECKS,
+    "mokuba_kaiba": MOKUBA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

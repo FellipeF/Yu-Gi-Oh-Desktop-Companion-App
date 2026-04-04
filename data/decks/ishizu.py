@@ -368,6 +368,7 @@ ISHIZU_DECKS = {
         ("Fake Trap", 2),
         ("Mirror Wall", 1),
         ("Shadow of Eyes", 1),
+        ("Crab Turtle", 1),
     ],
     "ishizu": [
         ("Archfiend Mirror", 2),

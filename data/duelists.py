@@ -25,19 +25,19 @@ DUELISTS = [
     ("rebecca", "Rebecca Hawkins", "images/duelists/rebecca.webp"),
     ("ishizu_ishtar", "Ishizu Ishtar", "images/duelists/ishizu.png"),
     ("duel_computers", "duel_computers", "images/duelists/duel_computer.webp"),
+    ("ventriloquist_of_the_dead", "ventriloquist_of_the_dead", "images/duelists/ventriloquist.webp"),
+    ("serenity_wheeler", "Serenity Wheeler", "images/duelists/serenity.png"),
+    ("panik", "PaniK", "images/duelists/panik.png"),
+    ("mokuba_kaiba", "Mokuba Kaiba", "images/duelists/mokuba.png"),
     # =========================
     # TODO: Below
     # =========================
     ("dark_magician_girl", "Dark Magician Girl", "images/duelists/placeholder.webp"),
     ("yami_yugi", "Yami Yugi", "images/duelists/placeholder.webp"),
-    ("mokuba_kaiba", "Mokuba Kaiba", "images/duelists/placeholder.webp"),
-    ("serenity_wheeler", "Serenity Wheeler", "images/duelists/placeholder.webp"),
     ("bakura_ryou", "Bakura Ryou", "images/duelists/placeholder.webp"),
     ("yami_bakura", "Yami Bakura", "images/duelists/placeholder.webp"),
     ("shadi", "Shadi", "images/duelists/placeholder.webp"),
     ("rex_raptor", "Rex Raptor", "images/duelists/placeholder.webp"),
-    ("ghost_kaiba", "Ghost Kaiba", "images/duelists/placeholder.webp"),
-    ("panik", "PaniK", "images/duelists/placeholder.webp"),
     ("bandit_keith", "Bandit Keith", "images/duelists/placeholder.webp"),
     ("para", "Para", "images/duelists/placeholder.webp"),
     ("dox", "Dox", "images/duelists/placeholder.webp"),

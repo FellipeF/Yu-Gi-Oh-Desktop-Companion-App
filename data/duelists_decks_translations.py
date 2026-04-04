@@ -936,6 +936,98 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Deus de Olhos Malignos",
         },
     },
+    "mokuba_kaiba": {
+        "its_mokuba": {
+            "en": "It's Mokuba!",
+            "pt": "É o Mokuba!",
+        },
+        "go_mokuba_go": {
+            "en": "Go Mokuba Go!",
+            "pt": "Vai Mokuba Vai!",
+        },
+        "dragon_and_thunder": {
+            "en": "Dragon and Thunder",
+            "pt": "Dragão e Trovão",
+        },
+        "the_white_dragon_of_thunder": {
+            "en": "The White Dragon of Thunder",
+            "pt": "O Dragão Branco do Trovão",
+        },
+        "twin_headed_thunder": {
+            "en": "Twin-Headed Thunder",
+            "pt": "Trovão de Duas Cabeças",
+        },
+        "hundred_thunders": {
+            "en": "Hundred Thunders",
+            "pt": "Cem Trovões",
+        },
+        "mokuba": {
+            "en": "Mokuba",
+            "pt": "Mokuba",
+        },
+        "eye_eyed_silver": {
+            "en": "Eye-Eyed Silver",
+            "pt": "Olho de Prata",
+        },
+        "big_bros_blue_eyes": {
+            "en": "Big Bro's Blue-Eyes",
+            "pt": "Olhos Azuis do Irmãozão",
+        },
+        "poison_hamburger": {
+            "en": "Poison Hamburger",
+            "pt": "Hambúrguer Envenenado",
+        },
+        "my_very_own_dragon": {
+            "en": "My Very Own Dragon",
+            "pt": "Meu Próprio Dragão",
+        },
+        "my_divine_dragon": {
+            "en": "My Divine Dragon",
+            "pt": "Meu Dragão Divino",
+        },
+        "high_power_dragon": {
+            "en": "High-Power Dragon",
+            "pt": "Dragão de Alto Poder",
+        },
+        "super_dragon": {
+            "en": "Super Dragon",
+            "pt": "Super Dragão",
+        },
+        "blue_eyes_crystals": {
+            "en": "Blue-Eyes Crystals",
+            "pt": "Cristais do Olhos Azuis",
+        },
+        "kaibacorp_bling": {
+            "en": "KaibaCorp Bling",
+            "pt": "Brilho da KaibaCorp",
+        },
+        "reptile_plant": {
+            "en": "Reptile Plant",
+            "pt": "Planta Réptil",
+        },
+        "worm_royalty": {
+            "en": "Worm Royalty",
+            "pt": "Realeza Verme",
+        },
+    },
+    "panik": {
+        "dark_zone": {
+            "en": "Dark Zone",
+            "pt": "Zona das Trevas",
+        },
+        "dark_zone_v2": {
+            "en": "Dark Zone V2",
+            "pt": "Zona das Trevas V2",
+        },
+        "the_dark_illusion": {
+            "en": "The Dark Illusion",
+            "pt": "A Ilusão das Trevas",
+        },
+        "tricks_of_pumprincess": {
+            "en": "Tricks of Pumprincess",
+            "pt": "Truques da Princesa-Abóbora",
+        },
+    },
     "rebecca": {
         "big_bang_usa": {
             "en": "Big Bang USA",
@@ -968,6 +1060,36 @@ DUELISTS_DECKS_KEYS = {
         "ghostrick_night": {
             "en": "Ghostrick Night",
             "pt": "Noite Fantardil",
+        },
+    },
+    "serenity_wheeler": {
+        "cute_sister": {
+            "en": "Cute Sister",
+            "pt": "Irmã Fofa",
+        },
+        "hows_this": {
+            "en": "How's This?",
+            "pt": "Que Tal?",
+        },
+        "serenity": {
+            "en": "Serenity",
+            "pt": "Serenity",
+        },
+        "ill_give_it_a_shot": {
+            "en": "I'll give it a shot!",
+            "pt": "Vou tentar!",
+        },
+        "its_my_turn_to_be_brave": {
+            "en": "It's my turn to be brave!",
+            "pt": "É a minha vez de ser valente!",
+        },
+        "i_wont_give_up": {
+            "en": "I won't give up!",
+            "pt": "Não desistirei!",
+        },
+        "third_eye_destiny_draw": {
+            "en": "Third Eye Destiny Draw",
+            "pt": "Compra do Destino do Terceiro Olho",
         },
     },
     "seto_kaiba": {
@@ -1170,10 +1292,6 @@ DUELISTS_DECKS_KEYS = {
         "come_now_blue_eyes": {
             "en": "Come Now, Blue-Eyes!",
             "pt": "Venha Agora, Olhos Azuis!",
-        },
-        "neo_kc": {
-            "en": "Neo KC",
-            "pt": "Neo KC"
         },
         "x_y_z": {
             "en": "X-Y-Z",

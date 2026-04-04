@@ -91,7 +91,11 @@ translations = {
         "select_card": "Select a Card",
         "spell_card": "Spell Card",
         "trap_card": "Trap Card",
+        # ================================
+        #  DUELISTS
+        # ================================
         "duel_computers": "Duel Computers",
+        "ventriloquist_of_the_dead": "Ventriloquist of the Dead",
     },
     "pt": {
         #================================
@@ -186,6 +190,10 @@ translations = {
         "card_details": "Mostrar detalhes da carta",
         "spell_card": "Carta Mágica",
         "trap_card": "Carta Armadilha",
+        # ================================
+        #  DUELISTS
+        # ================================
         "duel_computers": "Computadores de Duelo",
+        "ventriloquist_of_the_dead": "Ventriloquista dos Mortos",
     }
 }
