@@ -17,7 +17,7 @@ DECK_CATEGORIES_KEYS = [
     "manga_millennium_world",
     "manga",
     "anime",
-    "anime-manga",
+    "anime_manga",
     "novel",
     "world_championship_2004",
     "world_championship_2007",

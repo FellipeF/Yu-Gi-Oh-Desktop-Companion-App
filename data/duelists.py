@@ -29,10 +29,10 @@ DUELISTS = [
     ("serenity_wheeler", "Serenity Wheeler", "images/duelists/serenity.png"),
     ("panik", "PaniK", "images/duelists/panik.png"),
     ("mokuba_kaiba", "Mokuba Kaiba", "images/duelists/mokuba.png"),
+    ("dark_magician_girl", "dark_magician_girl", "images/duelists/dark_magician_girl.webp"),
     # =========================
     # TODO: Below
     # =========================
-    ("dark_magician_girl", "Dark Magician Girl", "images/duelists/placeholder.webp"),
     ("yami_yugi", "Yami Yugi", "images/duelists/placeholder.webp"),
     ("bakura_ryou", "Bakura Ryou", "images/duelists/placeholder.webp"),
     ("yami_bakura", "Yami Bakura", "images/duelists/placeholder.webp"),

@@ -104,6 +104,56 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Armagedom",
         },
     },
+    "dark_magician_girl": {
+        "bond_of_master_and_pupil": {
+            "en": "Bond of Master and Pupil",
+            "pt": "Elo entre Mestre e Pupilo",
+        },
+        "bond_of_master_and_pupil_2": {
+            "en": "Bond of Master and Pupil (2)",
+            "pt": "Elo entre Mestre e Pupilo (2)",
+        },
+        "magician": {
+            "en": "Magician",
+            "pt": "Mágica",
+        },
+        "cmon_master": {
+            "en": "C'mon, Master!",
+            "pt": "Vamos, Mestre!",
+        },
+        "please_master": {
+            "en": "Please, Master!",
+            "pt": "Por favor, Mestre!",
+        },
+        "sorry_master": {
+            "en": "Sorry, Master!",
+            "pt": "Desculpe, Mestre!",
+        },
+        "fusion_magic": {
+            "en": "Fusion Magic!",
+            "pt": "Magia de Fusão!",
+        },
+        "magicians_apprentice": {
+            "en": "Magician's Apprentice",
+            "pt": "Aprendiz de Mago",
+        },
+        "unremarkable_magician": {
+            "en": "Unremarkable Magician",
+            "pt": "Maga Ordinária",
+        },
+        "excellent_magician": {
+            "en": "Excelent Magician",
+            "pt": "Maga Excelente",
+        },
+        "no_good_magician": {
+            "en": "No-Good Magician",
+            "pt": "Maga Nada de Boa",
+        },
+        "magic_school": {
+            "en": "Magic School",
+            "pt": "Escola Mágica",
+        },
+    },
     "dartz": {
         "orichalcos": {
             "en": "Orichalcos",

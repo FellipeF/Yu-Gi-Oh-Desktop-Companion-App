@@ -52,10 +52,13 @@ class CustomDecksFrame(tk.Frame):
         self.tree.column("total_cards", width=110, anchor="center")
         self.tree.column("used", width=80, anchor="center")
 
-        self.tree.pack(fill="both", expand=True)
+        self.tree.pack(side="left", fill="both", expand=True)
         self.tree.bind("<<TreeviewSelect>>", self.on_deck_select)
         self.tree.bind("<Double-1>", self.open_selected_deck)
         self.tree.bind("<Button-1>", self.on_tree_click)
+
+        self.tree_scroll = ttk.Scrollbar(table_container, orient="vertical", command=self.tree.yview)
+        self.tree.configure(yscrollcommand=self.tree_scroll.set)
 
         # Buttons
         buttons_frame = tk.Frame(self)
@@ -112,6 +115,18 @@ class CustomDecksFrame(tk.Frame):
 
         self.refresh_ui()
 
+    def update_scroll_visibility(self):
+        """Hide scrollbar when all items fit in the tree."""
+        first, last = self.tree.yview()
+
+        if first <= 0.0 and last >= 1.0:
+            if self.tree_scroll.winfo_ismapped():
+                self.tree_scroll.pack_forget()
+        else:
+            if not self.tree_scroll.winfo_ismapped():
+                self.tree_scroll.pack(side="right", fill="y")
+
+
     def refresh_ui(self):
         self.title_label.config(text=self.controller.t("custom_decks"))
 
@@ -146,6 +161,8 @@ class CustomDecksFrame(tk.Frame):
                 iid=str(deck_id),
                 values=(deck_name, total_cards, used_text)
             )
+
+        self.after(50, self.update_scroll_visibility)
 
     def on_tree_click(self, event):
         """Toggles checkbox when clicking the used column"""
@@ -200,6 +217,8 @@ class CustomDecksFrame(tk.Frame):
             self.tree.see(str(new_deck_id))
             self.selected_deck_id = new_deck_id
 
+            self.update_scroll_visibility()
+
         except Exception as e:
             self.treat_exception(e)
 
@@ -237,6 +256,8 @@ class CustomDecksFrame(tk.Frame):
         delete_user_deck(self.selected_deck_id)
         self.tree.delete(item_id)
         self.selected_deck_id = None
+
+        self.update_scroll_visibility()
 
     def rename_selected_deck(self):
         if not self.selected_deck_id:
@@ -407,6 +428,8 @@ class CustomDecksFrame(tk.Frame):
             self.tree.focus(str(new_deck_id))
             self.tree.see(str(new_deck_id))
             self.selected_deck_id = new_deck_id
+
+            self.update_scroll_visibility()
 
             messagebox.showinfo(
                 self.controller.t("import_deck"),

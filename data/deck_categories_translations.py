@@ -59,7 +59,7 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Manga",
         "pt": "Mangá",
     },
-    "anime-manga": {
+    "anime_manga": {
         "en": "Anime/Manga",
         "pt": "Anime/Mangá"
     },

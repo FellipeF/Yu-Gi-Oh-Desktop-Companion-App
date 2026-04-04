@@ -96,6 +96,7 @@ translations = {
         # ================================
         "duel_computers": "Duel Computers",
         "ventriloquist_of_the_dead": "Ventriloquist of the Dead",
+        "dark_magician_girl": "Dark Magician Girl",
     },
     "pt": {
         #================================
@@ -195,5 +196,6 @@ translations = {
         # ================================
         "duel_computers": "Computadores de Duelo",
         "ventriloquist_of_the_dead": "Ventriloquista dos Mortos",
+        "dark_magician_girl": "Pequena Maga Negra",
     }
 }

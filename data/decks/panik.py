@@ -1,5 +1,5 @@
 PANIK_DECKS = {
-    "anime-manga": [
+    "anime_manga": [
         ("Barox", 1),
         ("Dark Chimera", 1),
         ("King of Yamimakai", 1),
