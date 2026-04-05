@@ -30,6 +30,7 @@ DUELISTS = [
     ("panik", "PaniK", "images/duelists/panik.png"),
     ("mokuba_kaiba", "Mokuba Kaiba", "images/duelists/mokuba.png"),
     ("dark_magician_girl", "dark_magician_girl", "images/duelists/dark_magician_girl.webp"),
+    ("shimon_muran", "Shimon Muran", "images/duelists/shimon_muran.webp"),
     # =========================
     # TODO: Below
     # =========================
@@ -58,7 +59,6 @@ DUELISTS = [
     ("gurimo", "Gurimo", "images/duelists/placeholder.webp"),
     ("zigfried_von_schroeder", "Zigfried von Schroeder", "images/duelists/placeholder.webp"),
     ("vivian_wong", "Vivian Wong", "images/duelists/placeholder.webp"),
-    ("shimon_muran", "Shimon Muran", "images/duelists/placeholder.webp"),
     ("kuriboh", "Kuriboh", "images/duelists/placeholder.webp"),
     ("red_eyes_bdragon", "Red-Eyes B.Dragon", "images/duelists/placeholder.webp"),
     ("tetsu_trudge", "Tetsu Trudge", "images/duelists/placeholder.webp"),

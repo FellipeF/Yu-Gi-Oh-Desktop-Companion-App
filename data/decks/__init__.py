@@ -15,6 +15,7 @@ from .mokuba_kaiba import MOKUBA_DECKS
 from .panik import PANIK_DECKS
 from .rebecca import REBECCA_DECKS
 from .serenity import SERENITY_DECKS
+from .shimon_muran import SHIMON_DECKS
 from .umbra import UMBRA_DECKS
 from .ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
 from .weevil import WEEVIL_DECKS
@@ -56,6 +57,7 @@ LIST_OF_DECKS = {
     "panik": PANIK_DECKS,
     "mokuba_kaiba": MOKUBA_DECKS,
     "dark_magician_girl": DARK_MAGICIAN_GIRL_DECKS,
+    "shimon_muran": SHIMON_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]
