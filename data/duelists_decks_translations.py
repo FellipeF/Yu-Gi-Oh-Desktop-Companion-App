@@ -21,7 +21,51 @@ DUELISTS_DECKS_KEYS = {
         "sleight_of_hand": {
             "en": "Sleight of Hand",
             "pt": "Truque de Mágica",
-        }
+        },
+        "arkana": {
+            "en": "Arkana",
+            "pt": "Arkana",
+        },
+        "nightmare_scene": {
+            "en": "Nightmare Scene",
+            "pt": "Cena de Pesadelo",
+        },
+        "tricky_trickster": {
+            "en": "Tricky Trickster",
+            "pt": "Trapaceiro Artimanhoso",
+        },
+        "ectoplasmic_cannon": {
+            "en": "Ectoplasmic Cannon",
+            "pt": "Canhão Ectoplasmático",
+        },
+        "dark_spellcaster": {
+            "en": "Dark Spellcaster",
+            "pt": "Mago Negro",
+        },
+        "a_tricksters_show": {
+            "en": "A Trickster's Show",
+            "pt": "Show de um Trapaceiro",
+        },
+        "cruel_dark_magician": {
+            "en": "Cruel Dark Magician",
+            "pt": "Mago Negro Cruel",
+        },
+        "dark_magic_symphony": {
+            "en": "Dark Magic Symphony",
+            "pt": "Sinfonia de Magia Negra",
+        },
+        "dark_magic": {
+            "en": "Dark Magic",
+            "pt": "Magia Negra",
+        },
+        "dark_magic_2": {
+            "en": "Dark Magic (2)",
+            "pt": "Magia Negra (2)",
+        },
+        "dark_magic_attack": {
+            "en": "Dark Magic Attack",
+            "pt": "Ataque de Magia Negra",
+        },
     },
     "arthur_hopkins": {
         "past": {
