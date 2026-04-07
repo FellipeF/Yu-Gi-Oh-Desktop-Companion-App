@@ -36,5 +36,5 @@ def set_latest_db_change(latest_seed: str) -> None:
     finally:
         conn.close()
 
-def _has_db_changed() -> bool:
+def is_db_the_same() -> bool:
     return get_latest_db_change() == LATEST_DB_CHANGE
