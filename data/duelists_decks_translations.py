@@ -77,6 +77,44 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Antigo",
         },
     },
+    "bakura_ryou": {
+        "occult": {
+            "en": "Occult",
+            "pt": "Oculto",
+        },
+        "occult_illusion": {
+            "en": "Occult Illusion",
+            "pt": "Ilusão Oculta",
+        },
+        "ms_necros_curse": {
+            "en": "Ms.Necro's Curse",
+            "pt": "Maldição da Dama Necro",
+        },
+        "a_toast_for_the_great_zorc": {
+            "en": "A Toast for the Great Zorc",
+            "pt": "Um Brinde para o Grande Zorc",
+        },
+        "i_have_no_graveyard": {
+            "en": "I Have no Graveyard!",
+            "pt": "Eu Não Tenho Cemitério!",
+        },
+        "go_easy_on_me": {
+            "en": "Go Easy on Me",
+            "pt": "Vai Devagar Comigo",
+        },
+        "deck_of_terror": {
+            "en": "Deck of Terror",
+            "pt": "Deck do Terror",
+        },
+        "nothing_i_cant_handle": {
+            "en": "Nothing I Can't Handle!",
+            "pt": "Nada Com Que Eu Não Possa Lidar!",
+        },
+        "i_wont_be_controlled_anymore": {
+            "en": "I Won't Be Controlled Anymore",
+            "pt": "Não Serei Mais Controlado",
+        },
+    },
     "bonz": {
         "spook_and_boo": {
             "en": "Spook and Boo",

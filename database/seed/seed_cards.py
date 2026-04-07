@@ -11,20 +11,13 @@ def _normalize_stat(value) -> int | None:
     return None if value == -1 else value
 
 def _get_database_version() -> tuple[str | None, str | None]:
-    """Returns the online and offline database versions from the info file"""
+    """Returns the online dataset version and offline database version from the info file"""
     info = api.read_info_file() or {}
     offline_version = info.get("database_offline_version")
 
     try:
         db_details = api.get_dataset_details()
         online_version = db_details.get("database_version")
-
-        info["database_version"] = online_version
-        info["last_checked"] = api._today()
-        if "last_update" in db_details:
-            info["last_update"] = db_details.get("last_update")
-        api.write_info_file(info)
-
     except Exception:
         online_version = info.get("database_version")
 

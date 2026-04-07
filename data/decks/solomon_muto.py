@@ -1,4 +1,5 @@
 SOLOMON_MUTO_DECKS = {
+    # Grandpa's first deck is actually Yugi's first deck, but with Blue Eyes added, so copied that.
     "grandpa": [
         ("Battle Steer", 1),
         ("Beaver Warrior", 1),
