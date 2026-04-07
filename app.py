@@ -7,14 +7,16 @@ from tkinter import ttk, messagebox
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION
 from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
-from database.database import create_tables, run_migrations
+from database.database import create_tables#, run_migrations
+from database.drop_hardcoded_tables import drop_hardcoded_tables
+from database.seed.database_changes import (LATEST_DB_CHANGE, _has_db_changed, set_latest_db_change)
 from frames.custom_deck_editor_frame import CustomDeckEditorFrame
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
 from frames.duelists_frame import DuelistsFrame
 from frames.custom_decks_frame import CustomDecksFrame
 from frames.loading_frame import LoadingFrame
-from ui.translations import translations
+from ui.ui_text import ui_text
 from ui.loading_modal import LoadingDialog
 from utils.resource_path import resource_path
 from pathlib import Path
@@ -133,10 +135,20 @@ class App(tk.Tk):
         is still needed to show all cards."""
         try:
             self.after(0, lambda: self.loading_frame.set_status(self.t("loading_database")))
-            create_tables()
-            run_migrations()
 
-            self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
+            # For now, we're only dealing with changes on the hardcoded tables, so no need to do a big migration on it.
+            # But we do check if there has been an update first to avoid useless DROP query.
+
+            create_tables()
+            #run_migrations()
+
+            if not _has_db_changed():
+                drop_hardcoded_tables()
+                create_tables()
+                self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
+                set_latest_db_change(LATEST_DB_CHANGE)
+            else:
+                self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
             seed_all("en")
 
             if self.current_language != "en":
@@ -184,8 +196,8 @@ class App(tk.Tk):
                 frame.load_duelist()
 
     def t (self, key):
-        """Gets text from ui/translations.py file and implements fallback in case language key doesn't exist."""
-        return translations.get(self.current_language, {}).get(key, key)
+        """Gets text from ui/ui_text.py file and implements fallback in case language key doesn't exist."""
+        return ui_text.get(self.current_language, {}).get(key, key)
 
     def show_frame(self, name):
         self.current_frame_name = name

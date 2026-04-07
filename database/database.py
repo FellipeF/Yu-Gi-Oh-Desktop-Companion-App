@@ -1,6 +1,5 @@
 import sqlite3
-
-DB_NAME = "yugi.db"
+from config import DB_NAME
 
 def get_connection():
     conn = sqlite3.connect(DB_NAME)
@@ -8,7 +7,6 @@ def get_connection():
     # Enable Foreign Keys:
     # https://stackoverflow.com/questions/6288871/foreign-key-support-in-sqlite3?answertab=oldest#tab-top
     # ----------------------------------------------------------------------------------------------------
-    conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA journal_mode = WAL")
     conn.execute("PRAGMA synchronous = NORMAL")
@@ -51,8 +49,8 @@ def create_tables():
     CREATE TABLE IF NOT EXISTS duelists (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         key TEXT UNIQUE NOT NULL,
-        name TEXT UNIQUE NOT NULL,
-        img_path TEXT
+        img_path TEXT,
+        media TEXT
     )
     """)
 
@@ -144,6 +142,15 @@ def create_tables():
         )
         """)
 
+    # Stores metadata so that app can check if there's a new version of the hardcoded data or not so it doesn't need
+    # To drop those hardcoded tables everytime it runs.
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS app_metadata (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL
+        )
+        """)
+
     # Index for speeding up case-insensitive card name lookups filtered by language_code.
     cursor.execute("""
     CREATE INDEX IF NOT EXISTS idx_cards_translations_lang_name_nocase
@@ -189,90 +196,226 @@ def create_tables():
     conn.commit()
     conn.close()
 
-def _foreign_key_matches(
-        cursor, table_name: str, from_column: str, referenced_table:str, referenced_column: str, on_delete: str,
-) -> bool:
-    """Does a specific FK exists with the ON DELETE behavior?"""
-    cursor.execute(f"PRAGMA foreign_key_list({table_name})")
-    rows = cursor.fetchall()
+# ----------------------------------------------------------------------------------------------------
+# Since plenty of data here is hardcoded for now, I'm leaving the "complex" migration inside comments
+# and opting for a simple DROP + DELETE, but it was a good practice on standards. Also, could totally reuse
+# those when adding an additional column on user_decks, since those are not hardcoded.
+# ----------------------------------------------------------------------------------------------------
 
-    for row in rows:
-        _id, _seq, ref_table, from_col, to_col, _on_update, on_delete_rule, _match = row
+# For Migrations purposes on ALTER TABLE, check Step 7
+# https://www.sqlite.org/lang_altertable.html
 
-        if (
-            ref_table == referenced_table and
-            from_col == from_column
-            and to_col == referenced_column
-            and on_delete_rule.upper() == on_delete.upper()
-        ):
-            return True
+#
+#
+#def _column_exists(cursor, table_name: str, column_name: str) -> bool:
+#    """Does a column already exists in the table? Used on migration for the duelist table, for example, where media
+#    column was added some time after creation."""
+#    cursor.execute(f"PRAGMA table_info({table_name})")
+#    columns = cursor.fetchall()
+#    return any (column[1] == column_name for column in columns)
 
-        return False
+# def _foreign_key_matches(
+#         cursor, table_name: str, from_column: str, referenced_table:str, referenced_column: str, on_delete: str,
+# ) -> bool:
+#     """Does a specific FK exists with the ON DELETE behavior?"""
+#     cursor.execute(f"PRAGMA foreign_key_list({table_name})")
+#     rows = cursor.fetchall()
+#
+#     for row in rows:
+#         _id, _seq, ref_table, from_col, to_col, _on_update, on_delete_rule, _match = row
+#
+#         if (
+#             ref_table == referenced_table and
+#             from_col == from_column
+#             and to_col == referenced_column
+#             and on_delete_rule.upper() == on_delete.upper()
+#         ):
+#             return True
+#
+#     return False
+#
+# def _get_associated_schema_objects(cursor, table_name: str):
+#     """Returns CREATE statements for indexes, triggers and views related to a table. (Step 3 of schema change)"""
+#     cursor.execute("""
+#         SELECT type, name, sql
+#         FROM sqlite_schema
+#         WHERE tbl_name = ?
+#           AND type IN ('index', 'trigger', 'view')
+#     """, (table_name,))
+#     rows = cursor.fetchall()
+#
+#     objects = []
+#     for obj_type, obj_name, obj_sql in rows:
+#         if obj_sql is None:
+#             continue
+#         if obj_type == "index" and obj_name.startswith("sqlite_autoindex"):
+#             continue
+#         objects.append((obj_type, obj_name, obj_sql))
+#
+#     return objects
+#
+# def _recreate_schema_objects(cursor, schema_objects):
+#     """(Step 8 of schema change)"""
+#     for _obj_type, _obj_name, obj_sql in schema_objects:
+#         cursor.execute(obj_sql)
+#
+# def _rebuild_table(cursor, table_name: str, create_new_table_query: str, copy_data_query: str):
+#     """Rebuilds table following steps 4 - 7 from the docs and then calls step 8"""
+#     schema_objects = _get_associated_schema_objects(cursor, table_name)
+#
+#     cursor.execute(create_new_table_query)
+#     cursor.execute(copy_data_query)
+#     cursor.execute(f"DROP TABLE {table_name}")
+#     cursor.execute(f"ALTER TABLE {table_name}_new RENAME TO {table_name}")
+#     _recreate_schema_objects(cursor, schema_objects)
+#
+# def _migrate_duelists_schema(cursor):
+#     """Since an intermediate version of the duelists table with a media column was created but it's not representative
+#     of the final version, need to also check that before doing the migration."""
+#     has_name = _column_exists(cursor, "duelists", "name")
+#     has_media = _column_exists(cursor, "duelists", "media")
+#     has_img_path = _column_exists(cursor, "duelists", "img_path")
+#
+#     schema_is_final = (
+#         _column_exists(cursor, "duelists", "key") and
+#         has_img_path and
+#         has_media and
+#         not has_name #Name was dropped in current version.
+#     )
+#
+#     if schema_is_final:
+#         return
+#
+#     # Step 1 and 2
+#     cursor.execute("PRAGMA foreign_keys = OFF")
+#     cursor.execute("BEGIN")
+#
+#     try:
+#         create_new_table_query = """
+#                 CREATE TABLE duelists_new (
+#                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                     key TEXT UNIQUE NOT NULL,
+#                     img_path TEXT,
+#                     media TEXT
+#                 )
+#                 """
+#
+#         if has_name and has_media:
+#             copy_data_query = """
+#                 INSERT INTO duelists_new (id, key, img_path, media)
+#                 SELECT id, key, img_path, media
+#                 FROM duelists
+#                 """
+#         elif has_name and not has_media:
+#             copy_data_query = """
+#                 INSERT INTO duelists_new (id, key, img_path, media)
+#                 SELECT id, key, img_path, NULL
+#                 FROM duelists
+#                 """
+#         elif not has_name and not has_media:
+#             copy_data_query = """
+#                 INSERT INTO duelists_new (id, key, img_path, media)
+#                 SELECT id, key, img_path, NULL
+#                 FROM duelists
+#                 """
+#         else:
+#             copy_data_query = """
+#                 INSERT INTO duelists_new (id, key, img_path, media)
+#                 SELECT id, key, img_path, media
+#                 FROM duelists
+#                 """
+#
+#         _rebuild_table(
+#             cursor,
+#             table_name="duelists",
+#             create_new_table_query=create_new_table_query,
+#             copy_data_query=copy_data_query)
+#
+#         # Step 10
+#         cursor.execute("PRAGMA foreign_key_check")
+#         fk_issues = cursor.fetchall()
+#         if fk_issues:
+#             raise RuntimeError(f"FK check failed after migration: {fk_issues}")
+#
+#         #Step 11
+#         cursor.execute("COMMIT")
+#     except Exception:
+#         cursor.execute("ROLLBACK")
+#         raise
+#     finally:
+#         #Step 12
+#         cursor.execute("PRAGMA foreign_keys = ON")
+#
+# def _migrate_duelist_decks_fk(cursor):
+#     """Recreates duelist decks table with correct FK ON DELETE CASCADE Constraint for duelist_id. Then follows the steps
+#     according to the docs"""
+#     needs_duelist_decks_migration = not _foreign_key_matches(
+#         cursor,
+#         table_name="duelist_decks",
+#         from_column="duelist_id",
+#         referenced_table="duelists",
+#         referenced_column="id",
+#         on_delete="CASCADE",
+#     )
+#     if not needs_duelist_decks_migration:
+#         return
+#
+#     # Step 1 and 2
+#     cursor.execute("PRAGMA foreign_keys = OFF")
+#     cursor.execute("BEGIN")
+#
+#     try:
+#         create_new_table_query = """
+#                 CREATE TABLE duelist_decks_new (
+#                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                     duelist_id INTEGER NOT NULL,
+#                     deck_category_id INTEGER,
+#                     key TEXT NOT NULL,
+#                     order_index INTEGER DEFAULT 0,
+#                     FOREIGN KEY (duelist_id) REFERENCES duelists(id) ON DELETE CASCADE,
+#                     FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id) ON DELETE SET NULL,
+#                     UNIQUE(duelist_id, key)
+#                 )
+#             """
+#
+#         copy_data_query = """
+#                 INSERT INTO duelist_decks_new (id, duelist_id, deck_category_id, key, order_index)
+#                 SELECT id, duelist_id, deck_category_id, key, order_index
+#                 FROM duelist_decks
+#             """
+#
+#         _rebuild_table(
+#             cursor,
+#             table_name="duelist_decks",
+#             create_new_table_query=create_new_table_query,
+#             copy_data_query=copy_data_query)
+#
+#         # Step 10
+#         cursor.execute("PRAGMA foreign_key_check")
+#         fk_issues = cursor.fetchall()
+#         if fk_issues:
+#             raise RuntimeError(f"FK check failed after migration: {fk_issues}")
+#
+#         # Step 11
+#         cursor.execute("COMMIT")
+#     except Exception:
+#         cursor.execute("ROLLBACK")
+#         raise
+#     finally:
+#         # Step 12
+#         cursor.execute("PRAGMA foreign_keys = ON")
+#
+# def run_migrations():
+#     """Run migrations on DB only if needed"""
+#     conn = get_connection()
+#     cursor = conn.cursor()
+#
+#     try:
+#         _migrate_duelists_schema(cursor)
+#         _migrate_duelist_decks_fk(cursor)
+#     finally:
+#         conn.close()
 
-def _recreate_duelist_decks_table(cursor):
-    """Recreates duelist decks table with correct FK ON DELETE CASCADE Constraint for duelist_id. Then, copies contents
-    from old table to this new one, drop the old table and rename the new table to be the same name as the old table."""
-    cursor.execute("""
-        CREATE TABLE duelist_decks_new (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            duelist_id INTEGER NOT NULL,
-            deck_category_id INTEGER,
-            key TEXT NOT NULL,
-            order_index INTEGER DEFAULT 0,
-            FOREIGN KEY (duelist_id) REFERENCES duelists(id) ON DELETE CASCADE,
-            FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id) ON DELETE SET NULL,
-            UNIQUE(duelist_id, key)
-        )
-        """)
-
-    cursor.execute("""
-        INSERT INTO duelist_decks_new (id, duelist_id, deck_category_id, key, order_index)
-        SELECT id, duelist_id, deck_category_id, key, order_index
-        FROM duelist_decks
-        """)
-
-    cursor.execute("DROP TABLE duelist_decks")
-    cursor.execute("ALTER TABLE duelist_decks_new RENAME TO duelist_decks")
-
-    cursor.execute("""
-        CREATE INDEX IF NOT EXISTS idx_duelist_decks_duelist_id_order
-        ON duelist_decks(duelist_id, order_index)
-        """)
-
-def run_migrations():
-    """Run migrations on DB only if needed"""
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    try:
-        needs_duelist_decks_migration = not _foreign_key_matches(
-            cursor,
-            table_name="duelist_decks",
-            from_column="duelist_id",
-            referenced_table="duelists",
-            referenced_column="id",
-            on_delete="CASCADE",
-        )
-        if not needs_duelist_decks_migration:
-            return
-
-        cursor.execute("PRAGMA foreign_keys = OFF")
-        cursor.execute("BEGIN")
-
-        try:
-            _recreate_duelist_decks_table(cursor)
-            cursor.execute("COMMIT")
-        except Exception:
-            cursor.execute("ROLLBACK")
-            raise
-        finally:
-            cursor.execute("PRAGMA foreign_keys = ON")
-
-        cursor.execute("PRAGMA foreign_key_check")
-        fk_issues = cursor.fetchall()
-        if fk_issues:
-            raise RuntimeError(f"FK check failed after migration: {fk_issues}")
-
-        conn.commit()
-    finally:
-        conn.close()
+# ----------------------------------------------------------------------------------------------------
+# END
+# ----------------------------------------------------------------------------------------------------

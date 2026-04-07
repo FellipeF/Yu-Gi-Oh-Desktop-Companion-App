@@ -12,6 +12,7 @@ from .lumis import LUMIS_DECKS
 from .mai import MAI_DECKS
 from .mako import MAKO_DECKS
 from .mokuba_kaiba import MOKUBA_DECKS
+from .noah_kaiba import NOAH_KAIBA_DECKS
 from .panik import PANIK_DECKS
 from .rebecca import REBECCA_DECKS
 from .serenity import SERENITY_DECKS
@@ -58,6 +59,7 @@ LIST_OF_DECKS = {
     "mokuba_kaiba": MOKUBA_DECKS,
     "dark_magician_girl": DARK_MAGICIAN_GIRL_DECKS,
     "shimon_muran": SHIMON_DECKS,
+    "noah_kaiba": NOAH_KAIBA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

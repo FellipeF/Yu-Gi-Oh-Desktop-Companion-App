@@ -71,7 +71,7 @@ class DuelistsFrame(tk.Frame):
         col = 0
 
         for duelist in page_duelists:
-            duelist_id, duelist_key, name, img_path, deck_count = duelist
+            duelist_id, duelist_key, img_path, media, deck_count = duelist
 
             img = Image.open(resource_path(img_path)).resize((200,200))
             tk_img = ImageTk.PhotoImage(img)
@@ -83,11 +83,11 @@ class DuelistsFrame(tk.Frame):
             duelist_button = tk.Button(
                 cell,
                 image=tk_img,
-                text=f"{self.truncate(self.controller.t(name), 14)}\n({deck_count})",
+                text=f"{self.truncate(self.controller.t(duelist_key), 14)}\n({deck_count})",
                 font=("Arial",15),
                 compound="top",
                 wraplength=160,
-                command=lambda d=duelist_id, k=duelist_key, n=name: self.show_duelist_details(d,k,n)
+                command=lambda d=duelist_id, k=duelist_key: self.show_duelist_details(d,k)
             )
 
             duelist_button.image = tk_img
@@ -120,15 +120,13 @@ class DuelistsFrame(tk.Frame):
             self.render_page()
 
     def sort_duelists(self):
-        """Sorts duelist by Display name instead of name saved in the DB. Helps with cases
-        when display name is different in other languages."""
-        language_code = self.controller.current_language
+        """Sorts duelist by Display name that is handled by the translation file."""
         self.duelists.sort(
-            key = lambda d: self.controller.t(d[2]).casefold()
+            key = lambda d: self.controller.t(d[1]).casefold()
         )
 
-    def show_duelist_details(self, duelist_id, duelist_key, duelist_name):
-        DuelistDetailsWindow(self.controller, duelist_id, duelist_key, duelist_name)
+    def show_duelist_details(self, duelist_id, duelist_key):
+        DuelistDetailsWindow(self.controller, duelist_id, duelist_key)
 
     def refresh_ui(self):
         self.select_duelist_label.config(text=self.controller.t("select_duelist"))

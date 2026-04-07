@@ -1104,6 +1104,53 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Realeza Verme",
         },
     },
+    "noah_kaiba": {
+        "creation": {
+            "en": "Creation",
+            "pt": "Criação",
+        },
+        "spirit": {
+            "en": "Spirit",
+            "pt": "Espírito",
+        },
+        "divine_ark": {
+            "en": "Divine Ark",
+            "pt": "Arca Divina",
+        },
+        "noah": {
+            "en": "Noah",
+            "pt": "Noah",
+        },
+        "duel_of_creation": {
+            "en": "Duel of Creation",
+            "pt": "Duelo de Criação",
+        },
+        "in_the_creators_name": {
+            "en": "In The Creator's Name",
+            "pt": "Em Nome do Criador",
+        },
+        "existence_beyond_comprehension": {
+            "en": "Existence Beyond Comprehension",
+            "pt": "Existência Além da Compreensão",
+        },
+        "the_almighty_creator": {
+            "en": "The Almighty Creator",
+            "pt": "O Todo Poderoso Criador",
+        },
+
+        "you_cant_beat_me": {
+            "en": "You Can't Beat Me",
+            "pt": "Você Não Consegue Me Vencer",
+        },
+        "calculated_victory": {
+            "en": "Calculated Victory",
+            "pt": "Vitória Calculada",
+        },
+        "urgent_ritual": {
+            "en": "Urgent Ritual",
+            "pt": "Ritual Urgente",
+        },
+    },
     "panik": {
         "dark_zone": {
             "en": "Dark Zone",

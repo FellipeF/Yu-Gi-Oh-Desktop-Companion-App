@@ -41,11 +41,10 @@ def get_all_duelists() -> list[tuple]:
     try:
         cursor.execute("""
         SELECT 
-            d.id, d.key, d.name, d.img_path, COUNT(dd.id) AS deck_count
+            d.id, d.key, d.img_path, d.media, COUNT(dd.id) AS deck_count
         FROM duelists d
         LEFT JOIN duelist_decks dd ON dd.duelist_id = d.id
-        GROUP BY d.id, d.key, d.name, d.img_path
-        ORDER BY d.name COLLATE NOCASE""") # For testing purposes, still leaving this ORDER BY here.
+        GROUP BY d.id, d.key, d.img_path, d.media""")
 
         return cursor.fetchall()
     finally:

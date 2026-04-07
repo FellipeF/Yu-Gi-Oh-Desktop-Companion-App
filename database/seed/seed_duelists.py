@@ -4,17 +4,16 @@ from database.database import get_connection
 from data.duelists import DUELISTS
 
 def _upsert_duelists(cursor, duelist_rows: list[tuple[str, str | None]]) -> None:
-    """Insert in database Duelists that are contained in the duelists.py file located in the data folder. ON CONFLICT
-    DO UPDATE is here if I decide to change portraits or name at any point."""
+    """Insert in database Duelists that are contained in the duelists.py file located in the data folder."""
     if not duelist_rows:
         return
 
     cursor.executemany("""
-    INSERT INTO duelists (key, name, img_path)
+    INSERT INTO duelists (key, img_path, media)
     VALUES (?, ?, ?)
     ON CONFLICT (key) DO UPDATE SET
-        name = excluded.name,
-        img_path = excluded.img_path
+        img_path = excluded.img_path,
+        media = excluded.media
     """, duelist_rows, )
 
 def _load_existing_duelist_keys(cursor) -> set[str]:
