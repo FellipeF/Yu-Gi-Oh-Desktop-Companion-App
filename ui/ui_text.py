@@ -91,6 +91,7 @@ ui_text = {
         "select_card": "Select a Card",
         "spell_card": "Spell Card",
         "trap_card": "Trap Card",
+        "skill_card": "Skill Card",
         # ================================
         #  DUELISTS
         # ================================
@@ -250,6 +251,7 @@ ui_text = {
         "card_details": "Mostrar detalhes da carta",
         "spell_card": "Carta Mágica",
         "trap_card": "Carta Armadilha",
+        "skill_card": "Carta de Habilidade",
         # ================================
         #  DUELISTS
         # ================================

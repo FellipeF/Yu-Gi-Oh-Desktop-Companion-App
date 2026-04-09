@@ -3,6 +3,7 @@ from .anubis import ANUBIS_DECK
 from .arkana import ARKANA_DECKS
 from .arthur import ARTHUR_DECKS
 from .bakura_ryou import BAKURA_DECKS
+from .bandit_keith import BANDIT_KEITH_DECKS
 from .bonz import BONZ_DECKS
 from .dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
 from .dartz import DARTZ_DECKS
@@ -62,6 +63,7 @@ LIST_OF_DECKS = {
     "shimon_muran": SHIMON_DECKS,
     "noah_kaiba": NOAH_KAIBA_DECKS,
     "bakura_ryou": BAKURA_DECKS,
+    "bandit_keith": BANDIT_KEITH_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

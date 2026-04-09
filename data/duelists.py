@@ -30,6 +30,7 @@ DUELISTS = [
     ("shimon_muran", "images/duelists/shimon_muran.webp", "duel_monsters"),
     ("noah_kaiba", "images/duelists/noah_kaiba.webp", "duel_monsters"),
     ("bakura_ryou", "images/duelists/bakura.webp", "duel_monsters"),
+    ("bandit_keith", "images/duelists/bandit_keith.png", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
@@ -37,7 +38,6 @@ DUELISTS = [
     ("yami_bakura", "images/duelists/placeholder.webp", "duel_monsters"),
     ("shadi", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rex_raptor", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("bandit_keith", "images/duelists/placeholder.webp", "duel_monsters"),
     ("para", "images/duelists/placeholder.webp", "duel_monsters"),
     ("dox", "images/duelists/placeholder.webp", "duel_monsters"),
     ("marik_ishtar", "images/duelists/placeholder.webp", "duel_monsters"),

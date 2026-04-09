@@ -73,5 +73,6 @@ DECK_CATEGORIES_KEYS = [
     "yu_gi_oh_bam",
     "forbidden_memories",
     "alluring_tactics",
-    "neo_kc"
+    "neo_kc",
+    "graveyard_gunfire",
 ]

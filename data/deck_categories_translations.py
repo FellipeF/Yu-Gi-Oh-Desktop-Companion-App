@@ -287,4 +287,8 @@ DECK_CATEGORIES_TRANSLATIONS = {
         "en": "Neo KC",
         "pt": "Neo KC"
     },
+    "graveyard_gunfire": {
+        "en": "Graveyard Gunfire",
+        "pt": "Tiroteio no Cemitério",
+    },
 }

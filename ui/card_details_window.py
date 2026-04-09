@@ -46,21 +46,25 @@ class CardDetailsWindow(tk.Toplevel):
         if "Trap" in card_type:
             return self.controller.t("trap_card")
 
+        if "Skill Card" in card_type:
+            return self.controller.t("skill_card")
+
         return card_type
 
     def _format_stats(self, card_type: str, atk: int | None, defense: int | None) -> str:
         """Format stats according to card type."""
-        # Magic/Trap don't have ATK or DEF
-        # Link don't have DEF
-        # Some Egyptian Gods have ??? as ATK and DEF, this is already normalized when seeding cards
+        # Magic/Trap/Skill cards don't have ATK or DEF
+        # Link cards don't have DEF
+        # Some Egyptian Gods cards have ??? as ATK and DEF, this is already normalized when seeding cards
 
         card_type = card_type
 
         is_spell = "Spell" in card_type
         is_trap = "Trap" in card_type
         is_link = "Link" in card_type
+        is_skill = "Skill Card" in card_type
 
-        if is_spell or is_trap:
+        if is_spell or is_trap or is_skill:
             return self._translate_card_type(card_type)
 
         atk_text = "???" if atk is None else str(atk)

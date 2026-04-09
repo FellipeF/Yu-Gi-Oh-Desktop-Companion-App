@@ -115,6 +115,80 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Não Serei Mais Controlado",
         },
     },
+    "bandit_keith": {
+        "monsters_army": {
+            "en": "Monsters Army",
+            "pt": "Exército de Monstros",
+        },
+        "anime_possessed": {
+            "en": "Anime - Possessed",
+            "pt": "Anime - Possuído",
+        },
+        "machine_mayhem": {
+            "en": "Machine Mayhem",
+            "pt": "Caos de Máquina",
+        },
+        "machine_mayhem_v2": {
+            "en": "Machine Mayhem v2",
+            "pt": "Caos de Máquina v2",
+        },
+        "everlasting_battery": {
+            "en": "Everlasting Battery",
+            "pt": "Bateria Interminável",
+        },
+        "zera_machine": {
+            "en": "Zera Machine",
+            "pt": "Máquina Zera",
+        },
+        "machine_burn": {
+            "en": "Machine Burn",
+            "pt": "Queimadura de Máquina",
+        },
+        "armed_metalzoa": {
+            "en": "Armed Metalzoa",
+            "pt": "Metalzoa Armado",
+        },
+        "zera_to_infinity": {
+            "en": "Zera to Infinity",
+            "pt": "Zera ao Infinito",
+        },
+        "the_pendulum_scraps": {
+            "en": "The Pendulum Scraps",
+            "pt": "Os Restolhos Pêndulo",
+        },
+        "bandit_keith": {
+            "en": "Bandit Keith",
+            "pt": "Bandit Keith",
+        },
+        "us_champs_tryouts": {
+            "en": "US Champ's Tryouts",
+            "pt": "Testes do Campeão Americano",
+        },
+        "us_champs_machines": {
+            "en": "US Champ's Machines",
+            "pt": "Máquinas do Campeão Americano",
+        },
+        "us_champs_6_blasters": {
+            "en": "US Champ's 6 Blasters",
+            "pt": "6 Atiradores do Campeão Americano",
+        },
+        "us_champs_elite_machine": {
+            "en": "US Champ's Elite Machines",
+            "pt": "Máquina de Elite do Campeão Americano",
+        },
+        "rogue_machines": {
+            "en": "Rogue Machines",
+            "pt": "Máquinas Rebeldes",
+        },
+        "mechanical_technique": {
+            "en": "Mechanical Technique",
+            "pt": "Técnica Mecânica",
+        },
+        "precious_cards_of_the_dark": {
+            "en": "Precious Cards of the Dark",
+            "pt": "Cartas Preciosas das Trevas",
+        },
+    },
     "bonz": {
         "spook_and_boo": {
             "en": "Spook and Boo",
@@ -164,10 +238,6 @@ DUELISTS_DECKS_KEYS = {
         "greetings_from_the_grave": {
             "en": "Greetings from the Grave",
             "pt": "Saudações da Cova",
-        },
-        "graveyard_gunfire": {
-            "en": "Graveyard Gunfire",
-            "pt": "Tiroteio no Cemitério",
         },
         "rise_of_the_zombies": {
             "en": "Rise of the Zombies",
