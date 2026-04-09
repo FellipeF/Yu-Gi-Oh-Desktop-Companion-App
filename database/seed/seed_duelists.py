@@ -27,7 +27,7 @@ def _delete_missing_duelists(cursor, existing_keys: set[str], seed_keys: set[str
     if not keys_to_delete:
         return
 
-    placeholders = ",".join(["?"]) * len(keys_to_delete)
+    placeholders = ",".join(["?"] * len(keys_to_delete))
 
     cursor.execute(f"DELETE FROM duelists WHERE key IN ({placeholders})", tuple(keys_to_delete))
 

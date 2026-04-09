@@ -189,6 +189,72 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Cartas Preciosas das Trevas",
         },
     },
+    "big5": {
+        "gansley_anime": {
+            "en": "Gansley - Anime",
+            "pt": "Gansley - Anime",
+        },
+        "gansley_ocean_conqueror": {
+            "en": "Gansley - Ocean Conqueror",
+            "pt": "Gansley - Conquistador do Oceano",
+        },
+        "crump_anime": {
+            "en": "Crump - Anime",
+            "pt": "Crump - Anime",
+        },
+        "crump_fatal_flyer": {
+            "en": "Crump - Fatal Flyer",
+            "pt": "Crump - Voador Fatal",
+        },
+        "johnson_anime": {
+            "en": "Johnson - Anime",
+            "pt": "Johnson - Anime",
+        },
+        "johnson_final_judgment": {
+            "en": "Johnson - Final Judgment",
+            "pt": "Johnson - Julgamento Final",
+        },
+        "nezbitt_anime": {
+            "en": "Nezbitt - Anime",
+            "pt": "Nezbitt - Anime",
+        },
+        "nezbitt_steel_soul": {
+            "en": "Nezbitt - Steel Soul",
+            "pt": "Nezbitt - Alma de Aço",
+        },
+        "leichter_anime": {
+            "en": "Leichter - Anime",
+            "pt": "Leichter - Anime",
+        },
+        "leichter_view_from_above": {
+            "en": "Leichter - View from Above",
+            "pt": "Leichter - Visão de Cima",
+        },
+        "the_big_five": {
+            "en": "The Big Five",
+            "pt": "Os Cinco Grandes",
+        },
+        "greetings_from_the_grave": {
+            "en": "Greetings from the Grave",
+            "pt": "Saudações da Cova",
+        },
+        "rise_of_the_zombies": {
+            "en": "Rise of the Zombies",
+            "pt": "Ascensão dos Zumbis",
+        },
+        "rise_of_the_zombies_2": {
+            "en": "Rise of the Zombies (2)",
+            "pt": "Ascensão dos Zumbis (2)",
+        },
+        "the_dark_master": {
+            "en": "The Dark Master",
+            "pt": "O Mestre das Sombras",
+        },
+        "armageddon": {
+            "en": "Armageddon",
+            "pt": "Armagedom",
+        },
+    },
     "bonz": {
         "spook_and_boo": {
             "en": "Spook and Boo",
@@ -218,7 +284,6 @@ DUELISTS_DECKS_KEYS = {
             "en": "King of the Skull Servants",
             "pt": "Rei dos Servos Caveira",
         },
-
         "living_beyond_the_grave": {
             "en": "Living Beyond the Grave",
             "pt": "Vivendo Além da Cova",

@@ -1,6 +1,7 @@
 import tkinter as tk
 import threading
 import locale
+import traceback
 import webbrowser
 
 from tkinter import ttk, messagebox
@@ -51,7 +52,7 @@ class App(tk.Tk):
         self.card_search_service = CardSearchService()
         self.app_width = APP_WIDTH
         self.app_height = APP_HEIGHT
-        self.title(f"Yu-Gi-Oh! Card Database v{CURRENT_VERSION}")
+        self.title(f"Yu-Gi-Oh! Desktop Companion App v{CURRENT_VERSION}")
         self.resizable(False, False)
         self.frames = {}
         self.current_frame_name = None
@@ -161,6 +162,7 @@ class App(tk.Tk):
             # When exceptions is created, we need to "freeze it" before using it instead of passing straight to lambda
             # Prevents:
             # NameError: cannot access free variable 'e' where it is not associated with a value in enclosing scope
+            traceback.print_exc()
             error = e
             self.after(0, lambda: self.handle_initialization_error (error))
 

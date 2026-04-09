@@ -22,7 +22,7 @@ ui_text = {
         # ================================
         #   HOME FRAME
         # ================================
-        "home_title": "Welcome to Yu-Gi-Oh! Offline Database",
+        "home_title": "Welcome to the Yu-Gi-Oh! Desktop Companion App",
         "home_subtitle": "Browse cards, inspect duelists and their decks and build your own.",
         "check_cards": "Check Available Cards",
         "duelists": "View Duelists",
@@ -139,11 +139,6 @@ ui_text = {
         "strings": "Strings",
         "noah_kaiba": "Noah Kaiba",
         "gozaburo_kaiba": "Gozaburo Kaiba",
-        "gansley": "Gansley",
-        "crump": "Crump",
-        "johnson": "Johnson",
-        "nezzbitt": "Nezzbit",
-        "leichter": "Leichter",
         "rafael": "Rafael",
         "valon": "Valon",
         "gurimo": "Gurimo",
@@ -157,6 +152,7 @@ ui_text = {
         "espa_roba": "Espa Roba",
         "jean_claude_magnum": "Jean-Claude Magnum",
         "rick": "Rick",
+        "big5": "The Big Five",
     },
     "pt": {
         #================================
@@ -182,7 +178,7 @@ ui_text = {
         # ================================
         #   HOME FRAME
         # ================================
-        "home_title": "Bem-vindo ao Banco de Dados Yu-Gi-Oh!",
+        "home_title": "Bem-vindo(a) ao Companion App de Yu-Gi-Oh! para Desktop",
         "home_subtitle": "Consulte cartas, visualize decks de duelistas e monte seus próprios decks.",
         "check_cards": "Ver Cartas Disponíveis",
         "duelists": "Ver Duelistas",
@@ -299,11 +295,6 @@ ui_text = {
         "strings": "Strings",
         "noah_kaiba": "Noah Kaiba",
         "gozaburo_kaiba": "Gozaburo Kaiba",
-        "gansley": "Gansley",
-        "crump": "Crump",
-        "johnson": "Johnson",
-        "nezzbitt": "Nezzbit",
-        "leichter": "Leichter",
         "rafael": "Rafael",
         "valon": "Valon",
         "gurimo": "Gurimo",
@@ -317,5 +308,6 @@ ui_text = {
         "espa_roba": "Espa Roba",
         "jean_claude_magnum": "Jean-Claude Magnum",
         "rick": "Rick",
+        "big5": "Os Cinco Grandes",
     }
 }
