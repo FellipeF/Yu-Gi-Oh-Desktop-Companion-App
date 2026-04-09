@@ -1,0 +1,3 @@
+MARIK_ISHTAR_DECKS = {
+
+}

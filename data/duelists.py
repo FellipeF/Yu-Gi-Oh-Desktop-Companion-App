@@ -34,13 +34,14 @@ DUELISTS = [
     # =========================
     # TODO: Below
     # =========================
+    ("marik_ishtar", "images/duelists/placeholder.webp", "duel_monsters"),
+    ("nezzbitt", "images/duelists/placeholder.webp", "duel_monsters"),
     ("yami_yugi", "images/duelists/placeholder.webp", "duel_monsters"),
     ("yami_bakura", "images/duelists/placeholder.webp", "duel_monsters"),
     ("shadi", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rex_raptor", "images/duelists/placeholder.webp", "duel_monsters"),
     ("para", "images/duelists/placeholder.webp", "duel_monsters"),
     ("dox", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("marik_ishtar", "images/duelists/placeholder.webp", "duel_monsters"),
     ("yami_marik", "images/duelists/placeholder.webp", "duel_monsters"),
     ("odion", "images/duelists/placeholder.webp", "duel_monsters"),
     ("seeker", "images/duelists/placeholder.webp", "duel_monsters"),
@@ -49,7 +50,6 @@ DUELISTS = [
     ("gansley", "images/duelists/placeholder.webp", "duel_monsters"),
     ("crump", "images/duelists/placeholder.webp", "duel_monsters"),
     ("johnson","images/duelists/placeholder.webp", "duel_monsters"),
-    ("nezzbitt", "images/duelists/placeholder.webp", "duel_monsters"),
     ("leichter", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rafael","images/duelists/placeholder.webp", "duel_monsters"),
     ("valon", "images/duelists/placeholder.webp", "duel_monsters"),

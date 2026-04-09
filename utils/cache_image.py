@@ -1,7 +1,6 @@
 import os
 import requests
-
-IMG_FOLDER = "images/cards"
+from config import IMG_FOLDER
 
 def get_card_image(card_id):
     """Fetches currently selected card image from the API"""

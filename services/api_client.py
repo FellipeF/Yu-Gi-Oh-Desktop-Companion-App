@@ -37,7 +37,7 @@ class ApiClient:
     def _info_file_path(self) -> str:
         """Returns database info file location. Contrary to previous method, we don't take language since
         the dataset updates whenever any language is updated."""
-        return os.path.join(self.cache_directory, "cards.info.json")
+        return os.path.join(self.cache_directory, "cards_info.json")
 
     def _write_json_file(self, path: str, data: Dict[str, Any], indent: Optional[int] = None) -> None:
         """Helper to write JSON File"""
