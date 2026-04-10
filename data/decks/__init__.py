@@ -30,7 +30,7 @@ from .joey import JOEY_DECKS
 from .solomon_muto import SOLOMON_MUTO_DECKS
 from .tea import TEA_GARDNER_DECKS
 from .tristan import TRISTAN_DECKS
-from .leon import LEON_DECK
+from .grand_championship_duelists import KC_GRAND_PRIX_DECKS
 from .pegasus import PEGASUS_DECKS
 
 LIST_OF_DECKS = {
@@ -40,7 +40,6 @@ LIST_OF_DECKS = {
     "solomon_muto": SOLOMON_MUTO_DECKS,
     "tea_gardner": TEA_GARDNER_DECKS,
     "tristan_taylor": TRISTAN_DECKS,
-    "leon_von_schroeder": LEON_DECK,
     "maximillion_pegasus": PEGASUS_DECKS,
     "lumis": LUMIS_DECKS,
     "umbra": UMBRA_DECKS,
@@ -68,6 +67,7 @@ LIST_OF_DECKS = {
     "bandit_keith": BANDIT_KEITH_DECKS,
     "marik_ishtar": MARIK_ISHTAR_DECKS,
     "big5":  THE_BIG_FIVE_DECKS,
+    "grand_championship_duelists": KC_GRAND_PRIX_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

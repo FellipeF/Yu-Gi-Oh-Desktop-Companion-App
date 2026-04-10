@@ -453,6 +453,28 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Labirinto de Fichas",
         },
     },
+    "grand_championship_duelists": {
+        "rick": {
+            "en": "Rick - Dragons",
+            "pt": "Rick - Dragões",
+        },
+        "vivian": {
+            "en": "Vivian - Martial Arts",
+            "pt": "Vivian - Artes Marciais",
+        },
+        "leon_fairy_tale": {
+            "en": "Leon - Fairy Tale",
+            "pt": "Leon - Conto de Fadas",
+        },
+        "zigfried_kc": {
+            "en": "Zigfried - Valkyries",
+            "pt": "Zigfried - Valquírias",
+        },
+        "zigfried_na_world_championship_qualifier_2014": {
+            "en": "Zigfried - North American World Championship Qualifier 2018",
+            "pt": "Zigfried - Classificatória Norte-Americana do Mundial 2018",
+        },
+    },
     "ishizu_ishtar": {
         "crimson_valley": {
             "en": "Crimson Valley",
@@ -807,12 +829,6 @@ DUELISTS_DECKS_KEYS = {
         "duelist_level_max_tag_force": {
             "en": "Duelist Level Max!",
             "pt": "Duelista Nível Máximo!",
-        },
-    },
-    "leon_von_schroeder": {
-        "fairy_tale": {
-            "en": "Fairy Tale",
-            "pt": "Conto de Fadas",
         },
     },
     "lumis": {

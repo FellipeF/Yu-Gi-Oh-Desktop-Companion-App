@@ -5,7 +5,6 @@ DUELISTS = [
     ("tea_gardner", "images/duelists/tea.png", "duel_monsters"),
     ("tristan_taylor", "images/duelists/tristan.png", "duel_monsters"),
     ("solomon_muto", "images/duelists/solomon.png", "duel_monsters"),
-    ("leon_von_schroeder", "images/duelists/leon.webp", "duel_monsters"),
     ("maximillion_pegasus", "images/duelists/pegasus.png", "duel_monsters"),
     ("lumis", "images/duelists/lumis.png", "duel_monsters"),
     ("umbra", "images/duelists/umbra.png", "duel_monsters"),
@@ -32,6 +31,7 @@ DUELISTS = [
     ("bakura_ryou", "images/duelists/bakura.webp", "duel_monsters"),
     ("bandit_keith", "images/duelists/bandit_keith.png", "duel_monsters"),
     ("big5", "images/duelists/big5.webp", "duel_monsters"),
+    ("grand_championship_duelists", "images/duelists/grand_championship.webp", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
@@ -50,8 +50,6 @@ DUELISTS = [
     ("rafael","images/duelists/placeholder.webp", "duel_monsters"),
     ("valon", "images/duelists/placeholder.webp", "duel_monsters"),
     ("gurimo", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("zigfried_von_schroeder", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("vivian_wong", "images/duelists/placeholder.webp", "duel_monsters"),
     ("kuriboh", "images/duelists/placeholder.webp", "duel_monsters"),
     ("red_eyes_black_dragon", "images/duelists/placeholder.webp", "duel_monsters"),
     ("tetsu_trudge", "images/duelists/placeholder.webp", "duel_monsters"),
@@ -59,5 +57,4 @@ DUELISTS = [
     ("roland", "images/duelists/placeholder.webp", "duel_monsters"),
     ("espa_roba", "images/duelists/placeholder.webp", "duel_monsters"),
     ("jean_claude_magnum", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("rick", "images/duelists/placeholder.webp", "duel_monsters"),
 ]

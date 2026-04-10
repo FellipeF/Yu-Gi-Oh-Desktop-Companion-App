@@ -101,7 +101,6 @@ ui_text = {
         "tea_gardner": "Téa Gardner",
         "tristan_taylor": "Tristan Taylor",
         "solomon_muto": "Solomon Muto",
-        "leon_von_schroeder": "Leon von Schroeder",
         "maximillion_pegasus": "Maximillion Pegasus",
         "lumis": "Lumis",
         "umbra": "Umbra",
@@ -142,8 +141,6 @@ ui_text = {
         "rafael": "Rafael",
         "valon": "Valon",
         "gurimo": "Gurimo",
-        "zigfried_von_schroeder": "Ziegfried von Schroeder",
-        "vivian_wong": "Vivian Wong",
         "kuriboh": "Kuriboh",
         "red_eyes_black_dragon": "Red-Eyes Black Dragon",
         "tetsu_trudge": "Tetsu Trudge",
@@ -151,8 +148,8 @@ ui_text = {
         "roland": "Roland",
         "espa_roba": "Espa Roba",
         "jean_claude_magnum": "Jean-Claude Magnum",
-        "rick": "Rick",
         "big5": "The Big Five",
+        "grand_championship_duelists": "KC Grand Prix"
     },
     "pt": {
         #================================
@@ -257,7 +254,6 @@ ui_text = {
         "tea_gardner": "Téa Gardner",
         "tristan_taylor": "Tristan Taylor",
         "solomon_muto": "Solomon Muto",
-        "leon_von_schroeder": "Leon von Schroeder",
         "maximillion_pegasus": "Maximillion Pegasus",
         "lumis": "Lumis",
         "umbra": "Umbra",
@@ -298,8 +294,6 @@ ui_text = {
         "rafael": "Rafael",
         "valon": "Valon",
         "gurimo": "Gurimo",
-        "zigfried_von_schroeder": "Ziegfried von Schroeder",
-        "vivian_wong": "Vivian Wong",
         "kuriboh": "Kuriboh",
         "red_eyes_black_dragon": "Dragão Negro de Olhos Vermelhos",
         "tetsu_trudge": "Tetsu Trudge",
@@ -307,7 +301,7 @@ ui_text = {
         "roland": "Roland",
         "espa_roba": "Espa Roba",
         "jean_claude_magnum": "Jean-Claude Magnum",
-        "rick": "Rick",
         "big5": "Os Cinco Grandes",
+        "grand_championship_duelists": "Grand Prix KC"
     }
 }
