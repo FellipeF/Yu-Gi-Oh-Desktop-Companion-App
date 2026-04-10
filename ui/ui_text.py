@@ -62,7 +62,7 @@ ui_text = {
         "deck_imported_successfully": "Deck Imported Successfully!",
         "deck_import_failed": "Error Importing Deck!",
         "deck_name": "Deck Name",
-        "total_cards": "Card Total",
+        "total_cards": "Main / Extra Cards",
         "used": "Used",
         "new_deck": "Create New Deck",
         "edit": "Edit Deck",
@@ -92,6 +92,12 @@ ui_text = {
         "spell_card": "Spell Card",
         "trap_card": "Trap Card",
         "skill_card": "Skill Card",
+        "main_deck": "Deck Principal",
+        "extra_deck": "Deck Extra",
+        "monsters": "Monster Cards",
+        "spells": "Spell Cards",
+        "traps": "Trap Cards",
+        "exclusive_cards": "Exclusive Cards",
         # ================================
         #  DUELISTS
         # ================================
@@ -215,7 +221,7 @@ ui_text = {
         "deck_imported_successfully": "Deck Importado com Sucesso!",
         "deck_import_failed": "Erro ao importar Deck",
         "deck_name": "Nome do Deck",
-        "total_cards": "Total de Cartas",
+        "total_cards": "Cartas Principal / Extra",
         "used": "Utilizado",
         "new_deck": "Criar Novo Deck",
         "edit": "Editar Deck",
@@ -245,6 +251,12 @@ ui_text = {
         "spell_card": "Carta Mágica",
         "trap_card": "Carta Armadilha",
         "skill_card": "Carta de Habilidade",
+        "main_deck": "Deck Principal",
+        "extra_deck": "Deck Extra",
+        "monsters": "Cartas Monstros",
+        "spells": "Cartas Mágicas",
+        "traps": "Cartas Armadilhas",
+        "exclusive_cards": "Cartas Exclusivas",
         # ================================
         #  DUELISTS
         # ================================

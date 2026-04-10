@@ -6,3 +6,4 @@ CURRENT_VERSION = 0.9
 DB_NAME = "yugi.db"
 LATEST_DB_CHANGE = "ADDED MEDIA COLUMN TO DUELIST"
 IMG_FOLDER = "cache/images"
+EXTRA_TYPES = ["Fusion", "Synchro", "XYZ", "Link"]

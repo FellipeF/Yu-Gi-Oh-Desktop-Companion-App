@@ -8,9 +8,14 @@ from database.queries import get_decks_by_duelist
 from utils.card_image_loader import load_card_pil_image
 from utils.resource_path import resource_path
 from ui.card_details_window import CardDetailsWindow
-from config import CARD_HEIGHT, CARD_WIDTH
+from config import CARD_HEIGHT, CARD_WIDTH, EXTRA_TYPES
 
 class DuelistDetailsFrame(tk.Frame):
+
+    #TODO: Since the sorting is now working as intended and the methods are shared between this and CustomDeckEditor,
+    # Refactor it properly by creating a helper file
+
+    #TODO: Side Decks
     def __init__(self, parent, controller):
         super().__init__(parent)
         self.controller = controller
@@ -25,6 +30,7 @@ class DuelistDetailsFrame(tk.Frame):
         self.placeholder_image = ImageTk.PhotoImage(
             Image.open(resource_path("images/placeholder.jpg")).resize((CARD_WIDTH, CARD_HEIGHT))
         )
+        self.displayed_cards = []
 
         # TODO: Add checkbox: Show Complete Decks only
 
@@ -251,13 +257,81 @@ class DuelistDetailsFrame(tk.Frame):
         selected_deck = self.decks_data[self.current_deck_index]
         self.cards_listbox.delete(0, tk.END)
         self.current_cards = selected_deck["cards"]
+        self.displayed_cards = []
 
-        for card_id, card_name, qty in self.current_cards:
+        current_section = None
+        current_group = None
+
+        for card_id, card_name, qty, card_type in self.current_cards:
+            is_extra = self.is_extra_deck(card_type)
+            deck_section = "extra" if is_extra else "main"
+
+            if deck_section != current_section:
+                section_label = (
+                    self.controller.t("main_deck") if deck_section == "main"
+                    else self.controller.t("extra_deck"))
+
+                self.cards_listbox.insert(tk.END, f"=== {section_label.upper()} ===")
+                self.displayed_cards.append(None)
+
+                current_section = deck_section
+                current_group = None
+
+            group_label = self._card_group_label(card_type, deck_section)
+
+            if group_label and group_label != current_group:
+                self.cards_listbox.insert(tk.END, f"--- {group_label.upper()} ---")
+
+                index = self.cards_listbox.size() - 1
+                color = self._get_group_color(group_label)
+                self.cards_listbox.itemconfig(index, fg=color)
+
+                self.displayed_cards.append(None) #So that labels aren't treated as cards
+                current_group = group_label
+
             self.cards_listbox.insert(tk.END, f"{qty}x {card_name}")
+            self.displayed_cards.append((card_id, card_name, qty, card_type))
 
         self.cards_listbox.pack(side="left", fill="both", expand=True)
         self.update_scroll_visibility(self.cards_listbox, self.cards_scroll)
         self.update_deck_status()
+
+    def _get_group_color(self, group_label: str) -> str:
+        """Colors for type of cards section separators"""
+        if group_label == self.controller.t("spells"):
+            return "#1d8f6a"
+        if group_label == self.controller.t("traps"):
+            return "#8e44ad"
+        if group_label == self.controller.t("monsters"):
+            return "#c97a2b"
+
+        return "black"
+
+    def is_extra_deck(self, card_type: str | None) -> bool | None:
+        if not card_type:
+            return False
+        return any(x in card_type for x in EXTRA_TYPES)
+
+    def _card_group_label(self, card_type: str | None, deck_section: str) -> str:
+        if deck_section == "extra":
+            return None
+
+        # Throws "TypeError: argument of type 'NoneType' is not iterable" if not here
+        if not card_type:
+            return self.controller.t("exclusive_cards")
+
+        # Effect/Normal/Pendulum Monsters fall under the same category when sorting
+        if "Monster" in card_type:
+            return self.controller.t("monsters")
+
+        if card_type == "Spell Card":
+            return self.controller.t("spells")
+
+        if card_type == "Trap Card":
+            return self.controller.t("traps")
+
+        # Just in case
+        return self.controller.t("other_cards")
 
     def clear_card_selection(self):
         """Clear details when other deck is selected"""
@@ -275,7 +349,12 @@ class DuelistDetailsFrame(tk.Frame):
             self.clear_card_selection()
             return
 
-        for index, (card_id, card_name, qty) in enumerate(self.current_cards):
+        for index, card in enumerate(self.displayed_cards):
+            if card is None:
+                continue
+
+            card_id, card_name, qty, card_type = card
+
             if card_id == previous_card_id:
                 self.selected_card_id = card_id
                 self.cards_listbox.selection_clear(0, tk.END)
@@ -300,10 +379,14 @@ class DuelistDetailsFrame(tk.Frame):
     def update_deck_status(self):
         """Controls label to show decks status. Since it counts the total of shown items instead of doing a
         SELECT COUNT(*) for each deck on the database, when the checkbox exclusive cards is marked,
-        this status may change. May need to investigate this further."""
-        total_cards = sum(qty for _, _, qty in self.current_cards)
+        this status may change. May need to investigate this further.
+        As in the TCG, a deck is complete if the main deck cards are >= 40, with fusion/synchro/xyz/link not counting
+        to this limit"""
+        total_cards_main_deck = sum(
+            qty for _, _, qty,card_type in self.current_cards if not self.is_extra_deck(card_type)
+        )
 
-        if total_cards >= 40:
+        if total_cards_main_deck >= 40:
             self.deck_status_label.config(
                 text=self.controller.t("complete_deck"),
                 fg="green"
@@ -320,8 +403,14 @@ class DuelistDetailsFrame(tk.Frame):
         if not selection:
             return
 
-        card = self.current_cards[selection[0]]
-        card_id, card_name, qty = card
+        card = self.displayed_cards[selection[0]]
+
+        # Check if it's a label instead of a card
+        if card is None:
+            self.cards_listbox.selection_clear(selection[0])
+            return
+
+        card_id, card_name, qty, card_type = card
         self.selected_card_id = card_id
 
         if not card_id:

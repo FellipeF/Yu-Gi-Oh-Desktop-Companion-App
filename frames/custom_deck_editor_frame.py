@@ -34,6 +34,7 @@ class CustomDeckEditorFrame(tk.Frame):
         self.placeholder_image = ImageTk.PhotoImage(
             Image.open(resource_path("images/placeholder.jpg")).resize((CARD_WIDTH, CARD_HEIGHT))
         )
+        self.displayed_deck_cards = []
 
         self.title_label = tk.Label(self, font=("Arial", 14))
         self.title_label.pack(pady=(10, 2))
@@ -275,11 +276,66 @@ class CustomDeckEditorFrame(tk.Frame):
         )
 
         self.deck_cards_list.delete(0, tk.END)
+        self.displayed_deck_cards = []
+        current_section = None
+        current_group = None
 
-        for card_id, card_name, quantity in self.current_deck_cards:
+        for card_id, card_name, quantity, card_type, section in self.current_deck_cards:
+            if section != current_section:
+                label = self.controller.t("main deck") if section == "main" else self.controller.t("extra_deck")
+                self.deck_cards_list.insert(tk.END, f"=== {label.upper()} ===")
+                self.displayed_deck_cards.append(None)
+                current_section = section
+                current_group = None
+
+            group_label = self._card_group_label(card_type, section)
+
+            if group_label and group_label != current_group:
+                self.deck_cards_list.insert(tk.END, f"--- {group_label.upper()} ---")
+
+                index = self.deck_cards_list.size() - 1
+                color = self._get_group_color(group_label)
+                self.deck_cards_list.itemconfig(index, fg=color)
+
+                self.displayed_deck_cards.append(None)
+                current_group = group_label
+
             self.deck_cards_list.insert(tk.END, f"{quantity}x {card_name}")
+            self.displayed_deck_cards.append((card_id, card_name, quantity, card_type, section))
 
         self.update_scroll_visibility(self.deck_cards_list, self.deck_scroll)
+
+    def _card_group_label(self, card_type: str | None, deck_section: str) -> str:
+        if deck_section == "extra":
+            return None
+
+        # Throws "TypeError: argument of type 'NoneType' is not iterable" if not here
+        if not card_type:
+            return self.controller.t("exclusive_cards")
+
+        # Effect/Normal/Pendulum Monsters fall under the same category when sorting
+        if "Monster" in card_type:
+            return self.controller.t("monsters")
+
+        if card_type == "Spell Card":
+            return self.controller.t("spells")
+
+        if card_type == "Trap Card":
+            return self.controller.t("traps")
+
+        # Just in case
+        return self.controller.t("other_cards")
+
+    def _get_group_color(self, group_label: str) -> str:
+        """Colors for type of cards section separators"""
+        if group_label == self.controller.t("spells"):
+            return "#1d8f6a"
+        if group_label == self.controller.t("traps"):
+            return "#8e44ad"
+        if group_label == self.controller.t("monsters"):
+            return "#c97a2b"
+
+        return "black"
 
     def show_card_image(self, event):
         """Load card image async"""
@@ -346,7 +402,12 @@ class CustomDeckEditorFrame(tk.Frame):
             self.selected_deck_card_name = None
             return
 
-        card_id, card_name, quantity = self.current_deck_cards[selection[0]]
+        card = self.displayed_deck_cards[selection[0]]
+        if card is None:
+            self.deck_cards_list.selection_clear(selection[0])
+            return
+
+        card_id, card_name, quantity, card_type, section = card
         self.selected_deck_card_id = card_id
         self.selected_deck_card_name = card_name
         self.active_card_id = card_id
@@ -373,15 +434,15 @@ class CustomDeckEditorFrame(tk.Frame):
             return
 
         selected = None
-        for card_id, card_name, quantity in self.current_deck_cards:
+        for card_id, card_name, quantity, card_type, section in self.current_deck_cards:
             if card_id == self.selected_deck_card_id and card_name == self.selected_deck_card_name:
-                selected = (card_id, card_name, quantity)
+                selected = (card_id, card_name, quantity, card_type, section)
                 break
 
         if not selected:
             return
 
-        card_id, card_name, quantity = selected
+        card_id, card_name, quantity, _, _ = selected
 
         new_quantity = quantity - 1
 
@@ -448,7 +509,11 @@ class CustomDeckEditorFrame(tk.Frame):
         if previous_card_id is None and not previous_card_name:
             return
 
-        for index, (card_id, card_name, quantity) in enumerate(self.current_deck_cards):
+        for index, card in enumerate(self.displayed_deck_cards):
+            if card is None:
+                continue
+
+            card_id, card_name, quantity, card_type, section = card
             match_by_id = previous_card_id is not None and card_id == previous_card_id
             match_by_name = previous_card_id is None and previous_card_name and card_name == previous_card_name
 

@@ -45,8 +45,8 @@ class CustomDecksFrame(tk.Frame):
         )
 
         self.tree.heading("name", text="Deck Name")
-        self.tree.heading("total_cards", text="Total Cards")
-        self.tree.heading("used", text="Used")
+        self.tree.heading("total_cards")
+        self.tree.heading("used")
 
         self.tree.column("name", width=280, anchor="w")
         self.tree.column("total_cards", width=110, anchor="center")
@@ -152,14 +152,14 @@ class CustomDecksFrame(tk.Frame):
 
         decks = get_all_user_decks()
 
-        for deck_id, deck_name, is_used, total_cards in decks:
+        for deck_id, deck_name, is_used, main_count, extra_count in decks:
             used_text = "✅" if is_used else "⬜"
 
             self.tree.insert(
                 "",
                 tk.END,
                 iid=str(deck_id),
-                values=(deck_name, total_cards, used_text)
+                values=(deck_name, f"{main_count} / {extra_count}", used_text)
             )
 
         self.after(50, self.update_scroll_visibility)
@@ -209,7 +209,7 @@ class CustomDecksFrame(tk.Frame):
                 "",
                 tk.END,
                 iid=str(new_deck_id),
-                values=(deck_name, 0, "⬜")
+                values=(deck_name, "0 / 0", "⬜")
             )
 
             self.tree.selection_set(str(new_deck_id))
@@ -415,15 +415,7 @@ class CustomDecksFrame(tk.Frame):
             # of adding it by name only. If no ID, again this means that it's an exclusive card.
             add_cards_bulk_import(new_deck_id, cards)
 
-            total_cards = sum(card["quantity"] for card in cards)
-
-            self.tree.insert(
-                "",
-                tk.END,
-                iid=str(new_deck_id),
-                values=(new_deck_name, total_cards, "⬜")
-            )
-
+            self.load_user_decks()
             self.tree.selection_set(str(new_deck_id))
             self.tree.focus(str(new_deck_id))
             self.tree.see(str(new_deck_id))
@@ -485,7 +477,7 @@ class CustomDecksFrame(tk.Frame):
             "cards": []
         }
 
-        for card_id, card_name, quantity in cards:
+        for card_id, card_name, quantity, *_ in cards:
             export_data["cards"].append({
                 "id": card_id,
                 "name": card_name,

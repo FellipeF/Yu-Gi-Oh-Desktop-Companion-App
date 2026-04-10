@@ -51,9 +51,8 @@ def get_all_duelists() -> list[tuple]:
         conn.close()
 
 def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusive_cards: bool =True) -> list[dict]:
-    """Returns all decks for a duelist, with translated deck, keys and card names. Implements fallback for english if
-    card has no translation in the dataset
-    (not yet updated or not found, such as exclusive cards not present in the TCG)"""
+    """Returns all decks and their contents for a given duelist. Implements fallback for english if card has no
+    translation in the dataset (not yet updated or not found, such as exclusive cards not present in the TCG)"""
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -71,7 +70,8 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
                 dd.order_index AS deck_order,
                 dc.card_id,
                 COALESCE(ct_lang.name, ct_en.name, dc.card_name) AS card_name,
-                dc.quantity
+                dc.quantity,
+                c.type AS card_type
             FROM duelist_decks dd
             LEFT JOIN deck_categories dcg
                 ON dcg.id = dd.deck_category_id
@@ -89,13 +89,6 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
                 AND ddt_en.language_code = 'en'
             LEFT JOIN deck_contents dc
                 ON dc.deck_id = dd.id
-        """
-
-    # checkbox filter, controlled by Duelist Details Frame
-    if not show_exclusive_cards:
-        query += " AND dc.card_id IS NOT NULL\n"
-
-    query += """
             LEFT JOIN cards c
                 ON c.id = dc.card_id
             LEFT JOIN cards_translations ct_lang
@@ -105,10 +98,31 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
                 ON ct_en.card_id = c.id
                 AND ct_en.language_code = 'en'
             WHERE dd.duelist_id = :duelist_id
-            ORDER BY
-                dd.order_index,
-                card_name COLLATE NOCASE
         """
+
+    # checkbox filter, controlled by Duelist Details Frame
+    if not show_exclusive_cards:
+        query += " AND dc.card_id IS NOT NULL\n"
+
+    query += """
+        ORDER BY
+            dd.order_index,
+            CASE
+                WHEN c.type LIKE '%Fusion%' OR
+                     c.type LIKE '%Synchro%' OR
+                     c.type LIKE '%XYZ%' OR
+                     c.type LIKE '%Link%'
+                THEN 1
+                ELSE 0
+            END,
+            CASE
+                WHEN c.type LIKE '%Monster%' THEN 0
+                WHEN c.type = 'Spell Card' THEN 1
+                WHEN c.type = 'Trap Card' THEN 2
+                ELSE 3
+            END,
+            card_name COLLATE NOCASE
+    """
 
     try:
         cursor.execute(query, {"lang": language_code, "duelist_id": duelist_id})
@@ -119,7 +133,7 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
     decks: list[dict] = []
     by_deck: dict[int, dict] = {}
 
-    for deck_id, deck_key, deck_name, _deck_order, card_id, card_name, qty in rows:
+    for deck_id, deck_key, deck_name, _deck_order, card_id, card_name, qty, card_type in rows:
         if deck_id not in by_deck:
             deck_obj = {
                 "deck_id": deck_id,
@@ -132,7 +146,7 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
 
         # Doesn't hurt to check, leaving this here for future-proof
         if qty is not None:
-            by_deck[deck_id]["cards"].append((card_id, card_name, qty))
+            by_deck[deck_id]["cards"].append((card_id, card_name, qty, card_type))
 
     return decks
 
@@ -212,10 +226,29 @@ def get_all_user_decks() -> list[tuple]:
                 ud.id,
                 ud.name,
                 ud.is_used,
-                COALESCE(SUM(udc.quantity), 0) AS total_cards
+                COALESCE(SUM(
+                    CASE
+                        WHEN c.type LIKE '%Fusion%' THEN 0
+                        WHEN c.type LIKE '%Synchro%' THEN 0
+                        WHEN c.type LIKE '%Xyz%' THEN 0
+                        WHEN c.type LIKE '%Link%' THEN 0
+                        ELSE udc.quantity
+                    END
+                ), 0) AS main_count,
+                COALESCE(SUM(
+                    CASE
+                        WHEN c.type LIKE '%Fusion%' THEN udc.quantity
+                        WHEN c.type LIKE '%Synchro%' THEN udc.quantity
+                        WHEN c.type LIKE '%Xyz%' THEN udc.quantity
+                        WHEN c.type LIKE '%Link%' THEN udc.quantity
+                        ELSE 0
+                    END
+                ), 0) AS extra_count
             FROM user_decks ud
             LEFT JOIN user_deck_contents udc
                 ON udc.deck_id = ud.id
+            LEFT JOIN cards c
+                ON c.id = udc.card_id
             GROUP BY ud.id, ud.name, ud.is_used
             ORDER BY ud.name COLLATE NOCASE
             """
@@ -306,7 +339,15 @@ def get_cards_by_user_deck(deck_id: int, language_code: str = "en") -> list[tupl
             SELECT
                 udc.card_id,
                 COALESCE(ct_lang.name, ct_en.name, udc.card_name) AS resolved_card_name,
-                udc.quantity
+                udc.quantity,
+                c.type AS card_type,
+                CASE
+                    WHEN c.type LIKE '%Fusion%' THEN 'extra'
+                    WHEN c.type LIKE '%Synchro%' THEN 'extra'
+                    WHEN c.type LIKE '%xyz%' THEN 'extra'
+                    WHEN c.type LIKE '%Link%' THEN 'extra'
+                    ELSE 'main'
+                END as deck_section
             FROM user_deck_contents udc
             LEFT JOIN cards c
                 ON c.id = udc.card_id
@@ -317,7 +358,22 @@ def get_cards_by_user_deck(deck_id: int, language_code: str = "en") -> list[tupl
                 ON ct_en.card_id = c.id
                 AND ct_en.language_code = 'en'
             WHERE udc.deck_id = ?
-            ORDER BY resolved_card_name COLLATE NOCASE
+            ORDER BY 
+                CASE
+                    WHEN c.type LIKE '%Fusion%' OR
+                    c.type LIKE '%Synchro%' OR
+                    c.type LIKE '%XYZ%' OR
+                    c.type LIKE '%Link%'
+                THEN 1
+                ELSE 0
+            END,
+            CASE
+                WHEN c.type LIKE '%Monster%' THEN 0
+                WHEN c.type = 'Spell Card' THEN 1
+                WHEN c.type = 'Trap Card' THEN 2
+                ELSE 3
+            END,
+            resolved_card_name COLLATE NOCASE
         """, (language_code, deck_id))
         return cursor.fetchall()
     finally:
