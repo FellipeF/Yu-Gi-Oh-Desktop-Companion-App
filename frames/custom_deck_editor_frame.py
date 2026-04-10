@@ -120,7 +120,7 @@ class CustomDeckEditorFrame(tk.Frame):
         self.deck_cards_label = tk.Label(right_frame, font=("Tahoma", 12))
         self.deck_cards_label.pack(pady=(0, 5))
 
-        deck_container = tk.Frame(right_frame, height=360)
+        deck_container = tk.Frame(right_frame, height=450)
         deck_container.pack(fill="x", expand=False)
         deck_container.pack_propagate(False)
 
@@ -213,7 +213,7 @@ class CustomDeckEditorFrame(tk.Frame):
             return
 
         _deck_id, deck_name, is_used = deck
-        total_cards = self.get_current_total_cards(deck_id)
+        main_count, extra_count = self.get_deck_card_counts(deck_id)
 
         used_text = self.controller.t("yes") if is_used else self.controller.t("no")
 
@@ -222,16 +222,27 @@ class CustomDeckEditorFrame(tk.Frame):
         )
 
         self.deck_info_label.config(
-            text=f"{self.controller.t('total_cards')}: {total_cards} | "
-                 f"{self.controller.t('used')}: {used_text}"
+            text=f"{self.controller.t('main_deck')} : {main_count} | "
+                 f"{self.controller.t('extra_deck')}: {extra_count}\n"
+                 f"{self.controller.t('used')}: {used_text}", font=("Tahoma", 12)
         )
 
         self.load_deck_cards()
 
-    def get_current_total_cards(self, deck_id: int) -> int:
-        """Returns current total number of cards"""
+    def get_deck_card_counts(self, deck_id: int) -> tuple[int, int]:
+        """Returns count of main deck cards and extra deck cards separated"""
         cards = get_cards_by_user_deck(deck_id, self.controller.current_language)
-        return sum(card[2] for card in cards)
+
+        main_count = 0
+        extra_count = 0
+
+        for card_id, card_name, quantity, card_type, section in cards:
+            if section == "extra":
+                extra_count +=quantity
+            else:
+                main_count += quantity
+
+        return main_count, extra_count
 
     def on_search_text_changed(self, *args):
         if self._filter_after_id is not None:
@@ -282,7 +293,7 @@ class CustomDeckEditorFrame(tk.Frame):
 
         for card_id, card_name, quantity, card_type, section in self.current_deck_cards:
             if section != current_section:
-                label = self.controller.t("main deck") if section == "main" else self.controller.t("extra_deck")
+                label = self.controller.t("main_deck") if section == "main" else self.controller.t("extra_deck")
                 self.deck_cards_list.insert(tk.END, f"=== {label.upper()} ===")
                 self.displayed_deck_cards.append(None)
                 current_section = section
@@ -311,7 +322,7 @@ class CustomDeckEditorFrame(tk.Frame):
 
         # Throws "TypeError: argument of type 'NoneType' is not iterable" if not here
         if not card_type:
-            return self.controller.t("exclusive_cards")
+            return self.controller.t("other_cards")
 
         # Effect/Normal/Pendulum Monsters fall under the same category when sorting
         if "Monster" in card_type:

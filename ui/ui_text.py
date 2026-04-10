@@ -98,6 +98,7 @@ ui_text = {
         "spells": "Spell Cards",
         "traps": "Trap Cards",
         "exclusive_cards": "Exclusive Cards",
+        "other_cards": "Other Cards",
         # ================================
         #  DUELISTS
         # ================================
@@ -257,6 +258,7 @@ ui_text = {
         "spells": "Cartas Mágicas",
         "traps": "Cartas Armadilhas",
         "exclusive_cards": "Cartas Exclusivas",
+        "other_cards": "Outras Cartas",
         # ================================
         #  DUELISTS
         # ================================
