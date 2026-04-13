@@ -99,6 +99,9 @@ ui_text = {
         "traps": "Trap Cards",
         "exclusive_cards": "Exclusive Cards",
         "other_cards": "Other Cards",
+        "new_cards_added": "New Cards Added",
+        "cards_added": "Card(s) Added",
+        "see_all": "See All",
         # ================================
         #  DUELISTS
         # ================================
@@ -259,6 +262,9 @@ ui_text = {
         "traps": "Cartas Armadilhas",
         "exclusive_cards": "Cartas Exclusivas",
         "other_cards": "Outras Cartas",
+        "new_cards_added": "Novas Cartas Adicionadas",
+        "cards_added": "Carta(s) Adicionada(s)",
+        "see_all": "Ver Todas",
         # ================================
         #  DUELISTS
         # ================================

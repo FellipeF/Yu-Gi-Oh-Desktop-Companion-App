@@ -10,16 +10,17 @@ def _normalize_stat(value) -> int | None:
     we treat those values as None instead"""
     return None if value == -1 else value
 
-def _get_database_version() -> tuple[str | None, str | None]:
+def _get_database_version(language_code: str) -> tuple[str | None, str | None]:
     """Returns the online dataset version and offline database version from the info file"""
     info = api.read_info_file() or {}
-    offline_version = info.get("database_offline_version")
+    lang_info = info.get(language_code, {})
+    offline_version = lang_info.get("database_offline_version")
 
     try:
         db_details = api.get_dataset_details()
         online_version = db_details.get("database_version")
     except Exception:
-        online_version = info.get("database_version")
+        online_version = lang_info.get("database_version")
 
     return online_version, offline_version
 
@@ -36,8 +37,11 @@ def _is_language_already_seeded(cursor, language_code: str) -> bool:
 
 def _should_skip_cards_seed(cursor, language_code: str) -> bool:
     """Check if the selected language is already seeded and if versions match"""
-    online_version, offline_version = _get_database_version()
+    online_version, offline_version = _get_database_version(language_code)
     language_exists = _is_language_already_seeded(cursor, language_code)
+
+    if not online_version: # If API fails to fetch due to timeout, avoid continuing
+        return False
 
     return bool(language_exists and online_version and offline_version == online_version)
 
@@ -109,15 +113,17 @@ def _upsert_cards_translations(cursor, translation_rows: list[tuple]) -> None:
         description = excluded.description
         """, translation_rows,)
 
-def _sync_offline_database_version() -> None:
+def _sync_offline_database_version(language_code: str) -> None:
     """After a successful seed, update info file to update current offline version with current online version"""
     info = api.read_info_file() or {}
-    current_online_version = info.get("database_version")
+    lang_info = info.get(language_code, {})
+    current_online_version = lang_info.get("database_version")
 
     if not current_online_version:
         return
 
-    info["database_offline_version"] = current_online_version
+    lang_info["database_offline_version"] = current_online_version
+    info[language_code] = lang_info
     api.write_info_file(info)
 
 def populate_cards(language_code: str = "en") -> None:
@@ -127,11 +133,14 @@ def populate_cards(language_code: str = "en") -> None:
     cursor = conn.cursor()
 
     try:
+        payload = api.load_cards(language_code)
+
         if _should_skip_cards_seed(cursor, language_code):
             return
 
-        payload = api.load_cards(language_code)
         cards = payload.get("data", [])
+        if not cards:
+            raise ValueError(f"No card data returned for language {language_code}") # TODO: Show this to user
 
         cards_rows, translations_rows = _build_cards_rows(cards, language_code)
 
@@ -142,4 +151,4 @@ def populate_cards(language_code: str = "en") -> None:
     finally:
         conn.close()
 
-    _sync_offline_database_version()
+    _sync_offline_database_version(language_code)

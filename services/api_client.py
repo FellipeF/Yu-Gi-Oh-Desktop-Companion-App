@@ -57,11 +57,11 @@ class ApiClient:
         """Reads the current version of the dataset info file. In case it's missing, we return None"""
         path = self._info_file_path()
         if not os.path.exists(path):
-            return None
+            return {}   # Prevents attribute error. Do this instead of None
         try:
             return self._read_json_file(path)
         except Exception:
-            return None
+            return {}
 
     def _today(self) -> str:
         return date.today().isoformat()
@@ -88,23 +88,9 @@ class ApiClient:
         params = {} if language == "en" else {"language": language}
         response = requests.get(URL_CARDS, params=params, timeout=60)
         response.raise_for_status()
-        today = self._today()
 
         data: Dict[str, Any] = response.json()
         self._write_json_file(self._cards_cache_path(language), data)
-
-        try:
-            db_details = self.get_dataset_details()
-            local_info = self.read_info_file()
-            info = local_info.copy() if local_info else {}
-
-            info["database_version"] = db_details.get("database_version")
-            info["last_checked"] = today
-            info["last_update"] = db_details.get("last_update")
-            self.write_info_file(info)
-
-        except requests.RequestException:
-            pass
 
         return data
 
@@ -113,31 +99,73 @@ class ApiClient:
         or it was deleted. In both cases, download the dataset. A new data set version is checked every day"""
         cards_cache_path = self._cards_cache_path(language)
 
-        if not os.path.exists(cards_cache_path):
-            return self.download_cards(language)
+        all_info = self.read_info_file()
+        if "new_cards" not in all_info:
+            all_info["new_cards"] = []
 
-        local_info = self.read_info_file()
+        lang_info = all_info.get(language, {})
         today = self._today()
 
-        if local_info and local_info.get("last_checked") == today:
+        if not os.path.exists(cards_cache_path):
+            new_data = self.download_cards(language)
+            db_details = self.get_dataset_details()
+
+            all_info[language] = {
+                "database_version": db_details.get("database_version"),
+                "last_checked": today,
+                "last_update": db_details.get("last_update"),
+                "database_offline_version": None
+            }
+
+            all_info.setdefault("new_cards", [])
+
+            self.write_info_file(all_info)
+
+            return new_data
+
+        if lang_info.get("last_checked") == today and lang_info.get("database_version"):
             return self._read_json_file(cards_cache_path)
 
         try:
-            online_db_details = self.get_dataset_details()
-            online_db_version = online_db_details.get("database_version")
+            db_details = self.get_dataset_details()
+            online_version = db_details.get("database_version")
+            local_version = lang_info.get("database_version")
 
-            local_version = local_info.get("database_version") if local_info else None
+            new_cards_ids = []
 
-            info = local_info.copy() if local_info else {}
-            info["database_version"] = online_db_version
-            info["last_checked"] = today
-            info["last_update"] = online_db_details.get("last_update")
-            self.write_info_file(info)
+            if local_version != online_version:
+                old_data = self._read_json_file(cards_cache_path)
+                new_data = self.download_cards(language)
 
-            if local_version != online_db_version:
-                return self.download_cards(language)
+                new_cards = self.get_new_cards(old_data, new_data)
+                new_cards_ids = [card["id"] for card in new_cards]
+
+                all_info["new_cards"] = new_cards_ids
+            else:
+                new_data = self._read_json_file(cards_cache_path)
+
+            lang_info = {
+                "database_version": online_version,
+                "last_checked": today,
+                "last_update": db_details.get("last_update"),
+                "database_offline_version": lang_info.get("database_offline_version")
+            }
+
+            all_info[language] = lang_info
+            self.write_info_file(all_info)
+
+            return new_data
 
         except requests.RequestException:
-            pass
+            return self._read_json_file(cards_cache_path)
 
-        return self._read_json_file(cards_cache_path)
+    def get_new_cards(self, old_data:dict, new_data: dict) -> list [dict]:
+        "Checks what are the new cards on the online dataset"
+        old_ids = {card["id"] for card in old_data.get("data", [])}
+        new_cards = []
+
+        for card in new_data.get("data", []):
+            if card["id"] not in old_ids:
+                new_cards.append(card)
+
+        return new_cards

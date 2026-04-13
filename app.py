@@ -8,7 +8,7 @@ from tkinter import ttk, messagebox
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE
 from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
-from database.database import create_tables#, run_migrations
+from database.database import create_tables, get_connection  # , run_migrations
 from database.drop_hardcoded_tables import drop_hardcoded_tables
 from database.seed.database_changes import (is_db_the_same, set_latest_db_change)
 from frames.custom_deck_editor_frame import CustomDeckEditorFrame
@@ -17,6 +17,8 @@ from frames.cards_frame import CardsFrame
 from frames.duelists_frame import DuelistsFrame
 from frames.custom_decks_frame import CustomDecksFrame
 from frames.loading_frame import LoadingFrame
+from services.api_client import ApiClient
+from ui.card_details_window import CardDetailsWindow
 from ui.ui_text import ui_text
 from ui.loading_modal import LoadingDialog
 from utils.resource_path import resource_path
@@ -88,6 +90,15 @@ class App(tk.Tk):
         y = (screen_height // 2) - (self.app_height // 2)
         self.geometry(f"{self.app_width}x{self.app_height}+{x}+{y}")
 
+    def center_window(self, window, width, height):
+        # For the toplevel new cards window
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+
+        window.geometry(f"{width}x{height}+{x}+{y}")
+
     def create_header(self):
         header = tk.Frame(self)
         header.pack(fill="x")
@@ -150,7 +161,7 @@ class App(tk.Tk):
                 set_latest_db_change(LATEST_DB_CHANGE)
             else:
                 self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
-            seed_all("en")
+            populate_cards("en")
 
             if self.current_language != "en":
                 self.after(0, lambda: self.loading_frame.set_status(self.t("loading_translations")))
@@ -184,6 +195,140 @@ class App(tk.Tk):
         self.language_menu.pack(side = "left")
 
         self.show_frame("HomeFrame")
+
+        self.check_and_show_new_cards()
+
+    def check_and_show_new_cards(self):
+        api = ApiClient()
+        info = api.read_info_file() or {}
+        new_cards_ids = info.get("new_cards", [])
+
+        if not new_cards_ids:
+            return
+
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        placeholders = ",".join(["?"] * len(new_cards_ids))
+
+        cursor.execute(f"""
+            SELECT c.id, COALESCE(t1.name, t2.name)
+            FROM cards c
+            LEFT JOIN cards_translations t1
+                ON c.id = t1.card_id AND t1.language_code = ?
+            LEFT JOIN cards_translations t2
+                ON c.id = t2.card_id AND t2.language_code = 'en'
+            WHERE c.id IN ({placeholders})
+            LIMIT 20
+        """, (self.current_language, *new_cards_ids)) #Avoids duplicates while also implementing fallback.
+
+        cards = cursor.fetchall()
+        conn.close()
+
+        self.show_new_cards_modal(cards, len(new_cards_ids), new_cards_ids)
+
+        # Once they are seen, no need to show new cards everytime app starts.
+        info["new_cards"] = []
+        api.write_info_file(info)
+
+    def show_new_cards_modal(self, cards, total_count, all_ids):
+        modal = tk.Toplevel(self)
+        modal.title(self.t("new_cards_added"))
+
+        width = 650
+        height = 650
+        self.center_window(modal, width, height)
+
+        (tk.Label(modal,
+                 text=f"{total_count} {self.t('cards_added')}",
+                 font=("Arial", 12, "bold"))
+         .pack(pady=10))
+
+        container = tk.Frame(modal)
+        container.pack(fill="both", expand=True, padx=10)
+
+        canvas = tk.Canvas(container)
+        scrollbar = tk.Scrollbar(container, orient="vertical", command=canvas.yview)
+
+        scrollable_frame = tk.Frame(canvas)
+
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        modal.after(10, lambda: self._populate_new_cards_on_window(scrollable_frame, cards)) #Prevents performance bottlenecks
+
+        if total_count > len(cards):
+            tk.Button(
+                modal,
+                text=self.t("see_all"),
+                command=lambda: self.show_all_new_cards_modal(all_ids)
+            ).pack(pady=5)
+
+        tk.Button(modal, text="OK", command=modal.destroy).pack(pady=10)
+
+        modal.transient(self)
+
+    def _populate_new_cards_on_window(self, parent, cards):
+        for card_id, name in cards:
+            frame = tk.Frame(parent)
+            frame.pack(fill="x", pady=2)
+
+            tk.Label(
+                frame,
+                text=name,
+                anchor="w",
+                font=("Tahoma", 14)
+            ).pack(side="left", fill="x", expand=True)
+
+            tk.Button(
+                frame,
+                text=self.t("card_details"),
+                command=lambda cid=card_id: CardDetailsWindow(self, cid)
+            ).pack(side="right", padx=40)
+
+    def show_all_new_cards_modal(self, card_ids):
+        modal = tk.Toplevel(self)
+        modal.title(self.t("all_new_cards"))
+
+        self.center_window(modal, 500, 600)
+
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        placeholders = ",".join(["?"] * len(card_ids))
+
+        cursor.execute(f"""
+            SELECT c.id, COALESCE(t1.name, t2.name)
+            FROM cards c
+            LEFT JOIN cards_translations t1
+                ON c.id = t1.card_id AND t1.language_code = ?
+            LEFT JOIN cards_translations t2
+                ON c.id = t2.card_id AND t2.language_code = 'en'
+            WHERE c.id IN ({placeholders})
+        """, (self.current_language, *card_ids))
+
+        cards = cursor.fetchall()
+        conn.close()
+
+        for card_id, name in cards:
+            frame = tk.Frame(modal)
+            frame.pack(fill="x", padx=10, pady=2)
+
+            tk.Label(frame, text=name).pack(side="left")
+
+            tk.Button(
+                frame,
+                text=self.t("card_details"),
+                command=lambda cid=card_id: CardDetailsWindow(self, cid)
+            ).pack(side="right")
 
     def update_ui_language(self):
         """Calls the refresh_ui in each Frame that switches text to the currently selected language."""
