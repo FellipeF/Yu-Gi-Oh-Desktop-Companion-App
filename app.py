@@ -6,7 +6,6 @@ import webbrowser
 
 from tkinter import ttk, messagebox
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE
-from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
 from database.database import create_tables, get_connection  # , run_migrations
 from database.drop_hardcoded_tables import drop_hardcoded_tables

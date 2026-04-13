@@ -100,6 +100,8 @@ class ApiClient:
         cards_cache_path = self._cards_cache_path(language)
 
         all_info = self.read_info_file()
+        all_info = self._normalize_info_schema(all_info)
+
         if "new_cards" not in all_info:
             all_info["new_cards"] = []
 
@@ -129,9 +131,7 @@ class ApiClient:
         try:
             db_details = self.get_dataset_details()
             online_version = db_details.get("database_version")
-            local_version = lang_info.get("database_version")
-
-            new_cards_ids = []
+            local_version = lang_info.get("database_version") or all_info.get("database_version")
 
             if local_version != online_version:
                 old_data = self._read_json_file(cards_cache_path)
@@ -140,24 +140,50 @@ class ApiClient:
                 new_cards = self.get_new_cards(old_data, new_data)
                 new_cards_ids = [card["id"] for card in new_cards]
 
-                all_info["new_cards"] = new_cards_ids
+                # When changing language, assures that new cards from current language don't overwrite new ones from
+                # previous language
+                existing = set(all_info.get("new_cards", []))
+                existing.update(new_cards_ids)
+                all_info["new_cards"] = list(existing)
             else:
                 new_data = self._read_json_file(cards_cache_path)
 
-            lang_info = {
+            all_info[language] = {
                 "database_version": online_version,
                 "last_checked": today,
                 "last_update": db_details.get("last_update"),
                 "database_offline_version": lang_info.get("database_offline_version")
             }
 
-            all_info[language] = lang_info
             self.write_info_file(all_info)
 
             return new_data
 
         except requests.RequestException:
             return self._read_json_file(cards_cache_path)
+
+    def _normalize_info_schema(self, all_info: Dict[str, Any]) -> Dict[str, Any]:
+        """Migrates schema from old .json cards_info to the new expected one"""
+        # Already normalized, grants that new_cards key exists in case anything goes wrong.
+        if "en" in all_info:
+            all_info.setdefault("new_cards", [])
+            return all_info
+
+        # Are we in the old version still?
+        if "database_version" in all_info:
+            all_info["en"] = {
+                "database_version": all_info.get("database_version"),
+                "last_checked": all_info.get("last_checked"),
+                "last_update": all_info.get("last_update"),
+                "database_offline_version": all_info.get("database_offline_version")
+            }
+
+        for key in ["database_version", "last_checked", "last_update", "database_offline_version"]:
+            all_info.pop(key, None)
+
+        all_info.setdefault("new_cards", [])
+
+        return all_info
 
     def get_new_cards(self, old_data:dict, new_data: dict) -> list [dict]:
         "Checks what are the new cards on the online dataset"

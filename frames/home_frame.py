@@ -52,7 +52,7 @@ class HomeFrame(tk.Frame):
         )
         self.user_decks_button.pack(pady=button_pady)
 
-        self.stats_label = tk.Label(self.content_frame, font=("Arial, 10"))
+        self.stats_label = tk.Label(self.content_frame, font=("Arial", 10))
         self.stats_label.pack(pady=(25))
 
         self.footer_frame = tk.Frame(self)
@@ -70,19 +70,21 @@ class HomeFrame(tk.Frame):
         if not info:
             return self.controller.t("dataset_version_unknown")
 
-        dataset_version = info.get("database_version") #Check api_client for explanation
-        last_update = info.get("last_update")
+        lang_info = info.get(self.controller.current_language, {})
 
-        if self.controller.current_language != "en":
-            last_update = self.format_date(last_update)
+        dataset_version = lang_info.get("database_version") # Check api_client for explanation
+        last_update = lang_info.get("last_update")
 
         if not dataset_version:
             return self.controller.t("dataset_version_unknown")
 
+        if last_update and self.controller.current_language != "en":
+            last_update = self.format_date(last_update)
+
         if last_update:
             return (
-                f"{self.controller.t("dataset_version")}: {dataset_version} | "
-                f"{self.controller.t("last_update")}: {last_update}"
+                f"{self.controller.t('dataset_version')}: {dataset_version} | "
+                f"{self.controller.t('last_update')}: {last_update}"
             )
 
         return f"{self.controller.t("dataset_version")}: {dataset_version}"

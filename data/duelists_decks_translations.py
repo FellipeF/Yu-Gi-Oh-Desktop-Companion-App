@@ -234,26 +234,6 @@ DUELISTS_DECKS_KEYS = {
             "en": "The Big Five",
             "pt": "Os Cinco Grandes",
         },
-        "greetings_from_the_grave": {
-            "en": "Greetings from the Grave",
-            "pt": "Saudações da Cova",
-        },
-        "rise_of_the_zombies": {
-            "en": "Rise of the Zombies",
-            "pt": "Ascensão dos Zumbis",
-        },
-        "rise_of_the_zombies_2": {
-            "en": "Rise of the Zombies (2)",
-            "pt": "Ascensão dos Zumbis (2)",
-        },
-        "the_dark_master": {
-            "en": "The Dark Master",
-            "pt": "O Mestre das Sombras",
-        },
-        "armageddon": {
-            "en": "Armageddon",
-            "pt": "Armagedom",
-        },
     },
     "bonz": {
         "spook_and_boo": {
