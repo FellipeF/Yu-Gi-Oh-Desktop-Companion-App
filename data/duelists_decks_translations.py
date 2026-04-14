@@ -1861,6 +1861,86 @@ DUELISTS_DECKS_KEYS = {
             "en": "Ancient Forest of Origin",
             "pt": "Floresta Antiga de Origem",
         },
+        "manga_national_championship": {
+            "en": "Manga - National Championship",
+            "pt": "Mangá - Campeonato Nacional",
+        },
+        "weevil": {
+            "en": "Weevil",
+            "pt": "Weevil",
+        },
+        "spearhead_larvae": {
+            "en": "Spearhead Larvae",
+            "pt": "Larva de Vanguarda",
+        },
+        "adult_ants": {
+            "en": "Adult Ants",
+            "pt": "Formigas Adultas",
+        },
+        "laser_cannon_armor_bugs": {
+            "en": "Insetos de Armadura Canhão Laser",
+            "pt": "Inseto",
+        },
+        "blazewing_hatchery": {
+            "en": "Blazewing Hatchery",
+            "pt": "Incubatório de Asas em Chamas",
+        },
+        "my_perfect_combo": {
+            "en": "My Perfect Combo",
+            "pt": "Meu Combo Perfeito",
+        },
+        "skills_of_a_champion": {
+            "en": "Skills of a Champion",
+            "pt": "Habilidades de um Campeão",
+        },
+        "insect_infantry": {
+            "en": "Insect Infantry",
+            "pt": "Infantaria Inseto",
+        },
+        "ultimate_queen": {
+            "en": "Ultimate Queen",
+            "pt": "Rainha Definitiva",
+        },
+        "victory_is_certain_with_me": {
+            "en": "Victory is Certain with Me!",
+            "pt": "A Vitória é Certa Comigo!",
+        },
+        "moth_evolution": {
+            "en": "Moth Evolution",
+            "pt": "Evolução Moth",
+        },
+        "moth_evolution_2": {
+            "en": "Moth Evolution (2)",
+            "pt": "Evolução Moth (2)",
+        },
+        "insect_queen": {
+            "en": "Insect Queen",
+            "pt": "Rainha Inseto",
+        },
+        "the_inzektor_swarm": {
+            "en": "The Inzektor Swarm",
+            "pt": "O Enxame Inzektor",
+        },
+        "insect_evolution": {
+            "en": "Insect Evolution",
+            "pt": "Evolução de Inseto",
+        },
+        "ultimate_insect": {
+            "en": "Ultimate Insect",
+            "pt": "Inseto Definitivo",
+        },
+        "evolution_of_despair": {
+            "en": "Evolution of Despair",
+            "pt": "Evolução do Desespero",
+        },
+        "the_queen_hungers": {
+            "en": "The Queen Hungers",
+            "pt": "A Rainha Tem Fome",
+        },
+        "the_ultimate_insect": {
+            "en": "The Ultimate Insect",
+            "pt": "O Inseto Definitivo",
+        },
     },
     "yugi_muto": {
         "friendship": {
