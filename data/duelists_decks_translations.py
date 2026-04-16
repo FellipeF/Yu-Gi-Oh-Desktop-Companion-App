@@ -433,6 +433,52 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Labirinto de Fichas",
         },
     },
+    "espa_roba": {
+        "cyber_energy": {
+            "en": "Cyber Energy",
+            "pt": "Energia Cibernética",
+        },
+        "cosmic_energy": {
+            "en": "Cosmic Energy",
+            "pt": "Energia Cósmica",
+        },
+        "roba": {
+            "en": "Roba",
+            "pt": "Roba",
+        },
+        "artificial_junk": {
+            "en": "Artificial Junk",
+            "pt": "Lixo Artificial",
+        },
+        "artificial_weapons": {
+            "en": "Artificial Weapons",
+            "pt": "Armas Artificiais",
+        },
+        "esp_power": {
+            "en": "ESP Power!",
+            "pt": "Poder PES!",
+        },
+        "esp_power_2": {
+            "en": "ESP Power! (2)",
+            "pt": "Poder PES! (2)",
+        },
+        "artifical_warriors": {
+            "en": "Artificial Warriors",
+            "pt": "Guerreiros Artificiais",
+        },
+        "cyber_knuckle": {
+            "en": "Cyber Knuckle!",
+            "pt": "Punho Cibernético!",
+        },
+        "cyber_energy_shock": {
+            "en": "Cyber Energy Shock!",
+            "pt": "Choque de Energia Cibernética!",
+        },
+        "supernatural_tactics": {
+            "en": "Supernatural Tactics",
+            "pt": "Táticas Sobrenaturais",
+        },
+    },
     "grand_championship_duelists": {
         "rick": {
             "en": "Rick - Dragons",

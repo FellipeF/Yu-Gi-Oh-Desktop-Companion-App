@@ -32,6 +32,7 @@ DUELISTS = [
     ("bandit_keith", "images/duelists/bandit_keith.png", "duel_monsters"),
     ("big5", "images/duelists/big5.webp", "duel_monsters"),
     ("grand_championship_duelists", "images/duelists/grand_championship.webp", "duel_monsters"),
+    ("espa_roba", "images/duelists/espa_roba.webp", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
@@ -55,6 +56,5 @@ DUELISTS = [
     ("tetsu_trudge", "images/duelists/placeholder.webp", "duel_monsters"),
     ("johnny_steps", "images/duelists/placeholder.webp", "duel_monsters"),
     ("roland", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("espa_roba", "images/duelists/placeholder.webp", "duel_monsters"),
     ("jean_claude_magnum", "images/duelists/placeholder.webp", "duel_monsters"),
 ]

@@ -10,6 +10,7 @@ from .dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
 from .dartz import DARTZ_DECKS
 from .duel_computers import DUEL_COMPUTERS_DECKS
 from .duke import DUKE_DECKS
+from .espa_roba import ESPA_ROBA_DECKS
 from .ishizu import ISHIZU_DECKS
 from .lumis import LUMIS_DECKS
 from .mai import MAI_DECKS
@@ -68,6 +69,8 @@ LIST_OF_DECKS = {
     "marik_ishtar": MARIK_ISHTAR_DECKS,
     "big5":  THE_BIG_FIVE_DECKS,
     "grand_championship_duelists": KC_GRAND_PRIX_DECKS,
+    "espa_roba": ESPA_ROBA_DECKS,
+
 }
 
 __all__ = ["LIST_OF_DECKS"]
