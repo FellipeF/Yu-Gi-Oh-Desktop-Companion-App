@@ -19,18 +19,24 @@ def create_tables():
     cursor = conn.cursor()
 
     # Cards table stores universal data. Things that are changed on translation are stored in Cards Translation table.
-    # Archetype is not translated on other languages in the API
+    # Type, archetype and attribute fields are not translated on other languages in the API
+
     # Card ID is defined by Konami themselves, so that's not an Auto Increment
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS cards (
         id INTEGER PRIMARY KEY,
         type TEXT,
+        readablecardtype TEXT,
         archetype TEXT,
         attribute TEXT,
-        atk INTEGER  ,
+        atk INTEGER,
         def INTEGER,
-        level INTEGER
+        level INTEGER,
+        race TEXT,
+        scale INTEGER,
+        linkval INTEGER,
+        linkmarkers TEXT
     )
     """)
 

@@ -6,6 +6,7 @@ from utils.resource_path import resource_path
 
 class DuelistsFrame(tk.Frame):
     def __init__(self, parent, controller):
+        """List of all duelists by alphabetical order based on their display name available on the ui_text.py file"""
         super().__init__(parent)
         self.controller = controller
 

@@ -19,8 +19,10 @@ def get_card_image(card_id):
         response.raise_for_status()
     except requests.RequestException:
         return None
-
-    with open (local_path, "wb") as f:
-        f.write(response.content)
-
-    return local_path
+    # If offline, could return None
+    try:
+        with open (local_path, "wb") as f:
+            f.write(response.content)
+        return local_path
+    except Exception:
+        return None

@@ -12,6 +12,8 @@ from database.queries import (
 
 class CustomDecksFrame(tk.Frame):
     def __init__(self, parent, controller):
+        """A frame containing a tree that shows all the users imported/created decks, cards quantity and status.
+        Allows to import, export, rename, delete and select a deck to edit its contents."""
         super().__init__(parent)
 
         self.controller = controller

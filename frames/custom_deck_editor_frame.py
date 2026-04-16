@@ -1,8 +1,5 @@
 import tkinter as tk
-import threading
 from tkinter import ttk
-
-from PIL import Image, ImageTk
 
 from database.queries import (
     get_user_deck_by_id,
@@ -12,16 +9,16 @@ from database.queries import (
     update_user_deck_card_quantity,
 )
 from ui.card_details_window import CardDetailsWindow
-from utils.card_image_loader import load_card_pil_image
 from config import CARD_WIDTH, CARD_HEIGHT
-from utils.resource_path import resource_path
-
 
 class CustomDeckEditorFrame(tk.Frame):
     def __init__(self, parent, controller):
+        """Deck editor Frame for the selected deck on the Custom Decks Frame. It displays a card search on the left,
+        the image the currently selected card on center and the user deck on the right."""
         super().__init__(parent)
 
         self.controller = controller
+        self.image_handler = controller.image_handler
 
         self.current_found_cards = []
         self.current_deck_cards = []
@@ -31,9 +28,8 @@ class CustomDeckEditorFrame(tk.Frame):
         self.selected_deck_card_name = None
 
         self.tk_image = None
-        self.placeholder_image = ImageTk.PhotoImage(
-            Image.open(resource_path("images/placeholder.jpg")).resize((CARD_WIDTH, CARD_HEIGHT))
-        )
+        # For cards that were not loaded or exclusive ones
+        self.placeholder_image = None
         self.displayed_deck_cards = []
 
         self.title_label = tk.Label(self, font=("Arial", 14))
@@ -349,7 +345,6 @@ class CustomDeckEditorFrame(tk.Frame):
         return "black"
 
     def show_card_image(self, event):
-        """Load card image async"""
         selection = self.search_results_list.curselection()
         if not selection:
             return
@@ -359,25 +354,29 @@ class CustomDeckEditorFrame(tk.Frame):
 
         self.active_card_id = card_id
 
-        threading.Thread(
-            target=self.load_image_async,
-            args=(card_id,),
-            daemon=True
-        ).start()
+        self.image_handler.load_async(
+            self,
+            card_id,
+            self._on_image_loaded
+        )
 
-    def load_image_async(self, card_id):
-        pil_img = load_card_pil_image(card_id, CARD_WIDTH, CARD_HEIGHT)
-
-        if pil_img is None:
+    def _on_image_loaded(self, card_id, tk_img):
+        if card_id != self.active_card_id:
             return
 
-        self.after(0, self.update_image_label, pil_img)
+        if tk_img is None:
+            if self.placeholder_image is None:
+                self.placeholder_image = self.image_handler.get_placeholder(CARD_WIDTH, CARD_HEIGHT)
+            tk_img = self.placeholder_image
 
-    def update_image_label(self, pil_img):
-        self.tk_image = ImageTk.PhotoImage(pil_img)
+        self.tk_image = tk_img
         self.image_label.config(image=self.tk_image, text="")
-        self.show_card_details_button.pack(pady=(0, 8))
-        self.add_to_deck_button.pack(pady=(0, 8))
+
+        if not self.show_card_details_button.winfo_ismapped():
+            self.show_card_details_button.pack(pady=(0, 8))
+
+        if not self.add_to_deck_button.winfo_ismapped():
+            self.add_to_deck_button.pack(pady=(0, 8))
 
     def open_card_details_window(self):
         if not self.active_card_id:
@@ -418,25 +417,17 @@ class CustomDeckEditorFrame(tk.Frame):
             self.deck_cards_list.selection_clear(selection[0])
             return
 
-        card_id, card_name, quantity, card_type, section = card
+        card_id, card_name, *_ = card
+
         self.selected_deck_card_id = card_id
         self.selected_deck_card_name = card_name
         self.active_card_id = card_id
 
-        if not card_id:
-            self.tk_image = None
-            self.image_label.config(image=self.placeholder_image, text="")
-            self.image_label.image = self.placeholder_image
-            self.show_card_details_button.pack_forget()
-            self.add_to_deck_button.pack_forget()
-            return
-
-        threading.Thread(
-            target=self.load_image_async,
-            args=(card_id,),
-            daemon=True  # Background Processing
-        ).start()
-
+        self.image_handler.load_async(
+            self,
+            card_id,
+            self._on_image_loaded
+        )
 
     def remove_one_copy(self):
         deck_id = self.controller.current_user_deck_id

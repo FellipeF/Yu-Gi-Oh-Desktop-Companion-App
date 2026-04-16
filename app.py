@@ -5,13 +5,12 @@ import traceback
 import webbrowser
 
 from tkinter import ttk, messagebox
-from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE
+from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE, CARD_WIDTH, CARD_HEIGHT
 from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
 from database.database import create_tables, get_connection  # , run_migrations
 from database.drop_hardcoded_tables import drop_hardcoded_tables
 from database.seed.database_changes import (is_db_the_same, set_latest_db_change)
-from database.seed.seed_decks import populate_decks
 from frames.custom_deck_editor_frame import CustomDeckEditorFrame
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
@@ -22,6 +21,7 @@ from services.api_client import ApiClient
 from ui.card_details_window import CardDetailsWindow
 from ui.ui_text import ui_text
 from ui.loading_modal import LoadingDialog
+from utils.image_handler import ImageHandler
 from utils.resource_path import resource_path
 from pathlib import Path
 from services.card_search_service import CardSearchService
@@ -29,6 +29,8 @@ from services.card_search_service import CardSearchService
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
+
+        self.image_handler = ImageHandler(CARD_WIDTH, CARD_HEIGHT)
 
         self.withdraw() #Prevents screen showing up before setting up configuration
 

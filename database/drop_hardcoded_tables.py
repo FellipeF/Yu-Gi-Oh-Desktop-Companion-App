@@ -7,6 +7,8 @@ def drop_hardcoded_tables():
     try:
         cursor.execute("PRAGMA foreign_keys = OFF")
 
+        cursor.execute("DROP TABLE IF EXISTS cards_translations")
+        cursor.execute("DROP TABLE IF EXISTS cards")
         cursor.execute("DROP TABLE IF EXISTS deck_contents")
         cursor.execute("DROP TABLE IF EXISTS duelist_deck_translations")
         cursor.execute("DROP TABLE IF EXISTS duelist_decks")

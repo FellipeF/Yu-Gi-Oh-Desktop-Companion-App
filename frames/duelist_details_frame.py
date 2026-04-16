@@ -1,22 +1,16 @@
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
-from PIL import Image, ImageTk
-import threading
 import json
 
 from database.queries import get_decks_by_duelist
-from utils.card_image_loader import load_card_pil_image
-from utils.resource_path import resource_path
 from ui.card_details_window import CardDetailsWindow
 from config import CARD_HEIGHT, CARD_WIDTH, EXTRA_TYPES
 
 class DuelistDetailsFrame(tk.Frame):
 
-    #TODO: Since the sorting is now working as intended and the methods are shared between this and CustomDeckEditor,
-    # Refactor it properly by creating a helper file
-
     #TODO: Side Decks
     def __init__(self, parent, controller):
+        """Frame that shows decks and their contents of a selected Duelist from the Duelist Frames"""
         super().__init__(parent)
         self.controller = controller
 
@@ -27,10 +21,8 @@ class DuelistDetailsFrame(tk.Frame):
         self.selected_card_id = None
         self.decks_data = []
         self.current_cards = []
-        self.placeholder_image = ImageTk.PhotoImage(
-            Image.open(resource_path("images/placeholder.jpg")).resize((CARD_WIDTH, CARD_HEIGHT))
-        )
         self.displayed_cards = []
+        self.image_handler = controller.image_handler
 
         # TODO: Add checkbox: Show Complete Decks only
 
@@ -410,35 +402,30 @@ class DuelistDetailsFrame(tk.Frame):
             self.cards_listbox.selection_clear(selection[0])
             return
 
-        card_id, card_name, qty, card_type = card
+        card_id, *_ = card # No need to get everything here only for the image...
         self.selected_card_id = card_id
 
-        if not card_id:
-            self.tk_image = None
-            self.image_label.config(image=self.placeholder_image, text="")
-            self.image_label.image = self.placeholder_image
+        # Handles exclusive cards
+        if card_id is None:
             self.show_card_details.pack_forget()
+        else:
+            self.show_card_details.pack()
+
+        self.image_handler.load_async(
+            self,
+            card_id,
+            self._on_image_loaded
+        )
+
+    def _on_image_loaded(self, card_id, tk_img):
+        if card_id != self.selected_card_id:
             return
 
-        threading.Thread(
-            target=self.load_image_async,
-            args=(card_id,),
-            daemon=True
-        ).start()
+        if tk_img is None:
+            tk_img = self.image_handler.get_placeholder(CARD_WIDTH, CARD_HEIGHT)
 
-    def load_image_async(self, card_id):
-        pil_img = load_card_pil_image(card_id, CARD_WIDTH, CARD_HEIGHT)
-
-        if pil_img is None:
-            return
-
-        self.after(0, self.update_image_label, pil_img)
-
-    def update_image_label(self, pil_img):
-        self.tk_image = ImageTk.PhotoImage(pil_img)
-        self.image_label.image = self.tk_image
+        self.tk_image = tk_img
         self.image_label.config(image=self.tk_image, text="")
-        self.show_card_details.pack()
 
     def reload_deck_cards(self):
         """Load deck contents again for this particular duelist to show/hide non-TCG/OCG Cards"""

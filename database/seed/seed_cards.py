@@ -17,8 +17,7 @@ def _get_database_version(language_code: str) -> tuple[str | None, str | None]:
     offline_version = lang_info.get("database_offline_version")
 
     try:
-        db_details = api.get_dataset_details()
-        online_version = db_details.get("database_version")
+        online_version = lang_info.get("database_version")
     except Exception:
         online_version = lang_info.get("database_version")
 
@@ -53,15 +52,27 @@ def _build_cards_rows(cards: list[dict], language_code: str) -> tuple[list[tuple
     for card in cards:
         card_id = card.get("id")
 
+        # linkmarkers - The Link Markers of the card if it's of type "Link Monster".
+        # This information is returned as an array.
+
+        linkmarkers = card.get("linkmarkers")
+        if linkmarkers:
+            linkmarkers = ",".join(linkmarkers) #saving as a string in db
+
         cards_rows.append(
             (
                 card_id,
                 card.get("type"),
+                card.get("humanReadableCardType"),
                 card.get("archetype"),
                 card.get("attribute"),
                 _normalize_stat(card.get("atk")),
                 _normalize_stat(card.get("def")),
                 card.get("level"),
+                card.get("race"),
+                card.get("scale"),
+                card.get("linkval"),
+                linkmarkers
             )
         )
 
@@ -87,16 +98,22 @@ def _upsert_cards(cursor, cards_rows: list[tuple]) -> None:
 
     # Performance Delta between execute and executemany - https://github.com/oracle/python-oracledb/discussions/300
     cursor.executemany("""
-    INSERT INTO cards (id, type, archetype, attribute, atk, def, level)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO cards (id, type, readablecardtype, archetype, attribute, 
+    atk, def, level, race, scale, linkval, linkmarkers)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ON CONFLICT (id) DO UPDATE SET
         type = excluded.type,
+        readablecardtype = excluded.readablecardtype,
         archetype = excluded.archetype,
         attribute = excluded.attribute,
         atk = excluded.atk,
         def = excluded.def,
-        level = excluded.level
-        """, cards_rows, )
+        level = excluded.level,
+        race = excluded.race,
+        scale = excluded.scale,
+        linkval = excluded.linkval,
+        linkmarkers = excluded.linkmarkers
+    """, cards_rows)
 
 def _upsert_cards_translations(cursor, translation_rows: list[tuple]) -> None:
     """Inserts or update cards in the cards_translation Table. If errata is published, the UPSERT guarantees that the

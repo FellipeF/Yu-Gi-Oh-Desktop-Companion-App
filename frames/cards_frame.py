@@ -1,14 +1,12 @@
 import tkinter as tk
-import threading
 
 from tkinter import ttk
-from PIL import ImageTk
 from ui.card_details_window import CardDetailsWindow
-from utils.card_image_loader import load_card_pil_image
 from config import CARD_WIDTH, CARD_HEIGHT
 
 class CardsFrame(tk.Frame):
     def __init__(self, parent, controller):
+        """Frame where user can search for all available cards fetched from the API and stored in the Database"""
         super().__init__(parent)
 
         #TODO: Add Filters and Order by different parameters
@@ -17,6 +15,7 @@ class CardsFrame(tk.Frame):
         self.controller = controller
         self.tk_image = None
         self.selected_card_id = None
+        self.image_handler = controller.image_handler
 
         main_container = tk.Frame(self)
         main_container.pack(fill="both", expand=True, padx=5, pady=10)
@@ -131,11 +130,6 @@ class CardsFrame(tk.Frame):
             self.searchable_list.activate(new_index)
             self.searchable_list.see(new_index)
 
-    def open_card_details_window(self):
-        if not self.selected_card_id:
-            return
-        CardDetailsWindow(self.controller, self.selected_card_id)
-
     def show_card_image(self, event):
         selection = self.searchable_list.curselection()
         if not selection:
@@ -145,29 +139,31 @@ class CardsFrame(tk.Frame):
         card_id = card[0]
 
         self.selected_card_id = card_id
+        self.show_card_details.pack(pady=(0,10))
 
-        threading.Thread(
-            target=self.load_image_async,
-            args=(card_id,),
-            daemon=True #Background Processing
-        ).start()
+        self.image_handler.load_async(
+            self,
+            card_id,
+            self._on_image_loaded
+        )
 
-    # With threading implemented, the application won't momentarily freeze
-    # after clicking a card which image was not previously fetched.
-
-    def load_image_async(self, card_id):
-        pil_img = load_card_pil_image(card_id, CARD_WIDTH, CARD_HEIGHT)
-
-        if pil_img is None:
+    def _on_image_loaded(self, card_id, tk_img):
+        if card_id != self.selected_card_id:
             return
 
-        self.after(0, self.update_image_label, pil_img)
+        if tk_img is None:
+            self.tk_image = self.image_handler.get_placeholder(CARD_WIDTH, CARD_HEIGHT)
+            self.image_label.config(image=self.tk_image, text="")
+            return
 
-    def update_image_label(self, pil_img):
-        """Places card image in place"""
-        self.tk_image = ImageTk.PhotoImage(pil_img)  # Prevents Garbage Collection. Card won't show up if this is not here
+        self.tk_image = tk_img
         self.image_label.config(image=self.tk_image, text="")
-        self.show_card_details.pack(pady=(0,10))
+        self.image_label.image = self.tk_image # Avoids losing reference
+
+    def open_card_details_window(self):
+        if not self.selected_card_id:
+            return
+        CardDetailsWindow(self.controller, self.selected_card_id)
 
     def refresh_ui(self):
         self.title_label.config(text=self.controller.t("search_card"))

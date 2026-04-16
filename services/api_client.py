@@ -68,7 +68,7 @@ class ApiClient:
 
     def get_dataset_details(self) -> Dict[str, Any]:
         """Gets dataset details from Endpoint"""
-        r = requests.get(URL_VERSION, timeout = 20)
+        r = requests.get(URL_VERSION, timeout = 5)
         r.raise_for_status()
         data = r.json()[0]
         last_update = data.get("last_update")
@@ -86,7 +86,7 @@ class ApiClient:
         """Downloads cards dataset for a given language (defaults english) and updates local cache. There's no parameter
         for the english version URL of the dataset."""
         params = {} if language == "en" else {"language": language}
-        response = requests.get(URL_CARDS, params=params, timeout=60)
+        response = requests.get(URL_CARDS, params=params, timeout=10)
         response.raise_for_status()
 
         data: Dict[str, Any] = response.json()
@@ -125,7 +125,7 @@ class ApiClient:
 
             return new_data
 
-        if lang_info.get("last_checked") == today and lang_info.get("database_version"):
+        if lang_info.get("last_checked") == today:
             return self._read_json_file(cards_cache_path)
 
         try:
@@ -160,6 +160,15 @@ class ApiClient:
             return new_data
 
         except requests.RequestException:
+            # If no Internet, retrieves the info from the file and sets today as last_checked so that no check is done
+            # everytime
+            all_info[language] = {
+                "database_version": lang_info.get("database_version"),
+                "last_checked": today,
+                "last_update": lang_info.get("last_update"),
+                "database_offline_version": lang_info.get("database_offline_version")
+            }
+            self.write_info_file(all_info)
             return self._read_json_file(cards_cache_path)
 
     def _normalize_info_schema(self, all_info: Dict[str, Any]) -> Dict[str, Any]:

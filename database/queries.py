@@ -162,9 +162,16 @@ def get_card_details(card_id: int, language_code="en"):
                 c.id,
                 COALESCE(ct_lang.name, ct_en.name) AS name,
                 COALESCE(ct_lang.description, ct_en.description, '') AS description,
+                c.type,
+                c.readablecardtype,
+                c.race,
+                c.attribute,
                 c.atk,
                 c.def,
-                c.type
+                c.level,
+                c.scale,
+                c.linkval,
+                c.linkmarkers
             FROM cards c
             LEFT JOIN cards_translations ct_lang
                 ON ct_lang.card_id = c.id
