@@ -33,6 +33,7 @@ DUELISTS = [
     ("big5", "images/duelists/big5.webp", "duel_monsters"),
     ("grand_championship_duelists", "images/duelists/grand_championship.webp", "duel_monsters"),
     ("espa_roba", "images/duelists/espa_roba.webp", "duel_monsters"),
+    ("other_duelists_duel_monsters", "images/duelists/duel_monsters_logo.png", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
@@ -50,11 +51,6 @@ DUELISTS = [
     ("gozaburo_kaiba", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rafael","images/duelists/placeholder.webp", "duel_monsters"),
     ("valon", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("gurimo", "images/duelists/placeholder.webp", "duel_monsters"),
     ("kuriboh", "images/duelists/placeholder.webp", "duel_monsters"),
     ("red_eyes_black_dragon", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("tetsu_trudge", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("johnny_steps", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("roland", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("jean_claude_magnum", "images/duelists/placeholder.webp", "duel_monsters"),
 ]

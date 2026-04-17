@@ -1366,6 +1366,28 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Ritual Urgente",
         },
     },
+    "other_duelists_duel_monsters": {
+        "gurimo": {
+            "en": "Gurimo",
+            "pt": "Gurimo",
+        },
+        "jean_claude": {
+            "en": "Jean-Claude Magnum",
+            "pt": "Jean-Claude Magnum",
+        },
+        "jean_claude_world_championship_qualifier": {
+            "en": "Jean-Claude Magnum - World Championship Qualifier",
+            "pt": "Jean-Claude Magnum - Classificatória para o Mundial",
+        },
+        "johnny_steps": {
+            "en": "Johnny Steps",
+            "pt": "Johnny Steps",
+        },
+        "roland_reshef_of_destruction": {
+            "en": "Roland - Reshef of Destruction",
+            "pt": "Roland - Rexefe da Destruição",
+        },
+    },
     "panik": {
         "dark_zone": {
             "en": "Dark Zone",

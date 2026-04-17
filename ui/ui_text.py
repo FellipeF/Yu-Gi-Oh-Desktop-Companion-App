@@ -100,7 +100,6 @@ ui_text = {
         "other_cards": "Other Cards",
         "new_cards_added": "New Cards Added",
         "cards_added": "Card(s) Added",
-        "see_all": "See All",
         # ================================
         #  DUELISTS
         # ================================
@@ -149,16 +148,15 @@ ui_text = {
         "gozaburo_kaiba": "Gozaburo Kaiba",
         "rafael": "Rafael",
         "valon": "Valon",
-        "gurimo": "Gurimo",
         "kuriboh": "Kuriboh",
         "red_eyes_black_dragon": "Red-Eyes Black Dragon",
         "tetsu_trudge": "Tetsu Trudge",
         "johnny_steps": "Johnny Steps",
         "roland": "Roland",
         "espa_roba": "Espa Roba",
-        "jean_claude_magnum": "Jean-Claude Magnum",
         "big5": "The Big Five",
         "grand_championship_duelists": "KC Grand Prix",
+        "other_duelists_duel_monsters": "Other (DM)",
 },
     "pt": {
         #================================
@@ -263,7 +261,6 @@ ui_text = {
         "other_cards": "Outras Cartas",
         "new_cards_added": "Novas Cartas Adicionadas",
         "cards_added": "Carta(s) Adicionada(s)",
-        "see_all": "Ver Todas",
         # ================================
         #  DUELISTS
         # ================================
@@ -312,16 +309,15 @@ ui_text = {
         "gozaburo_kaiba": "Gozaburo Kaiba",
         "rafael": "Rafael",
         "valon": "Valon",
-        "gurimo": "Gurimo",
         "kuriboh": "Kuriboh",
         "red_eyes_black_dragon": "Dragão Negro de Olhos Vermelhos",
         "tetsu_trudge": "Tetsu Trudge",
         "johnny_steps": "Johnny Steps",
         "roland": "Roland",
         "espa_roba": "Espa Roba",
-        "jean_claude_magnum": "Jean-Claude Magnum",
         "big5": "Os Cinco Grandes",
         "grand_championship_duelists": "Grand Prix KC",
+        "other_duelists_duel_monsters": "Outros (MD)",
         # ================================
         #  CARDS DETAILS TRANSLATIONS
         # ================================

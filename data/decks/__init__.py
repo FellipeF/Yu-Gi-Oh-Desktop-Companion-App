@@ -18,6 +18,7 @@ from .mako import MAKO_DECKS
 from .marik_ishtar import MARIK_ISHTAR_DECKS
 from .mokuba_kaiba import MOKUBA_DECKS
 from .noah_kaiba import NOAH_KAIBA_DECKS
+from .other_duelists_duel_monsters import OTHER_DM_DECKS
 from .panik import PANIK_DECKS
 from .rebecca import REBECCA_DECKS
 from .serenity import SERENITY_DECKS
@@ -70,6 +71,7 @@ LIST_OF_DECKS = {
     "big5":  THE_BIG_FIVE_DECKS,
     "grand_championship_duelists": KC_GRAND_PRIX_DECKS,
     "espa_roba": ESPA_ROBA_DECKS,
+    "other_duelists_duel_monsters": OTHER_DM_DECKS,
 
 }
 

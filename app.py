@@ -223,7 +223,6 @@ class App(tk.Tk):
             LEFT JOIN cards_translations t2
                 ON c.id = t2.card_id AND t2.language_code = 'en'
             WHERE c.id IN ({placeholders})
-            LIMIT 20
         """, (self.current_language, *new_cards_ids)) #Avoids duplicates while also implementing fallback.
 
         cards = cursor.fetchall()
@@ -269,13 +268,6 @@ class App(tk.Tk):
 
         modal.after(10, lambda: self._populate_new_cards_on_window(scrollable_frame, cards)) #Prevents performance bottlenecks
 
-        if total_count > len(cards):
-            tk.Button(
-                modal,
-                text=self.t("see_all"),
-                command=lambda: self.show_all_new_cards_modal(all_ids)
-            ).pack(pady=5)
-
         tk.Button(modal, text="OK", command=modal.destroy).pack(pady=10)
 
         modal.transient(self)
@@ -297,42 +289,6 @@ class App(tk.Tk):
                 text=self.t("card_details"),
                 command=lambda cid=card_id: CardDetailsWindow(self, cid)
             ).pack(side="right", padx=40)
-
-    def show_all_new_cards_modal(self, card_ids):
-        modal = tk.Toplevel(self)
-        modal.title(self.t("all_new_cards"))
-
-        self.center_window(modal, 500, 600)
-
-        conn = get_connection()
-        cursor = conn.cursor()
-
-        placeholders = ",".join(["?"] * len(card_ids))
-
-        cursor.execute(f"""
-            SELECT c.id, COALESCE(t1.name, t2.name)
-            FROM cards c
-            LEFT JOIN cards_translations t1
-                ON c.id = t1.card_id AND t1.language_code = ?
-            LEFT JOIN cards_translations t2
-                ON c.id = t2.card_id AND t2.language_code = 'en'
-            WHERE c.id IN ({placeholders})
-        """, (self.current_language, *card_ids))
-
-        cards = cursor.fetchall()
-        conn.close()
-
-        for card_id, name in cards:
-            frame = tk.Frame(modal)
-            frame.pack(fill="x", padx=10, pady=2)
-
-            tk.Label(frame, text=name).pack(side="left")
-
-            tk.Button(
-                frame,
-                text=self.t("card_details"),
-                command=lambda cid=card_id: CardDetailsWindow(self, cid)
-            ).pack(side="right")
 
     def update_ui_language(self):
         """Calls the refresh_ui in each Frame that switches text to the currently selected language."""

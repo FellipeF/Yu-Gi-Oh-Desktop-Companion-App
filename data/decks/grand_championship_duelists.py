@@ -18,7 +18,7 @@ KC_GRAND_PRIX_DECKS = {
         ("Dragon Treasure", 1),
         ("Heart of the Underdog", 1),
     ],
-    "vivian_wong": [
+    "vivian": [
         ("Blackland Fire Dragon", 1),
         ("Inpachi", 1),
         ("Master Kyonshee", 1),

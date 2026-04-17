@@ -123,7 +123,11 @@ class DuelistsFrame(tk.Frame):
     def sort_duelists(self):
         """Sorts duelist by Display name that is handled by the translation file."""
         self.duelists.sort(
-            key = lambda d: self.controller.t(d[1]).casefold()
+            key = lambda d: (
+                # Returns True (1), so place it at the end after the other "0th pos." (False) items are ordered
+                d[1] == "other_duelists_duel_monsters",
+                self.controller.t(d[1]).casefold()
+            )
         )
 
     def show_duelist_details(self, duelist_id, duelist_key):
