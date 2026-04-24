@@ -110,6 +110,7 @@ ui_text = {
         "update_downloaded": "Update downloaded! The app will now close",
         "update_fail": "Error Downloading Update",
         "ignore": "Ignore",
+        "updater_not_found": "Updater not found",
         # ================================
         #  DUELISTS
         # ================================
@@ -278,6 +279,7 @@ ui_text = {
         "download_complete": "Download Concluído!",
         "update_downloaded": "Atualização Baixada! O programa agora irá fechar",
         "update_fail": "Erro ao baixar atualização",
+        "updater_not_found": "Atualizador não encontrado",
         # ================================
         #  DUELISTS
         # ================================

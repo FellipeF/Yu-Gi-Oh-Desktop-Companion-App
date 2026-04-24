@@ -1,12 +1,13 @@
 import os
+import sys
 import tkinter as tk
-import threading
 import locale
 import traceback
 import webbrowser
 import requests
 import subprocess
 import tempfile
+import threading
 
 from tkinter import ttk, messagebox
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE, CARD_WIDTH, CARD_HEIGHT, GITHUB_REPO
@@ -414,6 +415,7 @@ class App(tk.Tk):
 
     def download_finished(self, path):
         self.attributes("-disabled", False)
+
         if self.loading_dialog:
             self.loading_dialog.stop()
             self.loading_dialog.destroy()
@@ -424,9 +426,36 @@ class App(tk.Tk):
             self.t("update_downloaded")
         )
 
-        subprocess.Popen([path])
+        updater_path = os.path.join(os.path.dirname(sys.executable), "updater.exe") #Prevents updater not being found by Installer
 
-        self.destroy()
+        if not os.path.exists(updater_path):
+            messagebox.showerror(
+                self.t("error"),
+                "Updater not found!"
+            )
+            return
+
+        try:
+            subprocess.Popen(
+                [
+                    updater_path,
+                    "--target", path,
+                    "--app", os.path.abspath(sys.executable)
+                ],
+                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
+                close_fds=True
+            )
+
+            self.after(200, self.force_exit) # Kills process instead of destroying tkinter app.
+
+        except Exception as e:
+            messagebox.showerror(
+                self.t("error"),
+                f"{self.t('update_fail')}\n{e}"
+            )
+
+    def force_exit(self):
+        os._exit(0)
 
     def download_failed(self, error):
         self.attributes("-disabled", False)
