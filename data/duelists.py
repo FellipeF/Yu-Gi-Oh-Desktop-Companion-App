@@ -40,7 +40,7 @@ DUELISTS = [
     # =========================
     ("marik_ishtar", "images/duelists/placeholder.webp", "duel_monsters"),
     ("yami_yugi", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("yami_bakura", "images/duelists/placeholder.webp", "duel_monsters"),
+    ("yami_bakura", "images/duelists/yami-bakura.png", "duel_monsters"),
     ("shadi", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rex_raptor", "images/duelists/placeholder.webp", "duel_monsters"),
     ("para", "images/duelists/placeholder.webp", "duel_monsters"),

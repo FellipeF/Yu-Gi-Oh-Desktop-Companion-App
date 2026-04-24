@@ -27,6 +27,7 @@ from .shimon_muran import SHIMON_DECKS
 from .umbra import UMBRA_DECKS
 from .ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
 from .weevil import WEEVIL_DECKS
+from .yami_bakura import YAMI_BAKURA_DECKS
 from .yugi import YUGI_DECKS
 from .kaiba import KAIBA_DECKS
 from .joey import JOEY_DECKS
@@ -74,6 +75,7 @@ LIST_OF_DECKS = {
     "espa_roba": ESPA_ROBA_DECKS,
     "other_duelists_duel_monsters": OTHER_DM_DECKS,
     "red_eyes_black_dragon": RED_EYES_BLACK_DRAGON_DECKS,
+    "yami_bakura": YAMI_BAKURA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

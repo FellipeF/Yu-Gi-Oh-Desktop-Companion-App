@@ -1,0 +1,3 @@
+YAMI_BAKURA_DECKS = {
+
+}
