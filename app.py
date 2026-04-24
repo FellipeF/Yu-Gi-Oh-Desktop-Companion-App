@@ -3,9 +3,11 @@ import threading
 import locale
 import traceback
 import webbrowser
+import requests
+import subprocess
 
 from tkinter import ttk, messagebox
-from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE, CARD_WIDTH, CARD_HEIGHT
+from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE, CARD_WIDTH, CARD_HEIGHT, GITHUB_REPO
 from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
 from database.database import create_tables, get_connection  # , run_migrations
@@ -25,12 +27,14 @@ from utils.image_handler import ImageHandler
 from utils.resource_path import resource_path
 from pathlib import Path
 from services.card_search_service import CardSearchService
+from services.app_update import AppUpdater
 
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
         self.image_handler = ImageHandler(CARD_WIDTH, CARD_HEIGHT)
+        self.cards_info_cache = ApiClient().read_info_file()
 
         self.withdraw() #Prevents screen showing up before setting up configuration
 
@@ -57,7 +61,7 @@ class App(tk.Tk):
         self.card_search_service = CardSearchService()
         self.app_width = APP_WIDTH
         self.app_height = APP_HEIGHT
-        self.title(f"Yu-Gi-Oh! Desktop Companion App v{CURRENT_VERSION}")
+        self.title(f"Yu-Gi-Oh! Desktop Companion App {CURRENT_VERSION}")
         self.resizable(False, False)
         self.frames = {}
         self.current_frame_name = None
@@ -202,6 +206,8 @@ class App(tk.Tk):
 
         self.check_and_show_new_cards()
 
+        self.after(500, self.check_app_update)
+
     def check_and_show_new_cards(self):
         api = ApiClient()
         info = api.read_info_file() or {}
@@ -268,7 +274,7 @@ class App(tk.Tk):
 
         modal.after(10, lambda: self._populate_new_cards_on_window(scrollable_frame, cards)) #Prevents performance bottlenecks
 
-        tk.Button(modal, text="OK", command=modal.destroy).pack(pady=10)
+        tk.Button(modal, text="OK", command= modal.destroy).pack(pady=10)
 
         modal.transient(self)
 
@@ -289,6 +295,87 @@ class App(tk.Tk):
                 text=self.t("card_details"),
                 command=lambda cid=card_id: CardDetailsWindow(self, cid)
             ).pack(side="right", padx=40)
+
+    def check_app_update(self):
+        threading.Thread(
+            target=self._check_app_update_worker,
+            daemon=True
+        ).start()
+
+    def _check_app_update_worker(self):
+        try:
+            updater = AppUpdater(GITHUB_REPO, CURRENT_VERSION)
+            has_update, url, changelog, download_url = updater.is_update_available()
+
+            if has_update:
+                self.after(0, lambda: self.show_update_dialog, url, changelog, download_url)
+        except Exception as e:
+            print(f"Update Check Error: {e}") #TODO: Show this to user
+
+    def show_update_dialog(self, url, changelog, download_url):
+        modal = tk.Toplevel(self)
+        modal.title(self.t("update_available_title"))
+
+        self.center_window(modal, 500, 400)
+
+        tk.Label(
+            modal,
+            text=self.t("update_available_message"),
+            font=("Arial", 12, "bold")
+        ).pack(pady=10)
+
+        text_box = tk.Text(modal, wrap="word", height=15)
+        text_box.insert("1.0", changelog or self.t("no_changelog_available"))
+        text_box.config(state="disabled")
+        text_box.pack(fill="both", expand=True, padx=10)
+
+        buttons_frame = tk.Frame(modal)
+        buttons_frame.pack(pady=10)
+
+        if download_url:
+            tk.Button(
+                buttons_frame,
+                text=self.t("download_update"),
+                command=lambda: self.download_update(download_url)
+            ).pack(side="left", padx=5)
+
+        #Fallback
+        tk.Button(
+            buttons_frame,
+            text=self.t("open_in_browser"),
+            command=lambda: webbrowser.open(url)
+        ).pack(side="left", padx=5)
+
+        tk.Button(
+            buttons_frame,
+            text="Later",
+            command=modal.destroy
+        ).pack(side="left", padx=5)
+
+        modal.transient(self)
+
+    def download_update(self, url):
+        save_path = "app_update.exe" #TODO: Update with new version number
+
+        try:
+            response = requests.get(url, stream=True)
+            response.raise_for_status()
+
+            with open(save_path, "wb") as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+
+            messagebox.showinfo(
+                self.t("download_complete"),
+                self.t("update_downloaded")
+            )
+            self.destroy()
+
+            subprocess.Popen([save_path])
+
+        except Exception as e:
+            messagebox.showerror(self.t("error"), f"{self.t('update_fail')}\n{e}")
 
     def update_ui_language(self):
         """Calls the refresh_ui in each Frame that switches text to the currently selected language."""

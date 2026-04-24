@@ -100,6 +100,14 @@ ui_text = {
         "other_cards": "Other Cards",
         "new_cards_added": "New Cards Added",
         "cards_added": "Card(s) Added",
+        "update_available_title": "New Update Available!",
+        "update_available_message": "There is a new update available. Do you wish to install it?",
+        "no_changelog_available": "No Changelog Available",
+        "download_update": "Download Update",
+        "open_in_browser": "Open in Browser",
+        "download_complete": "Download Complete!",
+        "update_downloaded": "Update downloaded! The app will now close",
+        "update_fail": "Error Downloading Update",
         # ================================
         #  DUELISTS
         # ================================
@@ -150,9 +158,6 @@ ui_text = {
         "valon": "Valon",
         "kuriboh": "Kuriboh",
         "red_eyes_black_dragon": "Red-Eyes Black Dragon",
-        "tetsu_trudge": "Tetsu Trudge",
-        "johnny_steps": "Johnny Steps",
-        "roland": "Roland",
         "espa_roba": "Espa Roba",
         "big5": "The Big Five",
         "grand_championship_duelists": "KC Grand Prix",
@@ -261,6 +266,14 @@ ui_text = {
         "other_cards": "Outras Cartas",
         "new_cards_added": "Novas Cartas Adicionadas",
         "cards_added": "Carta(s) Adicionada(s)",
+        "update_available_title": "Nova atualização disponivel!",
+        "update_available_message": "Há uma nova atualização. Deseja instalar?",
+        "no_changelog_available": "Nenhum Registro de Mudanças foi encontrado",
+        "download_update": "Baixar Atualização",
+        "open_in_browser": "Abrir no Navegador",
+        "download_complete": "Download Concluído!",
+        "update_downloaded": "Atualização Baixada! O programa agora irá fechar",
+        "update_fail": "Erro ao baixar atualização",
         # ================================
         #  DUELISTS
         # ================================
@@ -311,9 +324,6 @@ ui_text = {
         "valon": "Valon",
         "kuriboh": "Kuriboh",
         "red_eyes_black_dragon": "Dragão Negro de Olhos Vermelhos",
-        "tetsu_trudge": "Tetsu Trudge",
-        "johnny_steps": "Johnny Steps",
-        "roland": "Roland",
         "espa_roba": "Espa Roba",
         "big5": "Os Cinco Grandes",
         "grand_championship_duelists": "Grand Prix KC",

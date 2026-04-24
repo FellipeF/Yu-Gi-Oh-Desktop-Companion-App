@@ -21,6 +21,7 @@ from .noah_kaiba import NOAH_KAIBA_DECKS
 from .other_duelists_duel_monsters import OTHER_DM_DECKS
 from .panik import PANIK_DECKS
 from .rebecca import REBECCA_DECKS
+from .red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
 from .serenity import SERENITY_DECKS
 from .shimon_muran import SHIMON_DECKS
 from .umbra import UMBRA_DECKS
@@ -72,7 +73,7 @@ LIST_OF_DECKS = {
     "grand_championship_duelists": KC_GRAND_PRIX_DECKS,
     "espa_roba": ESPA_ROBA_DECKS,
     "other_duelists_duel_monsters": OTHER_DM_DECKS,
-
+    "red_eyes_black_dragon": RED_EYES_BLACK_DRAGON_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

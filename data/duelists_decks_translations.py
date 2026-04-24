@@ -1440,6 +1440,20 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Noite Fantardil",
         },
     },
+    "red_eyes_black_dragon": {
+        "september_2004": {
+            "en": "September 2004",
+            "pt": "Setembro de 2004",
+        },
+        "who_needs_effects": {
+            "en": "Who Needs Effects",
+            "pt": "Quem Precisa de Efeitos",
+        },
+        "black_flame": {
+            "en": "Black Flame",
+            "pt": "Chama Negra",
+        },
+    },
     "serenity_wheeler": {
         "cute_sister": {
             "en": "Cute Sister",

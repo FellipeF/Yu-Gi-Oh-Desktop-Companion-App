@@ -49,6 +49,11 @@ class ApiClient:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
+    def _remove_deprecated_fields(self, all_info: Dict[str, Any]) -> None:
+        for key, value in all_info.items():
+            if isinstance(value, dict):
+                value.pop("last_checked", None)
+
     def write_info_file(self, meta: Dict[str, Any]) -> None:
         """Writes current dataset_version on a JSON File."""
         self._write_json_file(self._info_file_path(), meta, indent=2)
@@ -62,9 +67,6 @@ class ApiClient:
             return self._read_json_file(path)
         except Exception:
             return {}
-
-    def _today(self) -> str:
-        return date.today().isoformat()
 
     def get_dataset_details(self) -> Dict[str, Any]:
         """Gets dataset details from Endpoint"""
@@ -96,42 +98,33 @@ class ApiClient:
 
     def load_cards(self, language: str="en") -> Dict [str, Any]:
         """Load cards from cache.If the file doesn't exist, it means we're starting the program for the first time
-        or it was deleted. In both cases, download the dataset. A new data set version is checked every day"""
+        or it was deleted. In both cases, download the dataset. New version is checked everytime the app starts"""
         cards_cache_path = self._cards_cache_path(language)
 
         all_info = self.read_info_file()
         all_info = self._normalize_info_schema(all_info)
 
-        if "new_cards" not in all_info:
-            all_info["new_cards"] = []
-
         lang_info = all_info.get(language, {})
-        today = self._today()
-
-        if not os.path.exists(cards_cache_path):
-            new_data = self.download_cards(language)
-            db_details = self.get_dataset_details()
-
-            all_info[language] = {
-                "database_version": db_details.get("database_version"),
-                "last_checked": today,
-                "last_update": db_details.get("last_update"),
-                "database_offline_version": None
-            }
-
-            all_info.setdefault("new_cards", [])
-
-            self.write_info_file(all_info)
-
-            return new_data
-
-        if lang_info.get("last_checked") == today:
-            return self._read_json_file(cards_cache_path)
 
         try:
             db_details = self.get_dataset_details()
             online_version = db_details.get("database_version")
-            local_version = lang_info.get("database_version") or all_info.get("database_version")
+            local_version = lang_info.get("database_version") if lang_info else None #
+
+            if not os.path.exists(cards_cache_path):  # No cache found.
+                new_data = self.download_cards(language)
+
+                all_info[language] = {
+                    "database_version": online_version,
+                    "last_update": db_details.get("last_update"),
+                    "database_offline_version": None #Initialize
+                }
+
+                all_info.setdefault("new_cards", [])
+                self._remove_deprecated_fields(all_info)
+                self.write_info_file(all_info)
+
+                return new_data
 
             if local_version != online_version:
                 old_data = self._read_json_file(cards_cache_path)
@@ -150,30 +143,24 @@ class ApiClient:
 
             all_info[language] = {
                 "database_version": online_version,
-                "last_checked": today,
                 "last_update": db_details.get("last_update"),
                 "database_offline_version": lang_info.get("database_offline_version")
             }
 
+            self._remove_deprecated_fields(all_info)
             self.write_info_file(all_info)
 
             return new_data
 
         except requests.RequestException:
-            # If no Internet, retrieves the info from the file and sets today as last_checked so that no check is done
-            # everytime
-            all_info[language] = {
-                "database_version": lang_info.get("database_version"),
-                "last_checked": today,
-                "last_update": lang_info.get("last_update"),
-                "database_offline_version": lang_info.get("database_offline_version")
-            }
-            self.write_info_file(all_info)
-            return self._read_json_file(cards_cache_path)
+            if os.path.exists(cards_cache_path):
+                return self._read_json_file(cards_cache_path)
+            else:
+                raise RuntimeError("Error! Internet not connected for the first run.") #TODO: display this to user
 
     def _normalize_info_schema(self, all_info: Dict[str, Any]) -> Dict[str, Any]:
         """Migrates schema from old .json cards_info to the new expected one"""
-        # Already normalized, grants that new_cards key exists in case anything goes wrong.
+        # Already normalized, grants that new_cards key exists in case anything goes wrong. Removes last_checked as well.
         if "en" in all_info:
             all_info.setdefault("new_cards", [])
             return all_info
@@ -182,12 +169,11 @@ class ApiClient:
         if "database_version" in all_info:
             all_info["en"] = {
                 "database_version": all_info.get("database_version"),
-                "last_checked": all_info.get("last_checked"),
                 "last_update": all_info.get("last_update"),
                 "database_offline_version": all_info.get("database_offline_version")
             }
 
-        for key in ["database_version", "last_checked", "last_update", "database_offline_version"]:
+        for key in ["database_version", "last_update", "database_offline_version"]:
             all_info.pop(key, None)
 
         all_info.setdefault("new_cards", [])

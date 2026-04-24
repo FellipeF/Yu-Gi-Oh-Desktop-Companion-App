@@ -1,8 +1,8 @@
 import tkinter as tk
 
 from database.queries import get_cards_count, get_duelists_count, get_user_decks_count
-from services.api_client import ApiClient
-from datetime import datetime
+from datetime import date, datetime
+from typing import Optional
 
 class HomeFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -64,8 +64,7 @@ class HomeFrame(tk.Frame):
         self.refresh_ui()
 
     def get_dataset_version_text(self) -> str:
-        client = ApiClient()
-        info = client.read_info_file()
+        info = self.controller.cards_info_cache
 
         if not info:
             return self.controller.t("dataset_version_unknown")
@@ -78,8 +77,11 @@ class HomeFrame(tk.Frame):
         if not dataset_version:
             return self.controller.t("dataset_version_unknown")
 
-        if last_update and self.controller.current_language != "en":
-            last_update = self.format_date(last_update)
+        if last_update:
+            normalized = self.normalize_date(last_update)
+
+            if normalized:
+                last_update = self.format_date(normalized)
 
         if last_update:
             return (
@@ -87,16 +89,29 @@ class HomeFrame(tk.Frame):
                 f"{self.controller.t('last_update')}: {last_update}"
             )
 
-        return f"{self.controller.t("dataset_version")}: {dataset_version}"
+        return f"{self.controller.t('dataset_version')}: {dataset_version}"
 
-    def format_date(self, date_str: str) -> str:
-        """For non-american folks"""
+    def normalize_date(self, date_str: str) -> Optional[date]: #Since in a error returns None
+        """In case the API updates in a future date using the user date as a reference."""
         try:
-            date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+            date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
         except Exception:
-            return date_str
+            return None
 
-        return date_obj.strftime("%d/%m/%Y")
+        today = date.today()
+
+        if date_obj > today:
+            return today
+
+        return date_obj
+
+    def format_date(self, date_obj: date) -> str:
+        """For non-american folks"""
+
+        if self.controller.current_language == "en":
+            return date_obj.strftime("%Y-%m-%d")
+        else:
+            return date_obj.strftime("%d/%m/%Y")
 
     def refresh_ui(self):
         self.title_label.config(text=self.controller.t("home_title"))
@@ -110,10 +125,12 @@ class HomeFrame(tk.Frame):
         duelists_count = get_duelists_count()
         user_decks_count = get_user_decks_count()
 
+        t = self.controller.t
+
         stats_text = (
-            f"{self.controller.t("cards_total")}: {cards_count}   |   "
-            f"{self.controller.t("duelists_total")}: {duelists_count}   |   "
-            f"{self.controller.t("user_decks_total")}: {user_decks_count}"
+            f"{t('cards_total')}: {cards_count}   |   "
+            f"{t('duelists_total')}: {duelists_count}   |   "
+            f"{t('user_decks_total')}: {user_decks_count}"
         )
 
         self.stats_label.config(text=stats_text)
