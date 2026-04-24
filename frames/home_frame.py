@@ -3,6 +3,7 @@ import tkinter as tk
 from database.queries import get_cards_count, get_duelists_count, get_user_decks_count
 from datetime import date, datetime
 from typing import Optional
+from services.api_client import ApiClient
 
 class HomeFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -64,7 +65,7 @@ class HomeFrame(tk.Frame):
         self.refresh_ui()
 
     def get_dataset_version_text(self) -> str:
-        info = self.controller.cards_info_cache
+        info = ApiClient().read_info_file()
 
         if not info:
             return self.controller.t("dataset_version_unknown")

@@ -106,8 +106,10 @@ ui_text = {
         "download_update": "Download Update",
         "open_in_browser": "Open in Browser",
         "download_complete": "Download Complete!",
+        "downloading_update": "Downloading Update",
         "update_downloaded": "Update downloaded! The app will now close",
         "update_fail": "Error Downloading Update",
+        "ignore": "Ignore",
         # ================================
         #  DUELISTS
         # ================================
@@ -270,6 +272,8 @@ ui_text = {
         "update_available_message": "Há uma nova atualização. Deseja instalar?",
         "no_changelog_available": "Nenhum Registro de Mudanças foi encontrado",
         "download_update": "Baixar Atualização",
+        "downloading_update": "Baixando Atualização",
+        "ignore": "Ignorar",
         "open_in_browser": "Abrir no Navegador",
         "download_complete": "Download Concluído!",
         "update_downloaded": "Atualização Baixada! O programa agora irá fechar",

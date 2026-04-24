@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 import threading
 import locale
@@ -5,6 +6,7 @@ import traceback
 import webbrowser
 import requests
 import subprocess
+import tempfile
 
 from tkinter import ttk, messagebox
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE, CARD_WIDTH, CARD_HEIGHT, GITHUB_REPO
@@ -34,7 +36,7 @@ class App(tk.Tk):
         super().__init__()
 
         self.image_handler = ImageHandler(CARD_WIDTH, CARD_HEIGHT)
-        self.cards_info_cache = ApiClient().read_info_file()
+        self.cards_info_cache = None
 
         self.withdraw() #Prevents screen showing up before setting up configuration
 
@@ -204,13 +206,21 @@ class App(tk.Tk):
 
         self.show_frame("HomeFrame")
 
-        self.check_and_show_new_cards()
+        self.cards_info_cache = ApiClient().read_info_file()
 
-        self.after(500, self.check_app_update)
+        self.after(300, self.post_init_tasks) # Solves racing conditions and avoids unknown dataset version
+
+    def post_init_tasks(self):
+        self.check_and_show_new_cards()
+        self.check_app_update()
 
     def check_and_show_new_cards(self):
         api = ApiClient()
         info = api.read_info_file() or {}
+
+        if not isinstance(info, dict) or "en" not in info: #Solves Incomplete initialization issues.
+            return
+
         new_cards_ids = info.get("new_cards", [])
 
         if not new_cards_ids:
@@ -308,7 +318,7 @@ class App(tk.Tk):
             has_update, url, changelog, download_url = updater.is_update_available()
 
             if has_update:
-                self.after(0, lambda: self.show_update_dialog, url, changelog, download_url)
+                self.after(0, lambda: self.show_update_dialog (url, changelog, download_url))
         except Exception as e:
             print(f"Update Check Error: {e}") #TODO: Show this to user
 
@@ -336,7 +346,7 @@ class App(tk.Tk):
             tk.Button(
                 buttons_frame,
                 text=self.t("download_update"),
-                command=lambda: self.download_update(download_url)
+                command=lambda: self.start_download_thread(download_url)
             ).pack(side="left", padx=5)
 
         #Fallback
@@ -348,34 +358,87 @@ class App(tk.Tk):
 
         tk.Button(
             buttons_frame,
-            text="Later",
+            text=self.t("ignore"),
             command=modal.destroy
         ).pack(side="left", padx=5)
 
         modal.transient(self)
 
-    def download_update(self, url):
-        save_path = "app_update.exe" #TODO: Update with new version number
+    def start_download_thread(self, url):
+        self.loading_dialog = LoadingDialog(
+            self,
+            title=self.t("downloading_update"),
+            status=self.t("downloading_update")
+        )
+        self.loading_dialog.start()
+        self.attributes("-disabled", True)
+
+        threading.Thread(
+            target=self.download_update_worker,
+            args=(url,),
+            daemon=True
+        ).start()
+
+    def download_update_worker(self, url):
+        save_path = os.path.join(tempfile.gettempdir(), "ygo_update_installer.exe") #TODO: Digital Signature
 
         try:
             response = requests.get(url, stream=True)
             response.raise_for_status()
 
+            total = int(response.headers.get('content-length') or 0)
+            downloaded = 0
+
             with open(save_path, "wb") as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
+                for chunk in response.iter_content(8192):
+                    if not chunk:
+                        continue
 
-            messagebox.showinfo(
-                self.t("download_complete"),
-                self.t("update_downloaded")
-            )
-            self.destroy()
+                    f.write(chunk)
+                    downloaded += len(chunk)
 
-            subprocess.Popen([save_path])
+                    if total > 0:
+                        progress = downloaded / total * 100
+                        self.after(0, lambda p=progress: self.update_download_progress(p))
+
+            self.after(0, lambda: self.download_finished(save_path))
 
         except Exception as e:
-            messagebox.showerror(self.t("error"), f"{self.t('update_fail')}\n{e}")
+            self.after(0, lambda: self.download_failed(e))
+
+    def update_download_progress(self, progress):
+        if self.loading_dialog:
+            self.loading_dialog.set_status(
+                f"{self.t('downloading_update')} {progress:.1f}%"
+            )
+
+    def download_finished(self, path):
+        self.attributes("-disabled", False)
+        if self.loading_dialog:
+            self.loading_dialog.stop()
+            self.loading_dialog.destroy()
+            self.loading_dialog = None
+
+        messagebox.showinfo(
+            self.t("download_complete"),
+            self.t("update_downloaded")
+        )
+
+        subprocess.Popen([path])
+
+        self.destroy()
+
+    def download_failed(self, error):
+        self.attributes("-disabled", False)
+        if self.loading_dialog:
+            self.loading_dialog.stop()
+            self.loading_dialog.destroy()
+            self.loading_dialog = None
+
+        messagebox.showerror(
+            self.t("error"),
+            f"{self.t('update_fail')}\n{error}"
+        )
 
     def update_ui_language(self):
         """Calls the refresh_ui in each Frame that switches text to the currently selected language."""

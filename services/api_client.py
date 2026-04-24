@@ -62,11 +62,12 @@ class ApiClient:
         """Reads the current version of the dataset info file. In case it's missing, we return None"""
         path = self._info_file_path()
         if not os.path.exists(path):
-            return {}   # Prevents attribute error. Do this instead of None
+            return self._normalize_info_schema({})   # Prevents attribute error. Do this instead of None
         try:
-            return self._read_json_file(path)
+            data = self._read_json_file(path)
+            return self._normalize_info_schema(data)
         except Exception:
-            return {}
+            return self._normalize_info_schema({})
 
     def get_dataset_details(self) -> Dict[str, Any]:
         """Gets dataset details from Endpoint"""
