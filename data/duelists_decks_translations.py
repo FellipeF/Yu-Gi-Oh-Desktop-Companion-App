@@ -1166,7 +1166,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "ultimate_illusion": {
             "en": "Ultimate Illusion",
-            "pt": "Ilusão Final",
+            "pt": "Ilusão Suprema",
         },
         "beginning_of_the_fear": {
             "en": "Beginning of the Fear",
@@ -1182,7 +1182,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "ultimate_toons": {
             "en": "Ultimate Toons",
-            "pt": "Toons Definitivos",
+            "pt": "Toons Supremos",
         },
         "illusion_land": {
             "en": "Illusion Land",
@@ -1555,7 +1555,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "way_of_the_ultimate_dragon": {
             "en": "Way of the Ultimate Dragon",
-            "pt": "Caminho do Dragão Definitivo",
+            "pt": "Caminho do Dragão Supremo",
         },
         "evolution_of_blue_eyes": {
             "en": "Evolution of Blue-Eyes",
@@ -1619,7 +1619,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "ultimate_toons": {
             "en": "Ultimate Toons",
-            "pt": "Toons Definitivos",
+            "pt": "Toons Supremos",
         },
         "dm_cup": {
             "en": "DM Cup",
@@ -1639,7 +1639,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "the_ultimate_dragon": {
             "en": "The Ultimate Dragon",
-            "pt": "O Dragão Definitivo",
+            "pt": "O Dragão Supremo",
         },
         "crushing_victory": {
             "en": "Crushing Victory",
@@ -1981,7 +1981,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "ultimate_queen": {
             "en": "Ultimate Queen",
-            "pt": "Rainha Definitiva",
+            "pt": "Rainha Suprema",
         },
         "victory_is_certain_with_me": {
             "en": "Victory is Certain with Me!",
@@ -2009,7 +2009,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "ultimate_insect": {
             "en": "Ultimate Insect",
-            "pt": "Inseto Definitivo",
+            "pt": "Inseto Supremo",
         },
         "evolution_of_despair": {
             "en": "Evolution of Despair",
@@ -2021,7 +2021,7 @@ DUELISTS_DECKS_KEYS = {
         },
         "the_ultimate_insect": {
             "en": "The Ultimate Insect",
-            "pt": "O Inseto Definitivo",
+            "pt": "O Inseto Supremo",
         },
     },
     "yami_bakura": {

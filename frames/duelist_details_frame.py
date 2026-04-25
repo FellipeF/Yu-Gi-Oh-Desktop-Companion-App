@@ -142,7 +142,7 @@ class DuelistDetailsFrame(tk.Frame):
             "cards": []
         }
 
-        for card_id, card_name, qty in selected_deck["cards"]:
+        for card_id, card_name, qty, _ in selected_deck["cards"]:
             export_data["cards"].append({
                 "id": card_id,
                 "name": card_name,
