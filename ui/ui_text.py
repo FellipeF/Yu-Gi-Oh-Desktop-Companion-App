@@ -111,7 +111,7 @@ ui_text = {
         "open_in_browser": "Open in Browser",
         "download_complete": "Download Complete!",
         "downloading_update": "Downloading Update",
-        "update_downloaded": "Update downloaded! The app will now close",
+        "update_downloaded": "Update downloaded! The app will now restart",
         "update_fail": "Error Downloading Update",
         "ignore": "Ignore",
         "updater_not_found": "Updater not found",
@@ -285,7 +285,7 @@ ui_text = {
         "ignore": "Ignorar",
         "open_in_browser": "Abrir no Navegador",
         "download_complete": "Download Concluído!",
-        "update_downloaded": "Atualização Baixada! O programa agora irá fechar",
+        "update_downloaded": "Atualização Baixada! O programa agora irá agora reiniciar",
         "update_fail": "Erro ao baixar atualização",
         "updater_not_found": "Atualizador não encontrado",
         # ================================

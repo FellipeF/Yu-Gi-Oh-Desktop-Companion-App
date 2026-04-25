@@ -11,6 +11,7 @@ from .dartz import DARTZ_DECKS
 from .duel_computers import DUEL_COMPUTERS_DECKS
 from .duke import DUKE_DECKS
 from .espa_roba import ESPA_ROBA_DECKS
+from .gozaburo_kaiba import GOZABURO_KAIBA_DECKS
 from .ishizu import ISHIZU_DECKS
 from .lumis import LUMIS_DECKS
 from .mai import MAI_DECKS
@@ -76,6 +77,7 @@ LIST_OF_DECKS = {
     "other_duelists_duel_monsters": OTHER_DM_DECKS,
     "red_eyes_black_dragon": RED_EYES_BLACK_DRAGON_DECKS,
     "yami_bakura": YAMI_BAKURA_DECKS,
+    "gozaburo_kaiba": GOZABURO_KAIBA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

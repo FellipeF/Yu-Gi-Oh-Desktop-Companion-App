@@ -439,13 +439,14 @@ class App(tk.Tk):
             subprocess.Popen(
                 [
                     updater_path,
-                    "--installer", path
+                    "--installer", path,
+                    "--pid", str(os.getpid())
                 ],
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
                 close_fds=True
             )
 
-            self.after(200, self.force_exit) # Kills process instead of destroying tkinter app.
+            self.after(1500, self.force_exit) # Kills process instead of destroying tkinter app.
 
         except Exception as e:
             messagebox.showerror(

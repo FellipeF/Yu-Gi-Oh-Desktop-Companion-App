@@ -479,6 +479,12 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Táticas Sobrenaturais",
         },
     },
+    "gozaburo_kaiba": {
+        "forbidden_pact": {
+            "en": "Forbidden Pact",
+            "pt": "Pacto Proibido",
+        }
+    },
     "grand_championship_duelists": {
         "rick": {
             "en": "Rick - Dragons",

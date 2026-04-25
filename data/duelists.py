@@ -36,6 +36,7 @@ DUELISTS = [
     ("other_duelists_duel_monsters", "images/duelists/duel_monsters_logo.png", "duel_monsters"),
     ("red_eyes_black_dragon", "images/duelists/red_eyes_black_dragon.webp", "duel_monsters"),
     ("yami_bakura", "images/duelists/yami-bakura.png", "duel_monsters"),
+    ("gozaburo_kaiba", "images/duelists/gozaburo_kaiba.png", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
@@ -49,7 +50,6 @@ DUELISTS = [
     ("odion", "images/duelists/placeholder.webp", "duel_monsters"),
     ("seeker", "images/duelists/placeholder.webp", "duel_monsters"),
     ("strings", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("gozaburo_kaiba", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rafael","images/duelists/placeholder.webp", "duel_monsters"),
     ("valon", "images/duelists/placeholder.webp", "duel_monsters"),
     ("kuriboh", "images/duelists/placeholder.webp", "duel_monsters"),
