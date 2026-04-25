@@ -50,8 +50,9 @@ ui_text = {
         "show_exclusive_cards": "Show exclusive cards",
         "no_decks_found": "No Decks Found",
         "export_deck": "Export Deck",
-        "deck_export_success": "Deck Exported Successfully!",
+        "deck_export_success": "Deck(s) Exported Successfully!",
         "deck_export_fail": "Error! Deck Export Failed.",
+        "no_decks_exported": "No decks were exported",
         # ================================
         #  CUSTOM DECKS FRAME
         # ================================
@@ -80,6 +81,8 @@ ui_text = {
         "delete_deck": "Delete Deck",
         "confirm_delete_deck": "Are you sure you want to delete this deck?",
         "deck_name_already_exists": "There is already a deck with this name.",
+        "deck_deleted_successfully": "Deck(s) Deleted successfully!",
+        "no_decks_deleted": "No deck to delete",
         "rename_deck": "Rename Deck",
         "no_decks_to_export": "No Selected Deck to Export",
         "deck_not_found": "Deck not found",
@@ -218,8 +221,9 @@ ui_text = {
         "show_exclusive_cards": "Mostrar cartas exclusivas",
         "no_decks_found": "Nenhum Deck encontrado",
         "export_deck": "Exportar Deck",
-        "deck_export_success": "Deck Exportado com Sucesso!",
+        "deck_export_success": "Deck(s) Exportado(s) com Sucesso!",
         "deck_export_fail": "Erro! Falha ao Exportar Deck",
+        "no_decks_exported": "Nenhum deck foi exportado",
         # ================================
         #  CUSTOM DECKS AND CUSTOM DECK EDITOR FRAME
         # ================================
@@ -246,6 +250,8 @@ ui_text = {
         "enter_deck_name": "Insira Nome do Deck",
         "enter_imported_deck_name": "Insira Nome do Deck Importado",
         "delete_deck": "Excluir Deck",
+        "deck_deleted_successfully": "Deck(s) Excluído(s) com sucesso!",
+        "no_decks_deleted": "Nenhum Deck para excluir",
         "confirm_delete_deck": "Tem certeza que deseja excluir este deck?",
         "deck_name_already_exists": "Já existe um deck com esse nome.",
         "rename_deck": "Renomear Deck",

@@ -35,12 +35,12 @@ DUELISTS = [
     ("espa_roba", "images/duelists/espa_roba.webp", "duel_monsters"),
     ("other_duelists_duel_monsters", "images/duelists/duel_monsters_logo.png", "duel_monsters"),
     ("red_eyes_black_dragon", "images/duelists/red_eyes_black_dragon.webp", "duel_monsters"),
+    ("yami_bakura", "images/duelists/yami-bakura.png", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
     ("marik_ishtar", "images/duelists/placeholder.webp", "duel_monsters"),
     ("yami_yugi", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("yami_bakura", "images/duelists/yami-bakura.png", "duel_monsters"),
     ("shadi", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rex_raptor", "images/duelists/placeholder.webp", "duel_monsters"),
     ("para", "images/duelists/placeholder.webp", "duel_monsters"),

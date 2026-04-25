@@ -2024,6 +2024,128 @@ DUELISTS_DECKS_KEYS = {
             "pt": "O Inseto Definitivo",
         },
     },
+    "yami_bakura": {
+        "diabound": {
+            "en": "Diabound",
+            "pt": "Diabólico",
+        },
+        "undead_lockdown": {
+            "en": "Undead Lockdown",
+            "pt": "Travamento Morto-Vivo",
+        },
+        "horror_countdown": {
+            "en": "Horror Countdown",
+            "pt": "Contagem Regressiva do Horror",
+        },
+        "underworld_ruler": {
+            "en": "Underworld Ruler",
+            "pt": "Soberano do Submundo",
+        },
+        "underworld_ruler_2": {
+            "en": "Underworld Ruler (2)",
+            "pt": "Soberano do Submundo (2)",
+        },
+        "forbidden_word": {
+            "en": "Forbidden Word",
+            "pt": "Palavra Proibida",
+        },
+        "unlit_banquet": {
+            "en": "Unlit Banquet",
+            "pt": "Banquete Não Iluminado",
+        },
+        "revival_time": {
+            "en": "Revival Time",
+            "pt": "Hora de Reviver",
+        },
+        "bakura": {
+            "en": "Bakura",
+            "pt": "Bakura",
+        },
+        "slight_grudge": {
+            "en": "Slight Grudge ",
+            "pt": "Leve Rancor",
+        },
+        "wicked_invitation": {
+            "en": "Wicked Invitation",
+            "pt": "Convite Maligno",
+        },
+        "wicked_invitation_2": {
+            "en": "Wicked Invitation (2)",
+            "pt": "Convite Maligno (2)",
+        },
+        "spirits_reborn": {
+            "en": "Spirits Reborn",
+            "pt": "Espíritos Renascidos",
+        },
+        "spirits_reborn_2": {
+            "en": "Spirits Reborn (2)",
+            "pt": "Espíritos Renascidos (2)",
+        },
+        "the_evil_incarnate": {
+            "en": "The Evil Incarnate",
+            "pt": "O Mau Encarnado",
+        },
+        "the_evil_incarnate_2": {
+            "en": "The Evil Incarnate (2)",
+            "pt": "O Mau Encarnado (2)",
+        },
+        "the_evil_incarnate_3": {
+            "en": "The Evil Incarnate (3)",
+            "pt": "O Mau Encarnado (3)",
+        },
+        "dinner_of_the_spirits": {
+            "en": "Dinner of the Spirits",
+            "pt": "Jantar dos Espíritos",
+        },
+        "dark_necrofear": {
+            "en": "Dark Necrofear",
+            "pt": "Necrofear das Trevas",
+        },
+        "dark_necrofear_2": {
+            "en": "Dark Necrofear (2)",
+            "pt": "Necrofear das Trevas (2)",
+        },
+        "dark_master_zorc": {
+            "en": "Dark Master - Zorc",
+            "pt": "Mestre das Trevas - Zorc",
+        },
+        "will_of_the_spirits": {
+            "en": "Will of the Spirits",
+            "pt": "Desejo dos Espíritos",
+        },
+        "curse_of_the_spirits": {
+            "en": "Curse of the Spirits",
+            "pt": "Maldição dos Espíritos",
+        },
+        "a_ghastly_occult_combo": {
+            "en": "A Ghastly Occult Combo",
+            "pt": "Um Combo Medonho Oculto",
+        },
+        "a_fun_shadow_game": {
+            "en": "A Fun Shadow Game",
+            "pt": "Um Divertido Jogo das Sombras",
+        },
+        "a_change_of_heart": {
+            "en": "A Change of Heart",
+            "pt": "Uma Mudança de Opinião",
+        },
+        "final_destiny": {
+            "en": "Final Destiny",
+            "pt": "Destino Final",
+        },
+        "final_destiny_2": {
+            "en": "Final Destiny (2)",
+            "pt": "Destino Final (2)",
+        },
+        "the_burning_abyss": {
+            "en": "The Burning Abyss",
+            "pt": "O Abismo Ardente",
+        },
+        "final": {
+            "en": "FINAL",
+            "pt": "FINAL",
+        },
+    },
     "yugi_muto": {
         "friendship": {
             "en": "Friendship",

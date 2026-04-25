@@ -9,6 +9,7 @@ from database.queries import (
     update_user_deck_used_flag,
     add_cards_bulk_import, rename_user_deck, get_user_deck_by_id, get_cards_by_user_deck
 )
+from utils.treeview_tooltip import TreeviewTooltip
 
 class CustomDecksFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -18,6 +19,7 @@ class CustomDecksFrame(tk.Frame):
 
         self.controller = controller
         self.selected_deck_id = None
+        self.current_column = None
 
         self.title_label = tk.Label(self, font=("Arial", 14))
         self.title_label.pack(pady=10)
@@ -30,6 +32,7 @@ class CustomDecksFrame(tk.Frame):
         )
         self.tree_style.configure(
             "Custom.Treeview.Heading",
+            rowheight=26,
             font=("Tahoma", 12, "bold")
         )
 
@@ -37,7 +40,7 @@ class CustomDecksFrame(tk.Frame):
         table_container = tk.Frame(self)
         table_container.pack(fill="both", expand=True, padx=10, pady=10)
 
-        columns = ("name", "total_cards", "used")
+        columns = ("name", "total_cards", "used", "edit", "rename", "delete")
         self.tree = ttk.Treeview(
             table_container,
             columns=columns,
@@ -46,67 +49,70 @@ class CustomDecksFrame(tk.Frame):
             style="Custom.Treeview"
         )
 
-        self.tree.heading("name", text="Deck Name")
-        self.tree.heading("total_cards")
-        self.tree.heading("used")
+        self.tooltip = TreeviewTooltip(self.tree, {
+            "#4": self.controller.t("edit"),
+            "#5": self.controller.t("rename_deck"),
+            "#6": self.controller.t("delete"),
+        })
 
-        self.tree.column("name", width=280, anchor="w")
-        self.tree.column("total_cards", width=110, anchor="center")
+        self.tree.heading("name", text=self.controller.t("deck_name"))
+        self.tree.heading("total_cards", text=self.controller.t("total_cards"))
+        self.tree.heading("used", text=self.controller.t("used"))
+        self.tree.heading("edit", text="")
+        self.tree.heading("rename", text="")
+        self.tree.heading("delete", text="")
+
+        self.tree.column("name", width=360, anchor="w")
+        self.tree.column("total_cards", width=130, anchor="center")
         self.tree.column("used", width=80, anchor="center")
+        self.tree.column("edit", width=28, stretch=False, anchor="center")
+        self.tree.column("rename", width=28, stretch=False, anchor="center")
+        self.tree.column("delete", width=28, stretch=False, anchor="center")
 
         self.tree.pack(side="left", fill="both", expand=True)
         self.tree.bind("<<TreeviewSelect>>", self.on_deck_select)
         self.tree.bind("<Double-1>", self.open_selected_deck)
         self.tree.bind("<Button-1>", self.on_tree_click)
+        self.tree.bind("<Motion>", self.on_motion_cursor, add="+") # So that cursor + tooltip both work together
 
         self.tree_scroll = ttk.Scrollbar(table_container, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=self.tree_scroll.set)
 
-        # Buttons
         buttons_frame = tk.Frame(self)
-        buttons_frame.pack(pady=10)
+        buttons_frame.pack(fill="x", pady=5)
+
+        buttons_frame.columnconfigure(0, weight=1)
+
+        right_frame = tk.Frame(buttons_frame)
+        right_frame.grid(row=0, column=1, sticky="e")
 
         self.new_button = tk.Button(
-            buttons_frame,
-            font=("Tahoma", 12),
+            right_frame,
+            text="➕",
+            font=("Segoe UI Emoji", 12),
             command=self.create_new_deck
         )
-        self.new_button.grid(row=0, column=0, padx=5)
+        self.new_button.pack(side="left", padx=3)
 
         self.import_button = tk.Button(
-            buttons_frame,
-            font=("Tahoma", 12),
+            right_frame,
+            text="📥",
+            font=("Segoe UI Emoji", 12),
             command=self.import_deck
         )
-        self.import_button.grid(row=0, column=1, padx=5)
+        self.import_button.pack(side="left", padx=3)
 
         self.export_button = tk.Button(
-            buttons_frame,
-            font=("Tahoma", 12),
+            right_frame,
+            text="📤",
+            font=("Segoe UI Emoji", 12),
             command=self.export_deck
         )
-        self.export_button.grid(row=0, column=2, padx=5)
+        self.export_button.pack(side="left", padx=3)
 
-        self.edit_button = tk.Button(
-            buttons_frame,
-            font=("Tahoma", 12),
-            command=self.open_selected_deck
-        )
-        self.edit_button.grid(row=0, column=3, padx=5)
-
-        self.rename_button = tk.Button(
-            buttons_frame,
-            font=("Tahoma", 12),
-            command=self.rename_selected_deck
-        )
-        self.rename_button.grid(row=0, column=4, padx=5)
-
-        self.delete_button = tk.Button(
-            buttons_frame,
-            font=("Tahoma", 12),
-            command=self.delete_selected_deck
-        )
-        self.delete_button.grid(row=0, column=5, padx=5)
+        self.add_tooltip(self.new_button, self.controller.t("new_deck"))
+        self.add_tooltip(self.import_button, self.controller.t("import_deck"))
+        self.add_tooltip(self.export_button, self.controller.t("export_deck"))
 
         self.return_button = tk.Button(
             self,
@@ -116,6 +122,39 @@ class CustomDecksFrame(tk.Frame):
         self.return_button.pack(pady=10)
 
         self.refresh_ui()
+
+    def add_tooltip(self, widget, text):
+        def enter(e):
+            widget.tooltip = tk.Toplevel(widget)
+            widget.tooltip.wm_overrideredirect(True)
+            widget.tooltip.wm_geometry(f"+{e.x_root + 10}+{e.y_root + 10}")
+
+            label = tk.Label(
+                widget.tooltip,
+                text=text,
+                bg="#ffffe0",
+                relief="solid",
+                borderwidth=1,
+                font=("Tahoma", 9),
+                padx=6,
+                pady=3
+            )
+            label.pack()
+
+        def leave(e):
+            if hasattr(widget, "tooltip"):
+                widget.tooltip.destroy()
+
+        widget.bind("<Enter>", enter)
+        widget.bind("<Leave>", leave)
+
+    def on_motion_cursor(self, event):
+        column = self.tree.identify_column(event.x)
+
+        if column in ("#4", "#5", "#6", "#7"):
+            self.tree.config(cursor="hand2")
+        else:
+            self.tree.config(cursor="")
 
     def update_scroll_visibility(self):
         """Hide scrollbar when all items fit in the tree."""
@@ -136,12 +175,16 @@ class CustomDecksFrame(tk.Frame):
         self.tree.heading("total_cards", text=self.controller.t("total_cards"))
         self.tree.heading("used", text=self.controller.t("used"))
 
-        self.new_button.config(text=self.controller.t("new_deck"))
-        self.import_button.config(text=self.controller.t("import_deck"))
-        self.export_button.config(text=self.controller.t("export_deck"))
-        self.edit_button.config(text=self.controller.t("edit"))
-        self.rename_button.config(text=self.controller.t("rename_deck"))
-        self.delete_button.config(text=self.controller.t("delete"))
+        self.tooltip.tooltips = {
+            "#4": self.controller.t("edit"),
+            "#5": self.controller.t("rename_deck"),
+            "#6": self.controller.t("delete"),
+        }
+
+        self.add_tooltip(self.new_button, self.controller.t("new_deck"))
+        self.add_tooltip(self.import_button, self.controller.t("import_deck"))
+        self.add_tooltip(self.export_button, self.controller.t("export_deck"))
+
         self.return_button.config(text=self.controller.t("return"))
 
         # For the used column
@@ -154,16 +197,20 @@ class CustomDecksFrame(tk.Frame):
 
         decks = get_all_user_decks()
 
-        for deck_id, deck_name, is_used, main_count, extra_count in decks:
+        for row, (deck_id, deck_name, is_used, main_count, extra_count) in enumerate(decks):
             used_text = "✅" if is_used else "⬜"
+            tag = "even" if row%2 == 0 else "odd"
 
             self.tree.insert(
                 "",
                 tk.END,
                 iid=str(deck_id),
-                values=(deck_name, f"{main_count} / {extra_count}", used_text)
+                values=(deck_name, f"{main_count} / {extra_count}", used_text, "✏️","📝","🗑️"),
+                tags=(tag,)
             )
 
+        self.tree.tag_configure("even", background="#eaeaea")
+        self.tree.tag_configure("odd", background="#ffffff")
         self.after(50, self.update_scroll_visibility)
 
     def on_tree_click(self, event):
@@ -175,9 +222,25 @@ class CustomDecksFrame(tk.Frame):
         if region != "cell" or not item_id:
             return
 
+        self.selected_deck_id = int(item_id)
+        self.tree.selection_set(item_id)
+        self.tree.focus(item_id)
+
         if column == "#3":
             self.selected_deck_id = int(item_id)
             self.toggle_used_selected_deck()
+            return "break"
+
+        elif column == "#4":
+            self.open_selected_deck()
+            return "break"
+
+        elif column == "#5":
+            self.rename_selected_deck()
+            return "break"
+
+        elif column == "#6":
+            self.delete_selected_deck()
             return "break"
 
     def on_deck_select(self, event=None):
@@ -206,12 +269,15 @@ class CustomDecksFrame(tk.Frame):
 
         try:
             new_deck_id = create_user_deck(deck_name)
+            row_index = len(self.tree.get_children())
+            tag = "even" if row_index % 2 == 0 else "odd"
 
             self.tree.insert(
                 "",
                 tk.END,
                 iid=str(new_deck_id),
-                values=(deck_name, "0 / 0", "⬜")
+                values=(deck_name, "0 / 0", "⬜", "✏️", "📝", "🗑️"),
+                tags=(tag,)
             )
 
             self.tree.selection_set(str(new_deck_id))
