@@ -439,8 +439,7 @@ class App(tk.Tk):
             subprocess.Popen(
                 [
                     updater_path,
-                    "--target", path,
-                    "--app", os.path.abspath(sys.executable)
+                    "--installer", path
                 ],
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
                 close_fds=True

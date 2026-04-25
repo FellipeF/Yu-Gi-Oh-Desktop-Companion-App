@@ -1,12 +1,12 @@
 import tkinter as tk
 
-
 class TreeviewTooltip:
     def __init__(self, tree, tooltips):
         self.tree = tree
         self.tooltips = tooltips
         self.tipwindow = None
         self.current_column = None
+        self.current_row = None
 
         self.tree.bind("<Motion>", self.on_motion, add="+")
         self.tree.bind("<Leave>", self.hide_tooltip, add="+")
@@ -18,13 +18,16 @@ class TreeviewTooltip:
 
         if region != "cell" or not row or column not in self.tooltips:
             self.current_column = None
+            self.current_row = None
             self.hide_tooltip()
             return
 
-        if column == self.current_column:
+        if column == self.current_column and row == self.current_row:
             return
 
         self.current_column = column
+        self.current_row = row
+
         self.show_tooltip(event.x_root, event.y_root, self.tooltips[column])
 
     def show_tooltip(self, x, y, text):
@@ -50,3 +53,6 @@ class TreeviewTooltip:
         if self.tipwindow:
             self.tipwindow.destroy()
             self.tipwindow = None
+
+        self.current_column = None
+        self.current_row = None

@@ -86,6 +86,7 @@ ui_text = {
         "rename_deck": "Rename Deck",
         "no_decks_to_export": "No Selected Deck to Export",
         "deck_not_found": "Deck not found",
+        "search_decks": "Search Decks",
         # ================================
         #  UI
         # ================================
@@ -257,6 +258,7 @@ ui_text = {
         "rename_deck": "Renomear Deck",
         "no_decks_to_export": "Não há deck selecionado para exportar",
         "deck_not_found": "Deck não encontrado",
+        "search_decks": "Procurar Decks",
         # ================================
         #  UI
         # ================================

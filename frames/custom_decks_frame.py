@@ -20,6 +20,9 @@ class CustomDecksFrame(tk.Frame):
         self.controller = controller
         self.selected_deck_id = None
         self.current_column = None
+        self.all_decks = []
+        self.search_var = tk.StringVar()
+        self.search_placeholder_active = True
 
         self.title_label = tk.Label(self, font=("Arial", 14))
         self.title_label.pack(pady=10)
@@ -36,7 +39,26 @@ class CustomDecksFrame(tk.Frame):
             font=("Tahoma", 12, "bold")
         )
 
-        # Table container
+        search_frame = tk.Frame(self)
+        search_frame.pack(fill="x", padx=10, pady=(0,5))
+
+        search_container = tk.Frame(search_frame)
+        search_container.pack(side="left")
+
+        self.search_label = tk.Label(search_container,text="🔎",font=("Segoe UI Emoji", 12))
+        self.search_label.pack(side="left", padx=(0, 5))
+
+        self.search_entry = tk.Entry(search_container,textvariable=self.search_var, font=("Tahoma",12), width=28)
+        self.search_entry.pack(side="left")
+
+        self.search_placeholder_text = self.controller.t("search_decks")
+        self.search_entry.insert(0, self.search_placeholder_text)
+        self.search_entry.config(fg="gray")
+
+        self.search_entry.bind("<FocusIn>", self.clear_search_placeholder)
+        self.search_entry.bind("<FocusOut>", self.restore_search_placeholder)
+        self.search_entry.bind("<KeyRelease>", self.filter_decks)
+
         table_container = tk.Frame(self)
         table_container.pack(fill="both", expand=True, padx=10, pady=10)
 
@@ -68,6 +90,9 @@ class CustomDecksFrame(tk.Frame):
         self.tree.column("edit", width=28, stretch=False, anchor="center")
         self.tree.column("rename", width=28, stretch=False, anchor="center")
         self.tree.column("delete", width=28, stretch=False, anchor="center")
+
+        self.tree.tag_configure("even", background="#eaeaea")
+        self.tree.tag_configure("odd", background="#ffffff")
 
         self.tree.pack(side="left", fill="both", expand=True)
         self.tree.bind("<<TreeviewSelect>>", self.on_deck_select)
@@ -123,6 +148,20 @@ class CustomDecksFrame(tk.Frame):
 
         self.refresh_ui()
 
+    def clear_search_placeholder(self, event=None):
+        if self.search_placeholder_active:
+            self.search_entry.delete(0, tk.END)
+            self.search_entry.config(fg="black")
+            self.search_placeholder_active = False
+
+    def restore_search_placeholder(self, event=None):
+        if not self.search_entry.get().strip():
+            self.search_placeholder_text = self.controller.t("search_decks")
+            self.search_entry.insert(0, self.search_placeholder_text)
+            self.search_entry.config(fg="gray")
+            self.search_placeholder_active = True
+            self.render_decks(self.all_decks)
+
     def add_tooltip(self, widget, text):
         def enter(e):
             widget.tooltip = tk.Toplevel(widget)
@@ -151,7 +190,7 @@ class CustomDecksFrame(tk.Frame):
     def on_motion_cursor(self, event):
         column = self.tree.identify_column(event.x)
 
-        if column in ("#4", "#5", "#6", "#7"):
+        if column in ("#4", "#5", "#6"):
             self.tree.config(cursor="hand2")
         else:
             self.tree.config(cursor="")
@@ -167,9 +206,38 @@ class CustomDecksFrame(tk.Frame):
             if not self.tree_scroll.winfo_ismapped():
                 self.tree_scroll.pack(side="right", fill="y")
 
+    def render_decks(self, decks):
+        self.tree.delete(*self.tree.get_children())
+        self.selected_deck_id = None
+
+        for index, (deck_id, deck_name, is_used, main_count, extra_count) in enumerate(decks):
+            used_text = "✅" if is_used else "⬜"
+            tag = "even" if index % 2 == 0 else "odd"
+
+            self.tree.insert(
+                "",
+                tk.END,
+                iid=str(deck_id),
+                values=(
+                    deck_name,
+                    f"{main_count} / {extra_count}",
+                    used_text,
+                    "✏️",
+                    "📝",
+                    "🗑️"
+                ),
+                tags=(tag,)
+            )
+
+        self.after(50, self.update_scroll_visibility)
 
     def refresh_ui(self):
         self.title_label.config(text=self.controller.t("custom_decks"))
+
+        if self.search_placeholder_active:
+            self.search_entry.delete(0, tk.END)
+            self.search_placeholder_text = self.controller.t("search_decks")
+            self.search_entry.insert(0, self.search_placeholder_text)
 
         self.tree.heading("name", text=self.controller.t("deck_name"))
         self.tree.heading("total_cards", text=self.controller.t("total_cards"))
@@ -192,26 +260,26 @@ class CustomDecksFrame(tk.Frame):
 
     def load_user_decks(self):
         """Loads all the user decks into Treeview"""
-        self.tree.delete(*self.tree.get_children())
-        self.selected_deck_id = None
+        self.all_decks = get_all_user_decks()
+        self.filter_decks()
 
-        decks = get_all_user_decks()
+    def filter_decks(self, event=None):
+        if self.search_placeholder_active:
+            self.render_decks(self.all_decks)
+            return
 
-        for row, (deck_id, deck_name, is_used, main_count, extra_count) in enumerate(decks):
-            used_text = "✅" if is_used else "⬜"
-            tag = "even" if row%2 == 0 else "odd"
+        search_text = self.search_var.get().strip().lower()
 
-            self.tree.insert(
-                "",
-                tk.END,
-                iid=str(deck_id),
-                values=(deck_name, f"{main_count} / {extra_count}", used_text, "✏️","📝","🗑️"),
-                tags=(tag,)
-            )
+        if not search_text:
+            self.render_decks(self.all_decks)
+            return
 
-        self.tree.tag_configure("even", background="#eaeaea")
-        self.tree.tag_configure("odd", background="#ffffff")
-        self.after(50, self.update_scroll_visibility)
+        filtered_decks = [
+            deck for deck in self.all_decks
+            if search_text in deck[1].lower()
+        ]
+
+        self.render_decks(filtered_decks)
 
     def on_tree_click(self, event):
         """Toggles checkbox when clicking the used column"""
@@ -269,23 +337,13 @@ class CustomDecksFrame(tk.Frame):
 
         try:
             new_deck_id = create_user_deck(deck_name)
-            row_index = len(self.tree.get_children())
-            tag = "even" if row_index % 2 == 0 else "odd"
 
-            self.tree.insert(
-                "",
-                tk.END,
-                iid=str(new_deck_id),
-                values=(deck_name, "0 / 0", "⬜", "✏️", "📝", "🗑️"),
-                tags=(tag,)
-            )
+            self.load_user_decks()
 
             self.tree.selection_set(str(new_deck_id))
             self.tree.focus(str(new_deck_id))
             self.tree.see(str(new_deck_id))
             self.selected_deck_id = new_deck_id
-
-            self.update_scroll_visibility()
 
         except Exception as e:
             self.treat_exception(e)
