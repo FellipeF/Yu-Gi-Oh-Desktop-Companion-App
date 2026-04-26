@@ -14,6 +14,7 @@ from .espa_roba import ESPA_ROBA_DECKS
 from .gozaburo_kaiba import GOZABURO_KAIBA_DECKS
 from .ishizu import ISHIZU_DECKS
 from .lumis import LUMIS_DECKS
+from .lumis_and_umbra import LUMIS_AND_UMBRA_DECKS
 from .mai import MAI_DECKS
 from .mako import MAKO_DECKS
 from .marik_ishtar import MARIK_ISHTAR_DECKS
@@ -78,6 +79,7 @@ LIST_OF_DECKS = {
     "red_eyes_black_dragon": RED_EYES_BLACK_DRAGON_DECKS,
     "yami_bakura": YAMI_BAKURA_DECKS,
     "gozaburo_kaiba": GOZABURO_KAIBA_DECKS,
+    "lumis_and_umbra": LUMIS_AND_UMBRA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

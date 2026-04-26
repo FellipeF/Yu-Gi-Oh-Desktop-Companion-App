@@ -37,6 +37,7 @@ DUELISTS = [
     ("red_eyes_black_dragon", "images/duelists/red_eyes_black_dragon.webp", "duel_monsters"),
     ("yami_bakura", "images/duelists/yami-bakura.png", "duel_monsters"),
     ("gozaburo_kaiba", "images/duelists/gozaburo_kaiba.png", "duel_monsters"),
+    ("lumis_and_umbra", "images/duelists/lumis_and_umbra.webp", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================

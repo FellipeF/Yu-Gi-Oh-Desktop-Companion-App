@@ -169,6 +169,7 @@ ui_text = {
         "big5": "The Big Five",
         "grand_championship_duelists": "KC Grand Prix",
         "other_duelists_duel_monsters": "Other (DM)",
+        "lumis_and_umbra": "Lumis and Umbra",
 },
     "pt": {
         #================================
@@ -342,6 +343,7 @@ ui_text = {
         "big5": "Os Cinco Grandes",
         "grand_championship_duelists": "Grand Prix KC",
         "other_duelists_duel_monsters": "Outros (MD)",
+        "lumis_and_umbra": "Lumis e Umbra",
         # ================================
         #  CARDS DETAILS TRANSLATIONS
         # ================================

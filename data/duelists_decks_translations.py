@@ -869,6 +869,28 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Máscara da Luz",
         },
     },
+    "lumis_and_umbra": {
+        "lumis_and_umbra": {
+            "en": "Lumis and Umbra",
+            "pt": "Lumis e Umbra",
+        },
+        "light_and_dark_masks": {
+            "en": "Light and Dark Masks",
+            "pt": "Máscaras de Luz e Trevas",
+        },
+        "cursed_masks": {
+            "en": "Cursed Masks",
+            "pt": "Máscaras Amaldiçoadas",
+        },
+        "ritual_of_masks": {
+            "en": "Ritual of Masks",
+            "pt": "Ritual de Máscaras",
+        },
+        "the_masked_beast": {
+            "en": "The Masked Beast",
+            "pt": "Demônio Mascarado",
+        },
+    },
     "mai_valentine": {
         "harpie": {
             "en": "Harpie",
