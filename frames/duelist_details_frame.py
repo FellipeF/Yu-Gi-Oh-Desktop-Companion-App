@@ -2,9 +2,11 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import json
 
+from data.duel_monsters_pool import DUEL_MONSTERS_POOLS
 from database.queries import get_decks_by_duelist
 from ui.card_details_window import CardDetailsWindow
 from config import CARD_HEIGHT, CARD_WIDTH, EXTRA_TYPES
+from ui.duel_monsters_deck_window import DuelMonstersDeckWindow
 
 class DuelistDetailsFrame(tk.Frame):
 
@@ -59,6 +61,14 @@ class DuelistDetailsFrame(tk.Frame):
         self.export_deck_button.pack(anchor="e", pady=(0, 8), padx=10)
         self.export_deck_button.pack_forget()
 
+        self.generate_duel_monsters_button = tk.Button(
+            left_frame,
+            width=14,
+            command= self.open_duel_monsters_window
+        )
+        self.generate_duel_monsters_button.pack(anchor="e", pady=(0,8), padx=10)
+        self.generate_duel_monsters_button.pack_forget()
+
         cards_container = tk.Frame(left_frame)
         cards_container.pack(fill="both", expand=True, pady=5)
 
@@ -91,11 +101,12 @@ class DuelistDetailsFrame(tk.Frame):
         )
         self.deck_status_label.pack(pady=(0, 9))
 
-        image_container = tk.Frame(right_frame, width=CARD_WIDTH, height=CARD_HEIGHT)
-        image_container.pack(pady=(0, 8))
-        image_container.pack_propagate(False)
+        # Saving this as an attribute so it can be referenced later when repacking deck status on on_deck_select
+        self.image_container = tk.Frame(right_frame, width=CARD_WIDTH, height=CARD_HEIGHT)
+        self.image_container.pack(pady=(0, 8))
+        self.image_container.pack_propagate(False)
 
-        self.image_label = tk.Label(image_container, anchor="center")
+        self.image_label = tk.Label(self.image_container, anchor="center")
         self.image_label.pack(fill="both", expand=True)
 
         self.show_card_details = tk.Button(
@@ -174,6 +185,32 @@ class DuelistDetailsFrame(tk.Frame):
                                  self.controller.t("deck_export_fail").format(error=str(e))
             )
 
+    def open_duel_monsters_window(self):
+        if self.current_deck_index is None:
+            return
+
+        selected_deck = self.decks_data[self.current_deck_index]
+        pool_key = (self.current_duelist_key, selected_deck["deck_key"])
+        card_pool = DUEL_MONSTERS_POOLS.get(pool_key)
+
+        # Just in case I forget someone for the final version, but can be removed later.
+        if card_pool is None:
+            messagebox.showwarning(
+                self.controller.t("generate_deck"),
+                f"{self.controller.t(f'no_pool for : {pool_key}')}"
+            )
+            return
+
+        # For translation to work in the window, we also need to pass the selected deck in the original language
+        # so that an ID lookup is established.
+        original_decks_data = get_decks_by_duelist(self.current_duelist_id, "en", show_exclusive_cards=True)
+        original_selected_deck = next(
+            (deck for deck in original_decks_data if deck["deck_id"] == selected_deck["deck_id"]
+             ), None
+        )
+
+        DuelMonstersDeckWindow(self, self.controller, selected_deck, original_selected_deck, card_pool)
+
     def clear_right_panel(self):
         """Prevents Image, Status and card details button to show up when changing duelist"""
         self.selected_card_id = None
@@ -222,6 +259,7 @@ class DuelistDetailsFrame(tk.Frame):
         self.cards_listbox.pack_forget()
         self.cards_scroll.pack_forget()
         self.export_deck_button.pack_forget()
+        self.generate_duel_monsters_button.pack_forget()
 
         self.clear_right_panel()
 
@@ -364,7 +402,19 @@ class DuelistDetailsFrame(tk.Frame):
             return
 
         self.current_deck_index = selection[0]
-        self.export_deck_button.pack(anchor="e", pady=(0, 8), padx=10)
+
+        selected_deck = self.decks_data[self.current_deck_index]
+        deck_key = selected_deck["deck_key"]
+
+        if deck_key != "duel_monsters":
+            self.deck_status_label.pack(before=self.image_container, pady=(0, 9))
+            self.generate_duel_monsters_button.pack_forget()
+            self.export_deck_button.pack(anchor="e", pady=(0, 8), padx=10)
+        else:
+            self.export_deck_button.pack_forget()
+            self.deck_status_label.pack_forget()
+            self.generate_duel_monsters_button.pack(anchor="e", pady=(0,8), padx=10)
+
         self.load_selected_deck_cards()
         self.clear_card_selection()
 
@@ -470,6 +520,7 @@ class DuelistDetailsFrame(tk.Frame):
             self.current_cards = []
             self.cards_listbox.delete(0, tk.END)
             self.clear_right_panel()
+            self.generate_duel_monsters_button.pack_forget()
 
     def refresh_ui(self):
         self.exclusive_cards_checkbox.config(text=self.controller.t("show_exclusive_cards"))
@@ -478,6 +529,7 @@ class DuelistDetailsFrame(tk.Frame):
         self.duelist_decks_label.config(
             text=self.controller.t("duelist_decks").format(name=self.controller.t(self.current_duelist_key))
         )
+        self.generate_duel_monsters_button.config(text=self.controller.t("generate_deck"))
 
         if self.tk_image is None and self.image_label.cget("image") == "":
             self.image_label.config(text=self.controller.t("select_card"))

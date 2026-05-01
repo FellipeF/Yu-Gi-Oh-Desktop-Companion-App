@@ -122,6 +122,7 @@ class ApiClient:
                 }
 
                 all_info.setdefault("new_cards", [])
+                all_info.setdefault("new_cards_seen", True)
                 self._remove_deprecated_fields(all_info)
                 self.write_info_file(all_info)
 
@@ -139,6 +140,8 @@ class ApiClient:
                 existing = set(all_info.get("new_cards", []))
                 existing.update(new_cards_ids)
                 all_info["new_cards"] = list(existing)
+
+                all_info["new_cards_seen"] = False
             else:
                 new_data = self._read_json_file(cards_cache_path)
 
@@ -164,6 +167,7 @@ class ApiClient:
         # Already normalized, grants that new_cards key exists in case anything goes wrong. Removes last_checked as well.
         if "en" in all_info:
             all_info.setdefault("new_cards", [])
+            all_info.setdefault("new_cards_seen", False)
             return all_info
 
         # Are we in the old version still?
@@ -178,6 +182,7 @@ class ApiClient:
             all_info.pop(key, None)
 
         all_info.setdefault("new_cards", [])
+        all_info.setdefault("new_cards_seen", False)
 
         return all_info
 

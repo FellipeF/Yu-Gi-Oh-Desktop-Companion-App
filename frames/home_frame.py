@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 from database.queries import get_cards_count, get_duelists_count, get_user_decks_count
 from datetime import date, datetime
@@ -35,6 +36,15 @@ class HomeFrame(tk.Frame):
         )
         self.cards_button.pack(pady=button_pady)
 
+        self.new_cards_button = tk.Button(
+            self.buttons_frame,
+            font=button_font,
+            width=button_width,
+            pady=button_pady,
+            command=self.show_new_cards
+        )
+        self.new_cards_button.pack(pady=button_pady)
+
         self.duelists_button = tk.Button(
             self.buttons_frame,
             font=button_font,
@@ -63,6 +73,16 @@ class HomeFrame(tk.Frame):
         self.footer_label.pack()
 
         self.refresh_ui()
+
+    def show_new_cards(self):
+        info = ApiClient().read_info_file() or {}
+        new_cards_ids = info.get("new_cards", [])
+
+        if not new_cards_ids:
+            # When the dataset is downloaded for the first time and all cards are new.
+            messagebox.showinfo(self.controller.t("no_new_cards_added"), self.controller.t("no_new_cards"))
+
+        self.controller.show_new_cards_by_ids(new_cards_ids)
 
     def get_dataset_version_text(self) -> str:
         info = ApiClient().read_info_file()
@@ -121,6 +141,7 @@ class HomeFrame(tk.Frame):
         self.cards_button.config(text=self.controller.t("check_cards"))
         self.duelists_button.config(text=self.controller.t("duelists"))
         self.user_decks_button.config(text=self.controller.t("custom_decks"))
+        self.new_cards_button.config(text=self.controller.t("show_new_cards"))
 
         cards_count = get_cards_count()
         duelists_count = get_duelists_count()

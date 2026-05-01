@@ -33,6 +33,9 @@ ui_text = {
         "dataset_version": "Dataset Version",
         "dataset_version_unknown": "Dataset Version: Unknown",
         "last_update": "Last Updated",
+        "show_new_cards": "Show New Cards",
+        "no_new_cards_added": "No new cards were added",
+        "no_new_cards": "There aren't any new cards available",
         # ================================
         #  CARDS FRAME
         # ================================
@@ -53,6 +56,11 @@ ui_text = {
         "deck_export_success": "Deck(s) Exported Successfully!",
         "deck_export_fail": "Error! Deck Export Failed.",
         "no_decks_exported": "No decks were exported",
+        "generate_deck": "Generate Deck",
+        "not_enough_cards": "Not enough cards to generate a deck.",
+        "deck_generator": "Deck Generator",
+        "generated_deck": "Generated Deck",
+        "generate_another_deck": "Generate Another Deck",
         # ================================
         #  CUSTOM DECKS FRAME
         # ================================
@@ -95,8 +103,8 @@ ui_text = {
         "select_card": "Select a Card",
         "spell_card": "Spell Card",
         "trap_card": "Trap Card",
-        "main_deck": "Deck Principal",
-        "extra_deck": "Deck Extra",
+        "main_deck": "Main Deck",
+        "extra_deck": "Extra Deck",
         "monsters": "Monster Cards",
         "spells": "Spell Cards",
         "traps": "Trap Cards",
@@ -115,6 +123,7 @@ ui_text = {
         "update_fail": "Error Downloading Update",
         "ignore": "Ignore",
         "updater_not_found": "Updater not found",
+        "cards": "cards",
         # ================================
         #  DUELISTS
         # ================================
@@ -206,6 +215,9 @@ ui_text = {
         "dataset_version": "Versão do Dataset",
         "dataset_version_unknown": "Versão do Dataset: Desconhecida",
         "last_update": "Atualizado em",
+        "show_new_cards": "Exibir Cartas Novas",
+        "no_new_cards_added": "Nenhuma carta nova adicionada",
+        "no_new_cards": "Não há cartas novas para exibir",
         # ================================
         #  CARDS FRAME
         # ================================
@@ -226,6 +238,11 @@ ui_text = {
         "deck_export_success": "Deck(s) Exportado(s) com Sucesso!",
         "deck_export_fail": "Erro! Falha ao Exportar Deck",
         "no_decks_exported": "Nenhum deck foi exportado",
+        "generate_deck": "Gerar Deck",
+        "not_enough_cards": "Não há cartas suficientes para gerar um deck",
+        "deck_generator": "Gerador de Deck",
+        "generated_deck": "Deck Gerado",
+        "generate_another_deck": "Gerar Outro Deck",
         # ================================
         #  CUSTOM DECKS AND CUSTOM DECK EDITOR FRAME
         # ================================
@@ -271,7 +288,7 @@ ui_text = {
         "skill_card": "Carta de Habilidade",
         "main_deck": "Deck Principal",
         "extra_deck": "Deck Extra",
-        "monsters": "Cartas Monstros",
+        "monsters": "Cartas Monstro",
         "spells": "Cartas Mágicas",
         "traps": "Cartas Armadilhas",
         "exclusive_cards": "Cartas Exclusivas",
@@ -289,6 +306,7 @@ ui_text = {
         "update_downloaded": "Atualização Baixada! O programa agora irá agora reiniciar",
         "update_fail": "Erro ao baixar atualização",
         "updater_not_found": "Atualizador não encontrado",
+        "cards": "cartas",
         # ================================
         #  DUELISTS
         # ================================

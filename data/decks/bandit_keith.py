@@ -91,7 +91,6 @@ BANDIT_KEITH_DECKS = {
         ("Flame Ghost", 1),
         ("Gatekeeper", 1),
         ("Graveyard and the Hand of Invitation", 1),
-        ("Ground Attacker Bugroth", 1),
         ("Hero of the East", 1),
         ("Holograh", 1),
         ("Kojikocy", 1),

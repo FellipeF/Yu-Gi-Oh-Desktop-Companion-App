@@ -3,6 +3,10 @@
 from database.database import get_connection
 from services.api_client import ApiClient
 
+# NOTE: SOME OF THIS WAS ALREADY IMPLEMENTED, BUT ODDLY CARDS IDS WERE CHANGING, SO BEST WAY TO HANDLE THAT WAS
+# TO DROP TABLES, AS SEEN IN THE DATABASE_CHANGES.PY AND APP.PY FILES
+# JUST IN CASE, I'M STILL LEAVING THOSE UPSERTS IMPLEMENTED HERE SINCE A PARTIAL SEED COULD OCCUR, MESSING UP THE APP.
+
 api = ApiClient()
 
 def _normalize_stat(value) -> int | None:
@@ -88,8 +92,8 @@ def _build_cards_rows(cards: list[dict], language_code: str) -> tuple[list[tuple
     return cards_rows, translations_rows
 
 def _upsert_cards(cursor, cards_rows: list[tuple]) -> None:
-    """Inserts or update cards in the cards Table. If errata is published, the UPSERT guarantees that the new data
-    retrieved from the API is inserted on respective table."""
+    """Inserts or update cards in the cards Table. Even though dataset resets usually drop the table first,
+    ON CONFLICT keeps this seed safe if it is executed more than once or after a partial/incomplete seed."""
     # ON CONFLICT DO UPDATE updates the existing row that conflicts with the row proposed for insertion as
     # its alternative action (https://www.postgresql.org/docs/current/sql-insert.html#id-1.9.3.152.6.3.3)
 

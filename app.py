@@ -15,7 +15,12 @@ from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
 from database.database import create_tables, get_connection  # , run_migrations
 from database.drop_hardcoded_tables import drop_hardcoded_tables
-from database.seed.database_changes import (is_db_the_same, set_latest_db_change)
+from database.seed.database_changes import (
+    is_db_the_same,
+    set_latest_db_change,
+    is_dataset_the_same,
+    set_latest_dataset_seeded
+)
 from frames.custom_deck_editor_frame import CustomDeckEditorFrame
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
@@ -158,21 +163,32 @@ class App(tk.Tk):
         try:
             self.after(0, lambda: self.loading_frame.set_status(self.t("loading_database")))
 
-            # For now, we're only dealing with changes on the hardcoded tables, so no need to do a big migration on it.
-            # But we do check if there has been an update first to avoid useless DROP query.
-
             create_tables()
             #run_migrations()
 
-            if not is_db_the_same():
+            api = ApiClient()
+            info = api.read_info_file() or {}
+
+            current_dataset_version = None
+            if isinstance(info, dict) and "en" in info:
+                current_dataset_version = info["en"].get("database_version")
+
+            needs_db_reset = not is_db_the_same(LATEST_DB_CHANGE)
+            needs_dataset_reset = not is_dataset_the_same(current_dataset_version)
+
+            if needs_db_reset or needs_dataset_reset:
                 drop_hardcoded_tables()
                 create_tables()
-                self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
-                set_latest_db_change(LATEST_DB_CHANGE)
-            else:
-                self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
+
+                if needs_db_reset:
+                    set_latest_db_change(LATEST_DB_CHANGE)
+
+            self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
 
             seed_all()
+
+            if needs_dataset_reset and current_dataset_version:
+                set_latest_dataset_seeded(current_dataset_version)
 
             if self.current_language != "en":
                 self.after(0, lambda: self.loading_frame.set_status(self.t("loading_translations")))
@@ -227,6 +243,16 @@ class App(tk.Tk):
         if not new_cards_ids:
             return
 
+        already_seen = info.get("new_cards_seen", False)
+
+        if already_seen:
+            return
+
+        self.show_new_cards_by_ids(new_cards_ids)
+        info["new_cards_seen"] = True
+        api.write_info_file(info)
+
+    def show_new_cards_by_ids(self, new_cards_ids):
         conn = get_connection()
         cursor = conn.cursor()
 
@@ -245,67 +271,82 @@ class App(tk.Tk):
         cards = cursor.fetchall()
         conn.close()
 
-        self.show_new_cards_modal(cards, len(new_cards_ids), new_cards_ids)
+        if cards:
+            self.show_new_cards_window(cards, len(new_cards_ids), new_cards_ids)
 
-        # Once they are seen, no need to show new cards everytime app starts.
-        info["new_cards"] = []
-        api.write_info_file(info)
+    def show_new_cards_window(self, cards, total_count, all_ids):
+        window = tk.Toplevel(self)
+        window.title(self.t("new_cards_added"))
 
-    def show_new_cards_modal(self, cards, total_count, all_ids):
-        modal = tk.Toplevel(self)
-        modal.title(self.t("new_cards_added"))
-
-        width = 650
+        width = 700
         height = 650
-        self.center_window(modal, width, height)
+        self.center_window(window, width, height)
+        window.minsize(600, 400)
 
-        (tk.Label(modal,
+        (tk.Label(window,
                  text=f"{total_count} {self.t('cards_added')}",
                  font=("Arial", 12, "bold"))
          .pack(pady=10))
 
-        container = tk.Frame(modal)
+        container = tk.Frame(window)
         container.pack(fill="both", expand=True, padx=10)
 
-        canvas = tk.Canvas(container)
-        scrollbar = tk.Scrollbar(container, orient="vertical", command=canvas.yview)
+        container.rowconfigure(0, weight=1)
+        container.columnconfigure(0, weight=1)
 
-        scrollable_frame = tk.Frame(canvas)
+        style = ttk.Style()
+        style.configure("Custom.Treeview", font=("Tahoma", 12), rowheight=28)
 
-        scrollable_frame.bind(
-            "<Configure>",
-            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
-        )
+        tree = ttk.Treeview(container, show="tree", selectmode="browse", style="Custom.Treeview")
+        tree.column("#0", anchor="w", width=620, stretch=True)
 
-        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
-        canvas.configure(yscrollcommand=scrollbar.set)
+        scrollbar = ttk.Scrollbar(container, orient="vertical", command=tree.yview)
+        tree.configure(yscrollcommand=scrollbar.set)
 
-        canvas.pack(side="left", fill="both", expand=True)
-        scrollbar.pack(side="right", fill="y")
+        tree.grid(row=0, column=0, sticky="nsew")
+        scrollbar.grid(row=0, column=1, sticky="ns")
 
-        modal.after(10, lambda: self._populate_new_cards_on_window(scrollable_frame, cards)) #Prevents performance bottlenecks
+        card_by_item = {}
 
-        tk.Button(modal, text="OK", command= modal.destroy).pack(pady=10)
-
-        modal.transient(self)
-
-    def _populate_new_cards_on_window(self, parent, cards):
         for card_id, name in cards:
-            frame = tk.Frame(parent)
-            frame.pack(fill="x", pady=2)
+            item_id = tree.insert("", "end", text=name)
+            card_by_item[item_id] = card_id
 
-            tk.Label(
-                frame,
-                text=name,
-                anchor="w",
-                font=("Tahoma", 14)
-            ).pack(side="left", fill="x", expand=True)
+        buttons_frame = tk.Frame(window)
+        buttons_frame.pack(pady=10)
 
-            tk.Button(
-                frame,
-                text=self.t("card_details"),
-                command=lambda cid=card_id: CardDetailsWindow(self, cid)
-            ).pack(side="right", padx=40)
+        details_button = tk.Button(
+            buttons_frame,
+            text=self.t("card_details"),
+            state="disabled",
+            command=lambda:self.open_selected_new_card_details(tree, card_by_item)
+        )
+        details_button.pack(side="left", padx=5)
+
+        close_button = tk.Button(buttons_frame, text="OK", command=window.destroy)
+        close_button.pack(side="left", padx=5)
+
+        def on_select(_event):
+            selected = tree.selection()
+            details_button.config(state="normal" if selected else "disabled")
+
+        def on_double_click(_event):
+            self.open_selected_new_card_details(tree, card_by_item)
+
+        tree.bind("<<TreeviewSelect>>", on_select)
+        tree.bind("<Double-1>", on_double_click)
+
+    def open_selected_new_card_details(self, tree, card_by_item):
+        selected = tree.selection()
+
+        if not selected:
+            return
+
+        item_id = selected[0]
+        card_id = card_by_item.get(item_id)
+
+        if card_id:
+            CardDetailsWindow(self, card_id)
 
     def check_app_update(self):
         threading.Thread(

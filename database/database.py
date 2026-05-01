@@ -148,8 +148,7 @@ def create_tables():
         )
         """)
 
-    # Stores metadata so that app can check if there's a new version of the hardcoded data or not so it doesn't need
-    # To drop those hardcoded tables everytime it runs.
+    # Stores metadata so that app can check if there's a new database schema or if dataset has been updated.
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS app_metadata (
         key TEXT PRIMARY KEY,

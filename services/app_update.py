@@ -1,5 +1,6 @@
 import requests
 from typing import Optional, Tuple
+import re
 
 class AppUpdater:
     def __init__(self, repo: str, current_version: str) -> None:
@@ -44,5 +45,9 @@ class AppUpdater:
 
     def _normalize_version(self, v:str) -> tuple:
         """Yu-Gi-Oh! Desktop Companion App v1.0.0 -> (1,0,0)"""
-        v = v.lower().replace("v", "")
-        return tuple(int(x) for x in v.split(".") if x.isdigit())
+        match = re.search(r"\d+(?:\.\d+)*", v)
+
+        if not match:
+            return (0,)
+
+        return tuple(int(x) for x in match.group(0).split("."))
