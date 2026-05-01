@@ -38,10 +38,10 @@ DUELISTS = [
     ("yami_bakura", "images/duelists/yami-bakura.png", "duel_monsters"),
     ("gozaburo_kaiba", "images/duelists/gozaburo_kaiba.png", "duel_monsters"),
     ("lumis_and_umbra", "images/duelists/lumis_and_umbra.webp", "duel_monsters"),
+    ("marik_ishtar", "images/duelists/marik_ishtar.webp", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
-    ("marik_ishtar", "images/duelists/placeholder.webp", "duel_monsters"),
     ("yami_yugi", "images/duelists/placeholder.webp", "duel_monsters"),
     ("shadi", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rex_raptor", "images/duelists/placeholder.webp", "duel_monsters"),

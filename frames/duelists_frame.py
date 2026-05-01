@@ -74,25 +74,44 @@ class DuelistsFrame(tk.Frame):
         for duelist in page_duelists:
             duelist_id, duelist_key, img_path, media, deck_count = duelist
 
-            img = Image.open(resource_path(img_path)).resize((200,200))
-            tk_img = ImageTk.PhotoImage(img)
+            # Creating a fixed background so that image is always resized accordingly without deforming
+            img = Image.open(resource_path(img_path)).convert("RGBA")
+            frame_width, frame_height = 220, 260
+            img.thumbnail((200, 240), Image.LANCZOS)
+            background = Image.new("RGBA", (frame_width, frame_height), (235, 235, 235, 255))
+            x = (frame_width - img.width) // 2
+            y = (frame_height - img.height) // 2
+            background.paste(img, (x,y), img)
+            tk_img = ImageTk.PhotoImage(background)
 
-            cell = tk.Frame(self.container, width=210, height=250)
+            cell = tk.Frame(
+                self.container,
+                width=240,
+                height=320,
+                bg="#dcdcdc",
+                highlightbackground="#b0b0b0",
+                highlightthickness=1
+            )
             cell.grid(row=row,column=col,padx=25, pady=25, sticky="n")
             cell.grid_propagate(False)
 
             duelist_button = tk.Button(
                 cell,
                 image=tk_img,
-                text=f"{self.truncate(self.controller.t(duelist_key), 14)}\n({deck_count})",
-                font=("Arial",15),
-                compound="top",
-                wraplength=160,
                 command=lambda d=duelist_id, k=duelist_key: self.show_duelist_details(d,k)
             )
-
             duelist_button.image = tk_img
-            duelist_button.pack(fill="both", expand=True)
+            duelist_button.pack()
+
+            name_label = tk.Label(
+                cell,
+                text=f"{self.controller.t(duelist_key)}\n({deck_count})",
+                font=("Arial", 15),
+                wraplength=220,
+                height=3,
+                justify="center",
+            )
+            name_label.pack(fill="x")
 
             col+=1
             if col == 4:
@@ -102,10 +121,6 @@ class DuelistsFrame(tk.Frame):
         self.prev_button.config(state="disabled" if self.current_page == 0 else "normal")
         is_last_page = (self.current_page + 1) * self.items_per_page >= len(self.duelists)
         self.next_button.config(state="disabled" if is_last_page else "normal")
-
-    def truncate(self, text, max_chars):
-        """Truncate character names if it exceeds certain limit"""
-        return text if len(text) <= max_chars else text[:max_chars - 1] + "..."
 
     def next_page(self):
         # Calculates how many duelists are there to see if there's still a next page

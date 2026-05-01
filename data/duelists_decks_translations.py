@@ -1099,6 +1099,76 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Daedalus Climático",
         },
     },
+    "marik_ishtar": {
+        "darkness": {
+            "en": "Darkness",
+            "pt": "Escuridão",
+        },
+        "keepers_judgment": {
+            "en": "Keeper's Judgment",
+            "pt": "Julgamento do Cuidador",
+        },
+        "roar_of_ra": {
+            "en": "Roar of Ra",
+            "pt": "Rugido de Rá",
+        },
+        "dark_destroyer": {
+            "en": "Dark Destroyer",
+            "pt": "Destruidor Sombrio",
+        },
+        "marik": {
+            "en": "Marik",
+            "pt": "Marik",
+        },
+        "ill_be_king": {
+            "en": "I'll Be King!",
+            "pt": "Eu Serei Rei!",
+        },
+        "vengeful_passion": {
+            "en": "Vengeful Passion",
+            "pt": "Paixão Vingativa",
+        },
+        "i_am_invincible": {
+            "en": "I Am Invincible",
+            "pt": "Eu Sou Invencível",
+        },
+        "millennium_battle_begins": {
+            "en": "Millennium Battle Begins",
+            "pt": "Inicia a Batalha do Milênio",
+        },
+        "your_time_has_expired": {
+            "en": "Your Time Has Expired",
+            "pt": "Seu Tempo Expirou",
+        },
+        "unbeatable_god": {
+            "en": "Unbeatable God",
+            "pt": "Deus Imbatível",
+        },
+        "omnipotent_divine_force": {
+            "en": "Omnipotent Divine Force",
+            "pt": "Força Divina Onipotente",
+        },
+        "legendary_fiend": {
+            "en": "Legendary Fiend",
+            "pt": "Demônio Lendário",
+        },
+        "slime_token": {
+            "en": "Slime Token",
+            "pt": "Ficha de Geleia",
+        },
+        "trial_of_the_jackal": {
+            "en": "Trial of the Jackal",
+            "pt": "Teste do Chacal",
+        },
+        "trial_of_anubis": {
+            "en": "Trial of Anubis",
+            "pt": "Teste do Anúbis",
+        },
+        "trial_of_the_sphinx": {
+            "en": "Trial of the Sphinx",
+            "pt": "Teste da Esfinge",
+        },
+    },
     "maximillion_pegasus": {
         "toonized": {
             "en": "Toonized",

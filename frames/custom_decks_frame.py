@@ -48,7 +48,7 @@ class CustomDecksFrame(tk.Frame):
         self.search_label = tk.Label(search_container,text="🔎",font=("Segoe UI Emoji", 12))
         self.search_label.pack(side="left", padx=(0, 5))
 
-        self.search_entry = tk.Entry(search_container,textvariable=self.search_var, font=("Tahoma",12), width=28)
+        self.search_entry = tk.Entry(search_container,textvariable=self.search_var, font=("Tahoma",12), width=40)
         self.search_entry.pack(side="left")
 
         self.search_placeholder_text = self.controller.t("search_decks")
