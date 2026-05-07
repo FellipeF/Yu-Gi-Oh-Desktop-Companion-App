@@ -39,6 +39,7 @@ DUELISTS = [
     ("gozaburo_kaiba", "images/duelists/gozaburo_kaiba.png", "duel_monsters"),
     ("lumis_and_umbra", "images/duelists/lumis_and_umbra.webp", "duel_monsters"),
     ("marik_ishtar", "images/duelists/marik_ishtar.webp", "duel_monsters"),
+    ("odion", "images/duelists/odion.webp", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
@@ -48,7 +49,6 @@ DUELISTS = [
     ("para", "images/duelists/placeholder.webp", "duel_monsters"),
     ("dox", "images/duelists/placeholder.webp", "duel_monsters"),
     ("yami_marik", "images/duelists/placeholder.webp", "duel_monsters"),
-    ("odion", "images/duelists/placeholder.webp", "duel_monsters"),
     ("seeker", "images/duelists/placeholder.webp", "duel_monsters"),
     ("strings", "images/duelists/placeholder.webp", "duel_monsters"),
     ("rafael","images/duelists/placeholder.webp", "duel_monsters"),

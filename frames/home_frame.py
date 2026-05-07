@@ -81,6 +81,7 @@ class HomeFrame(tk.Frame):
         if not new_cards_ids:
             # When the dataset is downloaded for the first time and all cards are new.
             messagebox.showinfo(self.controller.t("no_new_cards_added"), self.controller.t("no_new_cards"))
+            return
 
         self.controller.show_new_cards_by_ids(new_cards_ids)
 

@@ -177,11 +177,11 @@ class DuelistDetailsFrame(tk.Frame):
                 json.dump(export_data, f, ensure_ascii=False, indent=4)
 
             messagebox.showinfo(
-                self.controller.t("export_deck"),
+                self.controller.t("deck_exporter"),
                 self.controller.t("deck_export_success").format(path=file_path)
             )
         except Exception as e:
-            messagebox.showerror(self.controller.t("export_deck"),
+            messagebox.showerror(self.controller.t("deck_exporter"),
                                  self.controller.t("deck_export_fail").format(error=str(e))
             )
 

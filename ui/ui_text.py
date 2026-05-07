@@ -52,8 +52,12 @@ ui_text = {
         "duelist_decks": "{name} Decks",
         "show_exclusive_cards": "Show exclusive cards",
         "no_decks_found": "No Decks Found",
-        "export_deck": "Export Deck",
-        "deck_export_success": "Deck(s) Exported Successfully!",
+        "export_deck": "Export Deck(s)",
+        "deck_exporter": "Deck Exporter",
+        "deck_export_success": "Deck Exported Successfully!",
+        "decks_export_success": "Decks Exported Successfully!",
+        "deck_import_success": "Deck Imported Successfully!",
+        "decks_import_success": "Decks Imported Successfully!",
         "deck_export_fail": "Error! Deck Export Failed.",
         "no_decks_exported": "No decks were exported",
         "generate_deck": "Generate Deck",
@@ -64,7 +68,8 @@ ui_text = {
         # ================================
         #  CUSTOM DECKS FRAME
         # ================================
-        "import_deck": "Import Deck",
+        "import_deck": "Import Deck(s)",
+        "deck_importer": "Deck Importer",
         "could_not_read_deck_file": "Error! Could not read deck file",
         "invalid_card_entry": "Error! Invalid Card Format",
         "could_not_import_card": "Error importing card from this deck",
@@ -86,15 +91,18 @@ ui_text = {
         "deck_cards": "Deck Cards",
         "enter_deck_name": "Enter Deck Name",
         "enter_imported_deck_name": "Enter Imported Deck Name",
-        "delete_deck": "Delete Deck",
+        "delete_deck": "Delete Deck(s)",
+        "deck_remover": "Deck Remover",
         "confirm_delete_deck": "Are you sure you want to delete this deck?",
+        "confirm_delete_decks": "Are you sure you want to delete these decks?",
         "deck_name_already_exists": "There is already a deck with this name.",
         "deck_deleted_successfully": "Deck(s) Deleted successfully!",
         "no_decks_deleted": "No deck to delete",
         "rename_deck": "Rename Deck",
-        "no_decks_to_export": "No Selected Deck to Export",
+        "no_decks_to_export": "Please select a deck to export",
         "deck_not_found": "Deck not found",
         "search_decks": "Search Decks",
+        "invalid_deck_file": "Invalid Deck File",
         # ================================
         #  UI
         # ================================
@@ -234,9 +242,13 @@ ui_text = {
         "duelist_decks": "Decks de {name}",
         "show_exclusive_cards": "Mostrar cartas exclusivas",
         "no_decks_found": "Nenhum Deck encontrado",
-        "export_deck": "Exportar Deck",
-        "deck_export_success": "Deck(s) Exportado(s) com Sucesso!",
+        "export_deck": "Exportar Deck(s)",
+        "deck_exporter": "Exportador de Deck",
+        "deck_export_success": "Deck Exportado com Sucesso!",
+        "decks_export_success": "Decks Exportados com Sucesso!",
         "deck_export_fail": "Erro! Falha ao Exportar Deck",
+        "deck_import_success": "Deck Importado com Sucesso!",
+        "decks_import_success": "Decks Importados com Sucesso!",
         "no_decks_exported": "Nenhum deck foi exportado",
         "generate_deck": "Gerar Deck",
         "not_enough_cards": "Não há cartas suficientes para gerar um deck",
@@ -246,7 +258,8 @@ ui_text = {
         # ================================
         #  CUSTOM DECKS AND CUSTOM DECK EDITOR FRAME
         # ================================
-        "import_deck": "Importar Deck",
+        "import_deck": "Importar Deck(s)",
+        "deck_importer": "Importador de Deck",
         "could_not_read_deck_file": "Erro ao ler arquivo de deck",
         "invalid_card_entry": "Erro! Formato de Carta Incorreto",
         "could_not_import_card": "Erro ao importar carta",
@@ -268,15 +281,18 @@ ui_text = {
         "deck_cards": "Cartas do Deck",
         "enter_deck_name": "Insira Nome do Deck",
         "enter_imported_deck_name": "Insira Nome do Deck Importado",
-        "delete_deck": "Excluir Deck",
+        "delete_deck": "Excluir Deck(s)",
+        "deck_remover": "Removedor de Deck",
         "deck_deleted_successfully": "Deck(s) Excluído(s) com sucesso!",
         "no_decks_deleted": "Nenhum Deck para excluir",
         "confirm_delete_deck": "Tem certeza que deseja excluir este deck?",
+        "confirm_delete_decks": "Tem certeza que deseja excluir estes decks?",
         "deck_name_already_exists": "Já existe um deck com esse nome.",
         "rename_deck": "Renomear Deck",
-        "no_decks_to_export": "Não há deck selecionado para exportar",
+        "no_decks_to_export": "Selecione um deck para exportar",
         "deck_not_found": "Deck não encontrado",
         "search_decks": "Procurar Decks",
+        "invalid_deck_file": "Arquivo de deck inválido",
         # ================================
         #  UI
         # ================================

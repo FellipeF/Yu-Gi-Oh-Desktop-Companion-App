@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, simpledialog, messagebox, filedialog
 import json
+import zipfile
+import re
 
 from database.queries import (
     get_all_user_decks,
@@ -62,19 +64,19 @@ class CustomDecksFrame(tk.Frame):
         table_container = tk.Frame(self)
         table_container.pack(fill="both", expand=True, padx=10, pady=10)
 
-        columns = ("name", "total_cards", "used", "edit", "rename", "delete")
+        columns = ("name", "total_cards", "used", "edit", "rename")
         self.tree = ttk.Treeview(
             table_container,
             columns=columns,
             show="headings",
             height=15,
-            style="Custom.Treeview"
+            style="Custom.Treeview",
+            selectmode="extended",
         )
 
         self.tooltip = TreeviewTooltip(self.tree, {
             "#4": self.controller.t("edit"),
             "#5": self.controller.t("rename_deck"),
-            "#6": self.controller.t("delete"),
         })
 
         self.tree.heading("name", text=self.controller.t("deck_name"))
@@ -82,14 +84,12 @@ class CustomDecksFrame(tk.Frame):
         self.tree.heading("used", text=self.controller.t("used"))
         self.tree.heading("edit", text="")
         self.tree.heading("rename", text="")
-        self.tree.heading("delete", text="")
 
         self.tree.column("name", width=360, anchor="w")
         self.tree.column("total_cards", width=130, anchor="center")
         self.tree.column("used", width=80, anchor="center")
         self.tree.column("edit", width=28, stretch=False, anchor="center")
         self.tree.column("rename", width=28, stretch=False, anchor="center")
-        self.tree.column("delete", width=28, stretch=False, anchor="center")
 
         self.tree.tag_configure("even", background="#eaeaea")
         self.tree.tag_configure("odd", background="#ffffff")
@@ -99,6 +99,10 @@ class CustomDecksFrame(tk.Frame):
         self.tree.bind("<Double-1>", self.open_selected_deck)
         self.tree.bind("<Button-1>", self.on_tree_click)
         self.tree.bind("<Motion>", self.on_motion_cursor, add="+") # So that cursor + tooltip both work together
+        self.tree.bind("<Shift-Button-1>", self.on_shift_click) # Using custom anchor so Shift + Click works properly
+        self.tree.bind("<Control-Button-1>", self.on_ctrl_click)
+        self.tree.bind("<Delete>", self.on_delete_key)
+        self.tree.bind("<F2>", self.on_f2_key)
 
         self.tree_scroll = ttk.Scrollbar(table_container, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=self.tree_scroll.set)
@@ -135,9 +139,18 @@ class CustomDecksFrame(tk.Frame):
         )
         self.export_button.pack(side="left", padx=3)
 
+        self.delete_button = tk.Button(
+            right_frame,
+            text="🗑️",
+            font=("Segoe UI Emoji", 12),
+            command=self.delete_selected_deck
+        )
+        self.delete_button.pack(side="left", padx=3)
+
         self.add_tooltip(self.new_button, self.controller.t("new_deck"))
         self.add_tooltip(self.import_button, self.controller.t("import_deck"))
         self.add_tooltip(self.export_button, self.controller.t("export_deck"))
+        self.add_tooltip(self.delete_button, self.controller.t("delete_deck"))
 
         self.return_button = tk.Button(
             self,
@@ -190,10 +203,76 @@ class CustomDecksFrame(tk.Frame):
     def on_motion_cursor(self, event):
         column = self.tree.identify_column(event.x)
 
-        if column in ("#4", "#5", "#6"):
+        if column in ("#4", "#5"):
             self.tree.config(cursor="hand2")
         else:
             self.tree.config(cursor="")
+
+    def on_shift_click(self, event):
+        item_id = self.tree.identify_row(event.y)
+
+        if not item_id:
+            return "break"
+
+        children = list(self.tree.get_children())
+
+        if not self.selected_deck_id:
+            self.tree.selection_set(item_id)
+            self.selected_deck_id = int(item_id)
+            return "break"
+
+        start_item = str(self.selected_deck_id)
+
+        if start_item not in children or item_id not in children:
+            return "break"
+
+        start_index = children.index(start_item)
+        end_index = children.index(item_id)
+
+        if start_index > end_index:
+            start_index, end_index = end_index, start_index
+
+        items_to_select = children[start_index:end_index + 1]
+
+        self.tree.selection_set(items_to_select)
+        self.tree.focus(item_id)
+
+        return "break"
+
+    def on_ctrl_click(self, event):
+        item_id = self.tree.identify_row(event.y)
+
+        if not item_id:
+            return "break"
+
+        current_selection = set(self.tree.selection())
+
+        if item_id in current_selection: # Clicked again?
+            current_selection.remove(item_id)
+        else:
+            current_selection.add(item_id)
+
+        self.tree.selection_set(list(current_selection))
+        self.tree.focus(item_id)
+        self.selected_deck_id = int(item_id)
+
+        return "break"
+
+    def on_delete_key(self, event=None):
+        if not self.tree.selection():
+            return "break"
+
+        self.delete_selected_deck()
+        return "break"
+
+    def on_f2_key(self, event=None):
+        selection = self.tree.selection()
+        if not selection:
+            return "break"
+
+        self.selected_deck_id = int(selection[0])
+        self.rename_selected_deck()
+        return "break"
 
     def update_scroll_visibility(self):
         """Hide scrollbar when all items fit in the tree."""
@@ -224,7 +303,6 @@ class CustomDecksFrame(tk.Frame):
                     used_text,
                     "✏️",
                     "📝",
-                    "🗑️"
                 ),
                 tags=(tag,)
             )
@@ -246,12 +324,12 @@ class CustomDecksFrame(tk.Frame):
         self.tooltip.tooltips = {
             "#4": self.controller.t("edit"),
             "#5": self.controller.t("rename_deck"),
-            "#6": self.controller.t("delete"),
         }
 
         self.add_tooltip(self.new_button, self.controller.t("new_deck"))
         self.add_tooltip(self.import_button, self.controller.t("import_deck"))
         self.add_tooltip(self.export_button, self.controller.t("export_deck"))
+        self.add_tooltip(self.delete_button, self.controller.t("delete_deck"))
 
         self.return_button.config(text=self.controller.t("return"))
 
@@ -283,6 +361,14 @@ class CustomDecksFrame(tk.Frame):
 
     def on_tree_click(self, event):
         """Toggles checkbox when clicking the used column"""
+        self.tree.focus_set()
+
+        if event.state & 0x0001: # When Shift is being pressed, ignore this to do the on_shift_click method instead
+            return
+
+        if event.state & 0x0004: # CTRL key
+            return
+
         region = self.tree.identify("region", event.x, event.y)
         column = self.tree.identify_column(event.x)
         item_id = self.tree.identify_row(event.y)
@@ -305,10 +391,6 @@ class CustomDecksFrame(tk.Frame):
 
         elif column == "#5":
             self.rename_selected_deck()
-            return "break"
-
-        elif column == "#6":
-            self.delete_selected_deck()
             return "break"
 
     def on_deck_select(self, event=None):
@@ -366,24 +448,37 @@ class CustomDecksFrame(tk.Frame):
         self.tree.item(item_id, values=values)
 
     def delete_selected_deck(self):
-        if not self.selected_deck_id:
+        selection = self.tree.selection()
+
+        if not selection:
             return
 
-        confirm = messagebox.askyesno(
-            self.controller.t("delete_deck"),
+        count = len(selection)
+
+        confirm_message = (
             self.controller.t("confirm_delete_deck")
+            if count == 1
+            else self.controller.t("confirm_delete_decks").format(count=count)
+        )
+
+        confirm = messagebox.askyesno(
+            self.controller.t("deck_remover"),
+            confirm_message
         )
 
         if not confirm:
             return
 
-        item_id = str(self.selected_deck_id)
+        try:
+            for item_id in selection:
+                delete_user_deck(int(item_id))
 
-        delete_user_deck(self.selected_deck_id)
-        self.tree.delete(item_id)
-        self.selected_deck_id = None
+            self.load_user_decks()
+            self.selected_deck_id = None
+            self.update_scroll_visibility()
 
-        self.update_scroll_visibility()
+        except Exception as e:
+            self.treat_exception(e)
 
     def rename_selected_deck(self):
         if not self.selected_deck_id:
@@ -427,44 +522,14 @@ class CustomDecksFrame(tk.Frame):
         self.controller.frames["CustomDeckEditorFrame"].load_user_deck()
         self.controller.show_frame("CustomDeckEditorFrame")
 
-    def import_deck(self):
-        """Import JSON File and check if it's in the right formatting"""
-        file_path = filedialog.askopenfilename(
-            title=self.controller.t("import_deck"),
-            filetypes=[("JSON files", "*.json")]
-        )
-
-        # Cancel Option was pressed
-        if not file_path:
-            return
-
-        try:
-            with open(file_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except Exception as e:
-            messagebox.showerror(
-                self.controller.t("error"),
-                self.controller.t("could_not_read_deck_file").format(error=str(e))
-            )
-            return
-
-        # Check if file is in correct formatting of dictionary and object
+    def build_deck_import_data(self, data, suggested_name = None):
         if not isinstance(data, dict):
-            messagebox.showerror(
-                self.controller.t("error"),
-                self.controller.t("invalid_deck_file")
-            )
-            return
+            raise ValueError(self.controller.t("invalid_deck_file"))
 
-        # Check if file has required fields
         required_fields = ["duelist", "deck_name", "cards"]
 
         if not all(field in data for field in required_fields):
-            messagebox.showerror(
-                self.controller.t("error"),
-                self.controller.t("invalid_deck_file")
-            )
-            return
+            raise ValueError(self.controller.t("invalid_deck_file"))
 
         cards = data.get("cards")
         deck_name_from_file = data.get("deck_name")
@@ -472,130 +537,146 @@ class CustomDecksFrame(tk.Frame):
 
         # If cards list is empty, return
         if not isinstance(cards, list) or not cards:
-            messagebox.showerror(
-                self.controller.t("error"),
-                self.controller.t("invalid_deck_file")
-            )
-            return
-
-        suggested_name = deck_name_from_file or self.controller.t("imported_deck")
-
-        if duelist_name and deck_name_from_file:
-            suggested_name = f"{duelist_name} - {deck_name_from_file}"
-
-        new_deck_name = simpledialog.askstring(
-            self.controller.t("import_deck"),
-            self.controller.t("enter_imported_deck_name"),
-            initialvalue=suggested_name,
-            parent=self
-        )
-
-        if not new_deck_name:
-            return
-
-        new_deck_name = new_deck_name.strip()
-
-        # Prevents empty deck names
-        if not new_deck_name:
-            return
+            raise ValueError(self.controller.t("invalid_deck_file"))
 
         # Card Validation
         for card in cards:
             if not isinstance(card, dict):
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    self.controller.t("invalid_card_entry")
-                )
-                return
+                raise ValueError(self.controller.t("invalid_card_entry"))
 
             if "name" not in card or "quantity" not in card:
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    self.controller.t("invalid_card_entry")
-                )
-                return
+                raise ValueError(self.controller.t("invalid_card_entry"))
 
             card_name = card.get("name")
             quantity = card.get("quantity")
 
             if not isinstance(card_name, str) or not card_name.strip():
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    self.controller.t("invalid_card_entry")
-                )
-                return
+                raise ValueError(self.controller.t("invalid_card_entry"))
 
             if not isinstance(quantity, int) or quantity <= 0:
-                messagebox.showerror(
-                    self.controller.t("error"),
-                    self.controller.t("invalid_card_entry")
-                )
-                return
+                raise ValueError(self.controller.t("invalid_card_entry"))
+
+        if not suggested_name:
+            suggested_name = deck_name_from_file
+
+            if duelist_name and deck_name_from_file:
+                suggested_name = f"{duelist_name} - {deck_name_from_file}"
+
+        if not suggested_name or not suggested_name.strip():
+            raise ValueError(self.controller.t("invalid_deck_file"))
+
+        suggested_name = suggested_name.strip()
+        new_deck_id = create_user_deck(suggested_name)
+        add_cards_bulk_import(new_deck_id, cards)
+
+        return new_deck_id
+
+    def import_deck(self):
+        """Import JSON File and check if it's in the right formatting"""
+        file_path = filedialog.askopenfilename(
+            title=self.controller.t("import_deck"),
+            filetypes=[
+                ("Deck files", "*.json *.zip"),
+                ("JSON files", "*.json"),
+                ("ZIP files", "*.zip"),
+            ]
+        )
+
+        # Cancel was pressed
+        if not file_path:
+            return
 
         new_deck_id = None
+        created_decks_ids = [] # For transaction control
 
         try:
-            new_deck_id = create_user_deck(new_deck_name)
+            if file_path.lower().endswith(".json"):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
 
-            # When everything is validated, add the card to user deck by ID. This allows translation, instead
-            # of adding it by name only. If no ID, again this means that it's an exclusive card.
-            add_cards_bulk_import(new_deck_id, cards)
+                suggested_name = data.get("deck_name", self.controller.t("imported_deck"))
+
+                new_deck_name = simpledialog.askstring(
+                    self.controller.t("deck_importer"),
+                    self.controller.t("enter_imported_deck_name"),
+                    initialvalue=suggested_name,
+                    parent=self
+                )
+
+                if not new_deck_name:
+                    return
+
+                new_deck_id = self.build_deck_import_data(data, new_deck_name.strip())
+                created_decks_ids.append(new_deck_id)
+
+            elif file_path.lower().endswith(".zip"):
+                imported_count = 0
+                last_deck_id = None
+
+                with zipfile.ZipFile(file_path, "r") as zip_file:
+                    for filename in zip_file.namelist():
+                        if not filename.lower().endswith(".json"):
+                            continue
+
+                        with zip_file.open(filename) as f:
+                            data = json.loads(f.read().decode("utf-8"))
+
+                        last_deck_id = self.build_deck_import_data(data)
+                        created_decks_ids.append(last_deck_id)
+                        imported_count +=1
+
+                if imported_count == 0:
+                    messagebox.showerror(
+                        self.controller.t("error"),
+                        self.controller.t("invalid_deck_file")
+                    )
+                    return
+
+                new_deck_id = last_deck_id
 
             self.load_user_decks()
-            self.tree.selection_set(str(new_deck_id))
-            self.tree.focus(str(new_deck_id))
-            self.tree.see(str(new_deck_id))
-            self.selected_deck_id = new_deck_id
 
-            self.update_scroll_visibility()
+            if new_deck_id:
+                self.tree.selection_set(str(new_deck_id))
+                self.tree.focus(str(new_deck_id))
+                self.tree.see(str(new_deck_id))
+                self.selected_deck_id = new_deck_id
 
-            messagebox.showinfo(
-                self.controller.t("import_deck"),
-                self.controller.t("deck_imported_successfully").format(name=new_deck_name)
-            )
+            if len(created_decks_ids) == 1:
+                messagebox.showinfo(
+                    self.controller.t("deck_importer"),
+                    self.controller.t("deck_import_success")
+                )
+            else:
+                messagebox.showinfo(
+                    self.controller.t("deck_importer"),
+                    f"{len(created_decks_ids)} {self.controller.t('decks_import_success')}"
+                )
 
         except Exception as e:
-
-            # Rollback for in case deck is created, but still fails importing
-            if new_deck_id is not None:
+            for deck_id in reversed(created_decks_ids): # Rollback
                 try:
-                    delete_user_deck(new_deck_id)
+                    delete_user_deck(deck_id)
                 except Exception:
                     pass
 
+            self.load_user_decks()
             self.treat_exception(e)
 
-    def export_deck(self):
-        """Export selected deck to a JSON file."""
-        if not self.selected_deck_id:
-            messagebox.showwarning(
-                self.controller.t("export_deck"),
-                self.controller.t("no_decks_to_export")
-            )
-            return
+    def safe_filename(self, name):
+        """Replaces invalid characters for the OS file structure"""
+        name = re.sub(r'[\\/*?:"<>|]', "_", name)
+        return name.strip().lower().replace(" ", "_")
 
-        deck = get_user_deck_by_id(self.selected_deck_id)
+    def build_deck_export_data(self, deck_id):
+        deck = get_user_deck_by_id(deck_id)
 
         if not deck:
-            messagebox.showerror(
-                self.controller.t("error"),
-                self.controller.t("deck_not_found")
-            )
-            return
+            return None
 
         _deck_id, deck_name, is_used = deck
 
-        cards = get_cards_by_user_deck(
-            self.selected_deck_id,
-            self.controller.current_language
-        )
-
-        if not cards:
-            messagebox.showwarning(
-                self.controller.t("export_deck"),
-                self.controller.t("no_deck_to_export")
-            )
-            return
+        cards = get_cards_by_user_deck(deck_id, self.controller.current_language)
 
         export_data = {
             "duelist": "Duelist",
@@ -610,12 +691,64 @@ class CustomDecksFrame(tk.Frame):
                 "quantity": quantity
             })
 
-        default_filename = f"{deck_name}.json".lower().replace(" ", "_")
+        return deck_name, export_data
+
+    def export_deck(self):
+        """Export selected deck to a JSON file."""
+        selected_items = self.tree.selection()
+
+        if not selected_items:
+            messagebox.showwarning(
+                self.controller.t("deck_exporter"),
+                self.controller.t("no_decks_to_export")
+            )
+            return
+
+        if len(selected_items) == 1:
+            deck_id = int(selected_items[0])
+            result = self.build_deck_export_data(deck_id)
+
+            if not result:
+                messagebox.showerror(
+                    self.controller.t("error"),
+                    self.controller.t("deck_not_found")
+                )
+                return
+
+            deck_name, export_data = result
+            default_filename = f"{self.safe_filename(deck_name)}.json"
+
+            file_path = filedialog.asksaveasfilename(
+                defaultextension=".json",
+                filetypes=[("JSON files", "*.json")],
+                initialfile=default_filename,
+                title=self.controller.t("deck_exporter")
+            )
+
+            if not file_path:
+                return
+
+            try:
+                with open(file_path, "w", encoding="utf-8") as f:
+                    json.dump(export_data, f, ensure_ascii=False, indent=4)
+
+                messagebox.showinfo(
+                    self.controller.t("deck_exporter"),
+                    self.controller.t("deck_export_success").format(path=file_path)
+                )
+
+            except Exception as e:
+                messagebox.showerror(
+                    self.controller.t("deck_exporter"),
+                    self.controller.t("deck_export_fail").format(error=str(e))
+                )
+
+            return
 
         file_path = filedialog.asksaveasfilename(
-            defaultextension=".json",
-            filetypes=[("JSON files", "*.json")],
-            initialfile=default_filename,
+            defaultextension=".zip",
+            filetypes=[("ZIP files", "*.zip")],
+            initialfile="custom_decks_export.zip",
             title=self.controller.t("export_deck")
         )
 
@@ -623,17 +756,31 @@ class CustomDecksFrame(tk.Frame):
             return
 
         try:
-            with open(file_path, "w", encoding="utf-8") as f:
-                json.dump(export_data, f, ensure_ascii=False, indent=4)
+            exported_count = 0
+
+            with zipfile.ZipFile(file_path, "w", zipfile.ZIP_DEFLATED) as zip_file:
+                for item_id in selected_items:
+                    deck_id = int(item_id)
+                    result = self.build_deck_export_data(deck_id)
+
+                    if not result:
+                        continue
+
+                    deck_name, export_data = result
+                    filename = f"{self.safe_filename(deck_name)}.json"
+
+                    zip_file.writestr(filename, json.dumps(export_data, ensure_ascii=False, indent=4))
+
+                    exported_count +=1
 
             messagebox.showinfo(
-                self.controller.t("export_deck"),
-                self.controller.t("deck_export_success").format(path=file_path)
+                self.controller.t("deck_exporter"),
+                f"{exported_count} {self.controller.t('decks_export_success')}\n{file_path}"
             )
 
         except Exception as e:
             messagebox.showerror(
-                self.controller.t("export_deck"),
+                self.controller.t("deck_exporter"),
                 self.controller.t("deck_export_fail").format(error=str(e))
             )
 

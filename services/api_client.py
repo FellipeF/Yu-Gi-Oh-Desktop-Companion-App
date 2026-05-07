@@ -135,13 +135,8 @@ class ApiClient:
                 new_cards = self.get_new_cards(old_data, new_data)
                 new_cards_ids = [card["id"] for card in new_cards]
 
-                # When changing language, assures that new cards from current language don't overwrite new ones from
-                # previous language
-                existing = set(all_info.get("new_cards", []))
-                existing.update(new_cards_ids)
-                all_info["new_cards"] = list(existing)
-
-                all_info["new_cards_seen"] = False
+                all_info["new_cards"] = new_cards_ids
+                all_info["new_cards_seen"] = bool(not new_cards_ids)
             else:
                 new_data = self._read_json_file(cards_cache_path)
 

@@ -20,6 +20,7 @@ from .mako import MAKO_DECKS
 from .marik_ishtar import MARIK_ISHTAR_DECKS
 from .mokuba_kaiba import MOKUBA_DECKS
 from .noah_kaiba import NOAH_KAIBA_DECKS
+from .odion import ODION_DECKS
 from .other_duelists_duel_monsters import OTHER_DM_DECKS
 from .panik import PANIK_DECKS
 from .rebecca import REBECCA_DECKS
@@ -80,6 +81,7 @@ LIST_OF_DECKS = {
     "yami_bakura": YAMI_BAKURA_DECKS,
     "gozaburo_kaiba": GOZABURO_KAIBA_DECKS,
     "lumis_and_umbra": LUMIS_AND_UMBRA_DECKS,
+    "odion": ODION_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS"]

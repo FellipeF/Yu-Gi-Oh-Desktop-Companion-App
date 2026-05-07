@@ -413,7 +413,7 @@ DUELISTS_DECKS_KEYS = {
             "pt": "Confronto Implacável de Espadas!",
         },
         "lucky_dice": {
-            "en": "Dado da Sorte",
+            "en": "Lucky Dice",
             "pt": "Dado da Sorte",
         },
         "gradius": {
@@ -1462,6 +1462,96 @@ DUELISTS_DECKS_KEYS = {
         "urgent_ritual": {
             "en": "Urgent Ritual",
             "pt": "Ritual Urgente",
+        },
+    },
+    "odion": {
+        "trap_wave": {
+            "en": "Trap Wave",
+            "pt": "Onda de Armadilha",
+        },
+        "trap_zone": {
+            "en": "Trap Zone",
+            "pt": "Zona de Armadilha",
+        },
+        "temple_lurker": {
+            "en": "Temple Lurker",
+            "pt": "Espreitador do Templo",
+        },
+        "trap_tactics": {
+            "en": "Trap Tactics",
+            "pt": "Táticas de Armadilha",
+        },
+        "trap_tactics_2": {
+            "en": "Trap Tactics (2)",
+            "pt": "Táticas de Armadilha (2)",
+        },
+        "xyz_startup": {
+            "en": "Xyz Startup",
+            "pt": "Início Xyz",
+        },
+        "odion": {
+            "en": "Odion",
+            "pt": "Odion",
+        },
+        "feeble_immortal": {
+            "en": "Feeble Immortal",
+            "pt": "Imortal Fraco",
+        },
+        "mystical_violet_crystal": {
+            "en": "Mystical Violet Crystal",
+            "pt": "Cristal Violeta Místico",
+        },
+        "immortal_apparition": {
+            "en": "Immortal Apparition",
+            "pt": "Aparição Imortal",
+        },
+        "embodiment_of_apophis": {
+            "en": "Embodiment of Apophis",
+            "pt": "Encarnação de Apophis",
+        },
+        "trap_of_the_sacred_beast": {
+            "en": "Trap of the Sacred Beast",
+            "pt": "Armadilha da Besta Sagrada",
+        },
+        "trap_of_the_sacred_beast_2": {
+            "en": "Trap of the Sacred Beast (2)",
+            "pt": "Armadilha da Besta Sagrada (2)",
+        },
+        "trap_of_the_anguish": {
+            "en": "Trap of the Anguish",
+            "pt": "Armadilha da Angústia",
+        },
+        "oceanic_guardians": {
+            "en": "Oceanic Guardians",
+            "pt": "Guardiões Oceânicos",
+        },
+        "temple_of_the_kings": {
+            "en": "Temple of the Kings",
+            "pt": "Templo dos Reis",
+        },
+        "the_gravekeepers": {
+            "en": "The Gravekeepers",
+            "pt": "Os Coveiros",
+        },
+        "skill_drain": {
+            "en": "Skill Drain",
+            "pt": "Drenar Habilidades",
+        },
+        "hieratic_dragon": {
+            "en": "Hieratic Dragon",
+            "pt": "Dragão Hierático",
+        },
+        "trap_of_the_mystical_beast": {
+            "en": "Trap of the Mystical Beast",
+            "pt": "Armadilha da Besta Sagrada",
+        },
+        "nothing_but_traps": {
+            "en": "Nothing But Traps",
+            "pt": "Nada Senão Armadilhas",
+        },
+        "trap_of_the_royals": {
+            "en": "Trap of the Royals",
+            "pt": "Armadilha da Realeza",
         },
     },
     "other_duelists_duel_monsters": {
