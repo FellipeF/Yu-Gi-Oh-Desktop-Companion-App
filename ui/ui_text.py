@@ -44,6 +44,10 @@ ui_text = {
         #  DUELISTS FRAME
         # ================================
         "select_duelist": "Select a Duelist",
+        "filter_all": "All Duelists",
+        "duel_monsters": "Duel Monsters",
+        "gx": "GX",
+        "filter_by": "Filter by",
         # ================================
         #  DUELISTS DETAILS FRAME
         # ================================
@@ -76,7 +80,7 @@ ui_text = {
         "deck_imported_successfully": "Deck Imported Successfully!",
         "deck_import_failed": "Error Importing Deck!",
         "deck_name": "Deck Name",
-        "total_cards": "Main / Extra Cards",
+        "total_cards": "Main / Extra Deck",
         "used": "Used",
         "new_deck": "Create New Deck",
         "edit": "Edit Deck",
@@ -133,7 +137,7 @@ ui_text = {
         "updater_not_found": "Updater not found",
         "cards": "cards",
         # ================================
-        #  DUELISTS
+        #  DUELISTS - DUEL MONSTERS
         # ================================
         "yugi_muto": "Yugi Muto",
         "seto_kaiba": "Seto Kaiba",
@@ -187,6 +191,10 @@ ui_text = {
         "grand_championship_duelists": "KC Grand Prix",
         "other_duelists_duel_monsters": "Other (DM)",
         "lumis_and_umbra": "Lumis and Umbra",
+        # ================================
+        #  DUELISTS - GX
+        # ================================
+        "jean_louis_bonaparte": "Jean-Louis Bonaparte",
 },
     "pt": {
         #================================
@@ -234,6 +242,10 @@ ui_text = {
         #  DUELISTS FRAME
         # ================================
         "select_duelist": "Selecionar Duelista",
+        "filter_all": "Todos Duelistas",
+        "duel_monsters": "Monstros de Duelo",
+        "gx": "GX",
+        "filter_by": "Filtrar por",
         # ================================
         #  DUELISTS DETAILS FRAME
         # ================================
@@ -266,7 +278,7 @@ ui_text = {
         "deck_imported_successfully": "Deck Importado com Sucesso!",
         "deck_import_failed": "Erro ao importar Deck",
         "deck_name": "Nome do Deck",
-        "total_cards": "Cartas Principal / Extra",
+        "total_cards": "Deck Principal / Extra",
         "used": "Utilizado",
         "new_deck": "Criar Novo Deck",
         "edit": "Editar Deck",
@@ -324,7 +336,7 @@ ui_text = {
         "updater_not_found": "Atualizador não encontrado",
         "cards": "cartas",
         # ================================
-        #  DUELISTS
+        #  DUELISTS - DUEL MONSTERS
         # ================================
         "yugi_muto": "Yugi Muto",
         "seto_kaiba": "Seto Kaiba",
@@ -378,6 +390,10 @@ ui_text = {
         "grand_championship_duelists": "Grand Prix KC",
         "other_duelists_duel_monsters": "Outros (MD)",
         "lumis_and_umbra": "Lumis e Umbra",
+        # ================================
+        #  DUELISTS - GX
+        # ================================
+        "jean_louis_bonaparte": "Jean-Louis Bonaparte",
         # ================================
         #  CARDS DETAILS TRANSLATIONS
         # ================================

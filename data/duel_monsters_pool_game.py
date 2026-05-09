@@ -1,6 +1,6 @@
 """Probability pool for generating a random deck for the Duel Monsters Game"""
 
-DUEL_MONSTERS_POOLS = {
+DUEL_MONSTERS_POOLS_GAME = {
     ("yugi_muto", "duel_monsters"): (
         ("Mystical Elf", 2),
         ("Mushroom Man", 12),

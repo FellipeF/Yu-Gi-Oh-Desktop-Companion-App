@@ -1,4 +1,4 @@
-DECK_CATEGORIES_TRANSLATIONS = {
+DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS = {
     "toei_first_series": {
         "en": "Toei - First Series",
         "pt": "Toei - Primeira Série",

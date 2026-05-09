@@ -1,4 +1,4 @@
-DECK_CATEGORIES_KEYS = [
+DECK_CATEGORIES_KEYS_DUEL_MONSTERS = [
     "toei_first_series",
     "toei_death_t",
     "toei_movie",

@@ -1,8 +1,17 @@
 """File to populate deck categories, duelist decks and the deck contents Tables"""
 
 from database.database import get_connection
-from data.decks import LIST_OF_DECKS
-from data.deck_categories import DECK_CATEGORIES_KEYS
+from data.duel_monsters.decks import LIST_OF_DECKS_DUEL_MONSTERS
+from data.duel_monsters.deck_categories_duel_monsters import DECK_CATEGORIES_KEYS_DUEL_MONSTERS
+from data.gx.decks import LIST_OF_DECKS_GX
+from data.gx.deck_categories_gx import DECK_CATEGORIES_KEYS_GX
+
+DecksByDuelist = dict[str, dict[str, list[tuple[str, int]]]]
+
+SEED_DECK_SOURCES: list[tuple[DecksByDuelist, list[str]]] = [
+    (LIST_OF_DECKS_DUEL_MONSTERS, DECK_CATEGORIES_KEYS_DUEL_MONSTERS),
+    (LIST_OF_DECKS_GX, DECK_CATEGORIES_KEYS_GX)
+]
 
 def _load_duelist_ids(cursor) -> dict[str, int]:
     """Returns a mapping of duelist key to database id"""
@@ -25,9 +34,13 @@ def _load_duelist_deck_ids(cursor) -> dict[tuple[int, str],int]:
         (duelist_id, deck_key): deck_id for deck_id, duelist_id, deck_key in cursor.fetchall()
     }
 
-def _insert_missing_deck_categories(cursor, existing_category_ids: dict[str, int]) -> None:
+def _insert_missing_deck_categories(
+        cursor,
+        existing_category_ids: dict[str, int],
+        deck_category_keys: list[str],
+) -> None:
     """Creates deck_categories that currently don't exist. Then, update the dictionary with new ids"""
-    rows = [(key, ) for key in DECK_CATEGORIES_KEYS if key not in existing_category_ids]
+    rows = [(key, ) for key in deck_category_keys if key not in existing_category_ids]
 
     if not rows:
         return
@@ -47,14 +60,16 @@ def _insert_missing_deck_categories(cursor, existing_category_ids: dict[str, int
     )
 
 def _build_duelist_decks_rows(
-        duelist_id_by_key: dict[str, int], deck_category_id_by_key: dict[str, int],
+        duelist_id_by_key: dict[str, int],
+        deck_category_id_by_key: dict[str, int],
+        decks_source: DecksByDuelist,
 ) -> list[tuple[int, int | None, str, int]]:
     """Prepare rows to UPSERT. As seen in the database model, deck_category_id is populated if this is a shared
     category key"""
 
     rows: list[tuple[int, int | None, str, int]] = []
 
-    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+    for duelist_key, decks_by_key in decks_source.items():
         duelist_id = duelist_id_by_key.get(duelist_key)
         if duelist_id is None:
             continue
@@ -78,9 +93,9 @@ def _upsert_duelist_decks(cursor, deck_rows: list[tuple[int, int | None, str, in
         order_index = excluded.order_index
         """, deck_rows, )
 
-def _delete_removed_duelist_decks(cursor, duelist_id_by_key: dict[str, int]) -> None:
-    """Deletes dec that no longer exist if LIST_OF_DECKS ever change"""
-    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+def _delete_removed_duelist_decks(cursor, duelist_id_by_key: dict[str, int], decks_source: DecksByDuelist,) -> None:
+    """Deletes deck that no longer exist if LIST_OF_DECKS ever change"""
+    for duelist_key, decks_by_key in decks_source.items():
         duelist_id = duelist_id_by_key.get(duelist_key)
         if duelist_id is None:
             continue
@@ -92,7 +107,7 @@ def _delete_removed_duelist_decks(cursor, duelist_id_by_key: dict[str, int]) -> 
             cursor.execute(f"""
             DELETE FROM duelist_decks
             WHERE duelist_id = ?
-                AND KEY NOT IN ({placeholders})
+                AND key NOT IN ({placeholders})
             """, [duelist_id, *expected_deck_keys])
         else:
             cursor.execute("""
@@ -139,32 +154,36 @@ def _find_card_ids_by_name(cursor, card_names: list[str], base_language_code_for
 
     return card_id_by_name
 
-def _collect_all_card_names() -> list[str]:
+def _collect_all_card_names(deck_sources: list[DecksByDuelist],) -> list[str]:
     """Collect unique card names from all seeded decks"""
     all_card_names: set[str] = set()
 
-    for decks_by_key in LIST_OF_DECKS.values():
-        for cards in decks_by_key.values():
-            for card_name, _quantity in cards:
-                all_card_names.add(card_name)
+    for decks_source in deck_sources:
+        for decks_by_key in decks_source.values():
+            for cards in decks_by_key.values():
+                for card_name, _quantity in cards:
+                    all_card_names.add(card_name)
 
     return list(all_card_names)
 
 def _build_deck_content_rows(
-        duelist_id_by_key: dict[str, int], deck_id_by_duelist_and_key: dict[tuple[int, str], int],
-        card_id_by_name: dict [str, int], ) -> tuple[list[tuple[int, int, int]], list[tuple[int, str, int]]]:
+        duelist_id_by_key: dict[str, int],
+        deck_id_by_duelist_and_key: dict[tuple[int, str], int],
+        card_id_by_name: dict [str, int],
+        decks_source: DecksByDuelist,
+) -> tuple[list[tuple[int, int, int]], list[tuple[int, str, int]]]:
     """Creates 2 rows for UPSERT: one for TCG Official cards, other for exclusive not found in the dataset"""
     rows_with_id: list[tuple[int, int, int]] = []
     rows_with_name: list[tuple[int, str, int]] = []
 
-    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+    for duelist_key, decks_by_key in decks_source.items():
         duelist_id = duelist_id_by_key.get(duelist_key)
-        if not duelist_id:
+        if duelist_id is None:
             continue
 
         for deck_key, cards in decks_by_key.items():
             deck_id = deck_id_by_duelist_and_key.get((duelist_id, deck_key))
-            if not deck_id:
+            if deck_id is None:
                 continue
 
             for card_name, quantity in cards:
@@ -178,7 +197,10 @@ def _build_deck_content_rows(
     return rows_with_id, rows_with_name
 
 def _upsert_deck_contents(
-        cursor, rows_with_id: list[tuple[int, int, int]], rows_with_name: list[tuple[int, str, int]]) -> None:
+        cursor,
+        rows_with_id: list[tuple[int, int, int]],
+        rows_with_name: list[tuple[int, str, int]],
+) -> None:
     """Insert or Update deck_contents table"""
     if rows_with_id:
         cursor.executemany("""
@@ -201,9 +223,10 @@ def _delete_removed_deck_contents(
         duelist_id_by_key: dict[str, int],
         deck_id_by_duelist_and_key: dict[tuple[int, str], int],
         card_id_by_name: dict[str, int],
+        decks_source: DecksByDuelist,
 ) -> None:
     """If card is deleted from deck on the file, delete it from the database as well"""
-    for duelist_key, decks_by_key in LIST_OF_DECKS.items():
+    for duelist_key, decks_by_key in decks_source.items():
         duelist_id = duelist_id_by_key.get(duelist_key)
         if duelist_id is None:
             continue
@@ -255,26 +278,50 @@ def populate_decks(base_language_code_for_lookup: str = "en") -> None:
         duelist_id_by_key = _load_duelist_ids(cursor)
         deck_category_id_by_key = _load_deck_category_ids(cursor)
 
-        _insert_missing_deck_categories(cursor, deck_category_id_by_key)
+        all_deck_sources = [decks_source for decks_source, _ in SEED_DECK_SOURCES]
 
-        deck_rows = _build_duelist_decks_rows(duelist_id_by_key, deck_category_id_by_key, )
-        _upsert_duelist_decks(cursor, deck_rows)
+        for _decks_source, deck_category_keys in SEED_DECK_SOURCES:
+            _insert_missing_deck_categories(cursor, deck_category_id_by_key, deck_category_keys)
 
-        _delete_removed_duelist_decks(cursor, duelist_id_by_key)
+        all_deck_rows: list[tuple[int, int | None, str, int]] = []
+
+        for decks_source, _deck_category_keys in SEED_DECK_SOURCES:
+            all_deck_rows.extend(_build_duelist_decks_rows(duelist_id_by_key, deck_category_id_by_key, decks_source,))
+
+        _upsert_duelist_decks(cursor, all_deck_rows)
+
+        for decks_source, _deck_category_keys in SEED_DECK_SOURCES:
+            _delete_removed_duelist_decks(cursor, duelist_id_by_key,decks_source)
 
         deck_id_by_duelist_and_key = _load_duelist_deck_ids(cursor)
 
-        all_card_names = _collect_all_card_names()
+        all_card_names = _collect_all_card_names(all_deck_sources)
         card_id_by_name = _find_card_ids_by_name(cursor, all_card_names, base_language_code_for_lookup, )
 
-        rows_with_id, rows_with_name = _build_deck_content_rows(
-            duelist_id_by_key,
-            deck_id_by_duelist_and_key,
-            card_id_by_name,
-        )
-        _upsert_deck_contents(cursor, rows_with_id, rows_with_name)
+        all_rows_with_id: list[tuple[int, int, int]] = []
+        all_rows_with_name: list[tuple[int, str, int]] = []
 
-        _delete_removed_deck_contents(cursor, duelist_id_by_key, deck_id_by_duelist_and_key, card_id_by_name)
+        for decks_source, _deck_category_keys in SEED_DECK_SOURCES:
+            rows_with_id, rows_with_name = _build_deck_content_rows(
+                duelist_id_by_key,
+                deck_id_by_duelist_and_key,
+                card_id_by_name,
+                decks_source,
+            )
+
+            all_rows_with_id.extend(rows_with_id)
+            all_rows_with_name.extend(rows_with_name)
+
+        _upsert_deck_contents(cursor, all_rows_with_id, all_rows_with_name)
+
+        for decks_source, _deck_category_keys in SEED_DECK_SOURCES:
+            _delete_removed_deck_contents(
+                cursor,
+                duelist_id_by_key,
+                deck_id_by_duelist_and_key,
+                card_id_by_name,
+                decks_source,
+            )
 
         conn.commit()
     finally:

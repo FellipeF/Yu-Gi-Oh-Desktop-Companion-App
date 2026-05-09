@@ -3,7 +3,7 @@ import requests
 import json
 import os
 from typing import Any, Dict, Optional
-from datetime import date, datetime
+from datetime import datetime
 
 URL_CARDS = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 URL_VERSION = "https://db.ygoprodeck.com/api/v7/checkDBVer.php"
@@ -110,7 +110,7 @@ class ApiClient:
         try:
             db_details = self.get_dataset_details()
             online_version = db_details.get("database_version")
-            local_version = lang_info.get("database_version") if lang_info else None #
+            local_version = lang_info.get("database_version") if lang_info else None
 
             if not os.path.exists(cards_cache_path):  # No cache found.
                 new_data = self.download_cards(language)
@@ -132,11 +132,12 @@ class ApiClient:
                 old_data = self._read_json_file(cards_cache_path)
                 new_data = self.download_cards(language)
 
-                new_cards = self.get_new_cards(old_data, new_data)
-                new_cards_ids = [card["id"] for card in new_cards]
+                if language == "en": # Prevents other languages overriding this info
+                    new_cards = self.get_new_cards(old_data, new_data)
+                    new_cards_ids = [card["id"] for card in new_cards]
 
-                all_info["new_cards"] = new_cards_ids
-                all_info["new_cards_seen"] = bool(not new_cards_ids)
+                    all_info["new_cards"] = new_cards_ids
+                    all_info["new_cards_seen"] = bool(not new_cards_ids)
             else:
                 new_data = self._read_json_file(cards_cache_path)
 

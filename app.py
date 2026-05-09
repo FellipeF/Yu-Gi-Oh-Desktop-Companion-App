@@ -167,18 +167,28 @@ class App(tk.Tk):
             #run_migrations()
 
             api = ApiClient()
-            info = api.read_info_file() or {}
+            online_dataset_version = None
 
-            current_dataset_version = None
-            if isinstance(info, dict) and "en" in info:
-                current_dataset_version = info["en"].get("database_version")
+            try:
+                online_dataset_details = api.get_dataset_details()
+                online_dataset_version = online_dataset_details.get("database_version")
+            except Exception:
+                online_dataset_version = None
 
             needs_db_reset = not is_db_the_same(LATEST_DB_CHANGE)
-            needs_dataset_reset = not is_dataset_the_same(current_dataset_version)
+            needs_dataset_reset = (
+                    online_dataset_version is not None and not is_dataset_the_same(online_dataset_version)
+            )
+
+            if needs_dataset_reset:
+                self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
+                # Downloads the new EN dataset before dropping tables, allowing the app to show new cards
+                api.load_cards("en")
 
             if needs_db_reset or needs_dataset_reset:
                 drop_hardcoded_tables()
                 create_tables()
+                set_latest_db_change(LATEST_DB_CHANGE)
 
                 if needs_db_reset:
                     set_latest_db_change(LATEST_DB_CHANGE)
@@ -187,8 +197,8 @@ class App(tk.Tk):
 
             seed_all()
 
-            if needs_dataset_reset and current_dataset_version:
-                set_latest_dataset_seeded(current_dataset_version)
+            if needs_dataset_reset and online_dataset_version:
+                set_latest_dataset_seeded(online_dataset_version)
 
             if self.current_language != "en":
                 self.after(0, lambda: self.loading_frame.set_status(self.t("loading_translations")))

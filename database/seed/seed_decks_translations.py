@@ -1,8 +1,18 @@
 """File for populating deck_category and duelist_decks translations tables"""
 
 from database.database import get_connection
-from data.deck_categories_translations import DECK_CATEGORIES_TRANSLATIONS
-from data.duelists_decks_translations import DUELISTS_DECKS_KEYS
+from data.duel_monsters.deck_categories_translations_duel_monsters import DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS
+from data.duel_monsters.duelists_duel_monsters_decks_translations import DUELISTS_DECKS_KEYS_DUEL_MONSTERS
+from data.gx.deck_categories_translations_gx import DECK_CATEGORIES_TRANSLATIONS_GX
+from data.gx.duelists_gx_decks_translations import DUELISTS_DECKS_KEYS_GX
+
+DeckCategoryTranslations = dict[str, dict[str, str]]
+DuelistDeckTranslations = dict[str, dict[str, dict[str, str]]]
+
+SEED_DECK_TRANSLATION_SOURCES: list[tuple[DeckCategoryTranslations, DuelistDeckTranslations]] = [
+    (DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS, DUELISTS_DECKS_KEYS_DUEL_MONSTERS),
+    (DECK_CATEGORIES_TRANSLATIONS_GX, DUELISTS_DECKS_KEYS_GX),
+]
 
 def _load_deck_category_ids(cursor) -> dict[str, int]:
     """Returns mapping of deck category key to database id"""
@@ -23,13 +33,16 @@ def _load_duelist_deck_ids(cursor) -> dict[tuple[str, str], int]:
         (duelist_key, deck_key): deck_id for deck_id, duelist_key, deck_key in cursor.fetchall()
     }
 
-def _build_deck_category_translation_rows(deck_category_id_by_key: dict[str, int], ) -> list[tuple[int, str, str]]:
+def _build_deck_category_translation_rows(
+        deck_category_id_by_key: dict[str, int],
+        deck_category_translations: DeckCategoryTranslations,
+) -> list[tuple[int, str, str]]:
     """Builds rows for deck category translations to be used on the Upsert"""
     rows: list[tuple[int ,str, str]] = []
 
-    for category_key, translations in DECK_CATEGORIES_TRANSLATIONS.items():
+    for category_key, translations in deck_category_translations.items():
         deck_category_id = deck_category_id_by_key.get(category_key)
-        if not deck_category_id:
+        if deck_category_id is None:
             continue
 
         for language_code, translated_name in translations.items():
@@ -38,14 +51,16 @@ def _build_deck_category_translation_rows(deck_category_id_by_key: dict[str, int
     return rows
 
 def _build_duelist_deck_translation_rows(
-        deck_id_by_duelist_and_key: dict[tuple[str, str], int], ) -> list[tuple[int, str, str]]:
+        deck_id_by_duelist_and_key: dict[tuple[str, str], int],
+        duelist_deck_translations: DuelistDeckTranslations,
+) -> list[tuple[int, str, str]]:
     """Builds translation rows for decks that are unique to a duelist"""
     rows: list[tuple[int, str, str]] = []
 
-    for duelist_key, decks in DUELISTS_DECKS_KEYS.items():
+    for duelist_key, decks in duelist_deck_translations.items():
         for deck_key, translations in decks.items():
             deck_id = deck_id_by_duelist_and_key.get((duelist_key, deck_key))
-            if not deck_id:
+            if deck_id is None:
                 continue
 
             for language_code, translated_name in translations.items():
@@ -84,7 +99,11 @@ def populate_deck_category_translations() -> None:
 
     try:
         deck_category_id_by_key = _load_deck_category_ids(cursor)
-        rows = _build_deck_category_translation_rows(deck_category_id_by_key)
+        rows: list[tuple[int, str, str]] = []
+
+        for deck_category_translations, _duelist_deck_translations in SEED_DECK_TRANSLATION_SOURCES:
+            rows.extend(_build_deck_category_translation_rows(deck_category_id_by_key, deck_category_translations))
+
         _upsert_deck_category_translations(cursor, rows)
         conn.commit()
     finally:
@@ -97,7 +116,11 @@ def populate_duelist_deck_translations() -> None:
 
     try:
         deck_id_by_duelist_and_key = _load_duelist_deck_ids(cursor)
-        rows = _build_duelist_deck_translation_rows(deck_id_by_duelist_and_key)
+        rows: list[tuple[int, str, str]] = []
+
+        for _deck_category_translations, duelist_deck_translations in SEED_DECK_TRANSLATION_SOURCES:
+            rows.extend(_build_duelist_deck_translation_rows(deck_id_by_duelist_and_key, duelist_deck_translations))
+
         _upsert_duelist_deck_translations(cursor, rows)
         conn.commit()
     finally:

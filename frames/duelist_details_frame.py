@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import json
 
-from data.duel_monsters_pool import DUEL_MONSTERS_POOLS
+from data.duel_monsters_pool_game import DUEL_MONSTERS_POOLS_GAME
 from database.queries import get_decks_by_duelist
 from ui.card_details_window import CardDetailsWindow
 from config import CARD_HEIGHT, CARD_WIDTH, EXTRA_TYPES
@@ -191,7 +191,7 @@ class DuelistDetailsFrame(tk.Frame):
 
         selected_deck = self.decks_data[self.current_deck_index]
         pool_key = (self.current_duelist_key, selected_deck["deck_key"])
-        card_pool = DUEL_MONSTERS_POOLS.get(pool_key)
+        card_pool = DUEL_MONSTERS_POOLS_GAME.get(pool_key)
 
         # Just in case I forget someone for the final version, but can be removed later.
         if card_pool is None:

@@ -1,4 +1,4 @@
-DUELISTS_DECKS_KEYS = {
+DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
     "alister": {
         "toon_gorlag": {
             "en": "Toon/Gorlag",

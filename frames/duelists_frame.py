@@ -10,13 +10,50 @@ class DuelistsFrame(tk.Frame):
         super().__init__(parent)
         self.controller = controller
 
-        self.duelists = get_all_duelists()
+        self.all_duelists = get_all_duelists()
+        self.duelists = self.all_duelists.copy()
         self.sort_duelists()
+
+        #### Reserved for Future Releases #####
+        # self.selected_media = tk.StringVar(value="all")
+        # self.media_options = {
+        #     "all": "filter_all",
+        #     "duel_monsters": "duel_monsters",
+        #     "gx": "gx",
+        # }
+
         self.current_page = 0
         self.items_per_page = 8
 
-        self.select_duelist_label = tk.Label(self, font=("Arial", 16))
-        self.select_duelist_label.pack(pady=10)
+        self.top_bar = tk.Frame(self)
+        self.top_bar.pack(fill="x", padx=10, pady=(10,0))
+
+        self.select_duelist_label = tk.Label(self.top_bar, font=("Arial", 16))
+        self.select_duelist_label.pack(side="left", expand=True)
+
+        #### Reserved for Future Releases #####
+        # self.filter_container = tk.Frame(self.top_bar)
+        # self.filter_container.pack(side="right", padx=(0, 25), pady=(2, 0))
+        #
+        # self.filters_label = tk.Label(self.filter_container,font=("Arial", 11, "bold"),anchor="w",justify="left")
+        # self.filters_label.pack(anchor="w", pady=(0, 2))
+        #
+        # self.media_filter_button = tk.Menubutton(
+        #     self.filter_container,
+        #     relief="raised",
+        #     borderwidth=2,
+        #     cursor="hand2",
+        #     font=("Arial", 10),
+        #     padx=10,
+        #     pady=2,
+        #     width=18,
+        #     indicatoron=False,
+        #     bg="#f5f5f5",
+        #     activebackground="#e2e2e2",
+        # )
+        # self.media_filter_button.menu = tk.Menu(self.media_filter_button,tearoff=0,)
+        # self.media_filter_button["menu"] = self.media_filter_button.menu
+        # self.media_filter_button.pack(anchor="w")
 
         self.container = tk.Frame(self, width=self.controller.app_width, height=505)
         self.container.pack(fill="both", expand=True)
@@ -59,6 +96,20 @@ class DuelistsFrame(tk.Frame):
 
         self.render_page()
         self.refresh_ui()
+
+    #### Reserved for Future Releases #####
+    # def filter_by_media(self):
+    #     selected_media = self.selected_media.get()
+    #
+    #     if selected_media == "all":
+    #         self.duelists = self.all_duelists.copy()
+    #     else:
+    #         self.duelists = [duelist for duelist in self.all_duelists if duelist[3] == selected_media]
+    #
+    #     self.media_filter_button.config(text=f"{self.controller.t(self.media_options[self.selected_media.get()])} ▼")
+    #     self.current_page = 0
+    #     self.sort_duelists()
+    #     self.render_page()
 
     def render_page(self):
         for widget in self.container.winfo_children():
@@ -151,5 +202,24 @@ class DuelistsFrame(tk.Frame):
     def refresh_ui(self):
         self.select_duelist_label.config(text=self.controller.t("select_duelist"))
         self.return_button.config(text=self.controller.t("return"))
+
+        ######## Reserved for Future Releases #######
+
+        # self.filters_label.config(text=self.controller.t("filter_by"))
+        #
+        # menu = self.media_filter_button.menu
+        # menu.delete(0, "end")
+        #
+        # for media_key, translation_key in self.media_options.items():
+        #     menu.add_command(
+        #         label=self.controller.t(translation_key),
+        #         command=lambda value=media_key: (
+        #             self.selected_media.set(value),
+        #             self.filter_by_media()
+        #         )
+        #     )
+        #
+        # self.media_filter_button.config(text=f"{self.controller.t(self.media_options[self.selected_media.get()])} ▼")
+
         self.sort_duelists()
         self.render_page()

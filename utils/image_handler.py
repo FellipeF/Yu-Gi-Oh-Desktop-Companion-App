@@ -29,7 +29,7 @@ class ImageHandler:
 
     def get_placeholder(self, width, height):
         if self.placeholder is None: # Assures that the Tk is already initialized
-            img = Image.open(resource_path("images/placeholder.jpg")).resize((width, height))
+            img = Image.open(resource_path("images/card_placeholder.jpg")).resize((width, height))
             self.placeholder = ImageTk.PhotoImage(img)
 
         return self.placeholder

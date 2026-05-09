@@ -25,6 +25,8 @@ class CustomDecksFrame(tk.Frame):
         self.all_decks = []
         self.search_var = tk.StringVar()
         self.search_placeholder_active = True
+        self.sort_column = "name"
+        self.sort_reverse = False
 
         self.title_label = tk.Label(self, font=("Arial", 14))
         self.title_label.pack(pady=10)
@@ -79,9 +81,18 @@ class CustomDecksFrame(tk.Frame):
             "#5": self.controller.t("rename_deck"),
         })
 
-        self.tree.heading("name", text=self.controller.t("deck_name"))
-        self.tree.heading("total_cards", text=self.controller.t("total_cards"))
-        self.tree.heading("used", text=self.controller.t("used"))
+        self.tree.heading(
+            "name",
+            text=self.controller.t("deck_name"),
+            command=lambda: self.sort_by_column("name")
+        )
+        self.tree.heading(
+            "total_cards",
+            text=self.controller.t("total_cards"),
+            command=lambda: self.sort_by_column("total_cards")
+        )
+
+        self.tree.heading("used", text=self.controller.t("used"), command=lambda: self.sort_by_column("used"))
         self.tree.heading("edit", text="")
         self.tree.heading("rename", text="")
 
@@ -160,6 +171,43 @@ class CustomDecksFrame(tk.Frame):
         self.return_button.pack(pady=10)
 
         self.refresh_ui()
+
+    def get_visible_decks(self):
+        if self.search_placeholder_active:
+            return self.all_decks.copy()
+
+        search_text = self.search_var.get().strip().lower()
+
+        if not search_text:
+            return self.all_decks.copy()
+
+        return [deck for deck in self.all_decks if search_text in deck[1].lower()]
+
+    def sort_by_column(self, column):
+        if self.sort_column == column:
+            self.sort_reverse = not self.sort_reverse
+        else:
+            self.sort_column = column
+            self.sort_reverse = False
+
+        self.render_current_decks()
+
+    def sort_decks(self, decks):
+        if self.sort_column == "name":
+            return sorted(decks, key=lambda deck: deck[1].casefold(), reverse=self.sort_reverse)
+
+        if self.sort_column == "total_cards":
+            return sorted(decks, key=lambda deck: (deck[3], deck[4]), reverse=self.sort_reverse)
+
+        if self.sort_column == "used":
+            return sorted(decks, key=lambda deck: deck[2], reverse=self.sort_reverse)
+
+        return decks
+
+    def render_current_decks(self):
+        decks = self.get_visible_decks()
+        decks = self.sort_decks(decks)
+        self.render_decks(decks)
 
     def clear_search_placeholder(self, event=None):
         if self.search_placeholder_active:
@@ -317,9 +365,19 @@ class CustomDecksFrame(tk.Frame):
             self.search_placeholder_text = self.controller.t("search_decks")
             self.search_entry.insert(0, self.search_placeholder_text)
 
-        self.tree.heading("name", text=self.controller.t("deck_name"))
-        self.tree.heading("total_cards", text=self.controller.t("total_cards"))
-        self.tree.heading("used", text=self.controller.t("used"))
+        self.tree.heading(
+            "name",
+            text=self.controller.t("deck_name"),
+            command=lambda: self.sort_by_column("name")
+        )
+
+        self.tree.heading(
+            "total_cards",
+            text=self.controller.t("total_cards"),
+            command=lambda: self.sort_by_column("total_cards")
+        )
+
+        self.tree.heading("used",text=self.controller.t("used"),command=lambda: self.sort_by_column("used"))
 
         self.tooltip.tooltips = {
             "#4": self.controller.t("edit"),
@@ -339,25 +397,10 @@ class CustomDecksFrame(tk.Frame):
     def load_user_decks(self):
         """Loads all the user decks into Treeview"""
         self.all_decks = get_all_user_decks()
-        self.filter_decks()
+        self.render_current_decks()
 
     def filter_decks(self, event=None):
-        if self.search_placeholder_active:
-            self.render_decks(self.all_decks)
-            return
-
-        search_text = self.search_var.get().strip().lower()
-
-        if not search_text:
-            self.render_decks(self.all_decks)
-            return
-
-        filtered_decks = [
-            deck for deck in self.all_decks
-            if search_text in deck[1].lower()
-        ]
-
-        self.render_decks(filtered_decks)
+        self.render_current_decks()
 
     def on_tree_click(self, event):
         """Toggles checkbox when clicking the used column"""

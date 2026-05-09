@@ -1,0 +1,2 @@
+DECK_CATEGORIES_KEYS_GX = [
+]

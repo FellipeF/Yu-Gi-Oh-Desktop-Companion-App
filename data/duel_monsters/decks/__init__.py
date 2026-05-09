@@ -40,7 +40,7 @@ from .tristan import TRISTAN_DECKS
 from .grand_championship_duelists import KC_GRAND_PRIX_DECKS
 from .pegasus import PEGASUS_DECKS
 
-LIST_OF_DECKS = {
+LIST_OF_DECKS_DUEL_MONSTERS = {
     "yugi_muto": YUGI_DECKS,
     "seto_kaiba": KAIBA_DECKS,
     "joey_wheeler": JOEY_DECKS,
@@ -84,4 +84,4 @@ LIST_OF_DECKS = {
     "odion": ODION_DECKS,
 }
 
-__all__ = ["LIST_OF_DECKS"]
+__all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]
