@@ -291,4 +291,36 @@ DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS = {
         "en": "Graveyard Gunfire",
         "pt": "Tiroteio no Cemitério",
     },
+    "gate_1": {
+            "en": "Gate 1",
+            "pt": "Portão 1",
+    },
+    "gate_2": {
+        "en": "Gate 2",
+        "pt": "Portão 2",
+    },
+    "gate_3": {
+        "en": "Gate 3",
+        "pt": "Portão 3",
+    },
+    "gate_4": {
+        "en": "Gate 4",
+        "pt": "Portão 4",
+    },
+    "guard_level_1_star": {
+        "en": "Guard Level ★✩✩✩✩",
+        "pt": "Guarda Nível ★✩✩✩✩",
+    },
+    "guard_level_2_stars": {
+        "en": "Guard Level ★★✩✩✩",
+        "pt": "Guarda Nível ★★✩✩✩",
+    },
+    "guard_level_3_stars": {
+        "en": "Guard Level ★★★✩✩",
+        "pt": "Guarda Nível ★★★✩✩",
+    },
+    "guard_level_5_stars": {
+        "en": "Guard Level ★★★★★",
+        "pt": "Guarda Nível ★★★★★",
+    },
 }

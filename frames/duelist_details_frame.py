@@ -75,6 +75,9 @@ class DuelistDetailsFrame(tk.Frame):
         self.cards_listbox = tk.Listbox(cards_container, exportselection=False, height=18)
         self.cards_listbox.pack(side="left", fill="both", expand=True)
         self.cards_listbox.bind("<<ListboxSelect>>", self.show_card_image)
+        self.cards_listbox.bind("<Up>", self.on_cards_arrow_key)
+        self.cards_listbox.bind("<Down>", self.on_cards_arrow_key)
+        self.cards_listbox.bind("<ButtonRelease-1>", self.on_cards_mouse_release)
 
         self.cards_scroll = ttk.Scrollbar(
             cards_container,
@@ -439,6 +442,65 @@ class DuelistDetailsFrame(tk.Frame):
                 fg="red"
             )
 
+    def is_valid_card_index(self, index):
+        return 0 <= index < len(self.displayed_cards) and self.displayed_cards[index] is not None
+    
+    def select_card_index(self, index):
+        self.cards_listbox.selection_clear(0, tk.END)
+        self.cards_listbox.select_set(index)
+        self.cards_listbox.activate(index)
+        self.cards_listbox.see(index)
+        self.show_card_image(None)
+        
+    def find_next_valid_card_index(self, start_index, direction):
+        index = start_index
+        
+        while 0 <= index < len(self.displayed_cards):
+            if self.is_valid_card_index(index):
+                return index
+            index += direction
+            
+        return None
+    
+    def on_cards_arrow_key(self, event):
+        selection = self.cards_listbox.curselection()
+        
+        if selection:
+            current_index = selection[0]
+        else:
+            current_index = self.cards_listbox.index(tk.ACTIVE)
+            
+        direction = -1 if event.keysym == "Up" else 1
+        next_index = self.find_next_valid_card_index(current_index + direction, direction)
+        
+        if next_index is not None:
+            self.select_card_index(next_index)
+            
+        return "break"
+    
+    def on_cards_mouse_release(self, event):
+        selection = self.cards_listbox.curselection()
+
+        if not selection:
+            return "break"
+
+        index = selection[0]
+
+        if self.is_valid_card_index(index):
+            return
+
+        next_index = self.find_next_valid_card_index(index + 1, 1)
+
+        if next_index is None:
+            next_index = self.find_next_valid_card_index(index - 1, -1)
+
+        if next_index is not None:
+            self.select_card_index(next_index)
+        else:
+            self.cards_listbox.selection_clear(0, tk.END)
+
+        return "break"
+
     def show_card_image(self, event):
         """Shows card image invoking async function. If no card is found in the API, shows a placeholder instead"""
         selection = self.cards_listbox.curselection()
@@ -449,7 +511,6 @@ class DuelistDetailsFrame(tk.Frame):
 
         # Check if it's a label instead of a card
         if card is None:
-            self.cards_listbox.selection_clear(selection[0])
             return
 
         card_id, *_ = card # No need to get everything here only for the image...

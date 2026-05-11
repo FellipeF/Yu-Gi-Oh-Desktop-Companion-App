@@ -75,4 +75,12 @@ DECK_CATEGORIES_KEYS_DUEL_MONSTERS = [
     "alluring_tactics",
     "neo_kc",
     "graveyard_gunfire",
+    "gate_1",
+    "gate_2",
+    "gate_3",
+    "gate_4",
+    "guard_level_1_star",
+    "guard_level_2_stars",
+    "guard_level_3_stars",
+    "guard_level_5_stars",
 ]

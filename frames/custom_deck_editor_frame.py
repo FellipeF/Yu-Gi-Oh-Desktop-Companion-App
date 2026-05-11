@@ -139,6 +139,9 @@ class CustomDeckEditorFrame(tk.Frame):
         self.deck_cards_list.config(yscrollcommand=self.deck_scroll.set)
 
         self.deck_cards_list.bind("<<ListboxSelect>>", self.on_deck_card_selected)
+        self.deck_cards_list.bind("<Up>", self.on_cards_arrow_key)
+        self.deck_cards_list.bind("<Down>", self.on_cards_arrow_key)
+        self.deck_cards_list.bind("<ButtonRelease-1>", self.on_cards_mouse_release)
 
         deck_buttons_frame = tk.Frame(right_frame)
         deck_buttons_frame.pack(pady=10)
@@ -414,7 +417,6 @@ class CustomDeckEditorFrame(tk.Frame):
 
         card = self.displayed_deck_cards[selection[0]]
         if card is None:
-            self.deck_cards_list.selection_clear(selection[0])
             return
 
         card_id, card_name, *_ = card
@@ -428,6 +430,68 @@ class CustomDeckEditorFrame(tk.Frame):
             card_id,
             self._on_image_loaded
         )
+
+    def is_valid_card_index(self, index):
+        return 0 <= index < len(self.displayed_deck_cards) and self.displayed_deck_cards[index] is not None
+
+    def select_card_index(self, index):
+        self.deck_cards_list.selection_clear(0, tk.END)
+        self.deck_cards_list.select_set(index)
+        self.deck_cards_list.activate(index)
+        self.deck_cards_list.see(index)
+        self.on_deck_card_selected(None)
+
+    def find_next_valid_card_index(self, start_index, direction):
+        index = start_index
+
+        while 0 <= index < len(self.displayed_deck_cards):
+            if self.is_valid_card_index(index):
+                return index
+            index += direction
+
+        return None
+
+    def on_cards_arrow_key(self, event):
+        selection = self.deck_cards_list.curselection()
+
+        if selection:
+            current_index = selection[0]
+        else:
+            current_index = self.deck_cards_list.index(tk.ACTIVE)
+
+        direction = -1 if event.keysym == "Up" else 1
+        next_index = self.find_next_valid_card_index(
+            current_index + direction,
+            direction
+        )
+
+        if next_index is not None:
+            self.select_card_index(next_index)
+
+        return "break"
+
+    def on_cards_mouse_release(self, event):
+        selection = self.deck_cards_list.curselection()
+
+        if not selection:
+            return "break"
+
+        index = selection[0]
+
+        if self.is_valid_card_index(index):
+            return
+
+        next_index = self.find_next_valid_card_index(index + 1, 1)
+
+        if next_index is None:
+            next_index = self.find_next_valid_card_index(index - 1, -1)
+
+        if next_index is not None:
+            self.select_card_index(next_index)
+        else:
+            self.deck_cards_list.selection_clear(0, tk.END)
+
+        return "break"
 
     def remove_one_copy(self):
         deck_id = self.controller.current_user_deck_id

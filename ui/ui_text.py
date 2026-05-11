@@ -191,6 +191,7 @@ ui_text = {
         "grand_championship_duelists": "KC Grand Prix",
         "other_duelists_duel_monsters": "Other (DM)",
         "lumis_and_umbra": "Lumis and Umbra",
+        "paradox_brothers": "Paradox Brothers",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -390,6 +391,7 @@ ui_text = {
         "grand_championship_duelists": "Grand Prix KC",
         "other_duelists_duel_monsters": "Outros (MD)",
         "lumis_and_umbra": "Lumis e Umbra",
+        "paradox_brothers": "Irmãos Paradox",
         # ================================
         #  DUELISTS - GX
         # ================================

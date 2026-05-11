@@ -8,6 +8,7 @@ from .big5 import THE_BIG_FIVE_DECKS
 from .bonz import BONZ_DECKS
 from .dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
 from .dartz import DARTZ_DECKS
+from .dox import DOX_DECKS
 from .duel_computers import DUEL_COMPUTERS_DECKS
 from .duke import DUKE_DECKS
 from .espa_roba import ESPA_ROBA_DECKS
@@ -23,6 +24,8 @@ from .noah_kaiba import NOAH_KAIBA_DECKS
 from .odion import ODION_DECKS
 from .other_duelists_duel_monsters import OTHER_DM_DECKS
 from .panik import PANIK_DECKS
+from .para import PARA_DECKS
+from .paradox_brothers import PARADOX_BROTHERS_DECKS
 from .rebecca import REBECCA_DECKS
 from .red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
 from .serenity import SERENITY_DECKS
@@ -82,6 +85,10 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "gozaburo_kaiba": GOZABURO_KAIBA_DECKS,
     "lumis_and_umbra": LUMIS_AND_UMBRA_DECKS,
     "odion": ODION_DECKS,
+    "para": PARA_DECKS,
+    "dox": DOX_DECKS,
+    "paradox_brothers": PARADOX_BROTHERS_DECKS,
+    
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]

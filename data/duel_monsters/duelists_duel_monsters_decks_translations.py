@@ -365,6 +365,37 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Aroma Sereno",
         },
     },
+    "dox": {
+        "labyrinth_shadow": {
+            "en": "Labyrinth Shadow",
+            "pt": "Sombra do Labirinto",
+        },
+        "shadow_maze": {
+            "en": "Shadow Maze",
+            "pt": "Labirinto de Sombras",
+        },
+        "labyrinth_lurker": {
+            "en": "Labyrinth Lurker",
+            "pt": "Espreitador do Labirinto",
+        },
+
+        "labyrinth_creeper": {
+            "en": "Labyrinth Creeper",
+            "pt": "Rastejador do Labirinto",
+        },
+        "drifting_gatekeeper": {
+            "en": "Drifting Gatekeeper",
+            "pt": "Guardião do Portão à Deriva",
+        },
+        "labyrinth_fighting_fusion_techniques": {
+            "en": "Labyrith-Fighting Fusion Techniques",
+            "pt": "Técnicas de Fusão de Luta de Labirinto",
+        },
+        "labyrinth_fighting_revival_techniques": {
+            "en": "Labyrith-Fighting Revival Techniques",
+            "pt": "Técnicas de Revivescimento de Luta de Labirinto",
+        },
+    },
     "duel_computers": {
         "kaiba_computer_anime": {
             "en": "Kaiba's Computer (Anime)",
@@ -1594,6 +1625,90 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Truques da Princesa-Abóbora",
         },
     },
+    "para": {
+        "gate_guardian": {
+            "en": "Gate Guardian",
+            "pt": "Guardião do Portão",
+        },
+        "gate_release": {
+            "en": "Gate Release",
+            "pt": "Libertação do Portão",
+        },
+        "guardians_unite": {
+            "en": "Guardians Unite",
+            "pt": "Guardiões Unidos",
+        },
+        "guardians_unite_2": {
+            "en": "Guardians Unite (2)",
+            "pt": "Guardiões Unidos (2)",
+        },
+        "wandering_gatekeeper": {
+            "en": "Wandering Gatekeeper",
+            "pt": "Guardião do Portão Errante",
+        },
+        "labyrinth_fighting_shadow_techniques": {
+            "en": "Labyrith-Fighting Shadow Techniques",
+            "pt": "Técnicas de Sombras de Luta de Labirinto",
+        },
+        "labyrinth_fighting_sacrifice_techniques": {
+            "en": "Labyrith-Fighting Sacrifice Techniques",
+            "pt": "Técnicas de Sacríficio de Luta de Labirinto",
+        },
+    },
+    "paradox_brothers": {
+        "paradox_brothers": {
+            "en": "Paradox Brothers",
+            "pt": "Irmãos Paradox",
+        },
+        "wandering_road": {
+            "en": "Wandering Road",
+            "pt": "Estrada Errante",
+        },
+        "dangerous_maze": {
+            "en": "Dangerous Maze",
+            "pt": "Labirinto Perigoso",
+        },
+        "labyrinth_of_nightmare": {
+            "en": "Labyrinth of Nightmare",
+            "pt": "Labirinto do Pesadelo",
+        },
+        "labyrinth_of_nightmare_2": {
+            "en": "Labyrinth of Nightmare (2)",
+            "pt": "Labirinto do Pesadelo (2)",
+        },
+        "labyrinth_of_no_return": {
+            "en": "Labyrith of No Return",
+            "pt": "Labirinto Sem Retorno",
+        },
+        "labyrinth_of_no_return_2": {
+            "en": "Labyrith of No Return (2)",
+            "pt": "Labirinto Sem Retorno (2)",
+        },
+        "labyrinth_of_doom": {
+            "en": "Labyrinth of Doom",
+            "pt": "Labirinto da Perdição",
+        },
+        "everlasting_labyrinth": {
+            "en": "Everlasting Labyrinth",
+            "pt": "Labirinto Duradouro",
+        },
+        "labyrinth_of_tributes": {
+            "en": "Labyrinth of Tributes",
+            "pt": "Labirinto dos Tributos",
+        },
+        "bro_power": {
+            "en": "Bro Power",
+            "pt": "Poder dos Manos",
+        },
+        "paradox_power": {
+            "en": "Paradox Power",
+            "pt": "Poder Paradox",
+        },
+        "labyrinth_fighting_transition_techniques": {
+            "en": "Labyrith-Fighting Transition Techniques",
+            "pt": "Técnicas de Transição de Luta de Labirinto",
+        },
+    },
     "rebecca": {
         "big_bang_usa": {
             "en": "Big Bang USA",
@@ -2065,7 +2180,7 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         },
         "battleguard_bros": {
             "en": "Battleguard Bros.",
-            "pt": "Brothers Guardas de Batalha",
+            "pt": "Manos Guardas de Batalha",
         },
         "the_a_forces": {
             "en": "The A. Forces",
