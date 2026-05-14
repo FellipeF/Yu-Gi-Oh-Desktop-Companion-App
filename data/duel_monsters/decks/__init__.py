@@ -14,6 +14,7 @@ from .duke import DUKE_DECKS
 from .espa_roba import ESPA_ROBA_DECKS
 from .gozaburo_kaiba import GOZABURO_KAIBA_DECKS
 from .ishizu import ISHIZU_DECKS
+from .kuriboh import KURIBOH_DECKS
 from .lumis import LUMIS_DECKS
 from .lumis_and_umbra import LUMIS_AND_UMBRA_DECKS
 from .mai import MAI_DECKS
@@ -88,7 +89,7 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "para": PARA_DECKS,
     "dox": DOX_DECKS,
     "paradox_brothers": PARADOX_BROTHERS_DECKS,
-    
+    "kuriboh": KURIBOH_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]

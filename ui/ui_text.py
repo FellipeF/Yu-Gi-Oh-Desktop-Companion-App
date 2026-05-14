@@ -107,6 +107,8 @@ ui_text = {
         "deck_not_found": "Deck not found",
         "search_decks": "Search Decks",
         "invalid_deck_file": "Invalid Deck File",
+        "limit_reached": "Limit reached",
+        "card_limit_reached": "Unable to add more cards. Limit of 3 reached.",
         # ================================
         #  UI
         # ================================
@@ -136,6 +138,7 @@ ui_text = {
         "ignore": "Ignore",
         "updater_not_found": "Updater not found",
         "cards": "cards",
+        "loading_database": "Loading Database",
         # ================================
         #  DUELISTS - DUEL MONSTERS
         # ================================
@@ -306,6 +309,8 @@ ui_text = {
         "deck_not_found": "Deck não encontrado",
         "search_decks": "Procurar Decks",
         "invalid_deck_file": "Arquivo de deck inválido",
+        "limit_reached": "Limite alcançado",
+        "card_limit_reached": "Não é possível adicionar mais cartas. Limite de 3 alcançado.",
         # ================================
         #  UI
         # ================================
@@ -336,6 +341,7 @@ ui_text = {
         "update_fail": "Erro ao baixar atualização",
         "updater_not_found": "Atualizador não encontrado",
         "cards": "cartas",
+        "loading_database": "Carregando banco de dados",
         # ================================
         #  DUELISTS - DUEL MONSTERS
         # ================================

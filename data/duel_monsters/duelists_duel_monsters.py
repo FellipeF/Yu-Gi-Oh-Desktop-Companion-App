@@ -43,6 +43,7 @@ DUELISTS_DUEL_MONSTERS = [
     ("paradox_brothers", "images/duelists/duel_monsters/paradox_brothers.webp", "duel_monsters"),
     ("para", "images/duelists/duel_monsters/para.webp", "duel_monsters"),
     ("dox", "images/duelists/duel_monsters/dox.webp", "duel_monsters"),
+    ("kuriboh", "images/duelists/duel_monsters/kuriboh.webp", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
@@ -54,5 +55,4 @@ DUELISTS_DUEL_MONSTERS = [
     ("strings", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
     ("rafael","images/duelists/duelist_placeholder.webp", "duel_monsters"),
     ("valon", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
-    ("kuriboh", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
 ]

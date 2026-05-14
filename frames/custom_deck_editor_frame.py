@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 from database.queries import (
     get_user_deck_by_id,
@@ -352,6 +352,10 @@ class CustomDeckEditorFrame(tk.Frame):
         if not selection:
             return
 
+        self.deck_cards_list.selection_clear(0, tk.END)
+        self.selected_deck_card_id = None
+        self.selected_deck_card_name = None
+
         card = self.current_found_cards[selection[0]]
         card_id = card[0]
 
@@ -394,6 +398,11 @@ class CustomDeckEditorFrame(tk.Frame):
         if not deck_id or not self.active_card_id:
             return
 
+        for card_id, card_name, quantity, card_type, section in self.current_deck_cards:
+            if card_id == self.active_card_id and quantity >= 3:
+                messagebox.showwarning(self.controller.t("limit_reached"), self.controller.t("card_limit_reached"))
+                return
+
         success = add_card_to_user_deck(
             deck_id=deck_id,
             card_id=self.active_card_id,
@@ -418,6 +427,8 @@ class CustomDeckEditorFrame(tk.Frame):
         card = self.displayed_deck_cards[selection[0]]
         if card is None:
             return
+
+        self.search_results_list.selection_clear(0, tk.END)
 
         card_id, card_name, *_ = card
 

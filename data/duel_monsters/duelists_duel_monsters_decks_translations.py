@@ -894,6 +894,12 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Duelista Nível Máximo!",
         },
     },
+    "kuriboh": {
+        "kuriboh_and_friends": {
+            "en": "Kuriboh & Friends",
+            "pt": "Kuriboh e Amigos",
+        },
+    },
     "lumis": {
         "mask_of_light": {
             "en": "Mask of Light",
