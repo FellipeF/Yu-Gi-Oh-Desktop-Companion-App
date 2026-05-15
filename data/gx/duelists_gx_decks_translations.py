@@ -53,4 +53,42 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Minha Cerimônia de Coroação",
         },
     },
+    "slade_princeton": {
+        "colossal_power": {
+            "en": "Colossal Power",
+            "pt": "Poder Colossal",
+        },
+        "lords_edict_a": {
+            "en": "Lord's Edict A",
+            "pt": "Édito de Lorde A",
+        },
+        "lords_edict_aa": {
+            "en": "Lord's Edict AA",
+            "pt": "Édito de Lorde AA",
+        },
+        "lords_edict_aaa": {
+            "en": "Lord's Edict AAA",
+            "pt": "Édito de Lorde AAA",
+        },
+        "academy_election": {
+            "en": "Academy Election",
+            "pt": "Eleição Acadêmica",
+        },
+        "those_who_control_people": {
+            "en": "Those Who Control People",
+            "pt": "Aqueles Que Controlam Pessoas",
+        },
+        "those_who_control_dragons": {
+            "en": "Those Who Control Dragons",
+            "pt": "Aqueles Que Controlam Dragões",
+        },
+        "those_who_control_everything": {
+            "en": "Those Who Control Everything",
+            "pt": "Aqueles Que Controlam Tudo",
+        },
+        "those_who_control_the_future": {
+            "en": "Those Who Control The Future",
+            "pt": "Aqueles Que Controlam O Futuro",
+        },
+    },
 }

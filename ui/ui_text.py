@@ -199,6 +199,7 @@ ui_text = {
         #  DUELISTS - GX
         # ================================
         "jean_louis_bonaparte": "Jean-Louis Bonaparte",
+        "slade_princeton": "Slade Princeton",
 },
     "pt": {
         #================================
@@ -402,6 +403,7 @@ ui_text = {
         #  DUELISTS - GX
         # ================================
         "jean_louis_bonaparte": "Jean-Louis Bonaparte",
+        "slade_princeton": "Slade Princeton",
         # ================================
         #  CARDS DETAILS TRANSLATIONS
         # ================================

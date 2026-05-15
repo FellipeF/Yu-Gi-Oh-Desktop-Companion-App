@@ -1,7 +1,8 @@
 DUELISTS_GX = [
-    ##### Reserved for Future Releases #######
+    #### Reserved for Future Releases #######
 
     # ("jean_louis_bonaparte", "images/duelists/gx/jean_louis_bonaparte.webp", "gx"),
+    # ("slade_princeton", "images/duelists/duelist_placeholder.webp", "gx"),
     # # =========================
     # # TODO: Below
     # # =========================
@@ -107,12 +108,10 @@ DUELISTS_GX = [
     # ("advanced_crystal_beasts", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("elemental_hero_flame_wingman", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("sky_scout", "images/duelists/duelist_placeholder.webp", "gx"),
-    # ("freed", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("rahz", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("goblin_elite_attack_force", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("doom_dozer", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("guardian_of_the_labyrinth", "images/duelists/duelist_placeholder.webp", "gx"),
-    # ("burgundy", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("claret", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("maiden_of_the_aqua", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("dancing_fairy", "images/duelists/duelist_placeholder.webp", "gx"),
@@ -124,11 +123,9 @@ DUELISTS_GX = [
     # ("franz", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("gelgo", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("mathmatica", "images/duelists/duelist_placeholder.webp", "gx"),
-    # ("elroy_prescot", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("maitre_d", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("gorisuke", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("mr_huffington", "images/duelists/duelist_placeholder.webp", "gx"),
-    # ("slade_princeton", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("jagger_princeton", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("wheeler", "images/duelists/duelist_placeholder.webp", "gx"),
     # ("czar", "images/duelists/duelist_placeholder.webp", "gx"),
