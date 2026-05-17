@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from ui.card_details_window import CardDetailsWindow
 from config import CARD_WIDTH, CARD_HEIGHT
+from utils.search_bar import SearchBar
 
 class CardsFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -38,8 +39,14 @@ class CardsFrame(tk.Frame):
         self._filter_after_id = None
         self.search_var.trace_add("write", self.on_search_text_changed)
 
-        self.search_entry = tk.Entry(left_header, textvariable=self.search_var, width=50)
-        self.search_entry.pack(anchor="w")
+        self.search_bar = SearchBar(
+            left_header,
+            textvariable=self.search_var,
+            placeholder=self.controller.t("search_for_card"),
+            on_change=self.on_search_text_changed,
+            width=50
+        )
+        self.search_bar.pack(anchor="w")
 
         # Left Side - Card List
         cards_container = tk.Frame(main_container, width=640, height=660)
@@ -101,7 +108,7 @@ class CardsFrame(tk.Frame):
         """Controls the Search Box"""
         self._filter_after_id = None
 
-        name = self.search_var.get()
+        name = self.search_bar.get_text()
         language = self.controller.current_language
 
         previous_card_id = self.selected_card_id
@@ -167,6 +174,11 @@ class CardsFrame(tk.Frame):
 
     def refresh_ui(self):
         self.title_label.config(text=self.controller.t("search_card"))
+        self.search_bar.placeholder = self.controller.t("search_for_card")
+
+        if self.search_bar.placeholder_active:
+            self.search_bar.set_placeholder()
+
         self.image_label.config(text=self.controller.t("select_card"))
         self.show_card_details.config(text=self.controller.t("card_details"))
         self.return_button.config(text=self.controller.t("return"))

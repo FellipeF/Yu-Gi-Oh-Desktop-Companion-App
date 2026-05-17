@@ -3,6 +3,8 @@ from PIL import Image, ImageTk
 from database.queries import get_all_duelists
 from ui.duelist_details_window import DuelistDetailsWindow
 from utils.resource_path import resource_path
+from utils.search_bar import SearchBar
+
 
 class DuelistsFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -13,6 +15,7 @@ class DuelistsFrame(tk.Frame):
         self.all_duelists = get_all_duelists()
         self.duelists = self.all_duelists.copy()
         self.sort_duelists()
+        self.search_var = tk.StringVar()
 
         #### Reserved for Future Releases #####
         # self.selected_media = tk.StringVar(value="all")
@@ -25,11 +28,23 @@ class DuelistsFrame(tk.Frame):
         self.current_page = 0
         self.items_per_page = 8
 
-        self.top_bar = tk.Frame(self)
-        self.top_bar.pack(fill="x", padx=10, pady=(10,0))
+        self.header_container = tk.Frame(self)
+        self.header_container.pack(fill="x", padx=10, pady=(10,5))
 
-        self.select_duelist_label = tk.Label(self.top_bar, font=("Arial", 16))
-        self.select_duelist_label.pack(side="left", expand=True)
+        self.select_duelist_label = tk.Label(self.header_container, font=("Arial", 16))
+        self.select_duelist_label.pack(pady=(0,10))
+
+        self.search_container = tk.Frame(self.header_container)
+        self.search_container.pack(anchor="w")
+
+        self.search_bar = SearchBar(
+            self.search_container,
+            textvariable=self.search_var,
+            placeholder=self.controller.t("search_duelist"),
+            on_change=self.filter_duelists,
+            width=25
+        )
+        self.search_bar.pack(side="left")
 
         #### Reserved for Future Releases #####
         # self.filter_container = tk.Frame(self.top_bar)
@@ -110,6 +125,21 @@ class DuelistsFrame(tk.Frame):
     #     self.current_page = 0
     #     self.sort_duelists()
     #     self.render_page()
+
+    def filter_duelists(self, event=None):
+        search_text = self.search_bar.get_text().casefold()
+
+        if not search_text:
+            self.duelists = self.all_duelists.copy()
+
+        else:
+            self.duelists = [
+                duelist for duelist in self.all_duelists if search_text in self.controller.t(duelist[1]).casefold()
+            ]
+
+        self.current_page = 0
+        self.sort_duelists()
+        self.render_page()
 
     def render_page(self):
         for widget in self.container.winfo_children():

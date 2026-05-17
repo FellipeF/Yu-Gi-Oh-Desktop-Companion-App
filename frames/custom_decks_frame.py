@@ -12,6 +12,7 @@ from database.queries import (
     add_cards_bulk_import, rename_user_deck, get_user_deck_by_id, get_cards_by_user_deck
 )
 from utils.treeview_tooltip import TreeviewTooltip
+from utils.search_bar import SearchBar
 
 class CustomDecksFrame(tk.Frame):
     def __init__(self, parent, controller):
@@ -46,22 +47,14 @@ class CustomDecksFrame(tk.Frame):
         search_frame = tk.Frame(self)
         search_frame.pack(fill="x", padx=10, pady=(0,5))
 
-        search_container = tk.Frame(search_frame)
-        search_container.pack(side="left")
-
-        self.search_label = tk.Label(search_container,text="🔎",font=("Segoe UI Emoji", 12))
-        self.search_label.pack(side="left", padx=(0, 5))
-
-        self.search_entry = tk.Entry(search_container,textvariable=self.search_var, font=("Tahoma",12), width=40)
-        self.search_entry.pack(side="left")
-
-        self.search_placeholder_text = self.controller.t("search_decks")
-        self.search_entry.insert(0, self.search_placeholder_text)
-        self.search_entry.config(fg="gray")
-
-        self.search_entry.bind("<FocusIn>", self.clear_search_placeholder)
-        self.search_entry.bind("<FocusOut>", self.restore_search_placeholder)
-        self.search_entry.bind("<KeyRelease>", self.filter_decks)
+        self.search_bar = SearchBar(
+            search_frame,
+            textvariable=self.search_var,
+            placeholder=self.controller.t("search_decks"),
+            on_change = self.filter_decks,
+            width=40
+        )
+        self.search_bar.pack(side="left")
 
         table_container = tk.Frame(self)
         table_container.pack(fill="both", expand=True, padx=10, pady=10)
@@ -173,10 +166,7 @@ class CustomDecksFrame(tk.Frame):
         self.refresh_ui()
 
     def get_visible_decks(self):
-        if self.search_placeholder_active:
-            return self.all_decks.copy()
-
-        search_text = self.search_var.get().strip().lower()
+        search_text = self.search_bar.get_text().lower()
 
         if not search_text:
             return self.all_decks.copy()
@@ -208,20 +198,6 @@ class CustomDecksFrame(tk.Frame):
         decks = self.get_visible_decks()
         decks = self.sort_decks(decks)
         self.render_decks(decks)
-
-    def clear_search_placeholder(self, event=None):
-        if self.search_placeholder_active:
-            self.search_entry.delete(0, tk.END)
-            self.search_entry.config(fg="black")
-            self.search_placeholder_active = False
-
-    def restore_search_placeholder(self, event=None):
-        if not self.search_entry.get().strip():
-            self.search_placeholder_text = self.controller.t("search_decks")
-            self.search_entry.insert(0, self.search_placeholder_text)
-            self.search_entry.config(fg="gray")
-            self.search_placeholder_active = True
-            self.render_decks(self.all_decks)
 
     def add_tooltip(self, widget, text):
         def enter(e):
@@ -359,11 +335,10 @@ class CustomDecksFrame(tk.Frame):
 
     def refresh_ui(self):
         self.title_label.config(text=self.controller.t("custom_decks"))
+        self.search_bar.placeholder = self.controller.t("search_decks")
 
-        if self.search_placeholder_active:
-            self.search_entry.delete(0, tk.END)
-            self.search_placeholder_text = self.controller.t("search_decks")
-            self.search_entry.insert(0, self.search_placeholder_text)
+        if self.search_bar.placeholder_active:
+            self.search_bar.set_placeholder()
 
         self.tree.heading(
             "name",

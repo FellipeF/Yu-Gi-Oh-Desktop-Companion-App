@@ -48,6 +48,7 @@ ui_text = {
         "duel_monsters": "Duel Monsters",
         "gx": "GX",
         "filter_by": "Filter by",
+        "search_duelist": "Search duelist",
         # ================================
         #  DUELISTS DETAILS FRAME
         # ================================
@@ -139,6 +140,7 @@ ui_text = {
         "updater_not_found": "Updater not found",
         "cards": "cards",
         "loading_database": "Loading Database",
+        "search_for_card": "Search for card",
         # ================================
         #  DUELISTS - DUEL MONSTERS
         # ================================
@@ -251,6 +253,7 @@ ui_text = {
         "duel_monsters": "Monstros de Duelo",
         "gx": "GX",
         "filter_by": "Filtrar por",
+        "search_duelist": "Procurar duelista",
         # ================================
         #  DUELISTS DETAILS FRAME
         # ================================
@@ -343,6 +346,7 @@ ui_text = {
         "updater_not_found": "Atualizador não encontrado",
         "cards": "cartas",
         "loading_database": "Carregando banco de dados",
+        "search_for_card": "Procurar carta",
         # ================================
         #  DUELISTS - DUEL MONSTERS
         # ================================
