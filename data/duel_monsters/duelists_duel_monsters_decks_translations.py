@@ -1715,6 +1715,16 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Técnicas de Transição de Luta de Labirinto",
         },
     },
+    "rafael": {
+        "guardians_of_orichalcos": {
+            "en": "Guardians of Orichalcos",
+            "pt": "Guardiões de Orichalcos",
+        },
+        "the_super_soldier": {
+            "en": "The Super Soldier",
+            "pt": "O Super Soldado",
+        },
+    },
     "rebecca": {
         "big_bang_usa": {
             "en": "Big Bang USA",

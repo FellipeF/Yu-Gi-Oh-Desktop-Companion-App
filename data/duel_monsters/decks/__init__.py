@@ -27,6 +27,7 @@ from .other_duelists_duel_monsters import OTHER_DM_DECKS
 from .panik import PANIK_DECKS
 from .para import PARA_DECKS
 from .paradox_brothers import PARADOX_BROTHERS_DECKS
+from .rafael import RAFAEL_DECKS
 from .rebecca import REBECCA_DECKS
 from .red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
 from .serenity import SERENITY_DECKS
@@ -90,6 +91,7 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "dox": DOX_DECKS,
     "paradox_brothers": PARADOX_BROTHERS_DECKS,
     "kuriboh": KURIBOH_DECKS,
+    "rafael": RAFAEL_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]

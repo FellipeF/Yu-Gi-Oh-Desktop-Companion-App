@@ -591,7 +591,7 @@ class CustomDecksFrame(tk.Frame):
 
     def import_deck(self):
         """Import JSON File and check if it's in the right formatting"""
-        file_path = filedialog.askopenfilename(
+        file_paths = filedialog.askopenfilenames(
             title=self.controller.t("import_deck"),
             filetypes=[
                 ("Deck files", "*.json *.zip"),
@@ -601,75 +601,76 @@ class CustomDecksFrame(tk.Frame):
         )
 
         # Cancel was pressed
-        if not file_path:
+        if not file_paths:
             return
 
         new_deck_id = None
         created_decks_ids = [] # For transaction control
 
         try:
-            if file_path.lower().endswith(".json"):
-                with open(file_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
+            for file_path in file_paths:
+                if file_path.lower().endswith(".json"):
+                    with open(file_path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
 
-                suggested_name = data.get("deck_name", self.controller.t("imported_deck"))
+                    suggested_name = data.get("deck_name", self.controller.t("imported_deck"))
 
-                new_deck_name = simpledialog.askstring(
-                    self.controller.t("deck_importer"),
-                    self.controller.t("enter_imported_deck_name"),
-                    initialvalue=suggested_name,
-                    parent=self
-                )
-
-                if not new_deck_name:
-                    return
-
-                new_deck_id = self.build_deck_import_data(data, new_deck_name.strip())
-                created_decks_ids.append(new_deck_id)
-
-            elif file_path.lower().endswith(".zip"):
-                imported_count = 0
-                last_deck_id = None
-
-                with zipfile.ZipFile(file_path, "r") as zip_file:
-                    for filename in zip_file.namelist():
-                        if not filename.lower().endswith(".json"):
-                            continue
-
-                        with zip_file.open(filename) as f:
-                            data = json.loads(f.read().decode("utf-8"))
-
-                        last_deck_id = self.build_deck_import_data(data)
-                        created_decks_ids.append(last_deck_id)
-                        imported_count +=1
-
-                if imported_count == 0:
-                    messagebox.showerror(
-                        self.controller.t("error"),
-                        self.controller.t("invalid_deck_file")
+                    new_deck_name = simpledialog.askstring(
+                        self.controller.t("deck_importer"),
+                        self.controller.t("enter_imported_deck_name"),
+                        initialvalue=suggested_name,
+                        parent=self
                     )
-                    return
 
-                new_deck_id = last_deck_id
+                    if not new_deck_name:
+                        return
 
-            self.load_user_decks()
+                    new_deck_id = self.build_deck_import_data(data, new_deck_name.strip())
+                    created_decks_ids.append(new_deck_id)
 
-            if new_deck_id:
-                self.tree.selection_set(str(new_deck_id))
-                self.tree.focus(str(new_deck_id))
-                self.tree.see(str(new_deck_id))
-                self.selected_deck_id = new_deck_id
+                elif file_path.lower().endswith(".zip"):
+                    imported_count = 0
+                    last_deck_id = None
 
-            if len(created_decks_ids) == 1:
-                messagebox.showinfo(
-                    self.controller.t("deck_importer"),
-                    self.controller.t("deck_import_success")
-                )
-            else:
-                messagebox.showinfo(
-                    self.controller.t("deck_importer"),
-                    f"{len(created_decks_ids)} {self.controller.t('decks_import_success')}"
-                )
+                    with zipfile.ZipFile(file_path, "r") as zip_file:
+                        for filename in zip_file.namelist():
+                            if not filename.lower().endswith(".json"):
+                                continue
+
+                            with zip_file.open(filename) as f:
+                                data = json.loads(f.read().decode("utf-8"))
+
+                            last_deck_id = self.build_deck_import_data(data)
+                            created_decks_ids.append(last_deck_id)
+                            imported_count +=1
+
+                    if imported_count == 0:
+                        messagebox.showerror(
+                            self.controller.t("error"),
+                            self.controller.t("invalid_deck_file")
+                        )
+                        return
+
+                    new_deck_id = last_deck_id
+
+                self.load_user_decks()
+
+                if new_deck_id:
+                    self.tree.selection_set(str(new_deck_id))
+                    self.tree.focus(str(new_deck_id))
+                    self.tree.see(str(new_deck_id))
+                    self.selected_deck_id = new_deck_id
+
+                if len(created_decks_ids) == 1:
+                    messagebox.showinfo(
+                        self.controller.t("deck_importer"),
+                        self.controller.t("deck_import_success")
+                    )
+                else:
+                    messagebox.showinfo(
+                        self.controller.t("deck_importer"),
+                        f"{len(created_decks_ids)} {self.controller.t('decks_import_success')}"
+                    )
 
         except Exception as e:
             for deck_id in reversed(created_decks_ids): # Rollback

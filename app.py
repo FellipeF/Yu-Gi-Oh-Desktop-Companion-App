@@ -29,6 +29,7 @@ from frames.custom_decks_frame import CustomDecksFrame
 from frames.loading_frame import LoadingFrame
 from services.api_client import ApiClient
 from ui.card_details_window import CardDetailsWindow
+from ui.downloading_dialog import DownloadingDialog
 from ui.ui_text import ui_text
 from ui.loading_modal import LoadingDialog
 from utils.image_handler import ImageHandler
@@ -417,12 +418,11 @@ class App(tk.Tk):
         modal.transient(self)
 
     def start_download_thread(self, url):
-        self.loading_dialog = LoadingDialog(
+        self.loading_dialog = DownloadingDialog(
             self,
             title=self.t("downloading_update"),
             status=self.t("downloading_update")
         )
-        self.loading_dialog.start()
         self.attributes("-disabled", True)
 
         threading.Thread(
@@ -439,6 +439,8 @@ class App(tk.Tk):
             response.raise_for_status()
 
             total = int(response.headers.get('content-length') or 0)
+            if total <= 0:
+                self.after(0, lambda: self.loading_dialog.set_indeterminate())
             downloaded = 0
 
             with open(save_path, "wb") as f:
@@ -460,15 +462,12 @@ class App(tk.Tk):
 
     def update_download_progress(self, progress):
         if self.loading_dialog:
-            self.loading_dialog.set_status(
-                f"{self.t('downloading_update')} {progress:.1f}%"
-            )
+            self.loading_dialog.set_progress(progress)
 
     def download_finished(self, path):
         self.attributes("-disabled", False)
 
         if self.loading_dialog:
-            self.loading_dialog.stop()
             self.loading_dialog.destroy()
             self.loading_dialog = None
 

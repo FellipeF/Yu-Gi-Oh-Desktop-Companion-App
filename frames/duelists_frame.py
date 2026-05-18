@@ -16,6 +16,7 @@ class DuelistsFrame(tk.Frame):
         self.duelists = self.all_duelists.copy()
         self.sort_duelists()
         self.search_var = tk.StringVar()
+        self.last_search_text = ""
 
         #### Reserved for Future Releases #####
         # self.selected_media = tk.StringVar(value="all")
@@ -128,6 +129,8 @@ class DuelistsFrame(tk.Frame):
 
     def filter_duelists(self, event=None):
         search_text = self.search_bar.get_text().casefold()
+        search_changed = search_text != self.last_search_text # Prevents page rendering again if out of focus
+        self.last_search_text = search_text
 
         if not search_text:
             self.duelists = self.all_duelists.copy()
@@ -136,6 +139,9 @@ class DuelistsFrame(tk.Frame):
             self.duelists = [
                 duelist for duelist in self.all_duelists if search_text in self.controller.t(duelist[1]).casefold()
             ]
+
+        if search_changed:
+            self.current_page = 0
 
         self.current_page = 0
         self.sort_duelists()
