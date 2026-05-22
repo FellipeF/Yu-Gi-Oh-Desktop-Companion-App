@@ -105,24 +105,78 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
         query += " AND dc.card_id IS NOT NULL\n"
 
     query += """
-        ORDER BY
-            dd.order_index,
-            CASE
-                WHEN c.type LIKE '%Fusion%' OR
-                     c.type LIKE '%Synchro%' OR
-                     c.type LIKE '%XYZ%' OR
-                     c.type LIKE '%Link%'
-                THEN 1
-                ELSE 0
-            END,
-            CASE
-                WHEN c.type LIKE '%Monster%' THEN 0
-                WHEN c.type = 'Spell Card' THEN 1
-                WHEN c.type = 'Trap Card' THEN 2
-                ELSE 3
-            END,
-            card_name COLLATE NOCASE
-    """
+            ORDER BY
+                dd.order_index,
+
+                CASE
+                    WHEN c.type LIKE '%Fusion%'
+                        OR c.type LIKE '%Synchro%'
+                        OR c.type LIKE '%XYZ%'
+                        OR c.type LIKE '%Link%'
+                    THEN 1
+                    ELSE 0
+                END,
+                
+                CASE
+                    WHEN c.type LIKE '%Normal%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 0
+
+                    WHEN c.type LIKE '%Monster%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                        AND c.type NOT LIKE '%Ritual%'
+                        AND c.type NOT LIKE '%Fusion%'
+                        AND c.type NOT LIKE '%Synchro%'
+                        AND c.type NOT LIKE '%XYZ%'
+                        AND c.type NOT LIKE '%Link%'
+                    THEN 1
+
+                    WHEN c.type LIKE '%Pendulum%'
+                        AND c.type NOT LIKE '%Ritual%'
+                        AND c.type NOT LIKE '%Fusion%'
+                        AND c.type NOT LIKE '%Synchro%'
+                        AND c.type NOT LIKE '%XYZ%'
+                    THEN 2
+
+                    WHEN c.type LIKE '%Ritual%' THEN 3
+
+                    WHEN c.type = 'Spell Card' THEN 4
+
+                    WHEN c.type = 'Trap Card' THEN 5
+                    
+                    WHEN dc.card_id IS NULL THEN 6
+
+                    WHEN c.type LIKE '%Fusion%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 10
+
+                    WHEN c.type LIKE '%Fusion%'
+                        AND c.type LIKE '%Pendulum%'
+                    THEN 11
+
+                    WHEN c.type LIKE '%Synchro%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 12
+
+                    WHEN c.type LIKE '%Synchro%'
+                        AND c.type LIKE '%Pendulum%'
+                    THEN 13
+
+                    WHEN c.type LIKE '%XYZ%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 14
+
+                    WHEN c.type LIKE '%XYZ%'
+                        AND c.type LIKE '%Pendulum%'
+                    THEN 15
+
+                    WHEN c.type LIKE '%Link%' THEN 16
+
+                    ELSE 99
+                END,
+
+                card_name COLLATE NOCASE
+        """
 
     try:
         cursor.execute(query, {"lang": language_code, "duelist_id": duelist_id})
@@ -367,18 +421,68 @@ def get_cards_by_user_deck(deck_id: int, language_code: str = "en") -> list[tupl
             WHERE udc.deck_id = ?
             ORDER BY 
                 CASE
-                    WHEN c.type LIKE '%Fusion%' OR
-                    c.type LIKE '%Synchro%' OR
-                    c.type LIKE '%XYZ%' OR
-                    c.type LIKE '%Link%'
-                THEN 1
-                ELSE 0
-            END,
-            CASE
-                WHEN c.type LIKE '%Monster%' THEN 0
-                WHEN c.type = 'Spell Card' THEN 1
-                WHEN c.type = 'Trap Card' THEN 2
-                ELSE 3
+                    WHEN c.type LIKE '%Fusion%'
+                        OR c.type LIKE '%Synchro%'
+                        OR c.type LIKE '%XYZ%'
+                        OR c.type LIKE '%Link%'
+                    THEN 1
+                    ELSE 0
+                END,
+                    
+                CASE
+                    WHEN c.type LIKE '%Normal%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 0
+                    
+                    WHEN c.type LIKE '%Monster%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                        AND C.type NOT LIKE '%Ritual%'
+                        AND c.type NOT LIKE '%Fusion%'
+                        AND c.type NOT LIKE '%Synchro%'
+                        AND c.type NOT LIKE '%XYZ%'
+                        AND c.type NOT LIKE '%Link%'
+                    THEN 1
+                    
+                    WHEN c.type LIKE '%Pendulum%'
+                        AND c.type NOT LIKE '%Ritual%'
+                        AND c.type NOT LIKE '%Fusion%'
+                        AND c.type NOT LIKE '%Synchro%'
+                        AND c.type NOT LIKE '%XYZ%'
+                    THEN 2
+                    
+                    WHEN c.type LIKE '%Ritual%' THEN 3
+                    
+                    WHEN c.type = 'Spell Card' THEN 4
+                    
+                    WHEN c.type = 'Trap Card' THEN 5
+                    
+                    WHEN c.type LIKE '%Fusion%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 10
+                    
+                    WHEN c.type LIKE '%Fusion%'
+                        AND c.type LIKE '%Pendulum%'
+                    THEN 11
+                    
+                    WHEN c.type LIKE '%Synchro%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 12
+                    
+                    WHEN c.type LIKE '%Synchro%'
+                        AND c.type LIKE '%Pendulum%'
+                    THEN 13
+                    
+                    WHEN c.type LIKE '%XYZ%'
+                        AND c.type NOT LIKE '%Pendulum%'
+                    THEN 14
+                    
+                    WHEN c.type LIKE '%XYZ%'
+                        AND c.type LIKE '%Pendulum%'
+                    THEN 15
+                    
+                    WHEN c.type LIKE '%Link%' THEN 16
+                    
+                    ELSE 99
             END,
             resolved_card_name COLLATE NOCASE
         """, (language_code, deck_id))

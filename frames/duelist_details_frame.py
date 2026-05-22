@@ -310,10 +310,10 @@ class DuelistDetailsFrame(tk.Frame):
                 current_section = deck_section
                 current_group = None
 
-            group_label = self._card_group_label(card_type, deck_section)
+            group_label = self._card_group_label(card_id, card_type, deck_section)
 
             if group_label and group_label != current_group:
-                self.cards_listbox.insert(tk.END, f"--- {group_label.upper()} ---")
+                self.cards_listbox.insert(tk.END, f"━━━ {group_label.upper()} ━━━")
 
                 index = self.cards_listbox.size() - 1
                 color = self._get_group_color(group_label)
@@ -330,32 +330,77 @@ class DuelistDetailsFrame(tk.Frame):
         self.update_deck_status()
 
     def _get_group_color(self, group_label: str) -> str:
-        """Colors for type of cards section separators"""
-        if group_label == self.controller.t("spells"):
-            return "#1d8f6a"
-        if group_label == self.controller.t("traps"):
-            return "#8e44ad"
-        if group_label == self.controller.t("monsters"):
-            return "#c97a2b"
 
-        return "black"
+        colors = {
+            self.controller.t("normal_monsters"): "#C8B070",
+            self.controller.t("effect_monsters"): "#B86B2B",
+            self.controller.t("ritual_monsters"): "#4A8DC7",
+            self.controller.t("pendulum_monsters"): "#2F8C72",
+
+            self.controller.t("fusion_monsters"): "#7B5BA7",
+            self.controller.t("fusion_pendulum_monsters"): "#6A4C93",
+
+            self.controller.t("synchro_monsters"): "#9A9A9A",
+            self.controller.t("synchro_pendulum_monsters"): "#6F8F8F",
+
+            self.controller.t("xyz_monsters"): "#303030",
+            self.controller.t("xyz_pendulum_monsters"): "#1E4F4F",
+
+            self.controller.t("link_monsters"): "#2563EB",
+
+            self.controller.t("spells"): "#1D8F6A",
+            self.controller.t("traps"): "#8E44AD",
+        }
+
+        return colors.get(group_label, "black")
 
     def is_extra_deck(self, card_type: str | None) -> bool | None:
         if not card_type:
             return False
         return any(x in card_type for x in EXTRA_TYPES)
 
-    def _card_group_label(self, card_type: str | None, deck_section: str) -> str:
-        if deck_section == "extra":
-            return None
-
-        # Throws "TypeError: argument of type 'NoneType' is not iterable" if not here
-        if not card_type:
+    def _card_group_label(self, card_id: int | None, card_type: str | None, deck_section: str) -> str | None:
+        if card_id is None:
             return self.controller.t("exclusive_cards")
 
-        # Effect/Normal/Pendulum Monsters fall under the same category when sorting
+        if "Token" in card_type:
+            return self.controller.t("other_cards")
+
+        if deck_section == "extra":
+            if "Fusion" in card_type and "Pendulum" in card_type:
+                return self.controller.t("fusion_pendulum_monsters")
+
+            if "Fusion" in card_type:
+                return self.controller.t("fusion_monsters")
+
+            if "Synchro" in card_type and "Pendulum" in card_type:
+                return self.controller.t("synchro_pendulum_monsters")
+
+            if "Synchro" in card_type:
+                return self.controller.t("synchro_monsters")
+
+            if "XYZ" in card_type and "Pendulum" in card_type:
+                return self.controller.t("xyz_pendulum_monsters")
+
+            if "XYZ" in card_type:
+                return self.controller.t("xyz_monsters")
+
+            if "Link" in card_type:
+                return self.controller.t("link_monsters")
+
+            return self.controller.t("extra_deck")
+
+        if "Ritual" in card_type:
+            return self.controller.t("ritual_monsters")
+
+        if "Pendulum" in card_type:
+            return self.controller.t("pendulum_monsters")
+
+        if card_type == "Normal Monster":
+            return self.controller.t("normal_monsters")
+
         if "Monster" in card_type:
-            return self.controller.t("monsters")
+            return self.controller.t("effect_monsters")
 
         if card_type == "Spell Card":
             return self.controller.t("spells")
@@ -363,7 +408,6 @@ class DuelistDetailsFrame(tk.Frame):
         if card_type == "Trap Card":
             return self.controller.t("traps")
 
-        # Just in case
         return self.controller.t("other_cards")
 
     def clear_card_selection(self):

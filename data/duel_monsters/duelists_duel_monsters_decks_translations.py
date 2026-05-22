@@ -1773,6 +1773,73 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Chama Negra",
         },
     },
+    "rex_raptor": {
+        "high_def": {
+            "en": "High DEF",
+            "pt": "DEF Alta",
+        },
+        "dino_destruction": {
+            "en": "Dino Destruction",
+            "pt": "Destruição Dino",
+        },
+        "raptor_rampage": {
+            "en": "Raptor Rampage",
+            "pt": "Tumulto Raptor",
+        },
+        "tomb_of_ancient_kings": {
+            "en": "Tomb of Ancient Kings",
+            "pt": "Tumba dos Antigos Reis",
+        },
+        "rex": {
+            "en": "Rex",
+            "pt": "Rex",
+        },
+        "paleozoic_anthrosaurus": {
+            "en": "Paleozoic Anthrosaurus",
+            "pt": "Antrossauro Paleozóico",
+        },
+        "triassic_burning_energy": {
+            "en": "Triassic Burning Energy",
+            "pt": "Energia Ardente Triássica",
+        },
+        "triassic_fusions": {
+            "en": "Triassic Fusions",
+            "pt": "Fusões Triássicas",
+        },
+
+        "the_cretaceous_fossil": {
+            "en": "The Cretaceous Fossil",
+            "pt": "O Fóssil Cretáceo",
+        },
+        "roaring_rex": {
+            "en": "Roaring Rex",
+            "pt": "Rex Uivante",
+        },
+        "roaring_rex_2": {
+            "en": "Roaring Rex (2)",
+            "pt": "Rex Uivante (2)",
+        },
+        "dinosaur_kingdom": {
+            "en": "Dinosaur Kingdom",
+            "pt": "Reino Dinossauro",
+        },
+        "megaton_power": {
+            "en": "Megaton Power",
+            "pt": "Poder Megaton",
+        },
+        "jurassic_transcendence": {
+            "en": "Jurassic Transcendence",
+            "pt": "Transcendência Jurássica",
+        },
+        "red_eyed_dinosaurs": {
+            "en": "Red-Eyed Dinosaurs",
+            "pt": "Dinossauros de Olhos Vermelhos",
+        },
+        "rise_of_the_evolsaur": {
+            "en": "Rise of the Evolsaur",
+            "pt": "Ascensão do Evolssauro",
+        },
+    },
     "serenity_wheeler": {
         "cute_sister": {
             "en": "Cute Sister",

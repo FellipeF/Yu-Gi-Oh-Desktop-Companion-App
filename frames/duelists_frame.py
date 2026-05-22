@@ -143,7 +143,6 @@ class DuelistsFrame(tk.Frame):
         if search_changed:
             self.current_page = 0
 
-        self.current_page = 0
         self.sort_duelists()
         self.render_page()
 

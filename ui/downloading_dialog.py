@@ -28,6 +28,21 @@ class DownloadingDialog(tk.Toplevel):
         self.transient(parent)
         self.grab_set()
 
+        self.update_idletasks()
+
+        width = self.winfo_width()
+        height = self.winfo_height()
+
+        parent_x = parent.winfo_rootx()
+        parent_y = parent.winfo_rooty()
+        parent_width = parent.winfo_width()
+        parent_height = parent.winfo_height()
+
+        x = parent_x + (parent_width // 2) - (width // 2)
+        y = parent_y + (parent_height // 2) - (height // 2)
+
+        self.geometry(f"{width}x{height}+{x}+{y}")
+
     def set_progress(self, progress):
         self.progress_var.set(progress)
         self.percent_label.config(text=f"{progress:.1f}%")

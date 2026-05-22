@@ -301,7 +301,10 @@ class CustomDeckEditorFrame(tk.Frame):
             group_label = self._card_group_label(card_type, section)
 
             if group_label and group_label != current_group:
-                self.deck_cards_list.insert(tk.END, f"--- {group_label.upper()} ---")
+                self.deck_cards_list.insert(
+                    tk.END,
+                    self.deck_cards_list.insert(tk.END, f"━━━ {group_label.upper()} ━━━")
+                )
 
                 index = self.deck_cards_list.size() - 1
                 color = self._get_group_color(group_label)
@@ -316,16 +319,44 @@ class CustomDeckEditorFrame(tk.Frame):
         self.update_scroll_visibility(self.deck_cards_list, self.deck_scroll)
 
     def _card_group_label(self, card_type: str | None, deck_section: str) -> str:
-        if deck_section == "extra":
-            return None
-
-        # Throws "TypeError: argument of type 'NoneType' is not iterable" if not here
         if not card_type:
             return self.controller.t("other_cards")
 
-        # Effect/Normal/Pendulum Monsters fall under the same category when sorting
+        if deck_section == "extra":
+            if "Fusion" in card_type and "Pendulum" in card_type:
+                return self.controller.t("fusion_pendulum_monsters")
+
+            if "Fusion" in card_type:
+                return self.controller.t("fusion_monsters")
+
+            if "Synchro" in card_type and "Pendulum" in card_type:
+                return self.controller.t("synchro_pendulum_monsters")
+
+            if "Synchro" in card_type:
+                return self.controller.t("synchro_monsters")
+
+            if "XYZ" in card_type and "Pendulum" in card_type:
+                return self.controller.t("xyz_pendulum_monsters")
+
+            if "XYZ" in card_type:
+                return self.controller.t("xyz_monsters")
+
+            if "Link" in card_type:
+                return self.controller.t("link_monsters")
+
+            return self.controller.t("extra_deck")
+
+        if "Ritual" in card_type:
+            return self.controller.t("ritual_monsters")
+
+        if "Pendulum" in card_type:
+            return self.controller.t("pendulum_monsters")
+
+        if "Normal" in card_type:
+            return self.controller.t("normal_monsters")
+
         if "Monster" in card_type:
-            return self.controller.t("monsters")
+            return self.controller.t("effect_monsters")
 
         if card_type == "Spell Card":
             return self.controller.t("spells")
@@ -333,19 +364,31 @@ class CustomDeckEditorFrame(tk.Frame):
         if card_type == "Trap Card":
             return self.controller.t("traps")
 
-        # Just in case
         return self.controller.t("other_cards")
 
     def _get_group_color(self, group_label: str) -> str:
-        """Colors for type of cards section separators"""
-        if group_label == self.controller.t("spells"):
-            return "#1d8f6a"
-        if group_label == self.controller.t("traps"):
-            return "#8e44ad"
-        if group_label == self.controller.t("monsters"):
-            return "#c97a2b"
+        colors = {
+            self.controller.t("normal_monsters"): "#C8B070",
+            self.controller.t("effect_monsters"): "#B86B2B",
+            self.controller.t("pendulum_monsters"): "#2F8C72",
+            self.controller.t("ritual_monsters"): "#4A8DC7",
 
-        return "black"
+            self.controller.t("fusion_monsters"): "#7B5BA7",
+            self.controller.t("fusion_pendulum_monsters"): "#6A4C93",
+
+            self.controller.t("synchro_monsters"): "#9A9A9A",
+            self.controller.t("synchro_pendulum_monsters"): "#6F8F8F",
+
+            self.controller.t("xyz_monsters"): "#555555",
+            self.controller.t("xyz_pendulum_monsters"): "#1E4F4F",
+
+            self.controller.t("link_monsters"): "#2563EB",
+
+            self.controller.t("spells"): "#1D8F6A",
+            self.controller.t("traps"): "#8E44AD",
+        }
+
+        return colors.get(group_label, "black")
 
     def show_card_image(self, event):
         selection = self.search_results_list.curselection()

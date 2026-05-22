@@ -147,7 +147,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Haniwa", 140),
         ("Megazowler", 2),
         ("Prevent Rat", 96),
-        ("Red-eyes B. Dragon", 1),
+        ("Red-Eyes Black Dragon", 1),
         ("Rhaimundos of the Red Sword", 64),
         ("Rock Ogre Grotto #1", 261),
         ("Rock Ogre Grotto #2", 229),

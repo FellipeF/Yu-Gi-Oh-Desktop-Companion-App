@@ -141,6 +141,17 @@ ui_text = {
         "cards": "cards",
         "loading_database": "Loading Database",
         "search_for_card": "Search for card",
+        "normal_monsters": "NormaL Monsters",
+        "effect_monsters": "Effect Monsters",
+        "pendulum_monsters": "Pendulum Monsters",
+        "ritual_monsters": "Ritual Monsters",
+        "fusion_monsters": "Fusion Monsters",
+        "fusion_pendulum_monsters": "Pendulum Fusion Monsters",
+        "synchro_monsters": "Synchro Monsters",
+        "synchro_pendulum_monsters": "Pendulum Synchro Monsters",
+        "xyz_monsters": "XYZ Monsters",
+        "xyz_pendulum_monsters": "Pendulum XYZ Monsters",
+        "link_monsters": "LINK Monsters",
         # ================================
         #  DUELISTS - DUEL MONSTERS
         # ================================
@@ -347,6 +358,17 @@ ui_text = {
         "cards": "cartas",
         "loading_database": "Carregando banco de dados",
         "search_for_card": "Procurar carta",
+        "normal_monsters": "Monstros Normais",
+        "effect_monsters": "Monstros de Efeito",
+        "pendulum_monsters": "Monstros Pêndulo",
+        "ritual_monsters": "Monstros Ritual",
+        "fusion_monsters": "Monstros Fusão",
+        "fusion_pendulum_monsters": "Monstros Fusão Pêndulo",
+        "synchro_monsters": "Monstros Sincro",
+        "synchro_pendulum_monsters": "Monstros Sincro Pêndulo",
+        "xyz_monsters": "Monstros XYZ",
+        "xyz_pendulum_monsters": "Monstros XYZ Pêndulo",
+        "link_monsters": "Monstros LINK",
         # ================================
         #  DUELISTS - DUEL MONSTERS
         # ================================

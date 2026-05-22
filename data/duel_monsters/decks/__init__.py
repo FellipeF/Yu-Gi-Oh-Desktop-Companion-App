@@ -30,6 +30,7 @@ from .paradox_brothers import PARADOX_BROTHERS_DECKS
 from .rafael import RAFAEL_DECKS
 from .rebecca import REBECCA_DECKS
 from .red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
+from .rex_raptor import REX_RAPTOR_DECKS
 from .serenity import SERENITY_DECKS
 from .shimon_muran import SHIMON_DECKS
 from .umbra import UMBRA_DECKS
@@ -92,6 +93,7 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "paradox_brothers": PARADOX_BROTHERS_DECKS,
     "kuriboh": KURIBOH_DECKS,
     "rafael": RAFAEL_DECKS,
+    "rex_raptor": REX_RAPTOR_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]
