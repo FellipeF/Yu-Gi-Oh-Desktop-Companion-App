@@ -1840,6 +1840,20 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Ascensão do Evolssauro",
         },
     },
+    "seeker": {
+        "seal_release": {
+            "en": "Seal Release",
+            "pt": "Liberação do Selo",
+        },
+        "cheating_exodia": {
+            "en": "Cheating Exodia",
+            "pt": "Exodia Trapaceiro",
+        },
+        "the_coming_of_exodia": {
+            "en": "The Coming of Exodia",
+            "pt": "A Vinda de Exodia",
+        },
+    },
     "serenity_wheeler": {
         "cute_sister": {
             "en": "Cute Sister",

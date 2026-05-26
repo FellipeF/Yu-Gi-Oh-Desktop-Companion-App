@@ -46,13 +46,13 @@ DUELISTS_DUEL_MONSTERS = [
     ("kuriboh", "images/duelists/duel_monsters/kuriboh.webp", "duel_monsters"),
     ("rafael", "images/duelists/duel_monsters/rafael.webp", "duel_monsters"),
     ("rex_raptor", "images/duelists/duel_monsters/rex_raptor.png", "duel_monsters"),
+    ("seeker", "images/duelists/duel_monsters/seeker.webp", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
     ("yami_yugi", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
     ("shadi", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
     ("yami_marik", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
-    ("seeker", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
     ("strings", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
     ("valon", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
 ]
