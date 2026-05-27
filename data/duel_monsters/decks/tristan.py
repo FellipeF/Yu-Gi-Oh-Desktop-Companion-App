@@ -404,6 +404,8 @@ TRISTAN_DECKS = {
         ("Skull Dice", 3),
         ("Torrential Tribute", 1),
         ("Trap Hole", 1),
+        ("Skull Knight", 1),
+        ("Twin-Headed Thunder Dragon", 1), # Wiki mentions Meteor B.Dragon, but he doesn't have a Meteor Dragon...
     ],
     "the_duelist_of_the_roses": [
         ("Ansatsu", 1),
