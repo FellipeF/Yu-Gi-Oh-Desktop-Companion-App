@@ -33,6 +33,7 @@ from .red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
 from .rex_raptor import REX_RAPTOR_DECKS
 from .seeker import SEEKER_DECKS
 from .serenity import SERENITY_DECKS
+from .shadi import SHADI_DECKS
 from .shimon_muran import SHIMON_DECKS
 from .umbra import UMBRA_DECKS
 from .ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
@@ -96,6 +97,7 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "rafael": RAFAEL_DECKS,
     "rex_raptor": REX_RAPTOR_DECKS,
     "seeker": SEEKER_DECKS,
+    "shadi": SHADI_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]

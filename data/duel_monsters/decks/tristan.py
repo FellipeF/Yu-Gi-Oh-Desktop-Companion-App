@@ -405,7 +405,10 @@ TRISTAN_DECKS = {
         ("Torrential Tribute", 1),
         ("Trap Hole", 1),
         ("Skull Knight", 1),
-        ("Twin-Headed Thunder Dragon", 1), # Wiki mentions Meteor B.Dragon, but he doesn't have a Meteor Dragon...
+        # Both below are speculation, since Wiki mentions Fusion Monsters
+        # (Meteor B.Dragon is mentioned but not included, since he doesn't have Meteor Dragon)
+        ("Twin-Headed Thunder Dragon", 1),
+        ("Gaia the Dragon Champion", 1),
     ],
     "the_duelist_of_the_roses": [
         ("Ansatsu", 1),

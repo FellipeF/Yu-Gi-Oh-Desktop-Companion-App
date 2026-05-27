@@ -2102,6 +2102,20 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Beatdown",
         },
     },
+    "shadi": {
+        "balance_on_the_edge": {
+            "en": "Balance On The Edge",
+            "pt": "Equilíbrio no Limiar",
+        },
+        "end_of_the_world": {
+            "en": "End of the World",
+            "pt": "Fim do Mundo",
+        },
+        "armageddon": {
+            "en": "Armageddon",
+            "pt": "Armagedom",
+        },
+    },
     "solomon_muto": {
         "grandpa": {
             "en": "Grandpa",
