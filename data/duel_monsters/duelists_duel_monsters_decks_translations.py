@@ -2190,6 +2190,40 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Exodia Quebrador de Regras",
         },
     },
+    "strings": {
+        "aqua_slime": {
+            "en": "Aqua Slime",
+            "pt": "Limo Aquático",
+        },
+        "aqua_slime_2": {
+            "en": "Aqua Slime (2)",
+            "pt": "Limo Aquático (2)",
+        },
+        "the_formless": {
+            "en": "The Formless",
+            "pt": "Os Sem Formas",
+        },
+        "divine_trial": {
+            "en": "Divine Trial",
+            "pt": "Teste Divino",
+        },
+        "behold_the_divine_beast": {
+            "en": "Behold the Divine Beast!",
+            "pt": "Contemple a Besta Divina!",
+        },
+        "slifer_the_sky_dragon": {
+            "en": "Slifer the Sky Dragon!",
+            "pt": "Slifer, o Dragão Celeste!",
+        },
+        "slime_revival": {
+            "en": "Slime Revival",
+            "pt": "Reavivamento de Limo",
+        },
+        "trail_of_slime": {
+            "en": "Trail of Slime",
+            "pt": "Rastro de Limo",
+        },
+    },
     "tea_gardner": {
         "life_point_recovery": {
             "en": "Life Point Recovery",
