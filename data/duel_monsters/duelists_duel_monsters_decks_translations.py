@@ -2366,6 +2366,16 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Máscara da Sombra",
         }
     },
+    "valon": {
+        "machines_of_orichalcos": {
+            "en": "Machines of Orichalcos",
+            "pt": "Máquinas de Orichalcos",
+        },
+        "psy_frame_assembly": {
+            "en": "PSY-Frame Assembly",
+            "pt": "Montagem PSÍ-Armação",
+        },
+    },
     "weevil_underwood": {
         "insects": {
             "en": "Insects",

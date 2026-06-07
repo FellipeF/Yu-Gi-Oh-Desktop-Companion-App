@@ -37,6 +37,7 @@ from .shadi import SHADI_DECKS
 from .shimon_muran import SHIMON_DECKS
 from .strings import STRINGS_DECKS
 from .umbra import UMBRA_DECKS
+from .valon import VALON_DECKS
 from .ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
 from .weevil import WEEVIL_DECKS
 from .yami_bakura import YAMI_BAKURA_DECKS
@@ -100,7 +101,7 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "seeker": SEEKER_DECKS,
     "shadi": SHADI_DECKS,
     "strings": STRINGS_DECKS,
-
+    "valon": VALON_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]
