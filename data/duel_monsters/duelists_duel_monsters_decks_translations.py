@@ -1141,14 +1141,6 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "en": "Darkness",
             "pt": "Escuridão",
         },
-        "keepers_judgment": {
-            "en": "Keeper's Judgment",
-            "pt": "Julgamento do Cuidador",
-        },
-        "roar_of_ra": {
-            "en": "Roar of Ra",
-            "pt": "Rugido de Rá",
-        },
         "dark_destroyer": {
             "en": "Dark Destroyer",
             "pt": "Destruidor Sombrio",
@@ -2602,6 +2594,120 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         "final": {
             "en": "FINAL",
             "pt": "FINAL",
+        },
+    },
+    "yami_marik": {
+        "phantom_pyramid": {
+            "en": "Phantom Pyramid",
+            "pt": "Pirâmide Fantasma",
+        },
+        "low_level_high_atk": {
+            "en": "Low Level, High ATK",
+            "pt": "Nível Baixo, ATK Alto",
+        },
+        "god_phoenix": {
+            "en": "God Phoenix",
+            "pt": "Fênix Divina",
+        },
+        "something_hidden": {
+            "en": "Something Hidden",
+            "pt": "Algo Oculto",
+        },
+        "black_hole_force": {
+            "en": "Black Hole Force",
+            "pt": "Força do Buraco Negro",
+        },
+        "corridors_of_madness": {
+            "en": "Corridors of Madness",
+            "pt": "Corredores da Loucura",
+        },
+        "fire_mountain": {
+            "en": "Fire Mountain",
+            "pt": "Montanha de Fogo",
+        },
+        "yami_marik": {
+            "en": "Yami Marik",
+            "pt": "Yami Marik",
+        },
+        "deceaseds_footsteps": {
+            "en": "Deceased's Footsteps",
+            "pt": "Pegadas dos Mortos",
+        },
+        "deceaseds_footsteps_2": {
+            "en": "Deceased's Footsteps (2)",
+            "pt": "Pegadas dos Mortos (2)",
+        },
+        "concealed_in_shadows": {
+            "en": "Concealed in Shadows",
+            "pt": "Oculto nas Sombras",
+        },
+        "concealed_in_shadows_2": {
+            "en": "Concealed in Shadows (2)",
+            "pt": "Oculto nas Sombras (2)",
+        },
+        "wail_from_the_underworld": {
+            "en": "Wail from the Underworld",
+            "pt": "Lamento do Submundo",
+        },
+        "wail_from_the_underworld_2": {
+            "en": "Wail from the Underworld (2)",
+            "pt": "Lamento do Submundo (2)",
+        },
+        "masked_beast_lava_golem": {
+            "en": "Masked Beast Lava Golem",
+            "pt": "Golem de Lava Besta Mascarada",
+        },
+        "masked_beast_lava_golem_2": {
+            "en": "Masked Beast Lava Golem (2)",
+            "pt": "Golem de Lava Besta Mascarada (2)",
+        },
+        "harbinger_of_agony": {
+            "en": "Harbinger of Agony",
+            "pt": "Precursor da Agonia",
+        },
+        "unfathomable_agony": {
+            "en": "Harbinger of Agony",
+            "pt": "Agonia Incomensurável",
+        },
+        "poem_of_agony": {
+            "en": "Poem of Agony",
+            "pt": "Poema da Agonia",
+        },
+        "eternal_agony": {
+            "en": "Eternal Agony",
+            "pt": "Agonia Eterna",
+        },
+        "winged_dragon_advent": {
+            "en": "Winged Dragon Advent",
+            "pt": "Advento do Dragão Alado",
+        },
+        "power_of_the_winged_dragon": {
+            "en": "Power of the Winged Dragon",
+            "pt": "Poder do Dragão Alado",
+        },
+        "immortal_god_slime": {
+            "en": "Immortal God Slime",
+            "pt": "Limo Divino Imortal",
+        },
+        "ras_ascension": {
+            "en": "Ra's Ascension",
+            "pt": "Ascensão de Rá",
+        },
+        "legend_of_the_fiend": {
+            "en": "Legend of the Fiend",
+            "pt": "Lenda do Demônio",
+        },
+        "grudgeful_torture": {
+            "en": "Grudgeful Torture",
+            "pt": "Tortura Rancorosa",
+        },
+        "burning_torture": {
+            "en": "Burning Torture",
+            "pt": "Tortura Escaldante",
+        },
+        "immobilizing_torture": {
+            "en": "Immobilizing Torture",
+            "pt": "Tortura Imobilizante",
         },
     },
     "yugi_muto": {

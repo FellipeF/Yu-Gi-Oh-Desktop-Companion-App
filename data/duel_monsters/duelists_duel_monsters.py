@@ -35,7 +35,7 @@ DUELISTS_DUEL_MONSTERS = [
     ("espa_roba", "images/duelists/duel_monsters/espa_roba.webp", "duel_monsters"),
     ("other_duelists_duel_monsters", "images/duelists/duel_monsters/duel_monsters_logo.png", "duel_monsters"),
     ("red_eyes_black_dragon", "images/duelists/duel_monsters/red_eyes_black_dragon.webp", "duel_monsters"),
-    ("yami_bakura", "images/duelists/duel_monsters/yami-bakura.png", "duel_monsters"),
+    ("yami_bakura", "images/duelists/duel_monsters/yami_bakura.png", "duel_monsters"),
     ("gozaburo_kaiba", "images/duelists/duel_monsters/gozaburo_kaiba.png", "duel_monsters"),
     ("lumis_and_umbra", "images/duelists/duel_monsters/lumis_and_umbra.webp", "duel_monsters"),
     ("marik_ishtar", "images/duelists/duel_monsters/marik_ishtar.webp", "duel_monsters"),
@@ -50,9 +50,9 @@ DUELISTS_DUEL_MONSTERS = [
     ("shadi", "images/duelists/duel_monsters/shadi.webp", "duel_monsters"),
     ("strings", "images/duelists/duel_monsters/strings.webp", "duel_monsters"),
     ("valon", "images/duelists/duel_monsters/valon.webp", "duel_monsters"),
+    ("yami_marik", "images/duelists/duel_monsters/yami_marik.png", "duel_monsters"),
     # =========================
     # TODO: Below
     # =========================
     ("yami_yugi", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
-    ("yami_marik", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
 ]

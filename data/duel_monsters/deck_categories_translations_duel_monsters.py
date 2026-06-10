@@ -323,4 +323,12 @@ DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS = {
         "en": "Guard Level ★★★★★",
         "pt": "Guarda Nível ★★★★★",
     },
+    "roar_of_ra": {
+        "en": "Roar of Ra",
+        "pt": "Rugido de Rá",
+    },
+    "keepers_judgment": {
+        "en": "Keeper's Judgment",
+        "pt": "Julgamento do Cuidador",
+    },
 }
