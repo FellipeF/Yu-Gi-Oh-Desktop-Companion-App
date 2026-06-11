@@ -1,0 +1,3 @@
+YAMI_YUGI_DECKS = {
+
+}

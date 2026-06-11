@@ -42,6 +42,7 @@ from .ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
 from .weevil import WEEVIL_DECKS
 from .yami_bakura import YAMI_BAKURA_DECKS
 from .yami_marik import YAMI_MARIK_DECKS
+from .yami_yugi import YAMI_YUGI_DECKS
 from .yugi import YUGI_DECKS
 from .kaiba import KAIBA_DECKS
 from .joey import JOEY_DECKS
@@ -104,6 +105,7 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "strings": STRINGS_DECKS,
     "valon": VALON_DECKS,
     "yami_marik": YAMI_MARIK_DECKS,
+    "yami_yugi": YAMI_YUGI_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]

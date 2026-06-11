@@ -205,7 +205,7 @@ ui_text = {
         "espa_roba": "Espa Roba",
         "big5": "The Big Five",
         "grand_championship_duelists": "KC Grand Prix",
-        "other_duelists_duel_monsters": "Other (DM)",
+        "other_duelists_duel_monsters": "Other (Duel Monsters)",
         "lumis_and_umbra": "Lumis and Umbra",
         "paradox_brothers": "Paradox Brothers",
         # ================================
@@ -422,7 +422,7 @@ ui_text = {
         "espa_roba": "Espa Roba",
         "big5": "Os Cinco Grandes",
         "grand_championship_duelists": "Grand Prix KC",
-        "other_duelists_duel_monsters": "Outros (MD)",
+        "other_duelists_duel_monsters": "Outros (Monstros de Duelo)",
         "lumis_and_umbra": "Lumis e Umbra",
         "paradox_brothers": "Irmãos Paradox",
         # ================================

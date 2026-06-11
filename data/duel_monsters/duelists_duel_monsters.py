@@ -51,8 +51,5 @@ DUELISTS_DUEL_MONSTERS = [
     ("strings", "images/duelists/duel_monsters/strings.webp", "duel_monsters"),
     ("valon", "images/duelists/duel_monsters/valon.webp", "duel_monsters"),
     ("yami_marik", "images/duelists/duel_monsters/yami_marik.png", "duel_monsters"),
-    # =========================
-    # TODO: Below
-    # =========================
-    ("yami_yugi", "images/duelists/duelist_placeholder.webp", "duel_monsters"),
+    ("yami_yugi", "images/duelists/duel_monsters/yami_yugi.png", "duel_monsters"),
 ]

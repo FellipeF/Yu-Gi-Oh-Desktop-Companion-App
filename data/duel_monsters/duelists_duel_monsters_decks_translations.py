@@ -2710,6 +2710,9 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Tortura Imobilizante",
         },
     },
+    "yami_yugi": {
+
+    },
     "yugi_muto": {
         "friendship": {
             "en": "Friendship",
@@ -2754,6 +2757,126 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         "bonds_beyond_time_teaser": {
             "en": "3D Bonds Beyond Time - Teaser",
             "pt": "Prévia - Vínculos Além do Tempo",
+        },
+        "block_puzzle_demolition": {
+            "en": "Block-Puzzle-Demolition",
+            "pt": "Demolição-Bloco-Quebra-Cabeças"
+        },
+        "block_puzzle_demolition_2": {
+            "en": "Block-Puzzle-Demolition (2)",
+            "pt": "Demolição-Bloco-Quebra-Cabeças (2)"
+        },
+        "block_puzzle_demolition_3": {
+            "en": "Block-Puzzle-Demolition (3)",
+            "pt": "Demolição-Bloco-Quebra-Cabeças (3)"
+        },
+        "yugi_muto": {
+            "en": "Yugi Muto",
+            "pt": "Yugi Muto",
+        },
+        "death_t_manga": {
+            "en": "Death-T (Manga)",
+            "pt": "Death-T (Mangá)",
+        },
+        "school_deck_manga": {
+            "en": "School Deck (Manga)",
+            "pt": "Deck Escolar (Mangá)",
+        },
+        "the_journeys_begining": {
+            "en": "The Journey's Beginning",
+            "pt": "O Início da Jornada",
+        },
+        "the_journeys_extension": {
+            "en": "The Journey's Extension",
+            "pt": "A Extensão da Jornada",
+        },
+        "the_magnet_warriors": {
+            "en": "The Magnet Warriors",
+            "pt": "Os Guerreiros Magnéticos",
+        },
+        "the_magnet_warriors_2": {
+            "en": "The Magnet Warriors (2)",
+            "pt": "Os Guerreiros Magnéticos (2)",
+        },
+        "the_rock_hard_warriors": {
+            "en": "The Rock-Hard Warriors",
+            "pt": "Os Guerreiros Duros de Pedra",
+        },
+        "the_rock_hard_warriors_2": {
+            "en": "The Rock-Hard Warriors (2)",
+            "pt": "Os Guerreiros Duros de Pedra (2)",
+        },
+        "the_journeys_apex": {
+            "en": "The Journey's Apex",
+            "pt": "O Ápice da Jornada",
+        },
+        "the_magical_journey": {
+            "en": "The Magical Journey",
+            "pt": "A Jornada Mágica",
+        },
+        "silent_magnets": {
+            "en": "Silent Magnets",
+            "pt": "Ímãs Silenciosos",
+        },
+        "silence_of_the_duelist": {
+            "en": "Silence of the Duelist",
+            "pt": "Silêncio do Duelista",
+        },
+        "ill_risk_my_life": {
+            "en": "I'll Risk My Life",
+            "pt": "Eu Arriscarei a Minha Vida",
+        },
+        "the_tie_that_binds": {
+            "en": "The Tie that Binds",
+            "pt": "O Laço que Une",
+        },
+        "reflection_mirror": {
+            "en": "Reflection Mirror",
+            "pt": "Espelho da Reflexão",
+        },
+        "reflection_mirror_2": {
+            "en": "Reflection Mirror (2)",
+            "pt": "Espelho da Reflexão (2)",
+        },
+        "the_final_duel": {
+            "en": "The Final Duel",
+            "pt": "O Duelo Final",
+        },
+        "rise_of_skull_servants": {
+            "en": "Rise of Skull Servants",
+            "pt": "Ascensão dos Servos Caveira",
+        },
+        "rise_of_skull_servants_2": {
+            "en": "Rise of Skull Servants (2)",
+            "pt": "Ascensão dos Servos Caveira (2)",
+        },
+        "fusion": {
+            "en": "Fusion",
+            "pt": "Fusão",
+        },
+        "skull_servant": {
+            "en": "Skull Servant",
+            "pt": "Servo Caveira",
+        },
+        "my_warrior_comrades": {
+            "en": "My Warrior Comrades",
+            "pt": "Meus Guerreiros Camaradas",
+        },
+        "my_magical_knights": {
+            "en": "My Magical Knights",
+            "pt": "Meus Cavaleiros Mágicos",
+        },
+        "my_mechanical_corps": {
+            "en": "My Mechanical Corps",
+            "pt": "Minhas Tropas Mecânicas",
+        },
+        "world_of_memories": {
+            "en": "World of Memories",
+            "pt": "Mundo de Memórias",
+        },
+        "world_of_memories_2": {
+            "en": "World of Memories (2)",
+            "pt": "Mundo de Memórias (2)",
         },
     },
 }
