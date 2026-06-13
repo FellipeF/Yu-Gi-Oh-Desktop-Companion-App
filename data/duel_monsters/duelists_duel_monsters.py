@@ -52,4 +52,5 @@ DUELISTS_DUEL_MONSTERS = [
     ("valon", "images/duelists/duel_monsters/valon.webp", "duel_monsters"),
     ("yami_marik", "images/duelists/duel_monsters/yami_marik.png", "duel_monsters"),
     ("yami_yugi", "images/duelists/duel_monsters/yami_yugi.png", "duel_monsters"),
+    ("nitemare", "images/duelists/duel_monsters/nitemare.webp", "duel_monsters"),
 ]

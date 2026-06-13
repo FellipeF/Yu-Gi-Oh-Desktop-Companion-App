@@ -1442,6 +1442,24 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Realeza Verme",
         },
     },
+    "nitemare": {
+        "darknite": {
+            "en": "DarkNite",
+            "pt": "DarkNite",
+        },
+        "nitemare": {
+            "en": "Nitemare",
+            "pt": "Nitemare",
+        },
+        "skull_knight": {
+            "en": "Skull Knight",
+            "pt": "Cavaleiro Caveira",
+        },
+        "chakra": {
+            "en": "Chakra",
+            "pt": "Chakra",
+        },
+    },
     "noah_kaiba": {
         "creation": {
             "en": "Creation",
@@ -1599,6 +1617,10 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         "roland_reshef_of_destruction": {
             "en": "Roland - Reshef of Destruction",
             "pt": "Roland - Rexefe da Destruição",
+        },
+        "heishin_duelist_of_the_roses": {
+            "en": "Heishin - The Duelist of the Roses",
+            "pt": "Heishin - O Duelista das Rosas"
         },
     },
     "panik": {

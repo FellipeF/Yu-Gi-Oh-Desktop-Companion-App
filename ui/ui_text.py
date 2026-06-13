@@ -208,6 +208,7 @@ ui_text = {
         "other_duelists_duel_monsters": "Other (Duel Monsters)",
         "lumis_and_umbra": "Lumis and Umbra",
         "paradox_brothers": "Paradox Brothers",
+        "nitemare": "DarkNite/Nitemare",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -425,6 +426,7 @@ ui_text = {
         "other_duelists_duel_monsters": "Outros (Monstros de Duelo)",
         "lumis_and_umbra": "Lumis e Umbra",
         "paradox_brothers": "Irmãos Paradox",
+        "nitemare": "DarkNite/Nitemare",
         # ================================
         #  DUELISTS - GX
         # ================================
