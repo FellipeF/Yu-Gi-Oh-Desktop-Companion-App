@@ -84,5 +84,7 @@ DECK_CATEGORIES_KEYS_DUEL_MONSTERS = [
     "guard_level_3_stars",
     "guard_level_5_stars",
     "roar_of_ra",
-    "keepers_judgment"
+    "keepers_judgment",
+    "world_of_memories",
+    "justice_strikes_back",
 ]

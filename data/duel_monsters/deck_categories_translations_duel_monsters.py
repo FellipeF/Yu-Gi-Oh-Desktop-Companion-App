@@ -331,4 +331,12 @@ DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS = {
         "en": "Keeper's Judgment",
         "pt": "Julgamento do Cuidador",
     },
+    "world_of_memories": {
+        "en": "World of Memories",
+        "pt": "Mundo de Memórias",
+    },
+    "justice_strikes_back": {
+        "en": "Justice Strikes Back!!",
+        "pt": "A Justiça Contra-Ataca!!",
+    },
 }

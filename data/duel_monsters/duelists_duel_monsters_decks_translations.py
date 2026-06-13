@@ -961,10 +961,6 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "en": "Valley of the Howling Wind",
             "pt": "Vale do Vento Uivante",
         },
-        "justice_strikes_back": {
-            "en": "Justice Strikes Back!!",
-            "pt": "A Justiça Contra-Ataca!!",
-        },
         "gracious_dance_of_harpies": {
             "en": "Gracious Dance of Harpies",
             "pt": "Dança Graciosa de Harpias",
@@ -2711,7 +2707,290 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         },
     },
     "yami_yugi": {
-
+        "almighty": {
+            "en": "Almighty",
+            "pt": "Todo Poderoso",
+        },
+        "sky_champion": {
+            "en": "Sky Champion",
+            "pt": "Campeão Celeste",
+        },
+        "sky_champion_2": {
+            "en": "Sky Champion (2)",
+            "pt": "Campeão Celeste (2)",
+        },
+        "chaos_magician": {
+            "en": "Chaos Magician",
+            "pt": "Mago do Caos",
+        },
+        "chaos_magician_2": {
+            "en": "Chaos Magician (2)",
+            "pt": "Mago do Caos (2)",
+        },
+        "one_thousand_years_memories": {
+            "en": "1.000 Year Memories",
+            "pt": "Memórias Milenares",
+        },
+        "ties_that_bind": {
+            "en": "Ties That Bind",
+            "pt": "Laços Que Unem",
+        },
+        "magician_power": {
+            "en": "Magician Power",
+            "pt": "Poder de Mago",
+        },
+        "union_force": {
+            "en": "Union Force",
+            "pt": "Força da União",
+        },
+        "crush_of_glory": {
+            "en": "Crush of Glory",
+            "pt": "Esmagamento de Glória",
+        },
+        "arcane_chaos": {
+            "en": "Arcane Chaos",
+            "pt": "Caos Arcano",
+        },
+        "synchro_awakening": {
+            "en": "Synchro Awakening",
+            "pt": "Despertar Synchro",
+        },
+        "soul_of_the_king_of_games": {
+            "en": "Soul of the King of Games",
+            "pt": "Alma do Rei dos Jogos",
+        },
+        "soul_of_the_king_of_games_2": {
+            "en": "Soul of the King of Games (2)",
+            "pt": "Alma do Rei dos Jogos (2)",
+        },
+        "soul_of_the_king_of_games_3": {
+            "en": "Soul of the King of Games (3)",
+            "pt": "Alma do Rei dos Jogos (3)",
+        },
+        "soul_of_the_king_of_games_4": {
+            "en": "Soul of the King of Games (4)",
+            "pt": "Alma do Rei dos Jogos (4)",
+        },
+        "introduction_to_normal_monsters": {
+            "en": "Introduction to Normal Monsters",
+            "pt": "Introdução a Monstros Normais",
+        },
+        "introduction_to_effect_monsters_and_tribute_summon": {
+            "en": "Introduction to Effect Monsters and Tribute Summon",
+            "pt": "Introdução a Monstros de Efeito e Invocações Tributo",
+        },
+        "introduction_to_ritual_and_spells": {
+            "en": "Introduction to Ritual and Spells",
+            "pt": "Introdução a Rituais e Magias",
+        },
+        "yami_yugi": {
+            "en": "Yami Yugi",
+            "pt": "Yami Yugi",
+        },
+        "superior_dark_magic": {
+            "en": "Superior Dark Magic",
+            "pt": "Magia Negra Superior",
+        },
+        "first_friends": {
+            "en": "First Friends",
+            "pt": "Primeiros Amigos",
+        },
+        "friends_in_training": {
+            "en": "Friends-in-Training",
+            "pt": "Amigos em Treinamento",
+        },
+        "moonlight_magic": {
+            "en": "Moonlight Magic",
+            "pt": "Magia da Luz da Lua",
+        },
+        "mystical_phantoms": {
+            "en": "Mystical Phantoms",
+            "pt": "Fantasmas Místicos",
+        },
+        "dragon_slaying_magician": {
+            "en": "Dragon Slaying Magician",
+            "pt": "Mago Matador de Dragão",
+        },
+        "dark_magical_symphony": {
+            "en": "Dark Magical Symphony",
+            "pt": "Sinfonia Mágica Obscura",
+        },
+        "master_and_pupil": {
+            "en": "Master and Pupil",
+            "pt": "Mestre e Pupila",
+        },
+        "shooting_star_blader": {
+            "en": "Shooting Star Blader",
+            "pt": "Blader Estrela Cadente",
+        },
+        "fusion_bond": {
+            "en": "Fusion Bond",
+            "pt": "Vínculo de Fusão",
+        },
+        "epic_yami": {
+            "en": "Epic Yami",
+            "pt": "Yami Épico",
+        },
+        "master_of_dark_magic": {
+            "en": "Master of Dark Magic",
+            "pt": "Mestre de Magia Negra",
+        },
+        "master_of_dark_magic_2": {
+            "en": "Master of Dark Magic (2)",
+            "pt": "Mestre de Magia Negra (2)",
+        },
+        "trust_from_everyone": {
+            "en": "Trust From Everyone",
+            "pt": "Confiança de Todo Mundo",
+        },
+        "destiny_draw": {
+            "en": "Destiny Draw",
+            "pt": "Compra do Destino",
+        },
+        "destiny_draw_2": {
+            "en": "Destiny Draw (2)",
+            "pt": "Compra do Destino (2)",
+        },
+        "magicians_trigger": {
+            "en": "Magician's Trigger",
+            "pt": "Gatilho do Mago",
+        },
+        "ouroboros_wicked_dragon_of_destruction_v3": {
+            "en": "Ouroboros Wicked Dragon of Destruction v3",
+            "pt": "Perverso Dragão Ouroboros da Destruição v3",
+        },
+        "exodia_obliterate": {
+            "en": "Exodia Obliterate",
+            "pt": "Exodia Obliterar",
+        },
+        "the_wasteland": {
+            "en": "The Wasteland",
+            "pt": "A Terra Árida",
+        },
+        "attack_the_moon": {
+            "en": "Attack the Moon",
+            "pt": "Ataque a Lua",
+        },
+        "yugis_friends": {
+            "en": "Yugi's Friends",
+            "pt": "Amigos do Yugi",
+        },
+        "fire_the_catapult": {
+            "en": "Fire the Catapult",
+            "pt": "Dispare a Catapulta",
+        },
+        "kuriboh_power": {
+            "en": "Kuriboh Power",
+            "pt": "Poder Kuriboh",
+        },
+        "black_luster_soldier": {
+            "en": "Black Luster Soldier",
+            "pt": "Soldado do Lustro Negro",
+        },
+        "the_skull_dragon": {
+            "en": "The Skull Dragon",
+            "pt": "O Dragão Caveira",
+        },
+        "magician_of_chaos": {
+            "en": "Magician of Chaos",
+            "pt": "Mago do Caos",
+        },
+        "magician_of_chaos_2": {
+            "en": "Magician of Chaos (2)",
+            "pt": "Mago do Caos (2)",
+        },
+        "a_chain_destruction": {
+            "en": "A Chain Destruction",
+            "pt": "Uma Cadeia da Destruição",
+        },
+        "dark_magician_girl": {
+            "en": "Dark Magician Girl",
+            "pt": "Pequena Maga Negra",
+        },
+        "dark_magician_girl_2": {
+            "en": "Dark Magician Girl (2)",
+            "pt": "Pequena Maga Negra (2)",
+        },
+        "deck_destruction": {
+            "en": "Deck Destruction",
+            "pt": "Destruição de Deck",
+        },
+        "dark_magicians": {
+            "en": "Dark Magicians",
+            "pt": "Magos Negros",
+        },
+        "the_sky_dragon": {
+            "en": "The Sky Dragon",
+            "pt": "O Dragão Celeste",
+        },
+        "a_fiends_sanctuary": {
+            "en": "A Fiend's Sanctuary",
+            "pt": "Santuário de Um Demônio",
+        },
+        "the_ceremonial_duel": {
+            "en": "The Ceremonial Duel",
+            "pt": "O Duelo Cerimonial",
+        },
+        "the_legendary_duelist": {
+            "en": "The Legendary Duelist",
+            "pt": "O Duelista Lendário",
+        },
+        "heart_of_the_dragons": {
+            "en": "Heart of the Dragons",
+            "pt": "Coração dos Dragões",
+        },
+        "heart_of_the_dragons_2": {
+            "en": "Heart of the Dragons (2)",
+            "pt": "Coração dos Dragões (2)",
+        },
+        "the_legendary_timaeus": {
+            "en": "The Legendary Timaeus",
+            "pt": "O Lendário Timaeus",
+        },
+        "aromage": {
+            "en": "Aromage",
+            "pt": "Aromágico",
+        },
+        "fang_of_critias": {
+            "en": "Fang of Critias",
+            "pt": "Presa de Critias",
+        },
+        "the_chaos": {
+            "en": "The Chaos",
+            "pt": "O Caos",
+        },
+        "the_spellcasters_stone": {
+            "en": "The Spellcasters' Stone",
+            "pt": "A Pedra dos Magos",
+        },
+        "black_chaos": {
+            "en": "Black Chaos",
+            "pt": "Caos Negro",
+        },
+        "dark_magician": {
+            "en": "Dark Magician",
+            "pt": "Mago Negro",
+        },
+        "memories_of_the_battle_king": {
+            "en": "Memories of the Battle King",
+            "pt": "Memórias do Rei de Batalha",
+        },
+        "the_legendary_knight": {
+            "en": "The Legendary Knight",
+            "pt": "O Cavaleiro Lendário",
+        },
+        "controller_of_chaos": {
+            "en": "Controller of Chaos",
+            "pt": "Controlador do Caos",
+        },
+        "memories_of_the_battle_king_ending": {
+            "en": "Memories of the Battle King - Ending",
+            "pt": "Memórias do Rei de Batalha - O Fim",
+        },
+        "shadow_world": {
+            "en": "Shadow World",
+            "pt": "Mundo das Sombras",
+        },
     },
     "yugi_muto": {
         "friendship": {
@@ -2869,10 +3148,6 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         "my_mechanical_corps": {
             "en": "My Mechanical Corps",
             "pt": "Minhas Tropas Mecânicas",
-        },
-        "world_of_memories": {
-            "en": "World of Memories",
-            "pt": "Mundo de Memórias",
         },
         "world_of_memories_2": {
             "en": "World of Memories (2)",
