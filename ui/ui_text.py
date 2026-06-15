@@ -74,6 +74,7 @@ ui_text = {
         "gallery_view": "Gallery",
         "loading": "Loading...",
         "deck": "Deck",
+        "export_individual_deck": "Export Deck",
         # ================================
         #  CUSTOM DECKS FRAME
         # ================================
@@ -442,6 +443,7 @@ ui_text = {
         "gallery_view": "Galeria",
         "loading": "Carregando...",
         "deck": "Deck",
+        "export_individual_deck": "Exportar Deck",
         # ================================
         #  CUSTOM DECKS AND CUSTOM DECK EDITOR FRAME
         # ================================

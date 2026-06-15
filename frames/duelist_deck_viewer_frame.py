@@ -202,7 +202,7 @@ class DuelistDeckViewerFrame(tk.Frame):
             text=f"{self.controller.t(self.current_duelist_key)} - {self.deck_data['deck_name']}"
         )
 
-        self.export_deck_button.config(text=self.controller.t("export_deck"))
+        self.export_deck_button.config(text=self.controller.t("export_individual_deck"))
         self.show_card_details.config(text=self.controller.t("card_details"))
 
         self.cards_notebook.tab(0, text=self.controller.t("text_view"))
@@ -410,7 +410,7 @@ class DuelistDeckViewerFrame(tk.Frame):
             defaultextension=".json",
             filetypes=[("JSON files", "*.json")],
             initialfile=default_filename,
-            title=self.controller.t("export_deck")
+            title=self.controller.t("export_individual_deck")
         )
 
         if not file_path:
