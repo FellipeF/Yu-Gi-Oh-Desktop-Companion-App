@@ -1,242 +1,114 @@
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
-import json
+from tkinter import ttk
 
-from data.duel_monsters_pool_game import DUEL_MONSTERS_POOLS_GAME
 from database.queries import get_decks_by_duelist
-from ui.card_details_window import CardDetailsWindow
-from config import CARD_HEIGHT, CARD_WIDTH, EXTRA_TYPES
-from ui.duel_monsters_deck_window import DuelMonstersDeckWindow
+from ui.duelist_deck_viewer_window import DuelistDeckViewerWindow
+from utils.search_bar import SearchBar
+
 
 class DuelistDetailsFrame(tk.Frame):
-
-    #TODO: Side Decks
     def __init__(self, parent, controller):
-        """Frame that shows decks and their contents of a selected Duelist from the Duelist Frames"""
+        """Frame that shows a visual deck selection for the selected duelist."""
         super().__init__(parent)
+
         self.controller = controller
+        self.image_handler = controller.image_handler
 
         self.current_duelist_id = None
         self.current_duelist_key = None
-        self.tk_image = None
-        self.current_deck_index = None
-        self.selected_card_id = None
         self.decks_data = []
-        self.current_cards = []
-        self.displayed_cards = []
-        self.image_handler = controller.image_handler
-
-        # TODO: Add checkbox: Show Complete Decks only
 
         self.duelist_decks_label = tk.Label(self, font=("Arial", 16))
         self.duelist_decks_label.pack(pady=10)
 
-        main_container = tk.Frame(self)
-        main_container.pack(fill="both", expand=True)
+        self.all_decks_data = []
+        self.filtered_decks_data = []
 
-        # Left side: deck and card list
-        left_frame = tk.Frame(main_container)
-        left_frame.pack(side="left", padx=10, fill="both", expand=True)
+        self.search_var = tk.StringVar()
+        self.last_search_text = ""
 
-        decks_container = tk.Frame(left_frame)
-        decks_container.pack(fill="x", pady=5)
+        self.search_container = tk.Frame(self)
+        self.search_container.pack(anchor="w", padx=20, pady=(0, 5))
 
-        self.decks_listbox = tk.Listbox(decks_container, height=5, exportselection=False)
-        self.decks_listbox.pack(side="left", fill="x", expand=True)
-        self.decks_listbox.bind("<<ListboxSelect>>", self.on_deck_select)
+        self.search_bar = SearchBar(
+            self.search_container,
+            textvariable=self.search_var,
+            placeholder=self.controller.t("search_decks"),
+            on_change=self.filter_decks,
+            width=30
+        )
+        self.search_bar.pack(side="left")
 
+        self.decks_canvas = tk.Canvas(self)
         self.decks_scroll = ttk.Scrollbar(
-            decks_container,
-            orient="vertical",
-            command=self.decks_listbox.yview
-        )
-        self.decks_scroll.pack(side="right", fill="y")
-        self.decks_listbox.config(yscrollcommand=self.decks_scroll.set, font=("Tahoma", 12))
-
-        self.export_deck_button = tk.Button(
-            left_frame,
-            width=14,
-            command = self.export_selected_deck
-        )
-        self.export_deck_button.pack(anchor="e", pady=(0, 8), padx=10)
-        self.export_deck_button.pack_forget()
-
-        self.generate_duel_monsters_button = tk.Button(
-            left_frame,
-            width=14,
-            command= self.open_duel_monsters_window
-        )
-        self.generate_duel_monsters_button.pack(anchor="e", pady=(0,8), padx=10)
-        self.generate_duel_monsters_button.pack_forget()
-
-        cards_container = tk.Frame(left_frame)
-        cards_container.pack(fill="both", expand=True, pady=5)
-
-        self.cards_listbox = tk.Listbox(cards_container, exportselection=False, height=18)
-        self.cards_listbox.pack(side="left", fill="both", expand=True)
-        self.cards_listbox.bind("<<ListboxSelect>>", self.show_card_image)
-        self.cards_listbox.bind("<Up>", self.on_cards_arrow_key)
-        self.cards_listbox.bind("<Down>", self.on_cards_arrow_key)
-        self.cards_listbox.bind("<ButtonRelease-1>", self.on_cards_mouse_release)
-
-        self.cards_scroll = ttk.Scrollbar(
-            cards_container,
-            orient="vertical",
-            command=self.cards_listbox.yview
-        )
-        self.cards_scroll.pack(side="right", fill="y")
-        self.cards_listbox.config(yscrollcommand=self.cards_scroll.set, font=("Tahoma", 12))
-        self.cards_listbox.pack_forget()
-        self.cards_scroll.pack_forget()
-
-        # Right side: deck status + image + card details button
-        right_frame = tk.Frame(main_container, width=CARD_WIDTH + 90)
-        right_frame.pack(side="right", padx=15, pady=25, fill="y")
-        right_frame.pack_propagate(False)
-
-        self.deck_status_label = tk.Label(
-            right_frame,
-            font=("Arial", 12, "bold"),
-            text="",
-            wraplength=CARD_WIDTH + 90,
-            justify="center",
-            anchor="center"
-        )
-        self.deck_status_label.pack(pady=(0, 9))
-
-        # Saving this as an attribute so it can be referenced later when repacking deck status on on_deck_select
-        self.image_container = tk.Frame(right_frame, width=CARD_WIDTH, height=CARD_HEIGHT)
-        self.image_container.pack(pady=(0, 8))
-        self.image_container.pack_propagate(False)
-
-        self.image_label = tk.Label(self.image_container, anchor="center")
-        self.image_label.pack(fill="both", expand=True)
-
-        self.show_card_details = tk.Button(
-            right_frame,
-            command=self.open_card_details_window,
-        )
-        self.show_card_details.pack()
-        self.show_card_details.pack_forget()
-
-        # Bottom checkbox for exclusive cards
-        self.show_exclusive_cards = tk.BooleanVar(value=True)
-        self.exclusive_cards_checkbox = tk.Checkbutton(
             self,
-            font=("Tahoma", 12),
-            variable=self.show_exclusive_cards,
-            command=self.reload_deck_cards
+            orient="vertical",
+            command=self.decks_canvas.yview
         )
-        self.exclusive_cards_checkbox.pack(pady=5)
+
+        self.decks_grid = tk.Frame(self.decks_canvas)
+
+        def update_decks_scrollregion(event=None):
+            if not self.decks_canvas.winfo_exists():
+                return
+
+            self.decks_canvas.configure(
+                scrollregion=self.decks_canvas.bbox("all")
+            )
+
+            self.update_decks_scroll_visibility()
+
+        self.decks_grid.bind("<Configure>", update_decks_scrollregion)
+
+        self.decks_canvas_window = self.decks_canvas.create_window(
+            (0, 0),
+            window=self.decks_grid,
+            anchor="n"
+        )
+
+        self.decks_canvas.bind("<Configure>", self.on_decks_canvas_configure)
+
+        self.decks_canvas.configure(
+            yscrollcommand=self.decks_scroll.set
+        )
+
+        self.decks_canvas.pack(
+            side="left",
+            fill="both",
+            expand=True,
+            padx=15,
+            pady=10
+        )
+
+        self.decks_scroll.pack(side="right", fill="y")
+
+        self.decks_canvas.bind("<Enter>", self._bind_decks_mousewheel)
+        self.decks_canvas.bind("<Leave>", self._unbind_decks_mousewheel)
 
         self.refresh_ui()
 
-    def export_selected_deck(self):
-        """Exports selected deck to a .json file."""
+    def filter_decks(self, event=None):
+        search_text = self.search_bar.get_text().casefold()
 
-        # Since button is not available when a deck is not selected, no need for checking this:
-
-        #if self.current_deck_index is None:
-        #    messagebox.showwarning(self.controller.t("export_deck"),self.controller.t("select_deck_first"))
-        #    return
-
-        if not self.decks_data or self.current_deck_index >= len(self.decks_data):
-            messagebox.showwarning(self.controller.t("export_deck"), self.controller.t("no_deck_to_export"))
-            return
-
-        selected_deck = self.decks_data[self.current_deck_index]
-        # Using deck key to suggest name of the file when exporting alongside Duelist Name
-        deck_key = selected_deck["deck_key"]
-        # Deck name is used to suggest name of the file when importing alongside Duelist Name
-        deck_name = selected_deck["deck_name"]
-
-        export_data = {
-            "duelist": self.controller.t(self.current_duelist_key),
-            "deck_name": deck_name,
-            "cards": []
-        }
-
-        for card_id, card_name, qty, _ in selected_deck["cards"]:
-            export_data["cards"].append({
-                "id": card_id,
-                "name": card_name,
-                "quantity": qty
-            })
-
-        default_filename = f"{self.current_duelist_key}_{deck_key}.json".lower().replace(" ", "_")
-
-        file_path = filedialog.asksaveasfilename(
-            defaultextension=".json",
-            filetypes=[("JSON files", "*.json")],
-            initialfile=default_filename,
-            title=self.controller.t("export_deck")
-        )
-
-        if not file_path:
-            return
-
-        try:
-            with open(file_path, "w", encoding="utf-8") as f:
-                json.dump(export_data, f, ensure_ascii=False, indent=4)
-
-            messagebox.showinfo(
-                self.controller.t("deck_exporter"),
-                self.controller.t("deck_export_success").format(path=file_path)
-            )
-        except Exception as e:
-            messagebox.showerror(self.controller.t("deck_exporter"),
-                                 self.controller.t("deck_export_fail").format(error=str(e))
-            )
-
-    def open_duel_monsters_window(self):
-        if self.current_deck_index is None:
-            return
-
-        selected_deck = self.decks_data[self.current_deck_index]
-        pool_key = (self.current_duelist_key, selected_deck["deck_key"])
-        card_pool = DUEL_MONSTERS_POOLS_GAME.get(pool_key)
-
-        # Just in case I forget someone for the final version, but can be removed later.
-        if card_pool is None:
-            messagebox.showwarning(
-                self.controller.t("generate_deck"),
-                f"{self.controller.t(f'no_pool for : {pool_key}')}"
-            )
-            return
-
-        # For translation to work in the window, we also need to pass the selected deck in the original language
-        # so that an ID lookup is established.
-        original_decks_data = get_decks_by_duelist(self.current_duelist_id, "en", show_exclusive_cards=True)
-        original_selected_deck = next(
-            (deck for deck in original_decks_data if deck["deck_id"] == selected_deck["deck_id"]
-             ), None
-        )
-
-        DuelMonstersDeckWindow(self, self.controller, selected_deck, original_selected_deck, card_pool)
-
-    def clear_right_panel(self):
-        """Prevents Image, Status and card details button to show up when changing duelist"""
-        self.selected_card_id = None
-        self.tk_image = None
-        self.image_label.image = None
-        self.image_label.config(image="", text=self.controller.t("select_card"))
-        self.deck_status_label.config(text="", fg="black")
-        self.show_card_details.pack_forget()
-
-    def update_scroll_visibility(self, listbox, scrollbar):
-        """Hide scrollbar when all items fit in the listbox."""
-        listbox.update_idletasks()
-        first, last = listbox.yview()
-
-        if first <= 0.0 and last >= 1.0:
-            scrollbar.pack_forget()
+        if not search_text:
+            self.filtered_decks_data = self.all_decks_data.copy()
         else:
-            scrollbar.pack(side="right", fill="y")
+            self.filtered_decks_data = [
+                deck for deck in self.all_decks_data
+                if search_text in deck["deck_name"].casefold()
+            ]
 
-    def open_card_details_window(self):
-        if not self.selected_card_id:
-            return
-        CardDetailsWindow(self.controller, self.selected_card_id)
+        self.decks_data = self.filtered_decks_data
+        self.load_deck_selection_gallery()
+
+    def on_decks_canvas_configure(self, event):
+        self.decks_canvas.itemconfig(
+            self.decks_canvas_window,
+            width=event.width
+        )
+
+        if self.decks_data:
+            self.load_deck_selection_gallery()
 
     def set_duelist(self, duelist_id, duelist_key):
         self.current_duelist_id = duelist_id
@@ -246,395 +118,292 @@ class DuelistDetailsFrame(tk.Frame):
         self.load_duelist()
 
     def load_duelist(self):
-        """Load duelist name and cards for currently selected deck"""
         if not self.current_duelist_id:
             return
 
-        self.current_deck_index = None
-        self.current_cards = []
-        self.selected_card_id = None
+        for widget in self.decks_grid.winfo_children():
+            widget.destroy()
 
-        self.decks_listbox.delete(0, tk.END)
-        self.cards_listbox.delete(0, tk.END)
-        self.decks_listbox.selection_clear(0, tk.END)
-        self.cards_listbox.selection_clear(0, tk.END)
-
-        self.cards_listbox.pack_forget()
-        self.cards_scroll.pack_forget()
-        self.export_deck_button.pack_forget()
-        self.generate_duel_monsters_button.pack_forget()
-
-        self.clear_right_panel()
-
-        self.decks_data = get_decks_by_duelist(
+        self.all_decks_data = get_decks_by_duelist(
             self.current_duelist_id,
             self.controller.current_language,
-            show_exclusive_cards=self.show_exclusive_cards.get()
+            show_exclusive_cards=True
         )
+
+        self.filtered_decks_data = self.all_decks_data.copy()
+        self.decks_data = self.filtered_decks_data
 
         if not self.decks_data:
-            self.decks_listbox.insert(tk.END, self.controller.t("no_decks_found"))
-            self.update_scroll_visibility(self.decks_listbox, self.decks_scroll)
+            tk.Label(
+                self.decks_grid,
+                text=self.controller.t("no_decks_found"),
+                font=("Tahoma", 12)
+            ).grid(row=0, column=0, padx=10, pady=10)
+
+            self.decks_canvas.update_idletasks()
+            self.decks_canvas.configure(scrollregion=self.decks_canvas.bbox("all"))
+            self.update_decks_scroll_visibility()
             return
 
-        for deck in self.decks_data:
-            self.decks_listbox.insert(tk.END, deck["deck_name"])
+        self.load_deck_selection_gallery()
 
-        self.update_scroll_visibility(self.decks_listbox, self.decks_scroll)
+    def load_deck_selection_gallery(self):
+        for widget in self.decks_grid.winfo_children():
+            widget.destroy()
 
-    def load_selected_deck_cards(self):
-        """Load cards from deck that is currently selected"""
-        if self.current_deck_index is None:
-            return
+        deck_width = 250
+        horizontal_gap = 30
+        available_width = max(self.decks_canvas.winfo_width(), 1)
 
-        selected_deck = self.decks_data[self.current_deck_index]
-        self.cards_listbox.delete(0, tk.END)
-        self.current_cards = selected_deck["cards"]
-        self.displayed_cards = []
-
-        current_section = None
-        current_group = None
-
-        for card_id, card_name, qty, card_type in self.current_cards:
-            is_extra = self.is_extra_deck(card_type)
-            deck_section = "extra" if is_extra else "main"
-
-            if deck_section != current_section:
-                section_label = (
-                    self.controller.t("main_deck") if deck_section == "main"
-                    else self.controller.t("extra_deck"))
-
-                self.cards_listbox.insert(tk.END, f"=== {section_label.upper()} ===")
-                self.displayed_cards.append(None)
-
-                current_section = deck_section
-                current_group = None
-
-            group_label = self._card_group_label(card_id, card_type, deck_section)
-
-            if group_label and group_label != current_group:
-                self.cards_listbox.insert(tk.END, f"━━━ {group_label.upper()} ━━━")
-
-                index = self.cards_listbox.size() - 1
-                color = self._get_group_color(group_label)
-                self.cards_listbox.itemconfig(index, fg=color)
-
-                self.displayed_cards.append(None) #So that labels aren't treated as cards
-                current_group = group_label
-
-            self.cards_listbox.insert(tk.END, f"{qty}x {card_name}")
-            self.displayed_cards.append((card_id, card_name, qty, card_type))
-
-        self.cards_listbox.pack(side="left", fill="both", expand=True)
-        self.update_scroll_visibility(self.cards_listbox, self.cards_scroll)
-        self.update_deck_status()
-
-    def _get_group_color(self, group_label: str) -> str:
-
-        colors = {
-            self.controller.t("normal_monsters"): "#C8B070",
-            self.controller.t("effect_monsters"): "#B86B2B",
-            self.controller.t("ritual_monsters"): "#4A8DC7",
-            self.controller.t("pendulum_monsters"): "#2F8C72",
-
-            self.controller.t("fusion_monsters"): "#7B5BA7",
-            self.controller.t("fusion_pendulum_monsters"): "#6A4C93",
-
-            self.controller.t("synchro_monsters"): "#9A9A9A",
-            self.controller.t("synchro_pendulum_monsters"): "#6F8F8F",
-
-            self.controller.t("xyz_monsters"): "#303030",
-            self.controller.t("xyz_pendulum_monsters"): "#1E4F4F",
-
-            self.controller.t("link_monsters"): "#2563EB",
-
-            self.controller.t("spells"): "#1D8F6A",
-            self.controller.t("traps"): "#8E44AD",
-        }
-
-        return colors.get(group_label, "black")
-
-    def is_extra_deck(self, card_type: str | None) -> bool | None:
-        if not card_type:
-            return False
-        return any(x in card_type for x in EXTRA_TYPES)
-
-    def _card_group_label(self, card_id: int | None, card_type: str | None, deck_section: str) -> str | None:
-        if card_id is None:
-            return self.controller.t("exclusive_cards")
-
-        if "Token" in card_type:
-            return self.controller.t("other_cards")
-
-        if deck_section == "extra":
-            if "Fusion" in card_type and "Pendulum" in card_type:
-                return self.controller.t("fusion_pendulum_monsters")
-
-            if "Fusion" in card_type:
-                return self.controller.t("fusion_monsters")
-
-            if "Synchro" in card_type and "Pendulum" in card_type:
-                return self.controller.t("synchro_pendulum_monsters")
-
-            if "Synchro" in card_type:
-                return self.controller.t("synchro_monsters")
-
-            if "XYZ" in card_type and "Pendulum" in card_type:
-                return self.controller.t("xyz_pendulum_monsters")
-
-            if "XYZ" in card_type:
-                return self.controller.t("xyz_monsters")
-
-            if "Link" in card_type:
-                return self.controller.t("link_monsters")
-
-            return self.controller.t("extra_deck")
-
-        if "Ritual" in card_type:
-            return self.controller.t("ritual_monsters")
-
-        if "Pendulum" in card_type:
-            return self.controller.t("pendulum_monsters")
-
-        if card_type == "Normal Monster":
-            return self.controller.t("normal_monsters")
-
-        if "Monster" in card_type:
-            return self.controller.t("effect_monsters")
-
-        if card_type == "Spell Card":
-            return self.controller.t("spells")
-
-        if card_type == "Trap Card":
-            return self.controller.t("traps")
-
-        return self.controller.t("other_cards")
-
-    def clear_card_selection(self):
-        """Clear details when other deck is selected"""
-        self.selected_card_id = None
-        self.tk_image = None
-        self.cards_listbox.selection_clear(0, tk.END)
-        self.image_label.image = None
-        self.image_label.config(image="", text=self.controller.t("select_card"))
-        self.show_card_details.pack_forget()
-
-    def restore_selected_card(self, previous_card_id):
-        """Preserves card selection only if it's not an exclusive card, so to not have inconsistent details
-        being passed when the show exclusive cards checkbox is checked"""
-        if not previous_card_id:
-            self.clear_card_selection()
-            return
-
-        for index, card in enumerate(self.displayed_cards):
-            if card is None:
-                continue
-
-            card_id, card_name, qty, card_type = card
-
-            if card_id == previous_card_id:
-                self.selected_card_id = card_id
-                self.cards_listbox.selection_clear(0, tk.END)
-                self.cards_listbox.select_set(index)
-                self.cards_listbox.activate(index)
-                self.cards_listbox.see(index)
-                self.show_card_image(None)
-                return
-
-        self.clear_card_selection()
-
-    def on_deck_select(self, event):
-        selection = self.decks_listbox.curselection()
-        if not selection:
-            return
-
-        self.current_deck_index = selection[0]
-
-        selected_deck = self.decks_data[self.current_deck_index]
-        deck_key = selected_deck["deck_key"]
-
-        if deck_key != "duel_monsters":
-            self.deck_status_label.pack(before=self.image_container, pady=(0, 9))
-            self.generate_duel_monsters_button.pack_forget()
-            self.export_deck_button.pack(anchor="e", pady=(0, 8), padx=10)
-        else:
-            self.export_deck_button.pack_forget()
-            self.deck_status_label.pack_forget()
-            self.generate_duel_monsters_button.pack(anchor="e", pady=(0,8), padx=10)
-
-        self.load_selected_deck_cards()
-        self.clear_card_selection()
-
-    def update_deck_status(self):
-        """Controls label to show decks status. Since it counts the total of shown items instead of doing a
-        SELECT COUNT(*) for each deck on the database, when the checkbox exclusive cards is marked,
-        this status may change. May need to investigate this further.
-        As in the TCG, a deck is complete if the main deck cards are >= 40, with fusion/synchro/xyz/link not counting
-        to this limit"""
-        total_cards_main_deck = sum(
-            qty for _, _, qty,card_type in self.current_cards if not self.is_extra_deck(card_type)
+        columns = max(
+            1,
+            available_width // (deck_width + horizontal_gap)
         )
 
-        if total_cards_main_deck >= 40:
-            self.deck_status_label.config(
-                text=self.controller.t("complete_deck"),
-                fg="green"
+        row = 0
+        col = 0
+
+        cover_width = 132
+        cover_height = 189
+
+        for index, deck in enumerate (self.decks_data, start=1):
+
+            deck_frame = tk.Frame(
+                self.decks_grid,
+                width=250,
+                height=360,
+                bg="#f2f2f2",
+                highlightbackground="#9a9a9a",
+                highlightthickness=1,
+                padx=10,
+                pady=10,
+                cursor="hand2"
             )
-        else:
-            self.deck_status_label.config(
-                text=self.controller.t("incomplete_deck"),
-                fg="red"
+            deck_frame.grid(row=row, column=col, padx=18, pady=18, sticky="n")
+            deck_frame.pack_propagate(False)
+
+            header_label = tk.Label(
+                deck_frame,
+                text= f"{self.controller.t('deck')} #{index}",
+                bg="#d9d9d9",
+                fg="#333333",
+                font=("Tahoma", 10),
+                anchor="center"
+            )
+            header_label.pack(fill="x", pady=(0, 8))
+
+            cover_frame = tk.Frame(
+                deck_frame,
+                width=cover_width,
+                height=cover_height,
+                bg="#1f1f1f",
+                highlightbackground="#000000",
+                highlightthickness=2,
+                cursor="hand2"
+            )
+            cover_frame.pack()
+            cover_frame.pack_propagate(False)
+
+            cover_label = tk.Label(
+                cover_frame,
+                text=self.controller.t("loading"),
+                bg="#1f1f1f",
+                fg="white",
+                cursor="hand2"
+            )
+            cover_label.pack(fill="both", expand=True, padx=3, pady=3)
+
+            name_container = tk.Frame(
+                deck_frame,
+                height=120,
+                bg="#f2f2f2"
+            )
+            name_container.pack(fill="x", pady=(8, 0))
+            name_container.pack_propagate(False)
+
+            total_cards = sum(
+                qty for _, _, qty, _ in deck["cards"]
             )
 
-    def is_valid_card_index(self, index):
-        return 0 <= index < len(self.displayed_cards) and self.displayed_cards[index] is not None
-    
-    def select_card_index(self, index):
-        self.cards_listbox.selection_clear(0, tk.END)
-        self.cards_listbox.select_set(index)
-        self.cards_listbox.activate(index)
-        self.cards_listbox.see(index)
-        self.show_card_image(None)
-        
-    def find_next_valid_card_index(self, start_index, direction):
-        index = start_index
-        
-        while 0 <= index < len(self.displayed_cards):
-            if self.is_valid_card_index(index):
-                return index
-            index += direction
-            
+            title_area = tk.Frame(
+                name_container,
+                height=75,
+                bg="#f2f2f2"
+            )
+            title_area.pack(fill="x")
+            title_area.pack_propagate(False)
+
+            name_label = tk.Label(
+                title_area,
+                text=deck["deck_name"],
+                wraplength=220,
+                justify="center",
+                font=("Tahoma", 12),
+                bg="#f2f2f2",
+                cursor="hand2"
+            )
+            name_label.pack(expand=True)
+
+            separator = tk.Frame(
+                name_container,
+                height=1,
+                bg="#c8c8c8"
+            )
+            separator.pack(fill="x", padx=25, pady=(2, 4))
+
+            cards_count_label = tk.Label(
+                name_container,
+                text=f"{total_cards} {self.controller.t('cards')}",
+                font=("Tahoma", 11, "bold"),
+                bg="#f2f2f2",
+                cursor="hand2"
+            )
+            cards_count_label.pack()
+
+            def on_enter(event, frame=deck_frame, header=header_label):
+                frame.config(bg="#e8e8e8", highlightbackground="#555555")
+                header.config(bg="#cfcfcf")
+
+            def on_leave(event, frame=deck_frame, header=header_label):
+                frame.config(bg="#f2f2f2", highlightbackground="#9a9a9a")
+                header.config(bg="#d9d9d9")
+
+            for widget in (deck_frame, header_label, cover_frame, cover_label, name_container, name_label):
+                widget.bind("<Enter>", on_enter)
+                widget.bind("<Leave>", on_leave)
+
+            clickable_widgets = (
+                deck_frame,
+                header_label,
+                cover_frame,
+                cover_label,
+                name_container,
+                title_area,
+                name_label,
+                separator,
+                cards_count_label
+            )
+
+            for widget in clickable_widgets:
+                widget.bind(
+                    "<Button-1>",
+                    lambda e, d=deck: self.open_deck_viewer(d)
+                )
+                widget.bind("<Enter>", on_enter)
+                widget.bind("<Leave>", on_leave)
+
+            cover_card_id = self.get_deck_cover_card_id(deck)
+
+            self.image_handler.load_thumbnail_async(
+                self,
+                cover_card_id,
+                cover_width,
+                cover_height,
+                lambda cid, tk_img, label=cover_label:
+                self._on_deck_cover_loaded(
+                    cid,
+                    tk_img,
+                    label
+                )
+            )
+
+            col += 1
+
+            if col >= columns:
+                col = 0
+                row += 1
+
+        for i in range(columns):
+            self.decks_grid.grid_columnconfigure(i, weight=1)
+
+        self.decks_canvas.update_idletasks()
+        self.decks_canvas.configure(
+            scrollregion=self.decks_canvas.bbox("all")
+        )
+
+        self.update_decks_scroll_visibility()
+
+    def get_deck_cover_card_id(self, deck):
+        if deck.get("cover_card_id") is not None:
+            return deck["cover_card_id"]
+
+        for card_id, card_name, qty, card_type in deck["cards"]:
+            if card_id is not None:
+                return card_id
+
         return None
-    
-    def on_cards_arrow_key(self, event):
-        selection = self.cards_listbox.curselection()
-        
-        if selection:
-            current_index = selection[0]
-        else:
-            current_index = self.cards_listbox.index(tk.ACTIVE)
-            
-        direction = -1 if event.keysym == "Up" else 1
-        next_index = self.find_next_valid_card_index(current_index + direction, direction)
-        
-        if next_index is not None:
-            self.select_card_index(next_index)
-            
-        return "break"
-    
-    def on_cards_mouse_release(self, event):
-        selection = self.cards_listbox.curselection()
 
-        if not selection:
-            return "break"
-
-        index = selection[0]
-
-        if self.is_valid_card_index(index):
-            return
-
-        next_index = self.find_next_valid_card_index(index + 1, 1)
-
-        if next_index is None:
-            next_index = self.find_next_valid_card_index(index - 1, -1)
-
-        if next_index is not None:
-            self.select_card_index(next_index)
-        else:
-            self.cards_listbox.selection_clear(0, tk.END)
-
-        return "break"
-
-    def show_card_image(self, event):
-        """Shows card image invoking async function. If no card is found in the API, shows a placeholder instead"""
-        selection = self.cards_listbox.curselection()
-        if not selection:
-            return
-
-        card = self.displayed_cards[selection[0]]
-
-        # Check if it's a label instead of a card
-        if card is None:
-            return
-
-        card_id, *_ = card # No need to get everything here only for the image...
-        self.selected_card_id = card_id
-
-        # Handles exclusive cards
-        if card_id is None:
-            self.show_card_details.pack_forget()
-        else:
-            self.show_card_details.pack()
-
-        self.image_handler.load_async(
-            self,
-            card_id,
-            self._on_image_loaded
-        )
-
-    def _on_image_loaded(self, card_id, tk_img):
-        if card_id != self.selected_card_id:
+    def _on_deck_cover_loaded(self, card_id, tk_img, label):
+        if not label.winfo_exists():
             return
 
         if tk_img is None:
-            tk_img = self.image_handler.get_placeholder(CARD_WIDTH, CARD_HEIGHT)
+            tk_img = self.image_handler.get_placeholder(132, 189)
 
-        self.tk_image = tk_img
-        self.image_label.config(image=self.tk_image, text="")
+        label.image = tk_img
+        label.config(image=tk_img, text="")
 
-    def reload_deck_cards(self):
-        """Load deck contents again for this particular duelist to show/hide non-TCG/OCG Cards"""
-        if not self.current_duelist_id:
-            return
-
-        if self.current_deck_index is None:
-            return
-
-        previous_index = self.current_deck_index
-        previous_scroll = self.decks_listbox.yview()
-        previous_card_id = self.selected_card_id
-
-        self.decks_data = get_decks_by_duelist(
+    def open_deck_viewer(self, deck):
+        DuelistDeckViewerWindow(
+            self,
+            self.controller,
             self.current_duelist_id,
-            self.controller.current_language,
-            show_exclusive_cards=self.show_exclusive_cards.get()
+            self.current_duelist_key,
+            deck
         )
 
-        self.decks_listbox.delete(0, tk.END)
+    def update_decks_scroll_visibility(self):
+        self.decks_canvas.update_idletasks()
 
-        for deck in self.decks_data:
-            self.decks_listbox.insert(tk.END, deck["deck_name"])
+        bbox = self.decks_canvas.bbox("all")
 
-        self.update_scroll_visibility(self.decks_listbox, self.decks_scroll)
+        if not bbox:
+            self.decks_scroll.pack_forget()
+            return
 
-        if previous_index < len(self.decks_data):
-            self.current_deck_index = previous_index
+        content_height = bbox[3] - bbox[1]
+        canvas_height = self.decks_canvas.winfo_height()
 
-            self.decks_listbox.selection_clear(0, tk.END)
-            self.decks_listbox.select_set(previous_index)
-            self.decks_listbox.activate(previous_index)
-            self.decks_listbox.see(previous_index)
-
-            if previous_scroll:
-                self.decks_listbox.yview_moveto(previous_scroll[0])
-
-            self.load_selected_deck_cards()
-            self.restore_selected_card(previous_card_id)
+        if content_height <= canvas_height:
+            self.decks_scroll.pack_forget()
+            self.decks_canvas.yview_moveto(0)
         else:
-            self.current_deck_index = None
-            self.current_cards = []
-            self.cards_listbox.delete(0, tk.END)
-            self.clear_right_panel()
-            self.generate_duel_monsters_button.pack_forget()
+            self.decks_scroll.pack(side="right", fill="y")
+
+    def _bind_decks_mousewheel(self, event):
+        self.decks_canvas.bind_all("<MouseWheel>", self._on_decks_mousewheel)
+
+    def _unbind_decks_mousewheel(self, event):
+        self.decks_canvas.unbind_all("<MouseWheel>")
+
+    def _on_decks_mousewheel(self, event):
+        bbox = self.decks_canvas.bbox("all")
+
+        if not bbox:
+            return "break"
+
+        content_height = bbox[3] - bbox[1]
+        canvas_height = self.decks_canvas.winfo_height()
+
+        if content_height <= canvas_height:
+            self.decks_canvas.yview_moveto(0)
+            return "break"
+
+        self.decks_canvas.yview_scroll(
+            int(-1 * (event.delta / 120)),
+            "units"
+        )
+
+        return "break"
 
     def refresh_ui(self):
-        self.exclusive_cards_checkbox.config(text=self.controller.t("show_exclusive_cards"))
-        self.show_card_details.config(text=self.controller.t("card_details"))
-        self.export_deck_button.config(text=self.controller.t("export_deck"))
         self.duelist_decks_label.config(
-            text=self.controller.t("duelist_decks").format(name=self.controller.t(self.current_duelist_key))
+            text=self.controller.t("duelist_decks").format(
+                name=self.controller.t(self.current_duelist_key)
+            )
         )
-        self.generate_duel_monsters_button.config(text=self.controller.t("generate_deck"))
 
-        if self.tk_image is None and self.image_label.cget("image") == "":
-            self.image_label.config(text=self.controller.t("select_card"))
+        self.search_bar.placeholder = self.controller.t("search_decks")
+
+        if self.search_bar.placeholder_active:
+            self.search_bar.set_placeholder()

@@ -92,6 +92,7 @@ def create_tables():
         deck_category_id INTEGER,
         key TEXT NOT NULL,
         order_index INTEGER DEFAULT 0,
+        cover_card_id INTEGER,
         FOREIGN KEY (duelist_id) REFERENCES duelists(id) ON DELETE CASCADE,
         FOREIGN KEY (deck_category_id) REFERENCES deck_categories(id) ON DELETE SET NULL,
         UNIQUE(duelist_id, key)

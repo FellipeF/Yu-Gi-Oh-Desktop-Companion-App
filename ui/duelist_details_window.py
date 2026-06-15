@@ -8,8 +8,9 @@ class DuelistDetailsWindow(tk.Toplevel):
 
         self.controller = controller
         self.title(controller.t(duelist_key))
-        self.geometry("900x800")
+        self.geometry("1200x900")
         self.minsize(800,800)
+        self.resizable(False, False)
 
         content = DuelistDetailsFrame(self, controller)
         content.pack(fill="both", expand=True)

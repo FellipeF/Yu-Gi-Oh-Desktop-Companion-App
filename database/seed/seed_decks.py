@@ -5,6 +5,7 @@ from data.duel_monsters.decks import LIST_OF_DECKS_DUEL_MONSTERS
 from data.duel_monsters.deck_categories_duel_monsters import DECK_CATEGORIES_KEYS_DUEL_MONSTERS
 from data.gx.decks import LIST_OF_DECKS_GX
 from data.gx.deck_categories_gx import DECK_CATEGORIES_KEYS_GX
+from data.duel_monsters.duel_monsters_decks_cover_cards import DUEL_MONSTERS_DECK_COVER_CARDS
 
 DecksByDuelist = dict[str, dict[str, list[tuple[str, int]]]]
 
@@ -63,11 +64,11 @@ def _build_duelist_decks_rows(
         duelist_id_by_key: dict[str, int],
         deck_category_id_by_key: dict[str, int],
         decks_source: DecksByDuelist,
-) -> list[tuple[int, int | None, str, int]]:
+) -> list[tuple[int, int | None, str, int, int | None]]:
     """Prepare rows to UPSERT. As seen in the database model, deck_category_id is populated if this is a shared
     category key"""
 
-    rows: list[tuple[int, int | None, str, int]] = []
+    rows: list[tuple[int, int | None, str, int, int | None]] = []
 
     for duelist_key, decks_by_key in decks_source.items():
         duelist_id = duelist_id_by_key.get(duelist_key)
@@ -76,21 +77,26 @@ def _build_duelist_decks_rows(
 
         for order_index, deck_key in enumerate(decks_by_key.keys()):
             deck_category_id = deck_category_id_by_key.get(deck_key)
-            rows.append((duelist_id, deck_category_id, deck_key, order_index))
+            cover_card_id = (DUEL_MONSTERS_DECK_COVER_CARDS.get(duelist_key, {}).get(deck_key))
+            rows.append((duelist_id, deck_category_id, deck_key, order_index, cover_card_id))
 
     return rows
 
-def _upsert_duelist_decks(cursor, deck_rows: list[tuple[int, int | None, str, int]], ) -> None:
+def _upsert_duelist_decks(
+    cursor,
+    deck_rows: list[tuple[int, int | None, str, int, int | None]],
+) -> None:
     """Insert or update duelist_decks Table"""
     if not deck_rows:
         return
 
     cursor.executemany("""
-    INSERT INTO duelist_decks (duelist_id, deck_category_id, key, order_index)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO duelist_decks (duelist_id, deck_category_id, key, order_index, cover_card_id)
+    VALUES (?, ?, ?, ?, ?)
     ON CONFLICT (duelist_id, key) DO UPDATE SET
         deck_category_id = excluded.deck_category_id,
-        order_index = excluded.order_index
+        order_index = excluded.order_index,
+        cover_card_id = excluded.cover_card_id
         """, deck_rows, )
 
 def _delete_removed_duelist_decks(cursor, duelist_id_by_key: dict[str, int], decks_source: DecksByDuelist,) -> None:
@@ -283,7 +289,7 @@ def populate_decks(base_language_code_for_lookup: str = "en") -> None:
         for _decks_source, deck_category_keys in SEED_DECK_SOURCES:
             _insert_missing_deck_categories(cursor, deck_category_id_by_key, deck_category_keys)
 
-        all_deck_rows: list[tuple[int, int | None, str, int]] = []
+        all_deck_rows: list[tuple[int, int | None, str, int, int | None]] = []
 
         for decks_source, _deck_category_keys in SEED_DECK_SOURCES:
             all_deck_rows.extend(_build_duelist_decks_rows(duelist_id_by_key, deck_category_id_by_key, decks_source,))

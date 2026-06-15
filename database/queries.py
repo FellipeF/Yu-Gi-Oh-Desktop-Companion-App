@@ -68,6 +68,7 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
                     dd.key
                 ) AS deck_name,
                 dd.order_index AS deck_order,
+                dd.cover_card_id,
                 dc.card_id,
                 COALESCE(ct_lang.name, ct_en.name, dc.card_name) AS card_name,
                 dc.quantity,
@@ -187,12 +188,13 @@ def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusi
     decks: list[dict] = []
     by_deck: dict[int, dict] = {}
 
-    for deck_id, deck_key, deck_name, _deck_order, card_id, card_name, qty, card_type in rows:
+    for deck_id, deck_key, deck_name, _deck_order, cover_card_id, card_id, card_name, qty, card_type in rows:
         if deck_id not in by_deck:
             deck_obj = {
                 "deck_id": deck_id,
                 "deck_key": deck_key,
                 "deck_name": deck_name,
+                "cover_card_id": cover_card_id,
                 "cards": []
             }
             by_deck[deck_id] = deck_obj

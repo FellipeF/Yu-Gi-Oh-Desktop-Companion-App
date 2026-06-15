@@ -70,6 +70,10 @@ ui_text = {
         "deck_generator": "Deck Generator",
         "generated_deck": "Generated Deck",
         "generate_another_deck": "Generate Another Deck",
+        "text_view": "Text",
+        "gallery_view": "Gallery",
+        "loading": "Loading...",
+        "deck": "Deck",
         # ================================
         #  CUSTOM DECKS FRAME
         # ================================
@@ -287,6 +291,10 @@ ui_text = {
         "deck_generator": "Gerador de Deck",
         "generated_deck": "Deck Gerado",
         "generate_another_deck": "Gerar Outro Deck",
+        "text_view": "Texto",
+        "gallery_view": "Galeria",
+        "loading": "Carregando...",
+        "deck": "Deck",
         # ================================
         #  CUSTOM DECKS AND CUSTOM DECK EDITOR FRAME
         # ================================

@@ -116,9 +116,18 @@ class CustomDeckEditorFrame(tk.Frame):
         self.deck_cards_label = tk.Label(right_frame, font=("Tahoma", 12))
         self.deck_cards_label.pack(pady=(0, 5))
 
-        deck_container = tk.Frame(right_frame, height=450)
-        deck_container.pack(fill="x", expand=False)
-        deck_container.pack_propagate(False)
+        self.deck_notebook = ttk.Notebook(right_frame)
+        self.deck_notebook.pack(fill="both", expand=True)
+
+        self.deck_text_frame = tk.Frame(self.deck_notebook)
+        self.deck_gallery_frame = tk.Frame(self.deck_notebook)
+
+        self.deck_notebook.add(self.deck_text_frame, text=self.controller.t("text_view"))
+        self.deck_notebook.add(self.deck_gallery_frame, text=self.controller.t("gallery_view"))
+
+        # ===== ABA TEXTO =====
+        deck_container = tk.Frame(self.deck_text_frame)
+        deck_container.pack(fill="both", expand=True)
 
         self.deck_cards_list = tk.Listbox(
             deck_container,
@@ -142,6 +151,36 @@ class CustomDeckEditorFrame(tk.Frame):
         self.deck_cards_list.bind("<Up>", self.on_cards_arrow_key)
         self.deck_cards_list.bind("<Down>", self.on_cards_arrow_key)
         self.deck_cards_list.bind("<ButtonRelease-1>", self.on_cards_mouse_release)
+
+        self.deck_gallery_canvas = tk.Canvas(self.deck_gallery_frame)
+        self.deck_gallery_scroll = ttk.Scrollbar(
+            self.deck_gallery_frame,
+            orient="vertical",
+            command=self.deck_gallery_canvas.yview
+        )
+
+        self.deck_gallery_inner = tk.Frame(self.deck_gallery_canvas)
+
+        def update_deck_gallery_scrollregion(event=None):
+            if not self.deck_gallery_canvas.winfo_exists():
+                return
+
+            self.deck_gallery_canvas.configure(
+                scrollregion=self.deck_gallery_canvas.bbox("all")
+            )
+
+            self.update_deck_gallery_scroll_visibility()
+
+        self.deck_gallery_inner.bind("<Configure>", update_deck_gallery_scrollregion)
+
+        self.deck_gallery_canvas.create_window((0, 0), window=self.deck_gallery_inner, anchor="nw")
+        self.deck_gallery_canvas.configure(yscrollcommand=self.deck_gallery_scroll.set)
+
+        self.deck_gallery_canvas.pack(side="left", fill="both", expand=True)
+        self.deck_gallery_scroll.pack(side="right", fill="y")
+
+        self.deck_gallery_canvas.bind("<Enter>", self._bind_deck_gallery_mousewheel)
+        self.deck_gallery_canvas.bind("<Leave>", self._unbind_deck_gallery_mousewheel)
 
         deck_buttons_frame = tk.Frame(right_frame)
         deck_buttons_frame.pack(pady=10)
@@ -198,6 +237,9 @@ class CustomDeckEditorFrame(tk.Frame):
 
         self.restore_search_selection(previous_search_card_id)
         self.restore_deck_selection(previous_deck_card_id, previous_deck_card_name)
+
+        self.deck_notebook.tab(0, text=self.controller.t("text_view"))
+        self.deck_notebook.tab(1, text=self.controller.t("gallery_view"))
 
     def load_user_deck(self):
         """Load currently selected deck and contents. """
@@ -301,10 +343,7 @@ class CustomDeckEditorFrame(tk.Frame):
             group_label = self._card_group_label(card_type, section)
 
             if group_label and group_label != current_group:
-                self.deck_cards_list.insert(
-                    tk.END,
-                    self.deck_cards_list.insert(tk.END, f"━━━ {group_label.upper()} ━━━")
-                )
+                self.deck_cards_list.insert(tk.END, f"━━━ {group_label.upper()} ━━━")
 
                 index = self.deck_cards_list.size() - 1
                 color = self._get_group_color(group_label)
@@ -317,6 +356,150 @@ class CustomDeckEditorFrame(tk.Frame):
             self.displayed_deck_cards.append((card_id, card_name, quantity, card_type, section))
 
         self.update_scroll_visibility(self.deck_cards_list, self.deck_scroll)
+        self.load_deck_gallery_view()
+
+    def load_deck_gallery_view(self):
+        for widget in self.deck_gallery_inner.winfo_children():
+            widget.destroy()
+
+        columns = 5
+        row = 0
+        col = 0
+
+        thumbnail_width = 88
+        thumbnail_height = 126
+
+        for card in self.displayed_deck_cards:
+            if card is None:
+                continue
+
+            card_id, card_name, quantity, card_type, section = card
+
+            card_frame = tk.Frame(self.deck_gallery_inner, padx=6, pady=6)
+            card_frame.grid(row=row, column=col, sticky="n")
+
+            thumb_frame = tk.Frame(
+                card_frame,
+                width=thumbnail_width,
+                height=thumbnail_height,
+                relief="ridge",
+                borderwidth=1,
+                cursor="hand2"
+            )
+            thumb_frame.pack()
+            thumb_frame.pack_propagate(False)
+
+            img_label = tk.Label(
+                thumb_frame,
+                text=self.controller.t("loading"),
+                cursor="hand2"
+            )
+            img_label.pack(fill="both", expand=True)
+
+            name_label = tk.Label(
+                card_frame,
+                text=f"{quantity}x {card_name}",
+                wraplength=105,
+                justify="center",
+                font=("Tahoma", 8)
+            )
+            name_label.pack(pady=(3, 0))
+
+            thumb_frame.bind(
+                "<Button-1>",
+                lambda e, cid=card_id, cname=card_name: self.select_deck_card_by_id(cid, cname)
+            )
+
+            img_label.bind(
+                "<Button-1>",
+                lambda e, cid=card_id, cname=card_name: self.select_deck_card_by_id(cid, cname)
+            )
+
+            name_label.bind(
+                "<Button-1>",
+                lambda e, cid=card_id, cname=card_name: self.select_deck_card_by_id(cid, cname)
+            )
+
+            self.image_handler.load_thumbnail_async(
+                self,
+                card_id,
+                thumbnail_width,
+                thumbnail_height,
+                lambda cid, tk_img, label=img_label: self._on_deck_gallery_image_loaded(cid, tk_img, label)
+            )
+
+            col += 1
+
+            if col >= columns:
+                col = 0
+                row += 1
+
+        self.deck_gallery_canvas.update_idletasks()
+        self.deck_gallery_canvas.configure(scrollregion=self.deck_gallery_canvas.bbox("all"))
+        self.update_deck_gallery_scroll_visibility()
+
+    def _on_deck_gallery_image_loaded(self, card_id, tk_img, label):
+        if not label.winfo_exists():
+            return
+
+        if tk_img is None:
+            tk_img = self.image_handler.get_placeholder(88, 126)
+
+        label.image = tk_img
+        label.config(image=tk_img, text="")
+
+    def select_deck_card_by_id(self, card_id, card_name):
+        self.search_results_list.selection_clear(0, tk.END)
+
+        self.selected_deck_card_id = card_id
+        self.selected_deck_card_name = card_name
+        self.active_card_id = card_id
+
+        self.image_handler.load_async(
+            self,
+            card_id,
+            self._on_image_loaded
+        )
+
+    def update_deck_gallery_scroll_visibility(self):
+        self.deck_gallery_canvas.update_idletasks()
+
+        bbox = self.deck_gallery_canvas.bbox("all")
+
+        if not bbox:
+            self.deck_gallery_scroll.pack_forget()
+            return
+
+        content_height = bbox[3] - bbox[1]
+        canvas_height = self.deck_gallery_canvas.winfo_height()
+
+        if content_height <= canvas_height:
+            self.deck_gallery_scroll.pack_forget()
+            self.deck_gallery_canvas.yview_moveto(0)
+        else:
+            self.deck_gallery_scroll.pack(side="right", fill="y")
+
+    def _bind_deck_gallery_mousewheel(self, event):
+        self.deck_gallery_canvas.bind_all("<MouseWheel>", self._on_deck_gallery_mousewheel)
+
+    def _unbind_deck_gallery_mousewheel(self, event):
+        self.deck_gallery_canvas.unbind_all("<MouseWheel>")
+
+    def _on_deck_gallery_mousewheel(self, event):
+        bbox = self.deck_gallery_canvas.bbox("all")
+
+        if not bbox:
+            return "break"
+
+        content_height = bbox[3] - bbox[1]
+        canvas_height = self.deck_gallery_canvas.winfo_height()
+
+        if content_height <= canvas_height:
+            self.deck_gallery_canvas.yview_moveto(0)
+            return "break"
+
+        self.deck_gallery_canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+        return "break"
 
     def _card_group_label(self, card_type: str | None, deck_section: str) -> str:
         if not card_type:
