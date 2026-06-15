@@ -294,7 +294,7 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         },
         "the_dark_master": {
             "en": "The Dark Master",
-            "pt": "O Mestre das Sombras",
+            "pt": "O Mestre das Trevas",
         },
         "armageddon": {
             "en": "Armageddon",

@@ -24,6 +24,8 @@ class DuelistDetailsFrame(tk.Frame):
         self.all_decks_data = []
         self.filtered_decks_data = []
 
+        self.deck_cover_widgets = []
+
         self.search_var = tk.StringVar()
         self.last_search_text = ""
 
@@ -110,6 +112,8 @@ class DuelistDetailsFrame(tk.Frame):
         if self.decks_data:
             self.load_deck_selection_gallery()
 
+        self.decks_canvas.after(100, self.load_visible_deck_covers)
+
     def set_duelist(self, duelist_id, duelist_key):
         self.current_duelist_id = duelist_id
         self.current_duelist_key = duelist_key
@@ -150,6 +154,8 @@ class DuelistDetailsFrame(tk.Frame):
     def load_deck_selection_gallery(self):
         for widget in self.decks_grid.winfo_children():
             widget.destroy()
+
+        self.deck_cover_widgets = []
 
         deck_width = 250
         horizontal_gap = 30
@@ -294,18 +300,13 @@ class DuelistDetailsFrame(tk.Frame):
 
             cover_card_id = self.get_deck_cover_card_id(deck)
 
-            self.image_handler.load_thumbnail_async(
-                self,
-                cover_card_id,
-                cover_width,
-                cover_height,
-                lambda cid, tk_img, label=cover_label:
-                self._on_deck_cover_loaded(
-                    cid,
-                    tk_img,
-                    label
-                )
-            )
+            self.deck_cover_widgets.append({
+                "label": cover_label,
+                "card_id": cover_card_id,
+                "width": cover_width,
+                "height": cover_height,
+                "loaded": False
+            })
 
             col += 1
 
@@ -321,7 +322,44 @@ class DuelistDetailsFrame(tk.Frame):
             scrollregion=self.decks_canvas.bbox("all")
         )
 
+        self.load_visible_deck_covers() # For Lazy loading
         self.update_decks_scroll_visibility()
+
+    def load_visible_deck_covers(self):
+        canvas_top = self.decks_canvas.canvasy(0)
+        canvas_bottom = canvas_top + self.decks_canvas.winfo_height()
+
+        for item in self.deck_cover_widgets:
+            if item["loaded"]:
+                continue
+
+            label = item["label"]
+
+            if not label.winfo_exists():
+                item["loaded"] = True
+                continue
+
+            y = label.winfo_y()
+            parent = label.master
+
+            while parent is not None and parent is not self.decks_grid:
+                y += parent.winfo_y()
+                parent = parent.master
+
+            label_top = y
+            label_bottom = y + item["height"]
+
+            if label_bottom >= canvas_top - 100 and label_top <= canvas_bottom + 100:
+                item["loaded"] = True
+
+                self.image_handler.load_thumbnail_async(
+                    self,
+                    item["card_id"],
+                    item["width"],
+                    item["height"],
+                    lambda cid, tk_img, label=label:
+                    self._on_deck_cover_loaded(cid, tk_img, label)
+                )
 
     def get_deck_cover_card_id(self, deck):
         if deck.get("cover_card_id") is not None:
@@ -393,6 +431,8 @@ class DuelistDetailsFrame(tk.Frame):
             int(-1 * (event.delta / 120)),
             "units"
         )
+
+        self.decks_canvas.after(50, self.load_visible_deck_covers)
 
         return "break"
 
