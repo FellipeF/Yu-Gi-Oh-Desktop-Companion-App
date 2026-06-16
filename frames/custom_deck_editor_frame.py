@@ -109,7 +109,7 @@ class CustomDeckEditorFrame(tk.Frame):
         self.add_to_deck_button.pack_forget()
 
         # Right Side - Current selected deck cards
-        right_frame = tk.Frame(main_container, width=420)
+        right_frame = tk.Frame(main_container, width=500)
         right_frame.pack(side="left", fill="both", expand=False, padx=(0, 10))
         right_frame.pack_propagate(False)
 
@@ -125,7 +125,6 @@ class CustomDeckEditorFrame(tk.Frame):
         self.deck_notebook.add(self.deck_text_frame, text=self.controller.t("text_view"))
         self.deck_notebook.add(self.deck_gallery_frame, text=self.controller.t("gallery_view"))
 
-        # ===== ABA TEXTO =====
         deck_container = tk.Frame(self.deck_text_frame)
         deck_container.pack(fill="both", expand=True)
 
@@ -362,7 +361,20 @@ class CustomDeckEditorFrame(tk.Frame):
         for widget in self.deck_gallery_inner.winfo_children():
             widget.destroy()
 
-        columns = 5
+        card_cell_width = 120
+        canvas_width = self.deck_gallery_canvas.winfo_width()
+
+        if canvas_width <= 1:
+            self.deck_gallery_canvas.update_idletasks()
+            canvas_width = self.deck_gallery_canvas.winfo_width()
+
+        columns = max(1, canvas_width // card_cell_width)
+
+        self.deck_gallery_canvas.bind(
+            "<Configure>",
+            lambda e: self.load_deck_gallery_view()
+        )
+
         row = 0
         col = 0
 
@@ -401,7 +413,7 @@ class CustomDeckEditorFrame(tk.Frame):
                 text=f"{quantity}x {card_name}",
                 wraplength=105,
                 justify="center",
-                font=("Tahoma", 8)
+                font=("Tahoma", 10)
             )
             name_label.pack(pady=(3, 0))
 

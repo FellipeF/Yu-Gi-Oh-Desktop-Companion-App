@@ -362,8 +362,6 @@ ui_text = {
         "nero": "Nero",
         "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
-        "mike": "Mike",
-        "emeralda": "Emeralda",
         "daigo_sorano": "Daigo Sorano",
         "tsutomu": "Tsutomu",
 },
@@ -732,8 +730,6 @@ ui_text = {
         "nero": "Nero",
         "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
-        "mike": "Mike",
-        "emeralda": "Emeralda",
         "daigo_sorano": "Daigo Sorano",
         "tsutomu": "Tsutomu",
         # ================================
