@@ -53,6 +53,52 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Minha Cerimônia de Coroação",
         },
     },
+    "sadie": {
+        "the_duel_has_begun": {
+            "en": "The Duel Has Begun!",
+            "pt": "O Duelo Começou!",
+        },
+        "starting_to_duel": {
+            "en": "Starting to Duel",
+            "pt": "Começando a Duelar",
+        },
+        "learning_to_duel": {
+            "en": "Learning to Duel",
+            "pt": "Aprendendo a Duelar",
+        },
+        "a_new_duelist": {
+            "en": "A New Duelist",
+            "pt": "Uma Nova Duelista",
+        },
+        "please_go_easy_on_me": {
+            "en": "Please Go Easy On Me",
+            "pt": "Por Favor, Vá Devagar Comigo",
+        },
+        "getting_started": {
+            "en": "Getting Started",
+            "pt": "Começando",
+        },
+        "please_help_me_out": {
+            "en": "Please Help Me Out",
+            "pt": "Por Favor, Me Ajude",
+        },
+        "getting_serious": {
+            "en": "Getting Serious",
+            "pt": "Ficando Sério",
+        },
+        "skill_denial": {
+            "en": "Skill Denial",
+            "pt": "Negação de Habilidade",
+        },
+        "no_skills_for_me": {
+            "en": "No Skills For Me",
+            "pt": "Sem Habilidades Para Mim",
+        },
+        "stop_it_with_the_skills": {
+            "en": "Stop It With The Skills",
+            "pt": "Pare Com As Habilidades",
+        },
+    },
     "slade_princeton": {
         "colossal_power": {
             "en": "Colossal Power",

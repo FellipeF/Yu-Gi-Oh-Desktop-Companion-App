@@ -6,8 +6,14 @@ from data.duel_monsters.deck_categories_duel_monsters import DECK_CATEGORIES_KEY
 from data.gx.decks import LIST_OF_DECKS_GX
 from data.gx.deck_categories_gx import DECK_CATEGORIES_KEYS_GX
 from data.duel_monsters.duel_monsters_decks_cover_cards import DUEL_MONSTERS_DECK_COVER_CARDS
+from data.gx.gx_decks_cover_cards import GX_DECK_COVER_CARDS
 
 DecksByDuelist = dict[str, dict[str, list[tuple[str, int]]]]
+
+DECK_COVER_CARDS_BY_ANIME = {
+    **DUEL_MONSTERS_DECK_COVER_CARDS,
+    **GX_DECK_COVER_CARDS,
+} # Dictionary unpacking to gather all of them in one.
 
 SEED_DECK_SOURCES: list[tuple[DecksByDuelist, list[str]]] = [
     (LIST_OF_DECKS_DUEL_MONSTERS, DECK_CATEGORIES_KEYS_DUEL_MONSTERS),
@@ -77,7 +83,7 @@ def _build_duelist_decks_rows(
 
         for order_index, deck_key in enumerate(decks_by_key.keys()):
             deck_category_id = deck_category_id_by_key.get(deck_key)
-            cover_card_id = (DUEL_MONSTERS_DECK_COVER_CARDS.get(duelist_key, {}).get(deck_key))
+            cover_card_id = DECK_COVER_CARDS_BY_ANIME.get(duelist_key, {}).get(deck_key)
             rows.append((duelist_id, deck_category_id, deck_key, order_index, cover_card_id))
 
     return rows

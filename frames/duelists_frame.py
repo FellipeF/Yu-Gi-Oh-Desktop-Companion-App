@@ -119,37 +119,37 @@ class DuelistsFrame(tk.Frame):
         self.render_page()
         self.refresh_ui()
 
-    def filter_by_media(self):
+    def apply_filters(self, reset_page = False):
+        search_text = self.search_bar.get_text().casefold()
         selected_media = self.selected_media.get()
 
-        if selected_media == "all":
-            self.duelists = self.all_duelists.copy()
-        else:
-            self.duelists = [duelist for duelist in self.all_duelists if duelist[3] == selected_media]
+        duelists = self.all_duelists.copy()
+
+        if selected_media != "all":
+            duelists = [duelist for duelist in duelists if duelist[3] == selected_media]
+
+        if search_text:
+            duelists = [duelist for duelist in duelists if search_text in self.controller.t(duelist[1]).casefold()]
+
+        self.duelists = duelists
+
+        if reset_page:
+            self.current_page = 0
 
         self.media_filter_button.config(text=f"{self.controller.t(self.media_options[self.selected_media.get()])} ▼")
-        self.current_page = 0
+
         self.sort_duelists()
         self.render_page()
+
+    def filter_by_media(self):
+        self.apply_filters(reset_page =True)
 
     def filter_duelists(self, event=None):
         search_text = self.search_bar.get_text().casefold()
         search_changed = search_text != self.last_search_text # Prevents page rendering again if out of focus
         self.last_search_text = search_text
 
-        if not search_text:
-            self.duelists = self.all_duelists.copy()
-
-        else:
-            self.duelists = [
-                duelist for duelist in self.all_duelists if search_text in self.controller.t(duelist[1]).casefold()
-            ]
-
-        if search_changed:
-            self.current_page = 0
-
-        self.sort_duelists()
-        self.render_page()
+        self.apply_filters(reset_page=search_changed)
 
     def render_page(self):
         for widget in self.container.winfo_children():
@@ -259,5 +259,4 @@ class DuelistsFrame(tk.Frame):
 
         self.media_filter_button.config(text=f"{self.controller.t(self.media_options[self.selected_media.get()])} ▼")
 
-        self.sort_duelists()
-        self.render_page()
+        self.apply_filters(reset_page=False)
