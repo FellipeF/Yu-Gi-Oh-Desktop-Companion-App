@@ -84,6 +84,9 @@ def _build_duelist_decks_rows(
         for order_index, deck_key in enumerate(decks_by_key.keys()):
             deck_category_id = deck_category_id_by_key.get(deck_key)
             cover_card_id = DECK_COVER_CARDS_BY_ANIME.get(duelist_key, {}).get(deck_key)
+            if cover_card_id is not None:
+                cover_card_id = int(cover_card_id)
+
             rows.append((duelist_id, deck_category_id, deck_key, order_index, cover_card_id))
 
     return rows
