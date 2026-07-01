@@ -137,4 +137,14 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Aqueles Que Controlam O Futuro",
         },
     },
+    "torrey": {
+        "talk_to_the_beyond": {
+            "en": "Talk to the Beyond",
+            "pt": "Conversa com o Além",
+        },
+        "sounds_of_darkness": {
+            "en": "Sounds of Darkness",
+            "pt": "Sons da Escuridão",
+        },
+    },
 }

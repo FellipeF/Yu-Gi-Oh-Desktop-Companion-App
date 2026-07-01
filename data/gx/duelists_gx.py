@@ -3,6 +3,7 @@ DUELISTS_GX = [
     ("jean_louis_bonaparte", "images/duelists/gx/jean_louis_bonaparte.webp", "gx"),
     ("slade_princeton", "images/duelists/gx/slade_princeton.webp", "gx"),
     ("sadie", "images/duelists/gx/sadie.webp", "gx"),
+    ("torrey", "images/duelists/gx/torrey.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -43,8 +44,6 @@ DUELISTS_GX = [
     ("frost", "images/duelists/duelist_placeholder.png", "gx"),
     ("thunder", "images/duelists/duelist_placeholder.png", "gx"),
     ("t_bone", "images/duelists/duelist_placeholder.png", "gx"),
-    ("blaze", "images/duelists/duelist_placeholder.png", "gx"),
-    ("bob_banter", "images/duelists/duelist_placeholder.png", "gx"),
     ("prince_ojin", "images/duelists/duelist_placeholder.png", "gx"),
     ("yubel", "images/duelists/duelist_placeholder.png", "gx"),
     ("thelonious_viper", "images/duelists/duelist_placeholder.png", "gx"),
@@ -73,7 +72,6 @@ DUELISTS_GX = [
     ("sartyr", "images/duelists/duelist_placeholder.png", "gx"),
     ("taiyou_torimaki", "images/duelists/duelist_placeholder.png", "gx"),
     ("raizou_mototani", "images/duelists/duelist_placeholder.png", "gx"),
-    ("torrey", "images/duelists/duelist_placeholder.png", "gx"),
     ("harrington_rosewood", "images/duelists/duelist_placeholder.png", "gx"),
     ("brier", "images/duelists/duelist_placeholder.png", "gx"),
     ("beauregard", "images/duelists/duelist_placeholder.png", "gx"),
