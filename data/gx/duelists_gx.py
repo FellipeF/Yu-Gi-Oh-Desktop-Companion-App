@@ -4,6 +4,7 @@ DUELISTS_GX = [
     ("slade_princeton", "images/duelists/gx/slade_princeton.webp", "gx"),
     ("sadie", "images/duelists/gx/sadie.webp", "gx"),
     ("torrey", "images/duelists/gx/torrey.webp", "gx"),
+    ("aster_phoenix", "images/duelists/gx/aster_phoenix.png", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -19,7 +20,6 @@ DUELISTS_GX = [
     ("pharaoh", "images/duelists/duelist_placeholder.png", "gx"),
     ("sheppard", "images/duelists/duelist_placeholder.png", "gx"),
     ("chumley_huffington", "images/duelists/duelist_placeholder.png", "gx"),
-    ("aster_phoenix", "images/duelists/duelist_placeholder.png", "gx"),
     ("tyranno_hassleberry", "images/duelists/duelist_placeholder.png", "gx"),
     ("shirley", "images/duelists/duelist_placeholder.png", "gx"),
     ("echo", "images/duelists/duelist_placeholder.png", "gx"),

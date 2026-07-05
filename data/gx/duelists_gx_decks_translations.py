@@ -1,4 +1,162 @@
 DUELISTS_DECKS_KEYS_GX = {
+    "aster_phoenix": {
+        "mishmash": {
+            "en": "Mishmash",
+            "pt": "Mistureba",
+        },
+        "hero": {
+            "en": "Hero",
+            "pt": "Herói",
+        },
+        "dystopian_destiny": {
+            "en": "Dystopian Destiny",
+            "pt": "Destino Distópico",
+        },
+        "caves_of_the_subterror": {
+            "en": "Caves of the Subterror",
+            "pt": "Cavernas do Subterror",
+        },
+        "yu_gi_oh_arc_v": {
+            "en": "Yu-Gi-Oh! ARC-V",
+            "pt": "Yu-Gi-Oh! ARC-V",
+        },
+        "aster": {
+            "en": "Aster",
+            "pt": "Aster",
+        },
+        "the_desired_hero": {
+            "en": "The Desired HERO",
+            "pt": "O HERÓI Desejado",
+        },
+        "the_chosen_hero": {
+            "en": "The Chosen HERO",
+            "pt": "O HERÓI Escolhido",
+        },
+        "the_destined_hero": {
+            "en": "The Destined HERO",
+            "pt": "O HERÓI Destinado",
+        },
+        "the_heros_triumph": {
+            "en": "The HERO's Triumph",
+            "pt": "O Triunfo do HERÓI",
+        },
+        "destiny_gems": {
+            "en": "Destiny Gems",
+            "pt": "Joias do Destino",
+        },
+        "destiny_union": {
+            "en": "Destiny Union",
+            "pt": "União do Destino",
+        },
+        "cyber_destiny": {
+            "en": "Cyber Destiny",
+            "pt": "Destino Cibernético",
+        },
+        "future_destiny": {
+            "en": "Future Destiny",
+            "pt": "Futuro do Destino",
+        },
+        "master_of_fate": {
+            "en": "Master of Fate",
+            "pt": "Mestre do Destino",
+        },
+        "dreadmaster_time": {
+            "en": "Dreadmaster Time",
+            "pt": "Hora do Mestre do Terror",
+        },
+        "a_heros_destiny": {
+            "en": "A Hero's Destiny",
+            "pt": "O Destino de Um Herói",
+        },
+        "manga": {
+            "en": "Manga",
+            "pt": "Mangá",
+        },
+        "destiny_hero": {
+            "en": "Destiny HERO",
+            "pt": "HERÓI do Destino",
+        },
+        "destiny_end": {
+            "en": "Destiny End",
+            "pt": "Destino Final",
+        },
+        "dark_heroes": {
+            "en": "Dark Heroes",
+            "pt": "Heróis Sombrios",
+        },
+        "destiny_heroes": {
+            "en": "Destiny Heroes",
+            "pt": "Heróis do Destino",
+        },
+        "heroes_of_fate": {
+            "en": "Heroes of Fate",
+            "pt": "Heróis Destinados",
+        },
+        "heroes_of_fate_2": {
+            "en": "Heroes of Fate (2)",
+            "pt": "Heróis Destinados (2)",
+        },
+        "dimensional_ruler": {
+            "en": "Dimensional Ruler",
+            "pt": "Regente Dimensional",
+        },
+        "destiny_d": {
+            "en": "Destiny D",
+            "pt": "D Destinado",
+        },
+        "fate_d": {
+            "en": "Fate D",
+            "pt": "Destino D",
+        },
+        "lament_d": {
+            "en": "Lament D",
+            "pt": "Lamento D",
+        },
+        "true_heroes": {
+            "en": "True Heroes",
+            "pt": "Heróis Verdadeiros",
+        },
+        "fear_heroes": {
+            "en": "Fear Heroes",
+            "pt": "Heróis do Medo",
+        },
+        "cool_heroes": {
+            "en": "Cool Heroes",
+            "pt": "Heróis Maneiros",
+        },
+        "blood_d": {
+            "en": "Blood D",
+            "pt": "Sangue D",
+        },
+        "rebellion_d": {
+            "en": "Rebellion D",
+            "pt": "Rebelião D",
+        },
+        "end_d": {
+            "en": "End D",
+            "pt": "D Final",
+        },
+        "showmanship": {
+            "en": "Showmanship",
+            "pt": "Carisma",
+        },
+        "hero_of_destiny": {
+            "en": "Hero of Destiny",
+            "pt": "Herói do Destino",
+        },
+        "hero_of_destruction": {
+            "en": "Hero of Destruction",
+            "pt": "Herói da Destruição",
+        },
+        "hero_of_death": {
+            "en": "Hero of Death",
+            "pt": "Herói da Morte",
+        },
+        "destiny_beatdown": {
+            "en": "Destiny Beatdown",
+            "pt": "Surra do Destino",
+        },
+    },
     "jean_louis_bonaparte": {
         "toy_army": {
             "en": "Toy Army",
