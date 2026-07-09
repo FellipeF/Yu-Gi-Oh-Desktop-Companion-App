@@ -10,6 +10,9 @@ import tempfile
 import threading
 
 from tkinter import ttk, messagebox
+
+from tkinterweb import HtmlFrame
+
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE, CARD_WIDTH, CARD_HEIGHT, GITHUB_REPO
 from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
@@ -466,7 +469,8 @@ class App(tk.Tk):
         modal = tk.Toplevel(self)
         modal.title(self.t("update_available_title"))
 
-        self.center_window(modal, 500, 400)
+        self.center_window(modal, 700, 600)
+        modal.resizable(False, False)
 
         tk.Label(
             modal,
@@ -474,13 +478,16 @@ class App(tk.Tk):
             font=("Arial", 12, "bold")
         ).pack(pady=10)
 
-        text_box = tk.Text(modal, wrap="word", height=15)
-        text_box.insert("1.0", changelog or self.t("no_changelog_available"))
-        text_box.config(state="disabled")
-        text_box.pack(fill="both", expand=True, padx=10)
+        html_container = tk.Frame(modal, height=280)
+        html_container.pack(fill="both", expand=True, padx=10, pady=(0, 5))
+        html_container.pack_propagate(False)
+
+        html_frame = HtmlFrame(html_container, messages_enabled=False)
+        html_frame.load_html(changelog)
+        html_frame.pack(fill="both", expand=True)
 
         buttons_frame = tk.Frame(modal)
-        buttons_frame.pack(pady=10)
+        buttons_frame.pack(pady=(5, 12))
 
         if download_url:
             tk.Button(

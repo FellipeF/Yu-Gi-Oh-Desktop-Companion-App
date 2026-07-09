@@ -10,13 +10,17 @@ class AppUpdater:
 
     def get_latest_release(self) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
         try:
-            response = requests.get(self.url, timeout=5)
+            response = requests.get(self.url,
+                                    headers={
+                                        "Accept": "application/vnd.github.html+json" # For a better changelog formatting
+                                    },
+                                    timeout=5)
             response.raise_for_status()
             data = response.json()
 
             version = data.get("tag_name")
             url = data.get("html_url")
-            changelog = data.get("body", "")
+            changelog = data.get("body_html") or data.get("body", "")
 
             assets = data.get("assets", [])
             download_url = None
