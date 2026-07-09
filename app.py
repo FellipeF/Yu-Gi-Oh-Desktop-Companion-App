@@ -288,76 +288,163 @@ class App(tk.Tk):
     def show_new_cards_window(self, cards, total_count, all_ids):
         window = tk.Toplevel(self)
         window.title(self.t("new_cards_added"))
+        window.resizable(False, False)
 
-        width = 700
-        height = 650
+        width = 920
+        height = 760
+        columns = 4
+        thumb_width = 150
+        thumb_height = 222
+
         self.center_window(window, width, height)
-        window.minsize(600, 400)
 
-        (tk.Label(window,
-                 text=f"{total_count} {self.t('cards_added')}",
-                 font=("Arial", 12, "bold"))
-         .pack(pady=10))
+        tk.Label(
+            window,
+            text=f"{total_count} {self.t('cards_added')}",
+            font=("Arial", 16, "bold")
+        ).pack(pady=(15, 2))
 
-        container = tk.Frame(window)
-        container.pack(fill="both", expand=True, padx=10)
+        tk.Label(
+            window,
+            text=self.t("click_for_more_details"),
+            font=("Arial", 11),
+        ).pack(pady=(0, 12))
 
-        container.rowconfigure(0, weight=1)
-        container.columnconfigure(0, weight=1)
+        main_container = tk.Frame(window)
+        main_container.pack(fill="both", expand=True, padx=15, pady=(0, 10))
 
-        style = ttk.Style()
-        style.configure("Custom.Treeview", font=("Tahoma", 12), rowheight=28)
+        canvas = tk.Canvas(main_container, highlightthickness=0)
+        scrollbar = ttk.Scrollbar(main_container, orient="vertical", command=canvas.yview)
 
-        tree = ttk.Treeview(container, show="tree", selectmode="browse", style="Custom.Treeview")
-        tree.column("#0", anchor="w", width=620, stretch=True)
+        cards_grid = tk.Frame(canvas)
 
-        scrollbar = ttk.Scrollbar(container, orient="vertical", command=tree.yview)
-        tree.configure(yscrollcommand=scrollbar.set)
+        def update_scrollregion(event=None):
+            canvas.configure(scrollregion=canvas.bbox("all"))
 
-        tree.grid(row=0, column=0, sticky="nsew")
-        scrollbar.grid(row=0, column=1, sticky="ns")
+        cards_grid.bind("<Configure>", update_scrollregion)
 
-        card_by_item = {}
+        canvas_window = canvas.create_window((0, 0), window=cards_grid, anchor="n")
 
-        for card_id, name in cards:
-            item_id = tree.insert("", "end", text=name)
-            card_by_item[item_id] = card_id
+        def on_canvas_configure(event):
+            canvas.itemconfig(canvas_window, width=event.width)
+
+        canvas.bind("<Configure>", on_canvas_configure)
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        def open_card_details(card_id):
+            CardDetailsWindow(self, card_id)
+
+        def on_card_image_loaded(card_id, tk_img, label):
+            if not label.winfo_exists():
+                return
+
+            if tk_img is None:
+                tk_img = self.image_handler.get_placeholder(thumb_width, thumb_height)
+
+            label.image = tk_img
+            label.config(image=tk_img, text="")
+
+        for index, (card_id, name) in enumerate(cards):
+            row = index // columns
+            col = index % columns
+
+            card_frame = tk.Frame(
+                cards_grid,
+                width=190,
+                height=310,
+                bg="#f2f2f2",
+                highlightbackground="#b0b0b0",
+                highlightthickness=1,
+                padx=10,
+                pady=10,
+                cursor="hand2"
+            )
+            card_frame.grid(row=row, column=col, padx=10, pady=10, sticky="n")
+            card_frame.pack_propagate(False)
+
+            image_frame = tk.Frame(
+                card_frame,
+                width=thumb_width,
+                height=thumb_height,
+                bg="#1f1f1f",
+                highlightbackground="#000000",
+                highlightthickness=1,
+                cursor="hand2"
+            )
+            image_frame.pack()
+            image_frame.pack_propagate(False)
+
+            image_label = tk.Label(
+                image_frame,
+                text=self.t("loading"),
+                bg="#1f1f1f",
+                fg="white",
+                cursor="hand2"
+            )
+            image_label.pack(fill="both", expand=True)
+
+            name_label = tk.Label(
+                card_frame,
+                text=name,
+                wraplength=165,
+                justify="center",
+                font=("Tahoma", 12),
+                bg="#f2f2f2",
+                cursor="hand2"
+            )
+            name_label.pack(fill="x", pady=(6, 0))
+
+            def on_enter(event, frame=card_frame):
+                frame.config(bg="#e8e8e8", highlightbackground="#555555")
+
+            def on_leave(event, frame=card_frame):
+                frame.config(bg="#f2f2f2", highlightbackground="#b0b0b0")
+
+            for widget in (card_frame, image_frame, image_label, name_label):
+                widget.bind("<Button-1>", lambda e, cid=card_id: open_card_details(cid))
+                widget.bind("<Enter>", on_enter)
+                widget.bind("<Leave>", on_leave)
+
+            self.image_handler.load_thumbnail_async(
+                window,
+                card_id,
+                thumb_width,
+                thumb_height,
+                lambda cid, tk_img, label=image_label: on_card_image_loaded(cid, tk_img, label)
+            )
 
         buttons_frame = tk.Frame(window)
-        buttons_frame.pack(pady=10)
+        buttons_frame.pack(pady=(0, 15))
 
-        details_button = tk.Button(
+        close_button = tk.Button(
             buttons_frame,
-            text=self.t("card_details"),
-            state="disabled",
-            command=lambda:self.open_selected_new_card_details(tree, card_by_item)
+            text="OK",
+            width=10,
+            command=window.destroy
         )
-        details_button.pack(side="left", padx=5)
+        close_button.pack()
 
-        close_button = tk.Button(buttons_frame, text="OK", command=window.destroy)
-        close_button.pack(side="left", padx=5)
+        def on_mousewheel(event):
+            canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+            return "break"
 
-        def on_select(_event):
-            selected = tree.selection()
-            details_button.config(state="normal" if selected else "disabled")
+        canvas.bind_all("<MouseWheel>", on_mousewheel)
 
-        def on_double_click(_event):
-            self.open_selected_new_card_details(tree, card_by_item)
+        def on_close():
+            canvas.unbind_all("<MouseWheel>")
+            window.destroy()
 
-        tree.bind("<<TreeviewSelect>>", on_select)
-        tree.bind("<Double-1>", on_double_click)
+        # Prevents canvas.yview_scroll(int(-1 * (event.delta / 120)), "units") Tkinter Exception
+        # This is used to unbind the Mouse Wheel on the whole app when the X is pressed.
 
-    def open_selected_new_card_details(self, tree, card_by_item):
-        selected = tree.selection()
+        window.protocol("WM_DELETE_WINDOW", on_close)
+        close_button.config(command=on_close)
 
-        if not selected:
-            return
-
-        item_id = selected[0]
-        card_id = card_by_item.get(item_id)
-
-        if card_id:
-            CardDetailsWindow(self, card_id)
+        window.transient(self)
+        window.focus()
 
     def check_app_update(self):
         threading.Thread(

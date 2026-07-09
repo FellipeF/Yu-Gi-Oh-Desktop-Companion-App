@@ -189,7 +189,8 @@ class DuelistsFrame(tk.Frame):
             duelist_button = tk.Button(
                 cell,
                 image=tk_img,
-                command=lambda d=duelist_id, k=duelist_key: self.show_duelist_details(d,k)
+                command=lambda d=duelist_id, k=duelist_key: self.show_duelist_details(d,k),
+                cursor="hand2"
             )
             duelist_button.image = tk_img
             duelist_button.pack()
