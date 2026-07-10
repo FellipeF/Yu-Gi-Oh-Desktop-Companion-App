@@ -902,7 +902,7 @@ PEGASUS_DECKS = {
         ("Toon Table of Contents", 1),
         ("Toon World", 2),
     ],
-    "millenium_eye_guidance": [
+    "millennium_eye_guidance": [
         ("Dark Rabbit", 1),
         ("Killer Needle", 1),
         ("Parrot Dragon", 1),

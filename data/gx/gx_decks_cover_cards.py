@@ -1,4 +1,7 @@
 GX_DECK_COVER_CARDS = {
+    "dancing_fairy": {
+        "dancing_duel": 90925163,
+    },
     "sadie": {
         "the_duel_has_begun": 52090844,
         "starting_to_duel": 45985838,

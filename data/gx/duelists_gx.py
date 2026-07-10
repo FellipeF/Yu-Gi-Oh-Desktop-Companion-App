@@ -5,6 +5,7 @@ DUELISTS_GX = [
     ("sadie", "images/duelists/gx/sadie.webp", "gx"),
     ("torrey", "images/duelists/gx/torrey.webp", "gx"),
     ("aster_phoenix", "images/duelists/gx/aster_phoenix.png", "gx"),
+    ("dancing_fairy", "images/duelists/gx/dancing_fairy.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -21,8 +22,6 @@ DUELISTS_GX = [
     ("sheppard", "images/duelists/duelist_placeholder.png", "gx"),
     ("chumley_huffington", "images/duelists/duelist_placeholder.png", "gx"),
     ("tyranno_hassleberry", "images/duelists/duelist_placeholder.png", "gx"),
-    ("shirley", "images/duelists/duelist_placeholder.png", "gx"),
-    ("echo", "images/duelists/duelist_placeholder.png", "gx"),
     ("jesse_anderson", "images/duelists/duelist_placeholder.png", "gx"),
     ("axel_brodie", "images/duelists/duelist_placeholder.png", "gx"),
     ("jim_crocodile_cook", "images/duelists/duelist_placeholder.png", "gx"),
@@ -58,7 +57,6 @@ DUELISTS_GX = [
     ("chaos_sorcerer", "images/duelists/duelist_placeholder.png", "gx"),
     ("guardian_baou", "images/duelists/duelist_placeholder.png", "gx"),
     ("skilled_dark_magician", "images/duelists/duelist_placeholder.png", "gx"),
-    ("skilled_white_magician", "images/duelists/duelist_placeholder.png", "gx"),
     ("scarr_scout_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
     ("zure_knight_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
     ("kozaky", "images/duelists/duelist_placeholder.png", "gx"),
@@ -109,13 +107,10 @@ DUELISTS_GX = [
     ("doom_dozer", "images/duelists/duelist_placeholder.png", "gx"),
     ("guardian_of_the_labyrinth", "images/duelists/duelist_placeholder.png", "gx"),
     ("maiden_of_the_aqua", "images/duelists/duelist_placeholder.png", "gx"),
-    ("dancing_fairy", "images/duelists/duelist_placeholder.png", "gx"),
     ("exodia_the_forbidden_one", "images/duelists/duelist_placeholder.png", "gx"),
-    ("king", "images/duelists/duelist_placeholder.png", "gx"),
     ("honest", "images/duelists/duelist_placeholder.png", "gx"),
     ("kabukid", "images/duelists/duelist_placeholder.png", "gx"),
     ("franz", "images/duelists/duelist_placeholder.png", "gx"),
-    ("gelgo", "images/duelists/duelist_placeholder.png", "gx"),
     ("mathmatica", "images/duelists/duelist_placeholder.png", "gx"),
     ("maitre_d", "images/duelists/duelist_placeholder.png", "gx"),
     ("mr_huffington", "images/duelists/duelist_placeholder.png", "gx"),

@@ -1331,7 +1331,7 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "en": "Nightmare of Toon World (2)",
             "pt": "Pesadelo do Mundo Toon (2)",
         },
-        "millenium_eye_guidance": {
+        "millennium_eye_guidance": {
             "en": "Millenium Eye Guidance",
             "pt": "Orientação do Olho do Milênio",
         },

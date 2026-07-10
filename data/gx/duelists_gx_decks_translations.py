@@ -157,6 +157,12 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Surra do Destino",
         },
     },
+    "dancing_fairy": {
+        "dancing_duel": {
+            "en": "Dancing Duel",
+            "pt": "Duelo Dançante",
+        },
+    },
     "jean_louis_bonaparte": {
         "toy_army": {
             "en": "Toy Army",
