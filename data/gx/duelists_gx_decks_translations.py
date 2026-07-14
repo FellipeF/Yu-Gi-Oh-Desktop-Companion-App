@@ -163,6 +163,80 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Duelo Dançante",
         },
     },
+    "jasmine": {
+        "female_warrior": {
+            "en": "Female Warrior",
+            "pt": "Guerreira",
+        },
+        "cause_theyre_cool": {
+            "en": "Cause They're Cool",
+            "pt": "Porque São Legais",
+        },
+        "totally_handsome": {
+            "en": "Totally Handsome",
+            "pt": "Totalmente Lindo",
+        },
+        "feeling_good": {
+            "en": "Feeling Good!",
+            "pt": "Sentindo Bem!",
+        },
+        "harpies_dance": {
+            "en": "Harpie's Dance",
+            "pt": "Dança da Harpia",
+        },
+        "harpies_revolt": {
+            "en": "Harpie's Revolt",
+            "pt": "Revolta da Harpia",
+        },
+        "harpie_deck": {
+            "en": "Harpie Deck",
+            "pt": "Deck de Harpia",
+        },
+        "harpie_deck_plus": {
+            "en": "Harpie Deck +",
+            "pt": "Deck de Harpia +",
+        },
+        "harpie_deck_plus_plus": {
+            "en": "Harpie Deck ++",
+            "pt": "Deck de Harpia ++",
+        },
+        "rescue_alexis": {
+            "en": "Rescue Alexis",
+            "pt": "Resgate Alexis",
+        },
+        "justice_harpies": {
+            "en": "Justice Harpies",
+            "pt": "Harpias da Justiça",
+        },
+        "the_three_harpie_lady_sisters": {
+            "en": "The Three Harpie Lady Sisters",
+            "pt": "As Três Irmãs Dama Harpia",
+        },
+        "the_thirty_harpie_lady_sisters": {
+            "en": "The Thirty Harpie Lady Sisters",
+            "pt": "As Trinta Irmãs Dama Harpia",
+        },
+        "the_three_hundred_harpie_lady_sisters": {
+            "en": "The Three-Hundred Harpie Lady Sisters",
+            "pt": "As Trezentas Irmãs Dama Harpia",
+        },
+        "the_three_eldest_harpie_lady_sisters": {
+            "en": "The Three Eldest Harpie Lady Sisters",
+            "pt": "As Três Irmãs Dama Harpia Mais Velhas",
+        },
+        "hot_reincarnation": {
+            "en": "Hot Reincarnation",
+            "pt": "Reencarnação Quente",
+        },
+        "burning_reincarnation": {
+            "en": "Burning Reincarnation",
+            "pt": "Reencarnação Queimante",
+        },
+        "reincarnation_of_fire": {
+            "en": "Reincarnation of Fire",
+            "pt": "Reencarnação do Fogo",
+        },
+    },
     "jean_louis_bonaparte": {
         "toy_army": {
             "en": "Toy Army",

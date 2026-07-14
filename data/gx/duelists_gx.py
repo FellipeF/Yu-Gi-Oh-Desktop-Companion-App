@@ -6,6 +6,7 @@ DUELISTS_GX = [
     ("torrey", "images/duelists/gx/torrey.webp", "gx"),
     ("aster_phoenix", "images/duelists/gx/aster_phoenix.png", "gx"),
     ("dancing_fairy", "images/duelists/gx/dancing_fairy.webp", "gx"),
+    ("jasmine", "images/duelists/gx/jasmine.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -66,7 +67,6 @@ DUELISTS_GX = [
     ("nightshroud", "images/duelists/duelist_placeholder.png", "gx"),
     ("fonda_fontaine", "images/duelists/duelist_placeholder.png", "gx"),
     ("mindy", "images/duelists/duelist_placeholder.png", "gx"),
-    ("jasmine", "images/duelists/duelist_placeholder.png", "gx"),
     ("sartyr", "images/duelists/duelist_placeholder.png", "gx"),
     ("taiyou_torimaki", "images/duelists/duelist_placeholder.png", "gx"),
     ("raizou_mototani", "images/duelists/duelist_placeholder.png", "gx"),

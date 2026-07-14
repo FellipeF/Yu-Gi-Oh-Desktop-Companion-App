@@ -168,7 +168,7 @@ MOKUBA_DECKS = {
         ("One-Eyed Shield Dragon", 3),
         ("Blue-Eyed Silver Zombie", 3),
     ],
-    "eye_eyed_silver": [
+    "blue_eyed_silver": [
         ("Anthrosaurus", 3),
         ("Blue-Eyed Silver Zombie", 3),
         ("Darkworld Thorns", 3),

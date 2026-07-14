@@ -1375,7 +1375,7 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         },
         "go_mokuba_go": {
             "en": "Go Mokuba Go!",
-            "pt": "Vai Mokuba Vai!",
+            "pt": "Vai Mokuba, Vai!",
         },
         "dragon_and_thunder": {
             "en": "Dragon and Thunder",
@@ -1397,13 +1397,13 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "en": "Mokuba",
             "pt": "Mokuba",
         },
-        "eye_eyed_silver": {
-            "en": "Eye-Eyed Silver",
-            "pt": "Olho de Prata",
+        "blue_eyed_silver": {
+            "en": "Blue-Eyed Silver",
+            "pt": "Olhos-Azuis Prateado",
         },
         "big_bros_blue_eyes": {
             "en": "Big Bro's Blue-Eyes",
-            "pt": "Olhos Azuis do Irmãozão",
+            "pt": "Olhos-Azuis do Irmãozão",
         },
         "poison_hamburger": {
             "en": "Poison Hamburger",
@@ -1427,7 +1427,7 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         },
         "blue_eyes_crystals": {
             "en": "Blue-Eyes Crystals",
-            "pt": "Cristais do Olhos Azuis",
+            "pt": "Cristais do Olhos-Azuis",
         },
         "kaibacorp_bling": {
             "en": "KaibaCorp Bling",
