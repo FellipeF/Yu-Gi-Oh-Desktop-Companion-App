@@ -291,6 +291,76 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Minha Cerimônia de Coroação",
         },
     },
+    "lyman_banner": {
+        "alchemy": {
+            "en": "Alchemy",
+            "pt": "Alquimia",
+        },
+        "fusions": {
+            "en": "Fusions",
+            "pt": "Fusões",
+        },
+        "the_sun_helios": {
+            "en": "The Sun - Helios",
+            "pt": "O Sol - Helios",
+        },
+        "obey_the_alien": {
+            "en": "Obey the Alien",
+            "pt": "Obedeça o Alien",
+        },
+        "ultimate_alchemy": {
+            "en": "Ultimate Alchemy",
+            "pt": "Alquimia Definitiva",
+        },
+        "destruction_brings_life": {
+            "en": "Destruction Brings Life",
+            "pt": "Destruição Traz Vida",
+        },
+        "beat_of_eternity": {
+            "en": "Beat of Eternity",
+            "pt": "Batida da Eternidade",
+        },
+        "sourceless_existence": {
+            "en": "Source-less Existence",
+            "pt": "Existência Sem Fundamento",
+        },
+        "finite_entity": {
+            "en": "Finite Entity",
+            "pt": "Entidade Finita",
+        },
+        "my_first_term_graduation_test": {
+            "en": "My First-Term Graduation Test",
+            "pt": "Meu Teste de Graduação do Primeiro Período",
+        },
+        "my_second_term_graduation_test": {
+            "en": "My Second-Term Graduation Test",
+            "pt": "Meu Teste de Graduação do Segundo Período",
+        },
+        "the_teachings_of_alchemy": {
+            "en": "The Teachings of Alchemy",
+            "pt": "Os Ensinamentos da Alquimia",
+        },
+        "the_rationale_of_alchemy": {
+            "en": "The Rationale of Alchemy",
+            "pt": "A Base Lógica da Alquimia",
+        },
+        "the_grand_finale": {
+            "en": "The Grand Finale",
+            "pt": "O Grand Finale",
+        },
+        "alchemic_fuel_elhelios": {
+            "en": "Alchemic Fuel - Elhelios",
+            "pt": "Combustível Alquímico - Elhelios",
+        },
+        "sign_of_helios": {
+            "en": "Sign of Helios",
+            "pt": "Sinal de Helios",
+        },
+        "breathe_into_helios": {
+            "en": "Breathe Into Helios!",
+            "pt": "Respire ao Helios!",
+        },
+    },
     "sadie": {
         "the_duel_has_begun": {
             "en": "The Duel Has Begun!",

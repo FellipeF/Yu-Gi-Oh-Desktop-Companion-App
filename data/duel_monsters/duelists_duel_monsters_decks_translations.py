@@ -1491,9 +1491,8 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         },
         "the_almighty_creator": {
             "en": "The Almighty Creator",
-            "pt": "O Todo Poderoso Criador",
+            "pt": "O Todo-Poderoso Criador",
         },
-
         "you_cant_beat_me": {
             "en": "You Can't Beat Me",
             "pt": "Você Não Consegue Me Vencer",

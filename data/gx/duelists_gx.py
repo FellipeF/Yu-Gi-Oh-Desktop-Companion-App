@@ -7,6 +7,7 @@ DUELISTS_GX = [
     ("aster_phoenix", "images/duelists/gx/aster_phoenix.png", "gx"),
     ("dancing_fairy", "images/duelists/gx/dancing_fairy.webp", "gx"),
     ("jasmine", "images/duelists/gx/jasmine.webp", "gx"),
+    ("lyman_banner", "images/duelists/gx/lyman_banner.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -18,7 +19,6 @@ DUELISTS_GX = [
     ("zane_truesdale", "images/duelists/duelist_placeholder.png", "gx"),
     ("vellian_crowler", "images/duelists/duelist_placeholder.png", "gx"),
     ("blair_flannigan", "images/duelists/duelist_placeholder.png", "gx"),
-    ("lyman_banner", "images/duelists/duelist_placeholder.png", "gx"),
     ("pharaoh", "images/duelists/duelist_placeholder.png", "gx"),
     ("sheppard", "images/duelists/duelist_placeholder.png", "gx"),
     ("chumley_huffington", "images/duelists/duelist_placeholder.png", "gx"),
@@ -33,7 +33,6 @@ DUELISTS_GX = [
     ("don_zaloog", "images/duelists/duelist_placeholder.png", "gx"),
     ("titan", "images/duelists/duelist_placeholder.png", "gx"),
     ("abidos_the_third", "images/duelists/duelist_placeholder.png", "gx"),
-    ("amnael", "images/duelists/duelist_placeholder.png", "gx"),
     ("atticus_rhodes", "images/duelists/duelist_placeholder.png", "gx"),
     ("sartorius", "images/duelists/duelist_placeholder.png", "gx"),
     ("alien_of_light", "images/duelists/duelist_placeholder.png", "gx"),

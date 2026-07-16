@@ -576,4 +576,17 @@ DUEL_MONSTERS_DECK_COVER_CARDS = {
         "reptile_plant": 93553943,
         "worm_royalty": 10026986,
     },
+    "noah_kaiba": {
+        "creation": 60866277,
+        "spirit": 99173029,
+        "divine_ark": 60365591,
+        "noah": 20073910,
+        "duel_of_creation": 67972302,
+        "in_the_creators_name": 75025112,
+        "existence_beyond_comprehension": 73055622,
+        "the_almighty_creator": 96729612,
+        "you_cant_beat_me": 20417688,
+        "calculated_victory": 15306543,
+        "urgent_ritual": 25796442,
+    },
 }
