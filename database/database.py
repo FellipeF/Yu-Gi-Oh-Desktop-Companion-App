@@ -131,8 +131,7 @@ def create_tables():
     CREATE TABLE IF NOT EXISTS user_decks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT UNIQUE NOT NULL,
-        is_used INTEGER NOT NULL DEFAULT 0,
-        notes TEXT,
+        is_used INTEGER NOT NULL DEFAULT 0
         )
         """)
 
