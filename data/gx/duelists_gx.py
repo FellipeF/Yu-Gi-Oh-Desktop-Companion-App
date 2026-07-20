@@ -8,6 +8,7 @@ DUELISTS_GX = [
     ("dancing_fairy", "images/duelists/gx/dancing_fairy.webp", "gx"),
     ("jasmine", "images/duelists/gx/jasmine.webp", "gx"),
     ("lyman_banner", "images/duelists/gx/lyman_banner.webp", "gx"),
+    ("goblin_elite_attack_force", "images/duelists/gx/goblin_elite_attack_force.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -97,12 +98,10 @@ DUELISTS_GX = [
     ("crystal_beast_sapphire_pegasus", "images/duelists/duelist_placeholder.png", "gx"),
     ("jerry_beans_man", "images/duelists/duelist_placeholder.png", "gx"),
     ("harpie_lady", "images/duelists/duelist_placeholder.png", "gx"),
-    ("titan_the_rock_spirit", "images/duelists/duelist_placeholder.png", "gx"),
     ("rainbow_dragon", "images/duelists/duelist_placeholder.png", "gx"),
     ("elemental_hero_flame_wingman", "images/duelists/duelist_placeholder.png", "gx"),
     ("sky_scout", "images/duelists/duelist_placeholder.png", "gx"),
     ("rahz", "images/duelists/duelist_placeholder.png", "gx"),
-    ("goblin_elite_attack_force", "images/duelists/duelist_placeholder.png", "gx"),
     ("doom_dozer", "images/duelists/duelist_placeholder.png", "gx"),
     ("guardian_of_the_labyrinth", "images/duelists/duelist_placeholder.png", "gx"),
     ("maiden_of_the_aqua", "images/duelists/duelist_placeholder.png", "gx"),

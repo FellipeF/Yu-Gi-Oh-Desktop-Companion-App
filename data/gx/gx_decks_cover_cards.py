@@ -2,6 +2,10 @@ GX_DECK_COVER_CARDS = {
     "dancing_fairy": {
         "dancing_duel": 90925163,
     },
+    "goblin_elite_attack_force": {
+        "no_weaklings": 85306040,
+        "goblical_parade": 18590133,
+    },
     "jasmine": {
         "female_warrior": 64751286,
         "cause_theyre_cool": 15150365,

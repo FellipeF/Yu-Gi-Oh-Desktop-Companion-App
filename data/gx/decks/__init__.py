@@ -6,6 +6,7 @@ from data.gx.decks.lyman_banner import LYMAN_BANNER_DECKS
 from data.gx.decks.sadie import SADIE_DECKS
 from data.gx.decks.slade_princeton import SLADE_PRINCETON_DECKS
 from data.gx.decks.torrey import TORREY_DECKS
+from data.gx.goblin_elite_attack_force import GOBLIN_ELITE_ATTACK_FORCE_DECKS
 
 LIST_OF_DECKS_GX = {
     "jean_louis_bonaparte": JEAN_LOUIS_BONAPARTE_DECKS,
@@ -16,6 +17,7 @@ LIST_OF_DECKS_GX = {
     "dancing_fairy": DANCING_FAIRY_DECK,
     "jasmine": JASMINE_DECKS,
     "lyman_banner": LYMAN_BANNER_DECKS,
+    "goblin_elite_attack_force": GOBLIN_ELITE_ATTACK_FORCE_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_GX"]

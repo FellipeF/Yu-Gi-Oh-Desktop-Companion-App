@@ -163,6 +163,16 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Duelo Dançante",
         },
     },
+    "goblin_elite_attack_force": {
+        "no_weaklings": {
+            "en": "No Weaklings!",
+            "pt": "Sem Fracotes!",
+        },
+        "goblical_parade": {
+            "en": "Goblical Parade",
+            "pt": "Desfile Goblínico",
+        },
+    },
     "jasmine": {
         "female_warrior": {
             "en": "Female Warrior",
