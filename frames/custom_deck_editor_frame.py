@@ -252,7 +252,7 @@ class CustomDeckEditorFrame(tk.Frame):
             # Prevents error if deck list is empty
             return
 
-        _deck_id, deck_name, is_used = deck
+        _deck_id, deck_name, is_used, _notes = deck
         main_count, extra_count = self.get_deck_card_counts(deck_id)
 
         used_text = self.controller.t("yes") if is_used else self.controller.t("no")

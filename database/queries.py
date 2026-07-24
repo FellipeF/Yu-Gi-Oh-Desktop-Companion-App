@@ -327,7 +327,7 @@ def get_user_deck_by_id(deck_id: int) -> tuple | None:
 
     try:
         cursor.execute("""
-        SELECT id, name, is_used
+        SELECT id, name, is_used, notes
         FROM user_decks
         WHERE id = ?
         LIMIT 1
@@ -374,6 +374,25 @@ def update_user_deck_used_flag(deck_id: int, is_used: bool):
         WHERE id = ?
         """, (1 if is_used else 0, deck_id))
         conn.commit()
+    finally:
+        conn.close()
+
+def update_user_deck_notes(deck_id: int, notes: str):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+        UPDATE user_decks
+        SET notes = ?
+        WHERE id = ?
+        """, (notes, deck_id))
+
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+
     finally:
         conn.close()
 

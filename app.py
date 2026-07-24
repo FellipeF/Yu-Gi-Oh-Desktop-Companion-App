@@ -16,7 +16,7 @@ from tkinterweb import HtmlFrame
 from config import APP_WIDTH, APP_HEIGHT, CURRENT_VERSION, LATEST_DB_CHANGE, CARD_WIDTH, CARD_HEIGHT, GITHUB_REPO
 from database.seed.seed_all import seed_all
 from database.seed.seed_cards import populate_cards
-from database.database import create_tables, get_connection  # , run_migrations
+from database.database import create_tables, get_connection, run_migrations
 from database.drop_hardcoded_tables import drop_hardcoded_tables
 from database.seed.database_changes import (
     is_db_the_same,
@@ -168,7 +168,6 @@ class App(tk.Tk):
             self.after(0, lambda: self.loading_frame.set_status(self.t("loading_database")))
 
             create_tables()
-            #run_migrations()
 
             api = ApiClient()
             online_dataset_version = None
@@ -192,10 +191,11 @@ class App(tk.Tk):
             if needs_db_reset or needs_dataset_reset:
                 drop_hardcoded_tables()
                 create_tables()
-                set_latest_db_change(LATEST_DB_CHANGE)
 
                 if needs_db_reset:
                     set_latest_db_change(LATEST_DB_CHANGE)
+
+            run_migrations()
 
             self.after(0, lambda: self.loading_frame.set_status(self.t("loading_cards")))
 

@@ -1,4 +1,18 @@
 DUELISTS_DECKS_KEYS_GX = {
+    "america_uchimura": {
+        "stolen_strategy": {
+            "en": "Stolen Strategy",
+            "pt": "Estratégia Roubada",
+        },
+        "toon_square": {
+            "en": "Toon Square",
+            "pt": "Espaço Toon",
+        },
+        "fading_power": {
+            "en": "Fading Power",
+            "pt": "Poder Enfraquecendo"
+        }
+    },
     "aster_phoenix": {
         "mishmash": {
             "en": "Mishmash",

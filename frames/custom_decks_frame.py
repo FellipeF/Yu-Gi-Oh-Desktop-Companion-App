@@ -9,7 +9,7 @@ from database.queries import (
     create_user_deck,
     delete_user_deck,
     update_user_deck_used_flag,
-    add_cards_bulk_import, rename_user_deck, get_user_deck_by_id, get_cards_by_user_deck
+    add_cards_bulk_import, rename_user_deck, get_user_deck_by_id, get_cards_by_user_deck, update_user_deck_notes
 )
 from utils.treeview_tooltip import TreeviewTooltip
 from utils.search_bar import SearchBar
@@ -59,7 +59,7 @@ class CustomDecksFrame(tk.Frame):
         table_container = tk.Frame(self)
         table_container.pack(fill="both", expand=True, padx=10, pady=10)
 
-        columns = ("name", "total_cards", "used", "edit", "rename")
+        columns = ("name", "total_cards", "used", "edit", "rename", "notes")
         self.tree = ttk.Treeview(
             table_container,
             columns=columns,
@@ -88,12 +88,14 @@ class CustomDecksFrame(tk.Frame):
         self.tree.heading("used", text=self.controller.t("used"), command=lambda: self.sort_by_column("used"))
         self.tree.heading("edit", text="")
         self.tree.heading("rename", text="")
+        self.tree.heading("notes", text="")
 
         self.tree.column("name", width=360, anchor="w")
         self.tree.column("total_cards", width=130, anchor="center")
         self.tree.column("used", width=80, anchor="center")
         self.tree.column("edit", width=28, stretch=False, anchor="center")
         self.tree.column("rename", width=28, stretch=False, anchor="center")
+        self.tree.column("notes", width=32, stretch=False, anchor="center")
 
         self.tree.tag_configure("even", background="#eaeaea")
         self.tree.tag_configure("odd", background="#ffffff")
@@ -227,7 +229,7 @@ class CustomDecksFrame(tk.Frame):
     def on_motion_cursor(self, event):
         column = self.tree.identify_column(event.x)
 
-        if column in ("#4", "#5"):
+        if column in ("#4", "#5", "#6"):
             self.tree.config(cursor="hand2")
         else:
             self.tree.config(cursor="")
@@ -327,6 +329,7 @@ class CustomDecksFrame(tk.Frame):
                     used_text,
                     "✏️",
                     "📝",
+                    "📓",
                 ),
                 tags=(tag,)
             )
@@ -357,6 +360,7 @@ class CustomDecksFrame(tk.Frame):
         self.tooltip.tooltips = {
             "#4": self.controller.t("edit"),
             "#5": self.controller.t("rename_deck"),
+            "#6": self.controller.t("deck_notes"),
         }
 
         self.add_tooltip(self.new_button, self.controller.t("new_deck"))
@@ -411,6 +415,10 @@ class CustomDecksFrame(tk.Frame):
             self.rename_selected_deck()
             return "break"
 
+        elif column == "#6":
+            self.open_deck_notes()
+            return "break"
+
     def on_deck_select(self, event=None):
         selection = self.tree.selection()
 
@@ -459,11 +467,24 @@ class CustomDecksFrame(tk.Frame):
         current_used = current_used_text == "✅"
         new_used = not current_used
 
-        update_user_deck_used_flag(self.selected_deck_id, new_used)
+        deck_name = item["values"][0]
+        if new_used:
+            confirm_message = self.controller.t("confirm_mark_deck_as_used").format(deck_name=deck_name)
+        else:
+            confirm_message = self.controller.t("confirm_mark_deck_as_unused").format(deck_name=deck_name)
 
-        values = list(item["values"])
-        values[2] = "✅" if new_used else "⬜"
-        self.tree.item(item_id, values=values)
+        confirmed = messagebox.askyesno(self.controller.t("confirm_operation"), confirm_message, parent=self)
+
+        if not confirmed:
+            return
+
+        try:
+            update_user_deck_used_flag(self.selected_deck_id, new_used)
+            values = list(item["values"])
+            values[2] = "✅" if new_used else "⬜"
+            self.tree.item(item_id, values=values)
+        except Exception as e:
+            self.treat_exception(e)
 
     def delete_selected_deck(self):
         selection = self.tree.selection()
@@ -531,6 +552,103 @@ class CustomDecksFrame(tk.Frame):
         except Exception as e:
             self.treat_exception(e)
 
+    def open_deck_notes(self):
+        if not self.selected_deck_id:
+            return
+
+        deck_id = self.selected_deck_id
+        deck = get_user_deck_by_id(deck_id)
+
+        if not deck:
+            return
+
+        _deck_id, deck_name, is_used, notes = deck
+
+        title = self.controller.t("deck_notes").format(deck_name=deck_name)
+
+        window = tk.Toplevel(self)
+        window.title(title)
+        window.transient(self)
+        self.controller.center_window(window, 600, 420)
+        window.grab_set()
+
+        text_widget = tk.Text(window, wrap="word", font=("Tahoma", 11), undo=True)
+        text_widget.pack(fill="both", expand=True,padx=12, pady=(12,6))
+
+        if notes:
+            text_widget.insert("1.0", notes)
+
+        text_widget.edit_modified(False) # Text was loaded, but it shouldn't count as a modification
+        was_modified = False
+
+        def handle_modified(event=None):
+            nonlocal was_modified
+
+            if not text_widget.edit_modified():
+                return
+
+            was_modified = True
+            # Adding visual highlight to show user the notes were changed
+            window.title(f"* {title}")
+
+            text_widget.edit_modified(False)
+
+        def save_notes(close_after_save = False):
+            nonlocal was_modified
+
+            notes_text = text_widget.get("1.0", "end-1c")
+
+            try:
+                update_user_deck_notes(deck_id, notes_text)
+                was_modified = False
+                window.title(title)
+                text_widget.edit_modified(False)
+
+                if close_after_save:
+                    window.destroy()
+
+                return True
+
+            except Exception as e:
+                self.treat_exception(e)
+                return False
+
+        def on_close():
+            if not was_modified:
+                window.destroy()
+                return
+
+            answer = messagebox.askyesnocancel(
+                self.controller.t("unsaved_changes"),
+                self.controller.t("save_before_closing"),
+                parent=window
+            )
+
+            if answer is None:
+                return
+
+            if answer:
+                save_notes(close_after_save=True)
+
+            else:
+                window.destroy()
+
+        text_widget.bind("<<Modified>>", handle_modified)
+        text_widget.edit_modified(False)
+
+        buttons_frame = tk.Frame(window)
+        buttons_frame.pack(fill="x", padx=12, pady=(6, 12))
+
+        save_button = tk.Button(buttons_frame, text=self.controller.t("save"), command=save_notes)
+        save_button.pack(side="right", padx=(5,0))
+
+        cancel_button = tk.Button(buttons_frame, text=self.controller.t("cancel"), command=window.destroy)
+        cancel_button.pack(side="right")
+
+        window.protocol("WM_DELETE_WINDOW", on_close)
+        window.bind("<Control-s>", lambda event: save_notes())
+        text_widget.focus_set()
+
     def open_selected_deck(self, event=None):
         if not self.selected_deck_id:
             return
@@ -543,6 +661,8 @@ class CustomDecksFrame(tk.Frame):
     def build_deck_import_data(self, data, suggested_name = None):
         if not isinstance(data, dict):
             raise ValueError(self.controller.t("invalid_deck_file"))
+
+        notes = data.get("notes", "") # Since old decks didn't have this, use empty when importing
 
         required_fields = ["duelist", "deck_name", "cards"]
 
@@ -586,6 +706,7 @@ class CustomDecksFrame(tk.Frame):
         suggested_name = suggested_name.strip()
         new_deck_id = create_user_deck(suggested_name)
         add_cards_bulk_import(new_deck_id, cards)
+        update_user_deck_notes(new_deck_id, notes)
 
         return new_deck_id
 
@@ -693,13 +814,14 @@ class CustomDecksFrame(tk.Frame):
         if not deck:
             return None
 
-        _deck_id, deck_name, is_used = deck
+        _deck_id, deck_name, is_used, notes = deck
 
         cards = get_cards_by_user_deck(deck_id, self.controller.current_language)
 
         export_data = {
             "duelist": "Duelist",
             "deck_name": deck_name,
+            "notes": notes or "",
             "cards": []
         }
 

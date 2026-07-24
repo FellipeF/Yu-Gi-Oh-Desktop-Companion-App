@@ -1,4 +1,9 @@
 GX_DECK_COVER_CARDS = {
+    "america_uchimura": {
+        "stolen_strategy": 55348096,
+        "toon_square": 47453433,
+        "fading_power": 16435215,
+    },
     "dancing_fairy": {
         "dancing_duel": 90925163,
     },
