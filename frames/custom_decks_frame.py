@@ -3,6 +3,7 @@ from tkinter import ttk, simpledialog, messagebox, filedialog
 import json
 import zipfile
 import re
+from tkinter.scrolledtext import ScrolledText
 
 from database.queries import (
     get_all_user_decks,
@@ -572,7 +573,8 @@ class CustomDecksFrame(tk.Frame):
         self.controller.center_window(window, 600, 420)
         window.grab_set()
 
-        text_widget = tk.Text(window, wrap="word", font=("Tahoma", 11), undo=True)
+        # Doing a container and scrollbar made it quite invisible, leaving it as ScrolledText instead
+        text_widget = ScrolledText(window, wrap="word", font=("Tahoma", 11), undo=True)
         text_widget.pack(fill="both", expand=True,padx=12, pady=(12,6))
 
         if notes:

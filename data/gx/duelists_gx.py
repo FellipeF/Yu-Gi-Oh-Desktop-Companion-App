@@ -10,6 +10,7 @@ DUELISTS_GX = [
     ("lyman_banner", "images/duelists/gx/lyman_banner.webp", "gx"),
     ("goblin_elite_attack_force", "images/duelists/gx/goblin_elite_attack_force.webp", "gx"),
     ("america_uchimura", "images/duelists/gx/america_uchimura.png", "gx"),
+    ("sartorius_kumar", "images/duelists/gx/sartorius.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -36,7 +37,6 @@ DUELISTS_GX = [
     ("titan", "images/duelists/duelist_placeholder.png", "gx"),
     ("abidos_the_third", "images/duelists/duelist_placeholder.png", "gx"),
     ("atticus_rhodes", "images/duelists/duelist_placeholder.png", "gx"),
-    ("sartorius", "images/duelists/duelist_placeholder.png", "gx"),
     ("alien_of_light", "images/duelists/duelist_placeholder.png", "gx"),
     ("lorenzo", "images/duelists/duelist_placeholder.png", "gx"),
     ("howard_x_miller", "images/duelists/duelist_placeholder.png", "gx"),

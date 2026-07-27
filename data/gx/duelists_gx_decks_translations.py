@@ -431,6 +431,104 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Pare Com As Habilidades",
         },
     },
+    "sartorius_kumar": {
+        "arcana_force": {
+            "en": "Arcana Force",
+            "pt": "Força Arcana",
+        },
+        "arcana_force_2": {
+            "en": "Arcana Force (2)",
+            "pt": "Força Arcana (2)",
+        },
+        "arcana_force_3": {
+            "en": "Arcana Force (3)",
+            "pt": "Força Arcana (3)",
+        },
+        "sartorius": {
+            "en": "Sartorius",
+            "pt": "Sartorius",
+        },
+        "the_magician": {
+            "en": "The Magician",
+            "pt": "O Mago",
+        },
+        "the_emperor": {
+            "en": "The Emperor",
+            "pt": "O Imperador",
+        },
+        "the_world": {
+            "en": "The World",
+            "pt": "O Mundo",
+        },
+        "the_light_ruler": {
+            "en": "The Light Ruler",
+            "pt": "O Regente Luminoso",
+        },
+        "predestination": {
+            "en": "Predestination",
+            "pt": "Predestinação",
+        },
+        "swing_of_the_pendulum": {
+            "en": "Swing of the Pendulum",
+            "pt": "Balançar do Pêndulo",
+        },
+        "constellar": {
+            "en": "Constellar",
+            "pt": "Constelar",
+        },
+        "arcana_destiny": {
+            "en": "Arcana Destiny",
+            "pt": "Arcana Destinado",
+        },
+        "arcana_fate": {
+            "en": "Arcana Fate",
+            "pt": "Destino Arcana",
+        },
+        "arcana_lament": {
+            "en": "Arcana Lament",
+            "pt": "Lamento Arcana",
+        },
+        "controlling_fate": {
+            "en": "Controlling Fate",
+            "pt": "Destino Controlador",
+        },
+        "see_the_light": {
+            "en": "See The Light",
+            "pt": "Veja a Luz",
+        },
+        "mysterious_origin": {
+            "en": "Mysterious Origin",
+            "pt": "Origem Misteriosa",
+        },
+        "mysterious_splendor": {
+            "en": "Mysterious Splendor",
+            "pt": "Esplendor Misterioso",
+        },
+        "trial_of_destiny": {
+            "en": "Trial of Destiny",
+            "pt": "Teste do Destino",
+        },
+        "final_trial": {
+            "en": "Final Trial",
+            "pt": "Teste Final",
+        },
+        "wheel_of_fortune": {
+            "en": "Wheel of Fortune",
+            "pt": "Roda da Fortuna",
+        },
+        "it_is_upright": {
+            "en": "It Is Upright!",
+            "pt": "Está na Vertical!",
+        },
+        "it_shall_be_upright_of_course": {
+            "en": "It Shall Be Upright, Of Course!",
+            "pt": "Estará na Vertical, É Claro!",
+        },
+        "all_positions_are_upright": {
+            "en": "All Positions Are Upright!",
+            "pt": "Todas as Posições Estão na Vertical!",
+        },
+    },
     "slade_princeton": {
         "colossal_power": {
             "en": "Colossal Power",
