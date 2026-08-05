@@ -11,6 +11,7 @@ DUELISTS_GX = [
     ("goblin_elite_attack_force", "images/duelists/gx/goblin_elite_attack_force.webp", "gx"),
     ("america_uchimura", "images/duelists/gx/america_uchimura.png", "gx"),
     ("sartorius_kumar", "images/duelists/gx/sartorius.webp", "gx"),
+    ("marcel_bonaparte", "images/duelists/gx/marcel_bonaparte.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -50,7 +51,6 @@ DUELISTS_GX = [
     ("thelonious_viper", "images/duelists/duelist_placeholder.png", "gx"),
     ("stein", "images/duelists/duelist_placeholder.png", "gx"),
     ("trapper", "images/duelists/duelist_placeholder.png", "gx"),
-    ("marcel_bonaparte", "images/duelists/duelist_placeholder.png", "gx"),
     ("anger_mask", "images/duelists/duelist_placeholder.png", "gx"),
     ("laughter_mask", "images/duelists/duelist_placeholder.png", "gx"),
     ("emotionless_mask", "images/duelists/duelist_placeholder.png", "gx"),
@@ -116,7 +116,6 @@ DUELISTS_GX = [
     ("pierre_the_gambler", "images/duelists/duelist_placeholder.png", "gx"),
     ("mr_phoenix", "images/duelists/duelist_placeholder.png", "gx"),
     ("mad_dog", "images/duelists/duelist_placeholder.png", "gx"),
-    ("alice", "images/duelists/duelist_placeholder.png", "gx"),
     ("linda", "images/duelists/duelist_placeholder.png", "gx"),
     ("eisenstein", "images/duelists/duelist_placeholder.png", "gx"),
     ("lucien_grimley", "images/duelists/duelist_placeholder.png", "gx"),

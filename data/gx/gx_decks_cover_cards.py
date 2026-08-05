@@ -50,6 +50,14 @@ GX_DECK_COVER_CARDS = {
         "sign_of_helios": 17286057,
         "breathe_into_helios": "05758500",
     },
+    "marcel_bonaparte": {
+        "exodia": 33396948,
+        "sacred_beast": 87917187,
+        "lost_parts": 90928333,
+        "d_d_series": "04923662",
+        "phantasm_armityle": 43378048,
+        "the_advent_of_exodia": 44519536,
+    },
     "sadie": {
         "the_duel_has_begun": 52090844,
         "starting_to_duel": 45985838,

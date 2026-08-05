@@ -385,6 +385,32 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Respire ao Helios!",
         },
     },
+    "marcel_bonaparte": {
+        "exodia": {
+            "en": "Exodia",
+            "pt": "Exodia",
+        },
+        "sacred_beast": {
+            "en": "Sacred Beast",
+            "pt": "Besta Sagrada",
+        },
+        "lost_parts": {
+            "en": "Lost Parts",
+            "pt": "Partes Perdidas",
+        },
+        "d_d_series": {
+            "en": "D.D. Series",
+            "pt": "Série D.D.",
+        },
+        "phantasm_armityle": {
+            "en": "Phantasm Armityle",
+            "pt": "Fantasma Armityle",
+        },
+        "the_advent_of_exodia": {
+            "en": "The Advent of Exodia",
+            "pt": "A Vinda de Exodia",
+        },
+    },
     "sadie": {
         "the_duel_has_begun": {
             "en": "The Duel Has Begun!",
