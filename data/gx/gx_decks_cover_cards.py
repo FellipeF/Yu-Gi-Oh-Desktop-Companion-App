@@ -58,6 +58,18 @@ GX_DECK_COVER_CARDS = {
         "phantasm_armityle": 43378048,
         "the_advent_of_exodia": 44519536,
     },
+    "pierre_the_gambler": {
+        "coin_toss": 36562627,
+        "gamble": 37313786,
+        "risk_it_all": 71625222,
+        "sink_or_swim": 46303688,
+        "hit_or_miss": 	39537362,
+        "second_chance": 83241722,
+        "the_gambler_zero_one": 50593156,
+        "the_gambler_zero_two": "02196767",
+        "the_gambler_zero_three": 96012004,
+        "the_gambler_zero_four": 21598948,
+    },
     "sadie": {
         "the_duel_has_begun": 52090844,
         "starting_to_duel": 45985838,

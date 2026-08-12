@@ -12,6 +12,7 @@ DUELISTS_GX = [
     ("america_uchimura", "images/duelists/gx/america_uchimura.png", "gx"),
     ("sartorius_kumar", "images/duelists/gx/sartorius.webp", "gx"),
     ("marcel_bonaparte", "images/duelists/gx/marcel_bonaparte.webp", "gx"),
+    ("pierre_the_gambler", "images/duelists/gx/pierre_the_gambler.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -112,9 +113,7 @@ DUELISTS_GX = [
     ("wheeler", "images/duelists/duelist_placeholder.png", "gx"),
     ("czar", "images/duelists/duelist_placeholder.png", "gx"),
     ("foster", "images/duelists/duelist_placeholder.png", "gx"),
-    ("admiral", "images/duelists/duelist_placeholder.png", "gx"),
-    ("pierre_the_gambler", "images/duelists/duelist_placeholder.png", "gx"), # Duelist Translations continue here ^, if any
-    ("linda", "images/duelists/duelist_placeholder.png", "gx"),
+    ("admiral", "images/duelists/duelist_placeholder.png", "gx"), # Duelist Translations continue here ^, if any
     ("eisenstein", "images/duelists/duelist_placeholder.png", "gx"),
     ("lucien_grimley", "images/duelists/duelist_placeholder.png", "gx"),
     ("shido_gecko", "images/duelists/duelist_placeholder.png", "gx"),

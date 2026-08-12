@@ -411,6 +411,48 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "A Vinda de Exodia",
         },
     },
+    "pierre_the_gambler": {
+        "coin_toss": {
+            "en": "Coin Toss",
+            "pt": "Atirar de Moeda",
+        },
+        "gamble": {
+            "en": "Gamble",
+            "pt": "Aposta",
+        },
+        "risk_it_all": {
+            "en": "Risk it All",
+            "pt": "Arriscar Tudo",
+        },
+        "sink_or_swim": {
+            "en": "Sink or Swim",
+            "pt": "Afundar ou Nadar",
+        },
+        "hit_or_miss": {
+            "en": "Hit or Miss",
+            "pt": "Acertar ou Errar",
+        },
+        "second_chance": {
+            "en": "Second Chance",
+            "pt": "Segunda Chance",
+        },
+        "the_gambler_zero_one": {
+            "en": "The Gambler 01",
+            "pt": "O Apostador 01",
+        },
+        "the_gambler_zero_two": {
+            "en": "The Gambler 02",
+            "pt": "O Apostador 02",
+        },
+        "the_gambler_zero_three": {
+            "en": "The Gambler 03",
+            "pt": "O Apostador 03",
+        },
+        "the_gambler_zero_four": {
+            "en": "The Gambler 04",
+            "pt": "O Apostador 04",
+        },
+    },
     "sadie": {
         "the_duel_has_begun": {
             "en": "The Duel Has Begun!",

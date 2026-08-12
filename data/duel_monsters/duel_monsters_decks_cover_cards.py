@@ -679,4 +679,9 @@ DUEL_MONSTERS_DECK_COVER_CARDS = {
         "no_good_magician": 31560081,
         "magic_school": 14087893,
     },
+    "rafael": {
+        "anime": "00847217",
+        "guardians_of_orichalcos": 48179391,
+        "the_super_soldier": 54484652,
+    },
 }
