@@ -635,6 +635,12 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Aqueles Que Controlam O Futuro",
         },
     },
+    "the_admiral": {
+        "strongest_ocean_deck": {
+            "en": "Strongest Ocean",
+            "pt": "Oceano Mais Forte",
+        },
+    },
     "torrey": {
         "talk_to_the_beyond": {
             "en": "Talk to the Beyond",

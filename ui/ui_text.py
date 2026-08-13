@@ -185,8 +185,8 @@ ui_text = {
         "mako_tsunami": "Mako Tsunami",
         "bonz": "Bonz",
         "alister": "Alister",
-        "arthur_hopkins": "Arthur Hopkins",
-        "rebecca": "Rebecca Hopkins",
+        "arthur_hopkins": "Arthur Hawkins",
+        "rebecca": "Rebecca Hawkins",
         "ishizu_ishtar": "Ishizu Ishtar",
         "duel_computers": "Duel Computers",
         "ventriloquist_of_the_dead": "Ventriloquist of the Dead",
@@ -333,7 +333,7 @@ ui_text = {
         "wheeler": "Wheeler",
         "czar": "Czar",
         "foster": "Foster",
-        "admiral": "Admiral",
+        "the_admiral": "The Admiral",
         "pierre_the_gambler": "Pierre the Gambler",
         "eisenstein": "Eisenstein",
         "lucien_grimley": "Lucien Grimley",
@@ -342,7 +342,6 @@ ui_text = {
         "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
         "daigo_sorano": "Daigo Sorano",
-        "tsutomu": "Tsutomu",
 },
     "pt": {
         #================================
@@ -532,8 +531,8 @@ ui_text = {
         "mako_tsunami": "Mako Tsunami",
         "bonz": "Bonz",
         "alister": "Alister",
-        "arthur_hopkins": "Arthur Hopkins",
-        "rebecca": "Rebecca Hopkins",
+        "arthur_hopkins": "Arthur Hawkins",
+        "rebecca": "Rebecca Hawkins",
         "ishizu_ishtar": "Ishizu Ishtar",
         "duel_computers": "Computadores de Duelo",
         "ventriloquist_of_the_dead": "Ventriloquista dos Mortos",
@@ -680,7 +679,7 @@ ui_text = {
         "wheeler": "Wheeler",
         "czar": "Czar",
         "foster": "Foster",
-        "admiral": "Admiral",
+        "the_admiral": "O Almirante",
         "pierre_the_gambler": "Pierre, o Apostador",
         "eisenstein": "Eisenstein",
         "lucien_grimley": "Lucien Grimley",
@@ -689,7 +688,6 @@ ui_text = {
         "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
         "daigo_sorano": "Daigo Sorano",
-        "tsutomu": "Tsutomu",
         # ================================
         #  CARDS DETAILS TRANSLATIONS
         # ================================

@@ -83,6 +83,10 @@ GX_DECK_COVER_CARDS = {
         "no_skills_for_me": 99188141,
         "stop_it_with_the_skills": 41420027,
     },
+    "the_admiral": {
+        "anime": 37721209,
+        "strongest_ocean_deck": 63120904,
+    },
     "torrey": {
         "talk_to_the_beyond": 94212438,
         "sounds_of_darkness": 28933734,

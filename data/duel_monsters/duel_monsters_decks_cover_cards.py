@@ -684,4 +684,17 @@ DUEL_MONSTERS_DECK_COVER_CARDS = {
         "guardians_of_orichalcos": 48179391,
         "the_super_soldier": 54484652,
     },
+    "rebecca": {
+        "duelist_kingdom": 30778711,
+        "waking_the_dragons": 17658803,
+        "grand_championship": 79575620,
+        "big_bang_usa": 64306248,
+        "us_champion": 56747793,
+        "rebecca": 68007326,
+        "fire_princess_tactics": 64752646,
+        "we_are_victorious": 29095457,
+        "divine_healing": 99517131,
+        "life_shadow": 57579381,
+        "ghostrick_night": 50527144,
+    },
 }
