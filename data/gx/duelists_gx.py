@@ -14,6 +14,7 @@ DUELISTS_GX = [
     ("marcel_bonaparte", "images/duelists/gx/marcel_bonaparte.webp", "gx"),
     ("pierre_the_gambler", "images/duelists/gx/pierre_the_gambler.webp", "gx"),
     ("the_admiral", "images/duelists/gx/the_admiral.webp", "gx"),
+    ("brron_mad_king_of_dark_world", "images/duelists/gx/brron_mad_king_of_dark_world.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -63,7 +64,6 @@ DUELISTS_GX = [
     ("scarr_scout_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
     ("zure_knight_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
     ("kozaky", "images/duelists/duelist_placeholder.png", "gx"),
-    ("bron_mad_king_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
     ("trueman", "images/duelists/duelist_placeholder.png", "gx"),
     ("yusuke_fujiwara", "images/duelists/duelist_placeholder.png", "gx"),
     ("nightshroud", "images/duelists/duelist_placeholder.png", "gx"),
@@ -89,7 +89,6 @@ DUELISTS_GX = [
     ("neo_spacian_grand_mole", "images/duelists/duelist_placeholder.png", "gx"),
     ("des_frog", "images/duelists/duelist_placeholder.png", "gx"),
     ("neo_spacian_dark_panther", "images/duelists/duelist_placeholder.png", "gx"),
-    ("the_grim_reaper", "images/duelists/duelist_placeholder.png", "gx"),
     ("the_winged_dragon_of_ra", "images/duelists/duelist_placeholder.png", "gx"),
     ("destiny_hero_plasma", "images/duelists/duelist_placeholder.png", "gx"),
     ("elemental_hero_neos", "images/duelists/duelist_placeholder.png", "gx"),
@@ -100,7 +99,6 @@ DUELISTS_GX = [
     ("elemental_hero_flame_wingman", "images/duelists/duelist_placeholder.png", "gx"),
     ("sky_scout", "images/duelists/duelist_placeholder.png", "gx"),
     ("rahz", "images/duelists/duelist_placeholder.png", "gx"),
-    ("doom_dozer", "images/duelists/duelist_placeholder.png", "gx"),
     ("guardian_of_the_labyrinth", "images/duelists/duelist_placeholder.png", "gx"),
     ("maiden_of_the_aqua", "images/duelists/duelist_placeholder.png", "gx"),
     ("exodia_the_forbidden_one", "images/duelists/duelist_placeholder.png", "gx"),

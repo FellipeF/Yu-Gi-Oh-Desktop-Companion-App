@@ -171,6 +171,20 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Surra do Destino",
         },
     },
+    "brron_mad_king_of_dark_world": {
+        "portable_darkness": {
+            "en": "Portable Darkness",
+            "pt": "Escuridão Portátil",
+        },
+        "sleepless_mind": {
+            "en": "Sleepless Mind",
+            "pt": "Mente Sem Sono",
+        },
+        "see_my_dark_side": {
+            "en": "See My Dark Side",
+            "pt": "Veja Meu Lado Sombrio",
+        },
+    },
     "dancing_fairy": {
         "dancing_duel": {
             "en": "Dancing Duel",

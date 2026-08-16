@@ -4,6 +4,12 @@ GX_DECK_COVER_CARDS = {
         "toon_square": 47453433,
         "fading_power": 16435215,
     },
+    "brron_mad_king_of_dark_world": {
+        "anime": 98696958,
+        "portable_darkness": 74117290,
+        "sleepless_mind": 15800838,
+        "see_my_dark_side": 44330098,
+    },
     "dancing_fairy": {
         "dancing_duel": 90925163,
     },
