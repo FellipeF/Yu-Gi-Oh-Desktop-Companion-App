@@ -649,6 +649,20 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Aqueles Que Controlam O Futuro",
         },
     },
+    "taiyou_torimaki": {
+        "dragons_roar": {
+            "en": "Dragon's Roar",
+            "pt": "Rugido do Dragão",
+        },
+        "strategy_negator": {
+            "en": "Strategy Negator",
+            "pt": "Negador de Estratégia",
+        },
+        "skill_seal": {
+            "en": "Skill Seal",
+            "pt": "Selar Habilidade",
+        },
+    },
     "the_admiral": {
         "strongest_ocean_deck": {
             "en": "Strongest Ocean",

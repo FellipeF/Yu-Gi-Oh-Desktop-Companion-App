@@ -89,6 +89,11 @@ GX_DECK_COVER_CARDS = {
         "no_skills_for_me": 99188141,
         "stop_it_with_the_skills": 41420027,
     },
+    "taiyou_torimaki": {
+        "dragons_roar": 28596933,
+        "strategy_negator": 31476755,
+        "skill_seal": 82732705,
+    },
     "the_admiral": {
         "anime": 37721209,
         "strongest_ocean_deck": 63120904,

@@ -10,6 +10,7 @@ from data.gx.decks.pierre_the_gambler import PIERRE_THE_GAMBLER_DECKS
 from data.gx.decks.sadie import SADIE_DECKS
 from data.gx.decks.sartorius_kumar import SARTORIUS_KUMAR_DECKS
 from data.gx.decks.slade_princeton import SLADE_PRINCETON_DECKS
+from data.gx.decks.taiyou_torimaki import TAIYOU_TORIKAMI_DECKS
 from data.gx.decks.the_admiral import THE_ADMIRAL_DECKS
 from data.gx.decks.torrey import TORREY_DECKS
 from data.gx.decks.goblin_elite_attack_force import GOBLIN_ELITE_ATTACK_FORCE_DECKS
@@ -30,6 +31,7 @@ LIST_OF_DECKS_GX = {
     "pierre_the_gambler": PIERRE_THE_GAMBLER_DECKS,
     "the_admiral": THE_ADMIRAL_DECKS,
     "brron_mad_king_of_dark_world": BRRON_MAD_KING_OF_DARK_WORLD_DECKS,
+    "taiyou_torimaki": TAIYOU_TORIKAMI_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_GX"]

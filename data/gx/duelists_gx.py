@@ -15,6 +15,7 @@ DUELISTS_GX = [
     ("pierre_the_gambler", "images/duelists/gx/pierre_the_gambler.webp", "gx"),
     ("the_admiral", "images/duelists/gx/the_admiral.webp", "gx"),
     ("brron_mad_king_of_dark_world", "images/duelists/gx/brron_mad_king_of_dark_world.webp", "gx"),
+    ("taiyou_torimaki", "images/duelists/gx/taiyou_torimaki.webp", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -70,7 +71,6 @@ DUELISTS_GX = [
     ("fonda_fontaine", "images/duelists/duelist_placeholder.png", "gx"),
     ("mindy", "images/duelists/duelist_placeholder.png", "gx"),
     ("sartyr", "images/duelists/duelist_placeholder.png", "gx"),
-    ("taiyou_torimaki", "images/duelists/duelist_placeholder.png", "gx"),
     ("raizou_mototani", "images/duelists/duelist_placeholder.png", "gx"),
     ("harrington_rosewood", "images/duelists/duelist_placeholder.png", "gx"),
     ("brier", "images/duelists/duelist_placeholder.png", "gx"),
@@ -78,7 +78,6 @@ DUELISTS_GX = [
     ("dimitri", "images/duelists/duelist_placeholder.png", "gx"),
     ("ishiki_erishi", "images/duelists/duelist_placeholder.png", "gx"),
     ("belowski", "images/duelists/duelist_placeholder.png", "gx"),
-    ("gerard", "images/duelists/duelist_placeholder.png", "gx"),
     ("reginald_van_howel", "images/duelists/duelist_placeholder.png", "gx"),
     ("missy", "images/duelists/duelist_placeholder.png", "gx"),
     ("winged_kuriboh", "images/duelists/duelist_placeholder.png", "gx"),
@@ -98,8 +97,6 @@ DUELISTS_GX = [
     ("rainbow_dragon", "images/duelists/duelist_placeholder.png", "gx"),
     ("elemental_hero_flame_wingman", "images/duelists/duelist_placeholder.png", "gx"),
     ("sky_scout", "images/duelists/duelist_placeholder.png", "gx"),
-    ("rahz", "images/duelists/duelist_placeholder.png", "gx"),
-    ("guardian_of_the_labyrinth", "images/duelists/duelist_placeholder.png", "gx"),
     ("maiden_of_the_aqua", "images/duelists/duelist_placeholder.png", "gx"),
     ("exodia_the_forbidden_one", "images/duelists/duelist_placeholder.png", "gx"),
     ("honest", "images/duelists/duelist_placeholder.png", "gx"),
@@ -108,10 +105,7 @@ DUELISTS_GX = [
     ("mathmatica", "images/duelists/duelist_placeholder.png", "gx"),
     ("maitre_d", "images/duelists/duelist_placeholder.png", "gx"),
     ("mr_huffington", "images/duelists/duelist_placeholder.png", "gx"),
-    ("jagger_princeton", "images/duelists/duelist_placeholder.png", "gx"),
-    ("wheeler", "images/duelists/duelist_placeholder.png", "gx"),
-    ("czar", "images/duelists/duelist_placeholder.png", "gx"),
-    ("foster", "images/duelists/duelist_placeholder.png", "gx"), # Duelist Translations continue here ^, if any
+    ("jagger_princeton", "images/duelists/duelist_placeholder.png", "gx"), # Duelist Translations continue here ^, if any
     ("eisenstein", "images/duelists/duelist_placeholder.png", "gx"),
     ("lucien_grimley", "images/duelists/duelist_placeholder.png", "gx"),
     ("shido_gecko", "images/duelists/duelist_placeholder.png", "gx"),

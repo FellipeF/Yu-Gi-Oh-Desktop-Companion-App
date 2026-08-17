@@ -65,7 +65,7 @@ SEEKER_DECKS = {
         ("Stone Statue of the Aztecs", 2),
         ("The Drdek", 3),
         ("Three-headed Geedo", 2),
-        ("Wicked Mirror", 3),
+        ("Archfiend Mirror", 3),
         ("Wings of Wicked Flame", 3),
         ("Final Flame", 3),
         ("Goblin's Secret Remedy", 2),

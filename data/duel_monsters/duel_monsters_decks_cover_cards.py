@@ -730,4 +730,21 @@ DUEL_MONSTERS_DECK_COVER_CARDS = {
         "red_eyed_dinosaurs": 36262024,
         "rise_of_the_evolsaur": 14154221,
     },
+    "seeker": {
+        "anime": 70903634,
+        "manga": 33396948,
+        "dark_duel_stories": "07902349",
+        "battle_of_great_duelist": 92944626,
+        "the_eternal_duelist_soul": "08124921",
+        "worldwide_edition_stairway_to_the_destined_duel": 	83968380,
+        "the_sacred_cards": 44519536,
+        "reshef_of_destruction": 17511156,
+        "reshef_of_destruction_2": 70903634,
+        "world_championship_2004": 33396948,
+        "seven_trials_to_glory": "07902349",
+        "the_dawn_of_destiny": 14318794,
+        "seal_release": "08124921",
+        "cheating_exodia": 55144522,
+        "the_coming_of_exodia": 44519536,
+    }
 }
