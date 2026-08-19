@@ -36,7 +36,7 @@ REX_RAPTOR_DECKS = {
         ("Black Tyranno", 1),
         ("Ultra Evolution Pill", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Ancient Jar", 1),
         ("Armored Lizard", 1),
         ("Crawling Dragon #2", 1),

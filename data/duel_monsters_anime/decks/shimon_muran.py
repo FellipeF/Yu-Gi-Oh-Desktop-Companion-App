@@ -102,7 +102,7 @@ SHIMON_DECKS = {
         ("Torrential Tribute", 1),
         ("Trap Hole", 2),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Akakieisu", 1),
         ("Ancient Sorcerer", 1),
         ("Fairywitch", 1),

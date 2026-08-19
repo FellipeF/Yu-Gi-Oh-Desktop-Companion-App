@@ -56,7 +56,8 @@ def create_tables():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         key TEXT UNIQUE NOT NULL,
         img_path TEXT,
-        media TEXT
+        media TEXT,
+        duelist_type TEXT NOT NULL DEFAULT 'duelist'
     )
     """)
 

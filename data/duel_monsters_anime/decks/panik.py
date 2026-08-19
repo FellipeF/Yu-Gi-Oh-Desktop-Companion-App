@@ -8,7 +8,7 @@ PANIK_DECKS = {
         ("Reaper of the Cards", 1),
         ("Yellow Luster Shield", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Barox", 1),
         ("Big Eye", 1),
         ("Bio Plant", 1),

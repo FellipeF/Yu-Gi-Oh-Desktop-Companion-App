@@ -67,7 +67,7 @@ BAKURA_DECKS = {
         ("Fearful Earthbound [M]", 1),
         ("Multiple Destruction", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Ancient Jar", 1),
         ("Curtain of the Dark Ones", 1),
         ("Dark Plant", 1),

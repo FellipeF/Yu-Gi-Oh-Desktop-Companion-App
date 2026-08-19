@@ -2123,7 +2123,7 @@ KAIBA_DECKS = {
         ("Castle of Dragon Souls", 2),
         ("The Transmigration Prophecy", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Arma Knight", 1),
         ("Armaill", 1),
         ("Armored Lizard", 1),

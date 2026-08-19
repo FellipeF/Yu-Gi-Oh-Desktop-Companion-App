@@ -1,7 +1,5 @@
 from data.gx.decks.aster_phoenix import ASTER_PHOENIX_DECKS
 from data.gx.decks.america_uchimura import AMERICA_UCHIMURA_DECKS
-from data.gx.decks.brron_mad_king_of_dark_world import BRRON_MAD_KING_OF_DARK_WORLD_DECKS
-from data.gx.decks.dancing_fairy import DANCING_FAIRY_DECK
 from data.gx.decks.jasmine import JASMINE_DECKS
 from data.gx.decks.jean_louis_bonaparte import JEAN_LOUIS_BONAPARTE_DECKS
 from data.gx.decks.lyman_banner import LYMAN_BANNER_DECKS
@@ -13,7 +11,6 @@ from data.gx.decks.slade_princeton import SLADE_PRINCETON_DECKS
 from data.gx.decks.taiyou_torimaki import TAIYOU_TORIKAMI_DECKS
 from data.gx.decks.the_admiral import THE_ADMIRAL_DECKS
 from data.gx.decks.torrey import TORREY_DECKS
-from data.gx.decks.goblin_elite_attack_force import GOBLIN_ELITE_ATTACK_FORCE_DECKS
 
 LIST_OF_DECKS_GX = {
     "jean_louis_bonaparte": JEAN_LOUIS_BONAPARTE_DECKS,
@@ -21,16 +18,13 @@ LIST_OF_DECKS_GX = {
     "sadie": SADIE_DECKS,
     "torrey": TORREY_DECKS,
     "aster_phoenix": ASTER_PHOENIX_DECKS,
-    "dancing_fairy": DANCING_FAIRY_DECK,
     "jasmine": JASMINE_DECKS,
     "lyman_banner": LYMAN_BANNER_DECKS,
-    "goblin_elite_attack_force": GOBLIN_ELITE_ATTACK_FORCE_DECKS,
     "america_uchimura": AMERICA_UCHIMURA_DECKS,
     "sartorius_kumar": SARTORIUS_KUMAR_DECKS,
     "marcel_bonaparte": MARCEL_BONAPARTE_DECKS,
     "pierre_the_gambler": PIERRE_THE_GAMBLER_DECKS,
     "the_admiral": THE_ADMIRAL_DECKS,
-    "brron_mad_king_of_dark_world": BRRON_MAD_KING_OF_DARK_WORLD_DECKS,
     "taiyou_torimaki": TAIYOU_TORIKAMI_DECKS,
 }
 

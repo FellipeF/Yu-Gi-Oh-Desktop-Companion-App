@@ -1626,7 +1626,7 @@ JOEY_DECKS = {
         ("Magical Arm Shield", 1),
         ("Michizure", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Baby Dragon", 1),
         ("Mushroom Man", 1),
         ("Time Wizard", 1),

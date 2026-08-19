@@ -1528,7 +1528,7 @@ YAMI_YUGI_DECKS = {
         ("Offerings to the Doomed", 2),
         ("Magician Navigation", 3),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Black Skull Dragon", 1),
         ("Battle Steer", 1),
         ("Beaver Warrior", 1),

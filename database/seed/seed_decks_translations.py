@@ -1,8 +1,8 @@
 """File for populating deck_category and duelist_decks translations tables"""
-
+from data.duel_spirits.duel_spirits_decks_translations import DUEL_SPIRITS_DECKS_KEYS
 from database.database import get_connection
-from data.duel_monsters.deck_categories_translations_duel_monsters import DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS
-from data.duel_monsters.duelists_duel_monsters_decks_translations import DUELISTS_DECKS_KEYS_DUEL_MONSTERS
+from data.duel_monsters_anime.deck_categories_translations_duel_monsters import DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS
+from data.duel_monsters_anime.duelists_duel_monsters_decks_translations import DUELISTS_DECKS_KEYS_DUEL_MONSTERS
 from data.gx.deck_categories_translations_gx import DECK_CATEGORIES_TRANSLATIONS_GX
 from data.gx.duelists_gx_decks_translations import DUELISTS_DECKS_KEYS_GX
 
@@ -12,6 +12,7 @@ DuelistDeckTranslations = dict[str, dict[str, dict[str, str]]]
 SEED_DECK_TRANSLATION_SOURCES: list[tuple[DeckCategoryTranslations, DuelistDeckTranslations]] = [
     (DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS, DUELISTS_DECKS_KEYS_DUEL_MONSTERS),
     (DECK_CATEGORIES_TRANSLATIONS_GX, DUELISTS_DECKS_KEYS_GX),
+    ({}, DUEL_SPIRITS_DECKS_KEYS),
 ]
 
 def _load_deck_category_ids(cursor) -> dict[str, int]:

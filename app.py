@@ -25,6 +25,7 @@ from database.seed.database_changes import (
     set_latest_dataset_seeded
 )
 from frames.custom_deck_editor_frame import CustomDeckEditorFrame
+from frames.duel_spirits_frame import DuelSpiritsFrame
 from frames.home_frame import HomeFrame
 from frames.cards_frame import CardsFrame
 from frames.duelists_frame import DuelistsFrame
@@ -223,7 +224,7 @@ class App(tk.Tk):
         self.loading_frame.set_status(f"{self.t('loading_error')}: {error}")
 
     def finish_initialization(self):
-        for F in (HomeFrame, CardsFrame, DuelistsFrame, CustomDecksFrame, CustomDeckEditorFrame):
+        for F in (HomeFrame, CardsFrame, DuelistsFrame, DuelSpiritsFrame, CustomDecksFrame, CustomDeckEditorFrame):
             frame = F(self.container, self)
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky="nsew")

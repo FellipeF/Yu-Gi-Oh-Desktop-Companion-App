@@ -36,7 +36,7 @@ MAKO_DECKS = {
         ("Tornado Wall", 1),
         ("Torrential Tribute", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Akihiron", 1),
         ("Aqua Madoor", 1),
         ("Arma Knight", 1),

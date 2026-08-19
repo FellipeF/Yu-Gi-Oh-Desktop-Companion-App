@@ -307,7 +307,7 @@ TRISTAN_DECKS = {
         ("Needlebug Nest", 2),
         ("Ordeal of a Traveler", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Skull Servant", 1),
         ("Kuriboh", 1),
         ("Dark Plant", 1),

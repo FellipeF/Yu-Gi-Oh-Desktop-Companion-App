@@ -143,7 +143,7 @@ DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS = {
         "en": "V Jump Magazine",
         "pt": "Revista V Jump",
     },
-    "duel_monsters": {
+    "duel_monsters_anime": {
         "en": "Duel Monsters",
         "pt": "Monstros de Duelo",
     },

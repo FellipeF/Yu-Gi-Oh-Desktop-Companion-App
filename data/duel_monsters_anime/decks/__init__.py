@@ -6,7 +6,6 @@ from .bakura_ryou import BAKURA_DECKS
 from .bandit_keith import BANDIT_KEITH_DECKS
 from .big5 import THE_BIG_FIVE_DECKS
 from .bonz import BONZ_DECKS
-from .dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
 from .dartz import DARTZ_DECKS
 from .dox import DOX_DECKS
 from .duel_computers import DUEL_COMPUTERS_DECKS
@@ -14,7 +13,6 @@ from .duke import DUKE_DECKS
 from .espa_roba import ESPA_ROBA_DECKS
 from .gozaburo_kaiba import GOZABURO_KAIBA_DECKS
 from .ishizu import ISHIZU_DECKS
-from .kuriboh import KURIBOH_DECKS
 from .lumis import LUMIS_DECKS
 from .lumis_and_umbra import LUMIS_AND_UMBRA_DECKS
 from .mai import MAI_DECKS
@@ -30,7 +28,6 @@ from .para import PARA_DECKS
 from .paradox_brothers import PARADOX_BROTHERS_DECKS
 from .rafael import RAFAEL_DECKS
 from .rebecca import REBECCA_DECKS
-from .red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
 from .rex_raptor import REX_RAPTOR_DECKS
 from .seeker import SEEKER_DECKS
 from .serenity import SERENITY_DECKS
@@ -80,7 +77,6 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "serenity_wheeler": SERENITY_DECKS,
     "panik": PANIK_DECKS,
     "mokuba_kaiba": MOKUBA_DECKS,
-    "dark_magician_girl": DARK_MAGICIAN_GIRL_DECKS,
     "shimon_muran": SHIMON_DECKS,
     "noah_kaiba": NOAH_KAIBA_DECKS,
     "bakura_ryou": BAKURA_DECKS,
@@ -90,7 +86,6 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "grand_championship_duelists": KC_GRAND_PRIX_DECKS,
     "espa_roba": ESPA_ROBA_DECKS,
     "other_duelists_duel_monsters": OTHER_DM_DECKS,
-    "red_eyes_black_dragon": RED_EYES_BLACK_DRAGON_DECKS,
     "yami_bakura": YAMI_BAKURA_DECKS,
     "gozaburo_kaiba": GOZABURO_KAIBA_DECKS,
     "lumis_and_umbra": LUMIS_AND_UMBRA_DECKS,
@@ -98,7 +93,6 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "para": PARA_DECKS,
     "dox": DOX_DECKS,
     "paradox_brothers": PARADOX_BROTHERS_DECKS,
-    "kuriboh": KURIBOH_DECKS,
     "rafael": RAFAEL_DECKS,
     "rex_raptor": REX_RAPTOR_DECKS,
     "seeker": SEEKER_DECKS,

@@ -88,7 +88,7 @@ WEEVIL_DECKS = {
         ("Pinch Hopper", 1),
         ("Eradicating Aerosol", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Basic Insect", 1),
         ("Big Insect", 1),
         ("Giant Flea", 1),

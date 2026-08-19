@@ -44,9 +44,47 @@ def get_all_duelists() -> list[tuple]:
             d.id, d.key, d.img_path, d.media, COUNT(dd.id) AS deck_count
         FROM duelists d
         LEFT JOIN duelist_decks dd ON dd.duelist_id = d.id
+        WHERE d.duelist_type = 'duelist'
         GROUP BY d.id, d.key, d.img_path, d.media""")
 
         return cursor.fetchall()
+    finally:
+        conn.close()
+
+def get_all_duel_spirits() -> list[tuple]:
+    """Returns all duel monsters that are duelists and their deck count"""
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+        SELECT 
+            d.id, d.key, d.img_path, d.media, COUNT(dd.id) AS deck_count
+        FROM duelists d
+        LEFT JOIN duelist_decks dd ON dd.duelist_id = d.id
+        WHERE d.duelist_type = 'duel_monster'
+        GROUP BY d.id, d.key, d.img_path, d.media""")
+
+        return cursor.fetchall()
+    finally:
+        conn.close()
+
+def get_duel_spirits_count() -> int:
+    """Returns the total number of Duel Spirits registered as duelists."""
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM duelists
+            WHERE duelist_type = 'duel_monster'
+        """)
+
+        result = cursor.fetchone()
+
+        return result[0] if result else 0
+
     finally:
         conn.close()
 

@@ -935,7 +935,7 @@ PEGASUS_DECKS = {
         ("Toon Table of Contents", 3),
         ("Toon World", 3),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Swamp Battleguard", 1),
         ("Battle Steer", 1),
         ("Mountain Warrior", 1),

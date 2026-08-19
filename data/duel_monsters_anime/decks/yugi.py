@@ -932,7 +932,7 @@ YUGI_DECKS = {
         ("Turn Silence", 1),
         ("Mirage Mirror Force", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Archfiend Marmot of Nefariousness", 1),
         ("Candle of Fate", 1),
         ("Change Slime", 1),

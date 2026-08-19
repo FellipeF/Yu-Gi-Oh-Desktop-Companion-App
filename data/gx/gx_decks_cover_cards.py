@@ -4,19 +4,6 @@ GX_DECK_COVER_CARDS = {
         "toon_square": 47453433,
         "fading_power": 16435215,
     },
-    "brron_mad_king_of_dark_world": {
-        "anime": 98696958,
-        "portable_darkness": 74117290,
-        "sleepless_mind": 15800838,
-        "see_my_dark_side": 44330098,
-    },
-    "dancing_fairy": {
-        "dancing_duel": 90925163,
-    },
-    "goblin_elite_attack_force": {
-        "no_weaklings": 85306040,
-        "goblical_parade": 18590133,
-    },
     "jasmine": {
         "female_warrior": 64751286,
         "cause_theyre_cool": 15150365,

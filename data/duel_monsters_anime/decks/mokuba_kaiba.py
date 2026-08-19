@@ -288,7 +288,7 @@ MOKUBA_DECKS = {
         ("Ritual Cage", 1),
         ("Ritual Weapon", 2),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Archfiend Marmot of Nefariousness", 1),
         ("Ancient Jar", 1),
         ("Ancient Tree of Enlightenment", 1),

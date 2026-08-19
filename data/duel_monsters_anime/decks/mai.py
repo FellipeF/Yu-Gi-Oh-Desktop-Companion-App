@@ -123,7 +123,7 @@ MAI_DECKS = {
         ("Triangle Ecstasy Spark", 1),
         ("Mirror Wall", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Goddess with the Third Eye", 1),
         ("Fairywitch", 1),
         ("Arlownay", 1),

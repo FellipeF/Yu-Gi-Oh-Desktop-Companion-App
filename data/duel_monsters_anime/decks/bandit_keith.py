@@ -65,7 +65,7 @@ BANDIT_KEITH_DECKS = {
         ("Ring of Destruction", 1),
         ("Scrap Garage", 1),
     ],
-    "duel_monsters": [
+    "duel_monsters_anime": [
         ("Ancient Tool", 1),
         ("Arma Knight", 1),
         ("Armaill", 1),

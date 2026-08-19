@@ -1,7 +1,7 @@
 """Probability pool for generating a random deck for the Duel Monsters Game"""
 
 DUEL_MONSTERS_POOLS_GAME = {
-    ("yugi_muto", "duel_monsters"): (
+    ("yugi_muto", "duel_monsters_anime"): (
         ("Mystical Elf", 2),
         ("Mushroom Man", 12),
         ("Shadow Specter", 105),
@@ -36,12 +36,12 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Change Slime", 72),
         ("Kurama", 1),
     ),
-    ("tristan_taylor", "duel_monsters"): (
+    ("tristan_taylor", "duel_monsters_anime"): (
         ("Skull Servant", 683),
         ("Kuriboh", 683),
         ("Dark Plant", 682),
     ),
-    ("joey_wheeler", "duel_monsters"): (
+    ("joey_wheeler", "duel_monsters_anime"): (
         ("Baby Dragon", 1),
         ("Mushroom Man", 57),
         ("Time Wizard", 70),
@@ -71,7 +71,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Serpent Marauder", 97),
         ("Kurama", 28),
     ),
-    ("bakura_ryou", "duel_monsters"): (
+    ("bakura_ryou", "duel_monsters_anime"): (
         ("Ancient Jar", 594),
         ("Curtain of the Dark Ones", 15),
         ("Dark Plant", 437),
@@ -83,7 +83,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Mystery Hand", 207),
         ("Skull Servant", 119),
     ),
-    ("weevil_underwood", "duel_monsters"): (
+    ("weevil_underwood", "duel_monsters_anime"): (
         ("Basic Insect", 176),
         ("Big Insect", 41),
         ("Giant Flea", 9),
@@ -98,7 +98,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Wodan the Resident of the Forest", 231),
         ("Wood Clown", 268),
     ),
-    ("mai_valentine", "duel_monsters"): (
+    ("mai_valentine", "duel_monsters_anime"): (
         ("Goddess with the Third Eye", 13),
         ("Fairywitch", 89),
         ("Arlownay", 90),
@@ -139,7 +139,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Wing Egg Elf", 74),
         ("Yamatano Dragon Scroll", 90),
     ),
-    ("rex_raptor", "duel_monsters"): (
+    ("rex_raptor", "duel_monsters_anime"): (
         ("Ancient Jar", 55),
         ("Armored Lizard", 13),
         ("Crawling Dragon #2", 6),
@@ -159,7 +159,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Two-mouth Darkruler", 292),
         ("Uraby", 54),
     ),
-    ("mako_tsunami", "duel_monsters"): (
+    ("mako_tsunami", "duel_monsters_anime"): (
         ("Akihiron", 1),
         ("Aqua Madoor", 4),
         ("Arma Knight", 43),
@@ -190,7 +190,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Water Omotics", 1),
         ("Wetha", 71),
     ),
-    ("seto_kaiba", "duel_monsters"): (
+    ("seto_kaiba", "duel_monsters_anime"): (
         ("Arma Knight", 28),
         ("Armaill", 13),
         ("Armored Lizard", 54),
@@ -253,7 +253,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Witty Phantom", 55),
         ("Wolf", 34),
     ),
-    ("mokuba_kaiba", "duel_monsters"): (
+    ("mokuba_kaiba", "duel_monsters_anime"): (
         ("Archfiend Marmot of Nefariousness", 26),
         ("Ancient Jar", 12),
         ("Ancient Tree of Enlightenment", 21),
@@ -356,7 +356,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Yamatano Dragon Scroll", 25),
         ("Yashinoki", 26),
     ),
-    ("ventriloquist_of_the_dead", "duel_monsters"): (
+    ("ventriloquist_of_the_dead", "duel_monsters_anime"): (
         ("Akakieisu", 49),
         ("Ancient Brain", 48),
         ("Ancient Sorcerer", 31),
@@ -424,7 +424,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Wicked Dragon with the Ersatz Head", 57),
         ("Wing Egg Elf", 28),
     ),
-    ("panik", "duel_monsters"): (
+    ("panik", "duel_monsters_anime"): (
         ("Barox", 12),
         ("Big Eye", 75),
         ("Bio Plant", 55),
@@ -464,7 +464,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Wicked Dragon with the Ersatz Head", 88),
         ("Archfiend Mirror", 27),
     ),
-    ("bandit_keith", "duel_monsters"): (
+    ("bandit_keith", "duel_monsters_anime"): (
         ("Ancient Tool", 9),
         ("Arma Knight", 67),
         ("Armaill", 28),
@@ -522,7 +522,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Wood Remains", 46),
         ("Zanki", 19),
     ),
-    ("shimon_muran", "duel_monsters"): (
+    ("shimon_muran", "duel_monsters_anime"): (
         ("Akakieisu", 83),
         ("Ancient Sorcerer", 143),
         ("Fairywitch", 44),
@@ -543,7 +543,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Tao the Chanter", 166),
         ("White Magical Hat", 74),
     ),
-    ("maximillion_pegasus", "duel_monsters"): (
+    ("maximillion_pegasus", "duel_monsters_anime"): (
         ("Swamp Battleguard", 73),
         ("Battle Steer", 90),
         ("Mountain Warrior", 2),
@@ -594,7 +594,7 @@ DUEL_MONSTERS_POOLS_GAME = {
         ("Masaki the Legendary Swordsman", 14),
         ("Sonic Maid", 24),
     ),
-    ("yami_yugi", "duel_monsters"): (
+    ("yami_yugi", "duel_monsters_anime"): (
         ("Black Skull Dragon", 1),
         ("Battle Steer", 182),
         ("Beaver Warrior", 43),

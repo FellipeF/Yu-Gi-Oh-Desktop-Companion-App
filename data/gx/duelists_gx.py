@@ -1,20 +1,16 @@
 DUELISTS_GX = [
-
     ("jean_louis_bonaparte", "images/duelists/gx/jean_louis_bonaparte.webp", "gx"),
     ("slade_princeton", "images/duelists/gx/slade_princeton.webp", "gx"),
     ("sadie", "images/duelists/gx/sadie.webp", "gx"),
     ("torrey", "images/duelists/gx/torrey.webp", "gx"),
     ("aster_phoenix", "images/duelists/gx/aster_phoenix.png", "gx"),
-    ("dancing_fairy", "images/duelists/gx/dancing_fairy.webp", "gx"),
     ("jasmine", "images/duelists/gx/jasmine.webp", "gx"),
     ("lyman_banner", "images/duelists/gx/lyman_banner.webp", "gx"),
-    ("goblin_elite_attack_force", "images/duelists/gx/goblin_elite_attack_force.webp", "gx"),
     ("america_uchimura", "images/duelists/gx/america_uchimura.png", "gx"),
     ("sartorius_kumar", "images/duelists/gx/sartorius.webp", "gx"),
     ("marcel_bonaparte", "images/duelists/gx/marcel_bonaparte.webp", "gx"),
     ("pierre_the_gambler", "images/duelists/gx/pierre_the_gambler.webp", "gx"),
     ("the_admiral", "images/duelists/gx/the_admiral.webp", "gx"),
-    ("brron_mad_king_of_dark_world", "images/duelists/gx/brron_mad_king_of_dark_world.webp", "gx"),
     ("taiyou_torimaki", "images/duelists/gx/taiyou_torimaki.webp", "gx"),
     # =========================
     # TODO: Below

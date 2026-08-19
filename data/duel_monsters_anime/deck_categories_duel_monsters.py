@@ -37,7 +37,7 @@ DECK_CATEGORIES_KEYS_DUEL_MONSTERS = [
     "live_action_speed_duel_2020",
     "world_championship_qualifier_2024",
     "v_jump_magazine",
-    "duel_monsters",
+    "duel_monsters_anime",
     "dark_duel_stories",
     "the_eternal_duelist_soul",
     "the_sacred_cards",

@@ -1,14 +1,18 @@
 """File to populate duelists table"""
-
+from data.duel_spirits.duel_spirits import DUEL_SPIRITS
 from database.database import get_connection
-from data.duel_monsters.duelists_duel_monsters import DUELISTS_DUEL_MONSTERS
+from data.duel_monsters_anime.duelists_duel_monsters import DUELISTS_DUEL_MONSTERS
 from data.gx.duelists_gx import DUELISTS_GX
 
-DuelistSeedRow = tuple[str, str | None, str]
+# Instead of distinguishing duelists characters and duelist duel monsters on seed, do it here
 
-SEED_DUELIST_SOURCES: list[list[DuelistSeedRow]] = [
-    DUELISTS_DUEL_MONSTERS,
-    DUELISTS_GX,
+DuelistSourceRow = tuple[str, str | None, str | None]
+DuelistSeedRow = tuple[str, str | None, str | None, str]
+
+SEED_DUELIST_SOURCES: list[tuple[list[DuelistSourceRow], str]] = [
+    (DUELISTS_DUEL_MONSTERS, "duelist"),
+    (DUELISTS_GX, "duelist"),
+    (DUEL_SPIRITS, "duel_monster"),
 ]
 
 def _upsert_duelists(cursor, duelist_rows: list[DuelistSeedRow]) -> None:
@@ -17,11 +21,12 @@ def _upsert_duelists(cursor, duelist_rows: list[DuelistSeedRow]) -> None:
         return
 
     cursor.executemany("""
-    INSERT INTO duelists (key, img_path, media)
-    VALUES (?, ?, ?)
+    INSERT INTO duelists (key, img_path, media, duelist_type)
+    VALUES (?, ?, ?, ?)
     ON CONFLICT (key) DO UPDATE SET
         img_path = excluded.img_path,
-        media = excluded.media
+        media = excluded.media,
+        duelist_type = excluded.duelist_type
     """, duelist_rows)
 
 def _load_existing_duelist_keys(cursor) -> set[str]:
@@ -43,8 +48,9 @@ def _collect_duelist_rows() -> list[DuelistSeedRow]:
     """Collects duelists from all seed sources"""
     rows: list[DuelistSeedRow] = []
 
-    for duelist_source in SEED_DUELIST_SOURCES:
-        rows.extend(duelist_source)
+    for duelist_source, duelist_type in SEED_DUELIST_SOURCES:
+        for key, img_path, media in duelist_source:
+            rows.append((key, img_path, media, duelist_type))
 
     return rows
 
@@ -57,7 +63,7 @@ def populate_duelists() -> None:
         duelist_rows = _collect_duelist_rows()
         existing_keys = _load_existing_duelist_keys(cursor)
         _upsert_duelists(cursor, duelist_rows)
-        seed_keys = {key for key, _, _ in duelist_rows}
+        seed_keys = {key for key, _, _, _ in duelist_rows}
         _delete_missing_duelists(cursor, existing_keys, seed_keys)
         conn.commit()
     finally:
