@@ -1,5 +1,18 @@
+import os
 import sqlite3
+
 from config import DB_NAME
+
+def get_database_path():
+    local_app_data = os.getenv("LOCALAPPDATA")
+
+    if not local_app_data:
+        raise RuntimeError("LOCALAPPDATA environment variable was not found")
+
+    app_data_dir = os.path.join(local_app_data, "YGO Desktop Companion")
+    os.makedirs(app_data_dir, exist_ok=True)
+
+    return os.path.join(app_data_dir, DB_NAME)
 
 def get_connection():
     conn = sqlite3.connect(DB_NAME)
