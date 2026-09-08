@@ -14,6 +14,8 @@ class CardDetailsWindow(tk.Toplevel):
         self.card_id = card_id
         self.tk_image = None
         self.image_handler = controller.image_handler
+        self.protocol("WM_DELETE_WINDOW", self._on_close)
+
         self.resizable(False, False)
 
         self.name_label = tk.Label(self, font=("Arial", 16, "bold"))
@@ -145,6 +147,9 @@ class CardDetailsWindow(tk.Toplevel):
         return " | ".join(parts)
 
     def _on_image_loaded(self, card_id, tk_img):
+        if not self.winfo_exists():
+            return
+
         if card_id != self.card_id:
             return
 
@@ -153,7 +158,10 @@ class CardDetailsWindow(tk.Toplevel):
 
         self.tk_image = tk_img
         self.image_label.config(image=self.tk_image, text="")
-        self.image_label.image = self.tk_image
+
+    def _on_close(self):
+        self.tk_image = None
+        self.destroy()
 
     def center_on_screen(self):
         self.update_idletasks()

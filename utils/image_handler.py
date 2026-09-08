@@ -1,10 +1,13 @@
-import threading
-
+from concurrent.futures import ThreadPoolExecutor
+from collections import OrderedDict
 from PIL import ImageTk, Image
 from utils.card_image_loader import load_card_pil_image
 from utils.resource_path import resource_path
 
 class ImageHandler:
+
+    MAX_CARD_CACHE = 60
+    MAX_THUMBNAIL_CACHE = 60
 
     _instance = None
 
@@ -21,9 +24,11 @@ class ImageHandler:
 
         self.width = width
         self.height = height
-        self.cache = {}
-        self.thumbnail_cache = {} # For duelist details image miniatures
+        self.cache = OrderedDict()
+        self.thumbnail_cache = OrderedDict() # For duelist details image miniatures
         self.placeholder_cache = {}
+
+        self.executor = ThreadPoolExecutor(max_workers=4, thread_name_prefix="image-loader")
 
         self._initialized = True
 
@@ -37,10 +42,16 @@ class ImageHandler:
         return self.placeholder_cache[cache_key]
 
     def get_card(self, card_id):
-        return self.cache.get(card_id)
+        if card_id not in self.cache:
+            return None
+
+        self.cache.move_to_end(card_id)
+
+        return self.cache[card_id]
 
     def load_async(self, tk_widget, card_id, callback):
         if card_id in self.cache:
+            self.cache.move_to_end(card_id)
             # Loads from memory cache
             tk_widget.after(0, lambda: callback(card_id, self.cache[card_id]))
             return
@@ -50,7 +61,7 @@ class ImageHandler:
 
             tk_widget.after(0, lambda: self._handle_image(card_id, pil_img, callback))
 
-        threading.Thread(target=task, daemon=True).start()
+        self.executor.submit(task)
 
     def _handle_image(self, card_id, pil_img, callback):
         if pil_img is None:
@@ -60,7 +71,12 @@ class ImageHandler:
         try:
             tk_img = ImageTk.PhotoImage(pil_img)
             self.cache[card_id] = tk_img
+            self.cache.move_to_end(card_id)
+            while len(self.cache) > self.MAX_CARD_CACHE:
+                self.cache.popitem(last=False)
+
             callback(card_id, tk_img)
+
         except Exception:
             callback(card_id, None)
 
@@ -68,6 +84,7 @@ class ImageHandler:
         cache_key = (card_id, width, height)
 
         if cache_key in self.thumbnail_cache:
+            self.thumbnail_cache.move_to_end(cache_key)
             tk_widget.after(0, lambda: callback(card_id, self.thumbnail_cache[cache_key]))
             return
 
@@ -82,7 +99,7 @@ class ImageHandler:
                 lambda: self._handle_thumbnail_image(cache_key, card_id, pil_img, callback)
             )
 
-        threading.Thread(target=task, daemon=True).start()
+        self.executor.submit(task)
 
     def _handle_thumbnail_image(self, cache_key, card_id, pil_img, callback):
         if pil_img is None:
@@ -92,6 +109,11 @@ class ImageHandler:
         try:
             tk_img = ImageTk.PhotoImage(pil_img)
             self.thumbnail_cache[cache_key] = tk_img
+            self.thumbnail_cache.move_to_end(cache_key)
+            while len(self.thumbnail_cache) > self.MAX_THUMBNAIL_CACHE:
+                self.thumbnail_cache.popitem(last=False)
+
             callback(card_id, tk_img)
+
         except Exception:
             callback(card_id, None)
