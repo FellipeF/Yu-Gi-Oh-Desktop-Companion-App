@@ -2,6 +2,7 @@ from data.duel_spirits.decks.brron_mad_king_of_dark_world import BRRON_MAD_KING_
 from data.duel_spirits.decks.chaos_sorcerer import CHAOS_SORCERER_DECKS
 from data.duel_spirits.decks.dancing_fairy import DANCING_FAIRY_DECK
 from data.duel_spirits.decks.dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
+from data.duel_spirits.decks.don_zaloog import DON_ZALOOG_DECKS
 from data.duel_spirits.decks.goblin_elite_attack_force import GOBLIN_ELITE_ATTACK_FORCE_DECKS
 from data.duel_spirits.decks.honest import HONEST_DECKS
 from data.duel_spirits.decks.kuriboh import KURIBOH_DECKS
@@ -20,6 +21,7 @@ LIST_OF_DECKS_DUEL_SPIRITS = {
     "honest": HONEST_DECKS,
     "maiden_of_the_aqua": MAIDEN_OF_THE_AQUA_DECK,
     "winged_kuriboh": WINGED_KURIBOH_DECKS,
+    "don_zaloog": DON_ZALOOG_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_SPIRITS"]

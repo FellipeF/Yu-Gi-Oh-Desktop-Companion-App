@@ -35,7 +35,6 @@ DUELISTS_GX = [
     ("adrian_gecko", "images/duelists/duelist_placeholder.png", "gx"),
     ("camula", "images/duelists/duelist_placeholder.png", "gx"),
     ("tania", "images/duelists/duelist_placeholder.png", "gx"),
-    ("don_zaloog", "images/duelists/duelist_placeholder.png", "gx"),
     ("titan", "images/duelists/duelist_placeholder.png", "gx"),
     ("abidos_the_third", "images/duelists/duelist_placeholder.png", "gx"),
     ("atticus_rhodes", "images/duelists/duelist_placeholder.png", "gx"),

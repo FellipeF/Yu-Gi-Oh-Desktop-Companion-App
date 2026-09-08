@@ -79,6 +79,60 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Escola Mágica",
         },
     },
+    "don_zaloog": {
+        "dark_scorpion_burglars": {
+            "en": "Dark Scorpion Burglars",
+            "pt": "Escorpiões das Trevas Ladrões"
+        },
+        "don_zaloog_zero_one": {
+            "en": "Don Zaloog 01",
+            "pt": "Dom Zaloog 01",
+        },
+        "don_zaloog_zero_two": {
+            "en": "Don Zaloog 02",
+            "pt": "Dom Zaloog 02",
+        },
+        "don_zaloog_zero_three": {
+            "en": "Don Zaloog 03",
+            "pt": "Dom Zaloog 03",
+        },
+        "don_zaloog_zero_four": {
+            "en": "Don Zaloog 04",
+            "pt": "Dom Zaloog 04",
+        },
+        "team_assemble": {
+            "en": "Team, Assemble!",
+            "pt": "Equipe, Reúnam-se!",
+        },
+        "warrior_bloodline": {
+            "en": "Warrior Bloodline",
+            "pt": "Legado de Sangue Guerreiro",
+        },
+        "mighty_dark_scorpions": {
+            "en": "Mighty Dark Scorpions",
+            "pt": "Escorpiões das Trevas Poderosos",
+        },
+        "black_scorpion": {
+            "en": "Black Scorpion",
+            "pt": "Escorpião Negro",
+        },
+        "call_me_don": {
+            "en": "Call Me Don",
+            "pt": "Me Chame de Dom",
+        },
+        "trap_and_drop": {
+            "en": "Trap & Drop",
+            "pt": "Prenda e Derrube",
+        },
+        "the_culprits_here": {
+            "en": "The Culprit's Here",
+            "pt": "O Culpado Está Aqui",
+        },
+        "dark_scorpion_five": {
+            "en": "Dark Scorpion Five",
+            "pt": "Escorpião da Treva Cinco",
+        },
+    },
     "goblin_elite_attack_force": {
         "no_weaklings": {
             "en": "No Weaklings!",

@@ -11,4 +11,5 @@ DUEL_SPIRITS = [
     ("honest", "images/duelists/duel_spirits/honest.webp", None),
     ("maiden_of_the_aqua", "images/duelists/duel_spirits/maiden_of_the_aqua.webp", None),
     ("winged_kuriboh", "images/duelists/duel_spirits/winged_kuriboh.webp", None),
+    ("don_zaloog", "images/duelists/duel_spirits/don_zaloog.webp", None),
 ]

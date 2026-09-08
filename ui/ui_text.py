@@ -234,6 +234,7 @@ ui_text = {
         "honest": "Honest",
         "maiden_of_the_aqua": "Maiden of the Aqua",
         "winged_kuriboh": "Winged Kuriboh",
+        "don_zaloog": "Don Zaloog",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -260,7 +261,6 @@ ui_text = {
         "kagemaru": "Kagemaru",
         "camula": "Camula",
         "tania": "Tania",
-        "don_zaloog": "Don Zaloog",
         "titan": "Titan",
         "abidos_the_third": "Abidos the Third",
         "atticus_rhodes": "Atticus Rhodes",
@@ -574,6 +574,7 @@ ui_text = {
         "honest": "Honesto",
         "maiden_of_the_aqua": "Donzela da Água",
         "winged_kuriboh": "Kuriboh Alado",
+        "don_zaloog": "Dom Zaloog",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -600,7 +601,6 @@ ui_text = {
         "kagemaru": "Kagemaru",
         "camula": "Camula",
         "tania": "Tania",
-        "don_zaloog": "Don Zaloog",
         "titan": "Titan",
         "abidos_the_third": "Abidos the Third",
         "atticus_rhodes": "Atticus Rhodes",
