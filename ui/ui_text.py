@@ -235,6 +235,7 @@ ui_text = {
         "maiden_of_the_aqua": "Maiden of the Aqua",
         "winged_kuriboh": "Winged Kuriboh",
         "don_zaloog": "Don Zaloog",
+        "des_frog": "Des Frog",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -311,7 +312,6 @@ ui_text = {
         "neo_spacians": "Neo-Spacians",
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
-        "des_frog": "Des Frog",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "the_winged_dragon_of_ra": "The Winged Dragon of Ra",
         "destiny_hero_plasma": "Destiny HERO - Plasma",
@@ -575,6 +575,7 @@ ui_text = {
         "maiden_of_the_aqua": "Donzela da Água",
         "winged_kuriboh": "Kuriboh Alado",
         "don_zaloog": "Dom Zaloog",
+        "des_frog": "Sapo Des",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -651,7 +652,6 @@ ui_text = {
         "neo_spacians": "Neo-Spacians",
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
-        "des_frog": "Des Frog",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "the_winged_dragon_of_ra": "The Winged Dragon of Ra",
         "destiny_hero_plasma": "Destiny HERO - Plasma",

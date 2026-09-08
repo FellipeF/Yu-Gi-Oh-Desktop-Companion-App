@@ -27,6 +27,10 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "no_good_magician": 31560081,
         "magic_school": 14087893,
     },
+    "des_frog": {
+        "frog_warning": "09910360",
+        "darn_jar": 33508719,
+    },
     "don_zaloog": {
         "anime": 52323207,
         "dark_scorpion_burglars": 20858318,

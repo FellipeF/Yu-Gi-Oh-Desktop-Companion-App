@@ -79,6 +79,16 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Escola Mágica",
         },
     },
+    "des_frog": {
+        "frog_warning": {
+            "en": "Frog Warning",
+            "pt": "Alerta de Sapo",
+        },
+        "darn_jar": {
+            "en": "Darn Jar",
+            "pt": "Maldito Jarro",
+        },
+    },
     "don_zaloog": {
         "dark_scorpion_burglars": {
             "en": "Dark Scorpion Burglars",
