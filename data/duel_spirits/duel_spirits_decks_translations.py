@@ -89,6 +89,16 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Maldito Jarro",
         },
     },
+    "destiny_hero_plasma": {
+        "destiny_irony": {
+            "en": "Destiny Irony",
+            "pt": "Ironia do Destino",
+        },
+        "destiny_and_blood": {
+            "en": "Destiny and Blood",
+            "pt": "Destino e Sangue",
+        },
+    },
     "don_zaloog": {
         "dark_scorpion_burglars": {
             "en": "Dark Scorpion Burglars",

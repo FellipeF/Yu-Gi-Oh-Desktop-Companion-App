@@ -3,6 +3,7 @@ from data.duel_spirits.decks.chaos_sorcerer import CHAOS_SORCERER_DECKS
 from data.duel_spirits.decks.dancing_fairy import DANCING_FAIRY_DECK
 from data.duel_spirits.decks.dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
 from data.duel_spirits.decks.des_frog import DES_FROG_DECKS
+from data.duel_spirits.decks.destiny_hero_plasma import DESTINY_HERO_PLASMA_DECKS
 from data.duel_spirits.decks.don_zaloog import DON_ZALOOG_DECKS
 from data.duel_spirits.decks.goblin_elite_attack_force import GOBLIN_ELITE_ATTACK_FORCE_DECKS
 from data.duel_spirits.decks.honest import HONEST_DECKS
@@ -24,6 +25,7 @@ LIST_OF_DECKS_DUEL_SPIRITS = {
     "winged_kuriboh": WINGED_KURIBOH_DECKS,
     "don_zaloog": DON_ZALOOG_DECKS,
     "des_frog": DES_FROG_DECKS,
+    "destiny_hero_plasma": DESTINY_HERO_PLASMA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_SPIRITS"]

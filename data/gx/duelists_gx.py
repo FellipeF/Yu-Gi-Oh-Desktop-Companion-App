@@ -79,7 +79,6 @@ DUELISTS_GX = [
     ("neo_spacian_grand_mole", "images/duelists/duelist_placeholder.png", "gx"),
     ("neo_spacian_dark_panther", "images/duelists/duelist_placeholder.png", "gx"),
     ("the_winged_dragon_of_ra", "images/duelists/duelist_placeholder.png", "gx"),
-    ("destiny_hero_plasma", "images/duelists/duelist_placeholder.png", "gx"),
     ("elemental_hero_neos", "images/duelists/duelist_placeholder.png", "gx"),
     ("crystal_beast_sapphire_pegasus", "images/duelists/duelist_placeholder.png", "gx"),
     ("jerry_beans_man", "images/duelists/duelist_placeholder.png", "gx"),

@@ -31,6 +31,10 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "frog_warning": "09910360",
         "darn_jar": 33508719,
     },
+    "destiny_hero_plasma": {
+        "destiny_irony": "09411399",
+        "destiny_and_blood": 83965310,
+    },
     "don_zaloog": {
         "anime": 52323207,
         "dark_scorpion_burglars": 20858318,
