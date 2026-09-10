@@ -51,6 +51,10 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "the_culprits_here": 38299233,
         "dark_scorpion_five": 40350910,
     },
+    "elemental_hero_neos": {
+        "todays_contact": 42015635,
+        "neos_and_honest": 22061412,
+    },
     "goblin_elite_attack_force": {
         "no_weaklings": 85306040,
         "goblical_parade": 18590133,

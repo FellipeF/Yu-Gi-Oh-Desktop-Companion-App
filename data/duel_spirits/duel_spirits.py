@@ -14,4 +14,5 @@ DUEL_SPIRITS = [
     ("don_zaloog", "images/duelists/duel_spirits/don_zaloog.webp", None),
     ("des_frog", "images/duelists/duel_spirits/des_frog.webp", None),
     ("destiny_hero_plasma", "images/duelists/duel_spirits/destiny_hero_plasma.webp", None),
+    ("elemental_hero_neos", "images/duelists/duel_spirits/elemental_hero_neos.webp", None),
 ]

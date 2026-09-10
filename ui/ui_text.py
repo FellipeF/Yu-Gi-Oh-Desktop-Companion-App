@@ -237,6 +237,7 @@ ui_text = {
         "don_zaloog": "Don Zaloog",
         "des_frog": "Des Frog",
         "destiny_hero_plasma": "Destiny HERO - Plasma",
+        "elemental_hero_neos": "Elemental HERO Neos",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -315,7 +316,6 @@ ui_text = {
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "the_winged_dragon_of_ra": "The Winged Dragon of Ra",
-        "elemental_hero_neos": "Elemental HERO Neos",
         "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",
@@ -577,6 +577,7 @@ ui_text = {
         "don_zaloog": "Dom Zaloog",
         "des_frog": "Sapo Des",
         "destiny_hero_plasma": "HERÓI do Destino - Plasma",
+        "elemental_hero_neos": "Neos, o HERÓI do Elemento",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -655,7 +656,6 @@ ui_text = {
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "the_winged_dragon_of_ra": "The Winged Dragon of Ra",
-        "elemental_hero_neos": "Elemental HERO Neos",
         "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",

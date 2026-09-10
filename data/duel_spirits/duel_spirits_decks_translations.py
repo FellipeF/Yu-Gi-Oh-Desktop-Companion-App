@@ -153,6 +153,16 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Escorpião da Treva Cinco",
         },
     },
+    "elemental_hero_neos": {
+        "todays_contact": {
+            "en": "Today's Contact",
+            "pt": "Contato de Hoje",
+        },
+        "neos_and_honest": {
+            "en": "Neos & Honest",
+            "pt": "Neos e Honesto",
+        },
+    },
     "goblin_elite_attack_force": {
         "no_weaklings": {
             "en": "No Weaklings!",
