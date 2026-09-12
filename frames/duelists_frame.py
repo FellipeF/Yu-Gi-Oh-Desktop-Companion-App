@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from database.queries import get_all_duelists, get_duel_spirits_count
+from database.queries import get_all_duelists, get_duel_spirits_count, get_other_duelists_count
 from ui.duelist_details_window import DuelistDetailsWindow
 from frames.duelist_mosaic_frame import DuelistMosaicFrame, NavigationItem
 
@@ -50,6 +50,8 @@ class DuelistsFrame(DuelistMosaicFrame):
         self.media_filter_button.pack(anchor="w")
 
         self.duel_spirits_count = get_duel_spirits_count() # So it doesn't count everytime a filter is applied
+        self.other_duelists_count = get_other_duelists_count()
+
         self.reload_duelists()
         self.refresh_ui()
 
@@ -63,6 +65,12 @@ class DuelistsFrame(DuelistMosaicFrame):
                 img_path="images/duel_spirits.webp",
                 target_frame="DuelSpiritsFrame",
                 display_count=self.duel_spirits_count
+            ),
+            NavigationItem(
+                key="other_duelists",
+                img_path="images/other_duelists.webp",
+                target_frame="OtherDuelistsFrame",
+                display_count=self.other_duelists_count
             )
         ]
 

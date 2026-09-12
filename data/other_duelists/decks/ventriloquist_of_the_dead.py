@@ -24,7 +24,7 @@ VENTRILOQUIST_DECKS = {
         ("Yami", 2),
         ("Eatgaboon", 2),
     ],
-    "duel_monsters_anime": [
+    "duel_monsters": [
         ("Akakieisu", 1),
         ("Ancient Brain", 1),
         ("Ancient Sorcerer", 1),

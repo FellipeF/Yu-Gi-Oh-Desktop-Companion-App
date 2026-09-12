@@ -95,16 +95,6 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
             "pt": "Ataque de Magia Negra",
         },
     },
-    "arthur_hopkins": {
-        "past": {
-            "en": "Past",
-            "pt": "Passado",
-        },
-        "ancient": {
-            "en": "Ancient",
-            "pt": "Antigo",
-        },
-    },
     "bakura_ryou": {
         "occult": {
             "en": "Occult",
@@ -486,34 +476,6 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         "supernatural_tactics": {
             "en": "Supernatural Tactics",
             "pt": "Táticas Sobrenaturais",
-        },
-    },
-    "gozaburo_kaiba": {
-        "forbidden_pact": {
-            "en": "Forbidden Pact",
-            "pt": "Pacto Proibido",
-        }
-    },
-    "grand_championship_duelists": {
-        "rick": {
-            "en": "Rick - Dragons",
-            "pt": "Rick - Dragões",
-        },
-        "vivian": {
-            "en": "Vivian - Martial Arts",
-            "pt": "Vivian - Artes Marciais",
-        },
-        "leon_fairy_tale": {
-            "en": "Leon - Fairy Tale",
-            "pt": "Leon - Conto de Fadas",
-        },
-        "zigfried_kc": {
-            "en": "Zigfried - Valkyries",
-            "pt": "Zigfried - Valquírias",
-        },
-        "zigfried_na_world_championship_qualifier_2014": {
-            "en": "Zigfried - North American World Championship Qualifier 2018",
-            "pt": "Zigfried - Classificatória Norte-Americana do Mundial 2018",
         },
     },
     "ishizu_ishtar": {
@@ -1602,32 +1564,6 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         "trap_of_the_royals": {
             "en": "Trap of the Royals",
             "pt": "Armadilha da Realeza",
-        },
-    },
-    "other_duelists_duel_monsters": {
-        "gurimo": {
-            "en": "Gurimo",
-            "pt": "Gurimo",
-        },
-        "jean_claude": {
-            "en": "Jean-Claude Magnum",
-            "pt": "Jean-Claude Magnum",
-        },
-        "jean_claude_world_championship_qualifier": {
-            "en": "Jean-Claude Magnum - World Championship Qualifier",
-            "pt": "Jean-Claude Magnum - Classificatória para o Mundial",
-        },
-        "johnny_steps": {
-            "en": "Johnny Steps",
-            "pt": "Johnny Steps",
-        },
-        "roland_reshef_of_destruction": {
-            "en": "Roland - Reshef of Destruction",
-            "pt": "Roland - Rexefe da Destruição",
-        },
-        "heishin_duelist_of_the_roses": {
-            "en": "Heishin - The Duelist of the Roses",
-            "pt": "Heishin - O Duelista das Rosas"
         },
     },
     "panik": {

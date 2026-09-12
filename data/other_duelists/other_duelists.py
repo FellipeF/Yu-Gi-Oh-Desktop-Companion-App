@@ -1,0 +1,15 @@
+OTHER_DUELISTS = {
+    ("anubis", "images/duelists/other_duelists/anubis.webp", "other_duelist"),
+    ("arthur_hopkins", "images/duelists/other_duelists/arthur.webp", "other_duelist"),
+    ("gozaburo_kaiba", "images/duelists/other_duelists/gozaburo_kaiba.png", "other_duelist"),
+    ("rick", "images/duelists/other_duelists/rick.webp", "other_duelist"),
+    ("vivian_wong", "images/duelists/other_duelists/vivian_wong.webp", "other_duelist"),
+    ("leon_von_schroeder", "images/duelists/other_duelists/leon_von_schroeder.webp", "other_duelist"),
+    ("zigfried_von_schroeder", "images/duelists/other_duelists/zigfried_von_schroeder.webp", "other_duelist"),
+    ("gurimo", "images/duelists/other_duelists/gurimo.webp", "other_duelist"),
+    ("jean_claude_magnum", "images/duelists/other_duelists/jean_claude_magnum.webp", "other_duelist"),
+    ("johnny_steps", "images/duelists/other_duelists/johnny_steps.webp", "other_duelist"),
+    ("roland", "images/duelists/other_duelists/roland.webp", "other_duelist"),
+    ("heishin", "images/duelists/other_duelists/heishin.webp", "other_duelist"),
+    ("ventriloquist_of_the_dead", "images/duelists/other_duelists/ventriloquist.webp", "other_duelist"),
+}

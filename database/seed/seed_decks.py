@@ -1,6 +1,8 @@
 """File to populate deck categories, duelist decks and the deck contents Tables"""
 from data.duel_spirits.decks import LIST_OF_DECKS_DUEL_SPIRITS
 from data.duel_spirits.duel_spirits_decks_cover_cards import DUEL_SPIRITS_DECKS_COVER_CARDS
+from data.other_duelists import LIST_OF_DECKS_OTHER_DUELISTS
+from data.other_duelists.decks.other_duelists_decks_cover_cards import OTHER_DUELISTS_DECKS_COVER_CARDS
 from database.database import get_connection
 from data.duel_monsters_anime.decks import LIST_OF_DECKS_DUEL_MONSTERS
 from data.duel_monsters_anime.deck_categories_duel_monsters import DECK_CATEGORIES_KEYS_DUEL_MONSTERS
@@ -15,12 +17,15 @@ DECK_COVER_CARDS_BY_ANIME = {
     **DUEL_MONSTERS_DECK_COVER_CARDS,
     **GX_DECK_COVER_CARDS,
     **DUEL_SPIRITS_DECKS_COVER_CARDS,
+    **OTHER_DUELISTS_DECKS_COVER_CARDS,
+
 } # Dictionary unpacking to gather all of them in one.
 
 SEED_DECK_SOURCES: list[tuple[DecksByDuelist, list[str]]] = [
     (LIST_OF_DECKS_DUEL_MONSTERS, DECK_CATEGORIES_KEYS_DUEL_MONSTERS),
     (LIST_OF_DECKS_GX, DECK_CATEGORIES_KEYS_GX),
-    (LIST_OF_DECKS_DUEL_SPIRITS, [])
+    (LIST_OF_DECKS_DUEL_SPIRITS, []),
+    (LIST_OF_DECKS_OTHER_DUELISTS, []),
 ]
 
 def _load_duelist_ids(cursor) -> dict[str, int]:

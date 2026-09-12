@@ -1,0 +1,21 @@
+VIVIAN_WONG_DECK = {
+    "martial_arts": [
+        ("Blackland Fire Dragon", 1),
+        ("Inpachi", 1),
+        ("Master Kyonshee", 1),
+        ("Sky Dragon", 1),
+        ("Soul Tiger", 1),
+        ("Dragon Lady [A]", 1),
+        ("Gyaku-Gire Panda", 1),
+        ("Kung Fu Nyan Nyan [A]", 1),
+        ("Thunder Nyan Nyan", 1),
+        ("Kiryu", 1),
+        ("Pitch-Dark Dragon", 1),
+        ("Flying Dragon Whirl [A]", 1),
+        ("Lightning Saber [A]", 1),
+        ("Luminous Clouds [A]", 1),
+        ("Mystic Eruption [A]", 1),
+        ("Mystical Space Typhoon", 1),
+        ("Snowfall Sword [A]", 1),
+    ],
+}

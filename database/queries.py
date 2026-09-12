@@ -88,6 +88,40 @@ def get_duel_spirits_count() -> int:
     finally:
         conn.close()
 
+def get_all_other_duelists() -> list[tuple]:
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+        SELECT 
+            d.id, d.key, d.img_path, d.media, COUNT(dd.id) AS deck_count
+        FROM duelists d
+        LEFT JOIN duelist_decks dd ON dd.duelist_id = d.id
+        WHERE d.duelist_type = 'other_duelist'
+        GROUP BY d.id, d.key, d.img_path, d.media""")
+
+        return cursor.fetchall()
+    finally:
+        conn.close()
+
+def get_other_duelists_count() -> int:
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM duelists
+            WHERE duelist_type = 'other_duelist'
+        """)
+
+        result = cursor.fetchone()
+        return result[0] if result else 0
+
+    finally:
+        conn.close()
+
 def get_decks_by_duelist(duelist_id: int, language_code: str ="en", show_exclusive_cards: bool =True) -> list[dict]:
     """Returns all decks and their contents for a given duelist. Implements fallback for english if card has no
     translation in the dataset (not yet updated or not found, such as exclusive cards not present in the TCG)"""

@@ -1,0 +1,21 @@
+RICK_DECK = {
+    "dragons": [
+        ("Baby Dragon", 1),
+        ("Blackland Fire Dragon", 1),
+        ("Crawling Dragon", 1),
+        ("Curse of Dragon", 1),
+        ("Hyozanryu", 1),
+        ("Koumori Dragon", 1),
+        ("Luster Dragon", 1),
+        ("Luster Dragon #2", 1),
+        ("Petit Dragon", 1),
+        ("Sky Dragon", 1),
+        ("The Dragon Dwelling in the Cave", 1),
+        ("Twin-Headed Fire Dragon", 1),
+        ("Winged Dragon, Guardian of the Fortress #1", 1),
+        ("Spear Dragon", 1),
+        ("Spirit Ryu", 1),
+        ("Dragon Treasure", 1),
+        ("Heart of the Underdog", 1),
+    ],
+}

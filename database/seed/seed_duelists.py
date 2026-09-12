@@ -1,5 +1,6 @@
 """File to populate duelists table"""
 from data.duel_spirits.duel_spirits import DUEL_SPIRITS
+from data.other_duelists.other_duelists import OTHER_DUELISTS
 from database.database import get_connection
 from data.duel_monsters_anime.duelists_duel_monsters import DUELISTS_DUEL_MONSTERS
 from data.gx.duelists_gx import DUELISTS_GX
@@ -13,6 +14,7 @@ SEED_DUELIST_SOURCES: list[tuple[list[DuelistSourceRow], str]] = [
     (DUELISTS_DUEL_MONSTERS, "duelist"),
     (DUELISTS_GX, "duelist"),
     (DUEL_SPIRITS, "duel_monster"),
+    (OTHER_DUELISTS, "other_duelist"),
 ]
 
 def _upsert_duelists(cursor, duelist_rows: list[DuelistSeedRow]) -> None:

@@ -52,6 +52,7 @@ ui_text = {
         "search_duelist": "Search duelist",
         "search_duel_spirit": "Search Duel Spirit",
         "select_duel_spirit": "Select Duel Spirit",
+        "other_duelists": "Other Duelists",
         # ================================
         #  DUELISTS DETAILS FRAME
         # ================================
@@ -180,7 +181,6 @@ ui_text = {
         "lumis": "Lumis",
         "umbra": "Umbra",
         "dartz": "Dartz",
-        "anubis": "Anubis",
         "duke_devlin": "Duke Devlin",
         "arkana": "Arkana",
         "weevil_underwood": "Weevil Underwood",
@@ -188,11 +188,9 @@ ui_text = {
         "mako_tsunami": "Mako Tsunami",
         "bonz": "Bonz",
         "alister": "Alister",
-        "arthur_hopkins": "Arthur Hawkins",
         "rebecca": "Rebecca Hawkins",
         "ishizu_ishtar": "Ishizu Ishtar",
         "duel_computers": "Duel Computers",
-        "ventriloquist_of_the_dead": "Ventriloquist of the Dead",
         "serenity_wheeler": "Serenity Wheeler",
         "panik": "PaniK",
         "mokuba_kaiba": "Mokuba Kaiba",
@@ -211,13 +209,10 @@ ui_text = {
         "seeker": "Seeker",
         "strings": "Strings",
         "noah_kaiba": "Noah Kaiba",
-        "gozaburo_kaiba": "Gozaburo Kaiba",
         "rafael": "Rafael",
         "valon": "Valon",
         "espa_roba": "Espa Roba",
         "big5": "The Big Five",
-        "grand_championship_duelists": "KC Grand Prix",
-        "other_duelists_duel_monsters": "Other (Duel Monsters)",
         "lumis_and_umbra": "Lumis and Umbra",
         "paradox_brothers": "Paradox Brothers",
         "nitemare": "DarkNite/Nitemare",
@@ -336,6 +331,22 @@ ui_text = {
         "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
         "daigo_sorano": "Daigo Sorano",
+        # ================================
+        #  OTHER DUELISTS
+        # ================================
+        "anubis": "Anubis",
+        "arthur_hopkins": "Arthur Hawkins",
+        "ventriloquist_of_the_dead": "Ventriloquist of the Dead",
+        "gozaburo_kaiba": "Gozaburo Kaiba",
+        "gurimo": "Gurimo",
+        "jean_claude_magnum": "Jean-Claude Magnum",
+        "johnny_steps": "Johhny Steps",
+        "roland": "Roland",
+        "heishin": "Heishin",
+        "rick": "Rick",
+        "vivian_wong": "Vivian Wong",
+        "leon_von_schroeder": "Leon von Schroeder",
+        "zigfried_von_schroeder": "Zigfried von Schroeder",
 },
     "pt": {
         #================================
@@ -391,6 +402,7 @@ ui_text = {
         "search_duelist": "Procurar duelista",
         "search_duel_spirit": "Procurar Espírito de Duelo",
         "select_duel_spirit": "Selecionar Espírito de Duelo",
+        "other_duelists": "Outros Duelistas",
         # ================================
         #  DUELISTS DETAILS FRAME
         # ================================
@@ -520,7 +532,6 @@ ui_text = {
         "lumis": "Lumis",
         "umbra": "Umbra",
         "dartz": "Dartz",
-        "anubis": "Anúbis",
         "duke_devlin": "Duke Devlin",
         "arkana": "Arkana",
         "weevil_underwood": "Weevil Underwood",
@@ -528,11 +539,9 @@ ui_text = {
         "mako_tsunami": "Mako Tsunami",
         "bonz": "Bonz",
         "alister": "Alister",
-        "arthur_hopkins": "Arthur Hawkins",
         "rebecca": "Rebecca Hawkins",
         "ishizu_ishtar": "Ishizu Ishtar",
         "duel_computers": "Computadores de Duelo",
-        "ventriloquist_of_the_dead": "Ventriloquista dos Mortos",
         "serenity_wheeler": "Serenity Wheeler",
         "panik": "PaniK",
         "mokuba_kaiba": "Mokuba Kaiba",
@@ -551,13 +560,10 @@ ui_text = {
         "seeker": "Seeker",
         "strings": "Strings",
         "noah_kaiba": "Noah Kaiba",
-        "gozaburo_kaiba": "Gozaburo Kaiba",
         "rafael": "Rafael",
         "valon": "Valon",
         "espa_roba": "Espa Roba",
         "big5": "Os Cinco Grandes",
-        "grand_championship_duelists": "Grand Prix KC",
-        "other_duelists_duel_monsters": "Outros (Monstros de Duelo)",
         "lumis_and_umbra": "Lumis e Umbra",
         "paradox_brothers": "Irmãos Paradox",
         "nitemare": "DarkNite/Nitemare",
@@ -676,6 +682,22 @@ ui_text = {
         "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
         "daigo_sorano": "Daigo Sorano",
+        # ================================
+        #  OTHER DUELISTS
+        # ================================
+        "anubis": "Anúbis",
+        "arthur_hopkins": "Arthur Hawkins",
+        "ventriloquist_of_the_dead": "Ventriloquista dos Mortos",
+        "gozaburo_kaiba": "Gozaburo Kaiba",
+        "gurimo": "Gurimo",
+        "jean_claude_magnum": "Jean-Claude Magnum",
+        "johnny_steps": "Johhny Steps",
+        "roland": "Roland",
+        "heishin": "Heishin",
+        "rick": "Rick",
+        "vivian_wong": "Vivian Wong",
+        "leon_von_schroeder": "Leon von Schroeder",
+        "zigfried_von_schroeder": "Zigfried von Schroeder",
         # ================================
         #  CARDS DETAILS TRANSLATIONS
         # ================================

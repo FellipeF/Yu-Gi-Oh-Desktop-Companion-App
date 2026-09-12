@@ -31,6 +31,7 @@ from frames.cards_frame import CardsFrame
 from frames.duelists_frame import DuelistsFrame
 from frames.custom_decks_frame import CustomDecksFrame
 from frames.loading_frame import LoadingFrame
+from frames.other_duelists_frame import OtherDuelistsFrame
 from services.api_client import ApiClient
 from ui.card_details_window import CardDetailsWindow
 from ui.downloading_dialog import DownloadingDialog
@@ -224,7 +225,7 @@ class App(tk.Tk):
         self.loading_frame.set_status(f"{self.t('loading_error')}: {error}")
 
     def finish_initialization(self):
-        for F in (HomeFrame, CardsFrame, DuelistsFrame, DuelSpiritsFrame, CustomDecksFrame, CustomDeckEditorFrame):
+        for F in (HomeFrame, CardsFrame, DuelistsFrame, DuelSpiritsFrame, OtherDuelistsFrame, CustomDecksFrame, CustomDeckEditorFrame):
             frame = F(self.container, self)
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky="nsew")

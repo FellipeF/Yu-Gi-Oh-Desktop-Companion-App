@@ -1,7 +1,5 @@
 from .alister import ALISTER_DECKS
-from .anubis import ANUBIS_DECK
 from .arkana import ARKANA_DECKS
-from .arthur import ARTHUR_DECKS
 from .bakura_ryou import BAKURA_DECKS
 from .bandit_keith import BANDIT_KEITH_DECKS
 from .big5 import THE_BIG_FIVE_DECKS
@@ -11,7 +9,6 @@ from .dox import DOX_DECKS
 from .duel_computers import DUEL_COMPUTERS_DECKS
 from .duke import DUKE_DECKS
 from .espa_roba import ESPA_ROBA_DECKS
-from .gozaburo_kaiba import GOZABURO_KAIBA_DECKS
 from .ishizu import ISHIZU_DECKS
 from .lumis import LUMIS_DECKS
 from .lumis_and_umbra import LUMIS_AND_UMBRA_DECKS
@@ -22,7 +19,6 @@ from .mokuba_kaiba import MOKUBA_DECKS
 from .nitemare import NITEMARE_DECKS
 from .noah_kaiba import NOAH_KAIBA_DECKS
 from .odion import ODION_DECKS
-from .other_duelists_duel_monsters import OTHER_DM_DECKS
 from .panik import PANIK_DECKS
 from .para import PARA_DECKS
 from .paradox_brothers import PARADOX_BROTHERS_DECKS
@@ -36,7 +32,6 @@ from .shimon_muran import SHIMON_DECKS
 from .strings import STRINGS_DECKS
 from .umbra import UMBRA_DECKS
 from .valon import VALON_DECKS
-from .ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
 from .weevil import WEEVIL_DECKS
 from .yami_bakura import YAMI_BAKURA_DECKS
 from .yami_marik import YAMI_MARIK_DECKS
@@ -47,7 +42,6 @@ from .joey import JOEY_DECKS
 from .solomon_muto import SOLOMON_MUTO_DECKS
 from .tea import TEA_GARDNER_DECKS
 from .tristan import TRISTAN_DECKS
-from .grand_championship_duelists import KC_GRAND_PRIX_DECKS
 from .pegasus import PEGASUS_DECKS
 
 LIST_OF_DECKS_DUEL_MONSTERS = {
@@ -61,7 +55,6 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "lumis": LUMIS_DECKS,
     "umbra": UMBRA_DECKS,
     "dartz": DARTZ_DECKS,
-    "anubis": ANUBIS_DECK,
     "duke_devlin": DUKE_DECKS,
     "arkana": ARKANA_DECKS,
     "weevil_underwood": WEEVIL_DECKS,
@@ -69,11 +62,9 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "mako_tsunami": MAKO_DECKS,
     "bonz": BONZ_DECKS,
     "alister": ALISTER_DECKS,
-    "arthur_hopkins": ARTHUR_DECKS,
     "rebecca": REBECCA_DECKS,
     "ishizu_ishtar": ISHIZU_DECKS,
     "duel_computers": DUEL_COMPUTERS_DECKS,
-    "ventriloquist_of_the_dead": VENTRILOQUIST_DECKS,
     "serenity_wheeler": SERENITY_DECKS,
     "panik": PANIK_DECKS,
     "mokuba_kaiba": MOKUBA_DECKS,
@@ -83,11 +74,8 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "bandit_keith": BANDIT_KEITH_DECKS,
     "marik_ishtar": MARIK_ISHTAR_DECKS,
     "big5":  THE_BIG_FIVE_DECKS,
-    "grand_championship_duelists": KC_GRAND_PRIX_DECKS,
     "espa_roba": ESPA_ROBA_DECKS,
-    "other_duelists_duel_monsters": OTHER_DM_DECKS,
     "yami_bakura": YAMI_BAKURA_DECKS,
-    "gozaburo_kaiba": GOZABURO_KAIBA_DECKS,
     "lumis_and_umbra": LUMIS_AND_UMBRA_DECKS,
     "odion": ODION_DECKS,
     "para": PARA_DECKS,

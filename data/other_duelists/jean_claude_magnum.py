@@ -1,0 +1,20 @@
+JEAN_CLAUDE_MAGNUM_DECK = {
+    "world_championship_qualifier": [
+        ("Aqua Armor Ninja", 1),
+        ("Armed Ninja", 1),
+        ("Black Dragon Ninja", 1),
+        ("Blue Dragon Ninja", 1),
+        ("Earth Armor Ninja", 1),
+        ("Ninja Grandmaster Hanzo", 1),
+        ("Red Dragon Ninja", 1),
+        ("Upstart Golden Ninja", 1),
+        ("Yellow Ninja", 2),
+        ("Ninja Grandmaster Saizo", 1),
+        ("Double Summon", 1),
+        ("Hidden Village of Ninjitsu Arts", 1),
+        ("Pot of Greed", 1),
+        ("Ninjitsu Art of Decoy", 1),
+        ("Ninjitsu Art of Mirage-Transformation", 1),
+        ("Ninjitsu Art of Transformation", 1),
+    ],
+}

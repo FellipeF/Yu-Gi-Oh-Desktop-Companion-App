@@ -12,9 +12,6 @@ DUEL_MONSTERS_DECK_COVER_CARDS = {
         "return_this_world_to_nothing": 59741415,
         "ill_live_on_for_your_sake": 24299458,
     },
-    "anubis": {
-        "pyramid_of_light": 53569894,
-    },
     "arkana": {
         "anime": 46986414,
         "dark_duel_stories": 36821538,
@@ -36,10 +33,6 @@ DUEL_MONSTERS_DECK_COVER_CARDS = {
         "dark_magic_2": 50078509,
         "dark_magic_attack": 50725996,
 
-    },
-    "arthur_hopkins": {
-        "past": 32012841,
-        "ancient": 38520918,
     },
     "bakura_ryou": {
         "duelist_kingdom": 33508719,
@@ -195,17 +188,6 @@ DUEL_MONSTERS_DECK_COVER_CARDS = {
         "cyber_knuckle": 25769732,
         "cyber_energy_shock": 66362965,
         "supernatural_tactics": 91654806,
-    },
-    "gozaburo_kaiba": {
-        "anime": 12600382,
-        "forbidden_pact": 33244944,
-    },
-    "grand_championship_duelists": {
-        "rick": 93346024,
-        "vivian": 24530661,
-        "leon_fairy_tale": 72283691,
-        "zigfried_kc": 30411385,
-        "zigfried_na_world_championship_qualifier_2014": 92182447,
     },
     "paradox_brothers": {
         "paradox_brothers": 25833572,
