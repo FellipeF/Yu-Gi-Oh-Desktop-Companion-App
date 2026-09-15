@@ -55,6 +55,15 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "todays_contact": 42015635,
         "neos_and_honest": 22061412,
     },
+    "elemental_hero_flame_wingman": {
+        "element_square": 35809262,
+        "fusion_poisoning": 45906428,
+        "heavy_hitting_hero": 10526791,
+    },
+    "exodia_the_forbidden_one": {
+        "break_the_seal": 33396948,
+        "lets_go_exo": 12600382,
+    },
     "goblin_elite_attack_force": {
         "no_weaklings": 85306040,
         "goblical_parade": 18590133,

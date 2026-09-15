@@ -15,4 +15,6 @@ DUEL_SPIRITS = [
     ("des_frog", "images/duelists/duel_spirits/des_frog.webp", None),
     ("destiny_hero_plasma", "images/duelists/duel_spirits/destiny_hero_plasma.webp", None),
     ("elemental_hero_neos", "images/duelists/duel_spirits/elemental_hero_neos.webp", None),
+    ("exodia_the_forbidden_one", "images/duelists/duel_spirits/exodia_the_forbidden_one.webp", None),
+    ("elemental_hero_flame_wingman", "images/duelists/duel_spirits/elemental_hero_flame_wingman.webp", None),
 ]

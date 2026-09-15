@@ -163,6 +163,30 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Neos e Honesto",
         },
     },
+    "elemental_hero_flame_wingman": {
+        "element_square": {
+            "en": "Element Square",
+            "pt": "Elemento Quadrado",
+        },
+        "fusion_poisoning": {
+            "en": "Fusion Poisoning",
+            "pt": "Envenenamento por Fusão",
+        },
+        "heavy_hitting_hero": {
+            "en": "Heavy-Hitting Hero",
+            "pt": "Herói Bom de Soco",
+        },
+    },
+    "exodia_the_forbidden_one": {
+        "break_the_seal": {
+            "en": "Break the Seal",
+            "pt": "Quebrar o Selo",
+        },
+        "lets_go_exo": {
+            "en": "Let's Go, Exo!",
+            "pt": "Vamos Lá, Exo!",
+        },
+    },
     "goblin_elite_attack_force": {
         "no_weaklings": {
             "en": "No Weaklings!",

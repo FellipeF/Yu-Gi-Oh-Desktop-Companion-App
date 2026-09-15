@@ -5,7 +5,9 @@ from data.duel_spirits.decks.dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
 from data.duel_spirits.decks.des_frog import DES_FROG_DECKS
 from data.duel_spirits.decks.destiny_hero_plasma import DESTINY_HERO_PLASMA_DECKS
 from data.duel_spirits.decks.don_zaloog import DON_ZALOOG_DECKS
+from data.duel_spirits.decks.elemental_hero_flame_wingman import ELEMENTAL_HERO_FLAME_WINGMAN_DECKS
 from data.duel_spirits.decks.elemental_hero_neos import ELEMENTAL_HERO_NEOS_DECKS
+from data.duel_spirits.decks.exodia_the_forbidden_one import EXODIA_THE_FORBIDDEN_ONE_DECKS
 from data.duel_spirits.decks.goblin_elite_attack_force import GOBLIN_ELITE_ATTACK_FORCE_DECKS
 from data.duel_spirits.decks.honest import HONEST_DECKS
 from data.duel_spirits.decks.kuriboh import KURIBOH_DECKS
@@ -28,6 +30,8 @@ LIST_OF_DECKS_DUEL_SPIRITS = {
     "des_frog": DES_FROG_DECKS,
     "destiny_hero_plasma": DESTINY_HERO_PLASMA_DECKS,
     "elemental_hero_neos": ELEMENTAL_HERO_NEOS_DECKS,
+    "exodia_the_forbidden_one": EXODIA_THE_FORBIDDEN_ONE_DECKS,
+    "elemental_hero_flame_wingman": ELEMENTAL_HERO_FLAME_WINGMAN_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_SPIRITS"]

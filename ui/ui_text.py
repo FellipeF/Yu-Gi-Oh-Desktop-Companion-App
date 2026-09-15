@@ -233,6 +233,8 @@ ui_text = {
         "des_frog": "Des Frog",
         "destiny_hero_plasma": "Destiny HERO - Plasma",
         "elemental_hero_neos": "Elemental HERO Neos",
+        "exodia_the_forbidden_one": "Exodia the Forbidden One",
+        "elemental_hero_flame_wingman": "Elemental HERO Flame Wingman",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -314,9 +316,7 @@ ui_text = {
         "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",
-        "elemental_hero_flame_wingman": "Elemental HERO Flame Wingman",
         "sky_scout": "Sky Scout",
-        "exodia_the_forbidden_one": "Exodia the Forbidden One",
         "kabukid": "Kabukid",
         "franz": "Franz",
         "mathmatica": "Mathmatica",
@@ -584,6 +584,8 @@ ui_text = {
         "des_frog": "Sapo Des",
         "destiny_hero_plasma": "HERÓI do Destino - Plasma",
         "elemental_hero_neos": "Neos, o HERÓI do Elemento",
+        "exodia_the_forbidden_one": "Exodia, \"O Proibido\"",
+        "elemental_hero_flame_wingman": "Homem-Alado das Chamas, o HERÓI do Elemento",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -665,9 +667,7 @@ ui_text = {
         "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",
-        "elemental_hero_flame_wingman": "Elemental HERO Flame Wingman",
         "sky_scout": "Sky Scout",
-        "exodia_the_forbidden_one": "Exodia the Forbidden One",
         "kabukid": "Kabukid",
         "franz": "Franz",
         "mathmatica": "Mathmatica",
