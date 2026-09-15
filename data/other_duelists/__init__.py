@@ -10,7 +10,7 @@ from data.other_duelists.decks.roland import ROLAND_DECK
 from data.other_duelists.decks.ventriloquist_of_the_dead import VENTRILOQUIST_DECKS
 from data.other_duelists.decks.vivian_wong import VIVIAN_WONG_DECK
 from data.other_duelists.decks.zigfried_von_schroeder import ZIGFRIED_VON_SCHROEDER_DECKS
-from data.other_duelists.jean_claude_magnum import JEAN_CLAUDE_MAGNUM_DECK
+from data.other_duelists.decks.jean_claude_magnum import JEAN_CLAUDE_MAGNUM_DECK
 
 LIST_OF_DECKS_OTHER_DUELISTS = {
     "anubis": ANUBIS_DECK,

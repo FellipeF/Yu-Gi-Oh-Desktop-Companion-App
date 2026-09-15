@@ -1,3 +1,0 @@
-OTHER_DM_DECKS = {
-
-}

@@ -1,6 +1,6 @@
 """File for populating deck_category and duelist_decks translations tables"""
 from data.duel_spirits.duel_spirits_decks_translations import DUEL_SPIRITS_DECKS_KEYS
-from data.other_duelists.decks.other_duelists_decks_translations import OTHER_DUELISTS_DECKS_KEYS
+from data.other_duelists.other_duelists_decks_translations import OTHER_DUELISTS_DECKS_KEYS
 from database.database import get_connection
 from data.duel_monsters_anime.deck_categories_translations_duel_monsters import DECK_CATEGORIES_TRANSLATIONS_DUEL_MONSTERS
 from data.duel_monsters_anime.duelists_duel_monsters_decks_translations import DUELISTS_DECKS_KEYS_DUEL_MONSTERS
