@@ -227,10 +227,10 @@ class DuelistMosaicFrame(tk.Frame):
 
         img = Image.open(resource_path(img_path)).convert("RGBA")
 
-        frame_width = 220
-        frame_height = 260
+        frame_width = 210
+        frame_height = 240
 
-        img.thumbnail((200, 240),Image.LANCZOS)
+        img.thumbnail((190, 220),Image.LANCZOS)
 
         background = Image.new("RGBA",(frame_width, frame_height),(235, 235, 235, 255))
 
@@ -245,13 +245,13 @@ class DuelistMosaicFrame(tk.Frame):
         cell = tk.Frame(
             self.container,
             width=240,
-            height=320,
+            height=335,
             bg="#dcdcdc",
             highlightbackground="#b0b0b0",
             highlightthickness=1
         )
 
-        cell.grid(row=row,column=col, padx=25,pady=25,sticky="n")
+        cell.grid(row=row,column=col, padx=25,pady=10,sticky="n")
         cell.grid_propagate(False)
 
         duelist_button = tk.Button(
@@ -276,7 +276,7 @@ class DuelistMosaicFrame(tk.Frame):
             text=label_text,
             font=("Arial", 15),
             wraplength=220,
-            height=3,
+            height=4,
             justify="center"
         )
 
@@ -292,22 +292,31 @@ class DuelistMosaicFrame(tk.Frame):
 
         self.on_duelist_click(duelist_id, duelist_key)
 
+    def get_total_pages(self):
+        if not self.duelists:
+            return 1
+
+        return(len(self.duelists) + self.duelists_per_page - 1) // self.duelists_per_page
+
     def update_pagination_buttons(self):
-        self.prev_button.config(state=("disabled" if self.current_page == 0 else "normal"))
+        has_multiple_pages = self.get_total_pages() > 1
 
-        is_last_page = ((self.current_page + 1)* self.duelists_per_page >= len(self.duelists))
+        state = "normal" if has_multiple_pages else "disabled"
 
-        self.next_button.config(state=("disabled" if is_last_page else "normal"))
+        self.prev_button.config(state=state)
+        self.next_button.config(state=state)
 
     def next_page(self):
-        if (self.current_page + 1)* self.duelists_per_page< len(self.duelists):
-            self.current_page += 1
-            self.render_page()
+        total_pages = self.get_total_pages()
+        self.current_page = (self.current_page + 1) % total_pages
+
+        self.render_page()
 
     def prev_page(self):
-        if self.current_page > 0:
-            self.current_page -= 1
-            self.render_page()
+        total_pages = self.get_total_pages()
+        self.current_page = (self.current_page - 1) % total_pages
+
+        self.render_page()
 
     def return_to_previous_frame(self):
         self.controller.show_frame(
