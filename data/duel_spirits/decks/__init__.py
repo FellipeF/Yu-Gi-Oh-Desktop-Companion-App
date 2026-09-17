@@ -1,5 +1,6 @@
 from data.duel_spirits.decks.brron_mad_king_of_dark_world import BRRON_MAD_KING_OF_DARK_WORLD_DECKS
 from data.duel_spirits.decks.chaos_sorcerer import CHAOS_SORCERER_DECKS
+from data.duel_spirits.decks.crystal_beast_sapphire_pegasus import CRYSTAL_BEAST_SAPPHIRE_PEGASUS_DECKS
 from data.duel_spirits.decks.dancing_fairy import DANCING_FAIRY_DECK
 from data.duel_spirits.decks.dark_magician_girl import DARK_MAGICIAN_GIRL_DECKS
 from data.duel_spirits.decks.des_frog import DES_FROG_DECKS
@@ -32,6 +33,7 @@ LIST_OF_DECKS_DUEL_SPIRITS = {
     "elemental_hero_neos": ELEMENTAL_HERO_NEOS_DECKS,
     "exodia_the_forbidden_one": EXODIA_THE_FORBIDDEN_ONE_DECKS,
     "elemental_hero_flame_wingman": ELEMENTAL_HERO_FLAME_WINGMAN_DECKS,
+    "crystal_beast_sapphire_pegasus": CRYSTAL_BEAST_SAPPHIRE_PEGASUS_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_SPIRITS"]

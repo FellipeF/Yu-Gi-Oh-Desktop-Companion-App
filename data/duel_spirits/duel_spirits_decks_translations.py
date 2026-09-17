@@ -23,6 +23,16 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Luz x Escuridão = Caos",
         },
     },
+    "crystal_beast_sapphire_pegasus": {
+        "duel_jewel": {
+            "en": "Duel Jewel",
+            "pt": "Joia de Duelo",
+        },
+        "fountain_of_crystal": {
+            "en": "Fountain of Crystal",
+            "pt": "Fonte Cristalina",
+        },
+    },
     "dancing_fairy": {
         "dancing_duel": {
             "en": "Dancing Duel",

@@ -9,6 +9,10 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "a_tribute_too_far": "09596126",
         "light_dark_chaos": 68450517,
     },
+    "crystal_beast_sapphire_pegasus": {
+        "duel_jewel": 72881007,
+        "fountain_of_crystal": 35486099,
+    },
     "dancing_fairy": {
         "dancing_duel": 90925163,
     },

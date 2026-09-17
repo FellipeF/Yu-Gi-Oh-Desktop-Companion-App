@@ -235,6 +235,7 @@ ui_text = {
         "elemental_hero_neos": "Elemental HERO Neos",
         "exodia_the_forbidden_one": "Exodia the Forbidden One",
         "elemental_hero_flame_wingman": "Elemental HERO Flame Wingman",
+        "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -313,7 +314,6 @@ ui_text = {
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "the_winged_dragon_of_ra": "The Winged Dragon of Ra",
-        "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",
         "sky_scout": "Sky Scout",
@@ -586,6 +586,7 @@ ui_text = {
         "elemental_hero_neos": "Neos, o HERÓI do Elemento",
         "exodia_the_forbidden_one": "Exodia, \"O Proibido\"",
         "elemental_hero_flame_wingman": "Homem-Alado das Chamas, o HERÓI do Elemento",
+        "crystal_beast_sapphire_pegasus": "Fera Cristalina Pégaso Safira",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -664,7 +665,6 @@ ui_text = {
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "the_winged_dragon_of_ra": "The Winged Dragon of Ra",
-        "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",
         "sky_scout": "Sky Scout",
