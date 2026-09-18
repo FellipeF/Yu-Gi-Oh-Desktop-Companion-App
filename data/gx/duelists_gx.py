@@ -49,7 +49,6 @@ DUELISTS_GX = [
     ("prince_ojin", "images/duelists/duelist_placeholder.png", "gx"),
     ("yubel", "images/duelists/duelist_placeholder.png", "gx"),
     ("thelonious_viper", "images/duelists/duelist_placeholder.png", "gx"),
-    ("trapper", "images/duelists/duelist_placeholder.png", "gx"),
     ("anger_mask", "images/duelists/duelist_placeholder.png", "gx"),
     ("laughter_mask", "images/duelists/duelist_placeholder.png", "gx"),
     ("emotionless_mask", "images/duelists/duelist_placeholder.png", "gx"),
