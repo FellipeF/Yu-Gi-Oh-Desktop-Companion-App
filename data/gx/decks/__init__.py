@@ -3,6 +3,7 @@ from data.gx.decks.america_uchimura import AMERICA_UCHIMURA_DECKS
 from data.gx.decks.beauregard import BEAUREGARD_DECKS
 from data.gx.decks.jasmine import JASMINE_DECKS
 from data.gx.decks.jean_louis_bonaparte import JEAN_LOUIS_BONAPARTE_DECKS
+from data.gx.decks.jim_crocodile_cook import JIM_CROCODILE_COOK_DECKS
 from data.gx.decks.kagemaru import KAGEMARU_DECKS
 from data.gx.decks.lyman_banner import LYMAN_BANNER_DECKS
 from data.gx.decks.marcel_bonaparte import MARCEL_BONAPARTE_DECKS
@@ -32,6 +33,7 @@ LIST_OF_DECKS_GX = {
     "kagemaru": KAGEMARU_DECKS,
     "tyranno_hassleberry": TYRANNO_HASLEBERRY_DECKS,
     "beauregard": BEAUREGARD_DECKS,
+    "jim_crocodile_cook": JIM_CROCODILE_COOK_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_GX"]

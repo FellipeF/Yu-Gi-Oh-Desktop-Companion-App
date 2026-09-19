@@ -605,7 +605,7 @@ ui_text = {
         "tyranno_hassleberry": "Tyranno Hassleberry",
         "jesse_anderson": "Jesse Anderson",
         "axel_brodie": "Axel Brodie",
-        "jim_crocodile_cook": "Jim Crocodile Cook",
+        "jim_crocodile_cook": "Jim Crocodilo Cook",
         "adrian_gecko": "Adrian Gecko",
         "kagemaru": "Kagemaru",
         "camula": "Camula",

@@ -325,6 +325,112 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Minha Cerimônia de Coroação",
         },
     },
+    "jim_crocodile_cook": {
+        "fossil": {
+            "en": "Fossil",
+            "pt": "Fóssil",
+        },
+        "alligator": {
+            "en": "Alligator",
+            "pt": "Jacaré",
+        },
+        "paleozoic_dragon": {
+            "en": "Paleozoic Dragon",
+            "pt": "Dragão Paleozoico",
+        },
+        "mesozoic_dragon": {
+            "en": "Mesozoic Dragon",
+            "pt": "Dragão Mesozoico",
+        },
+        "cenozoic_dragon": {
+            "en": "Cenozoic Dragon",
+            "pt": "Dragão Cenozoico",
+        },
+        "fossil_hunter": {
+            "en": "Fossil Hunter",
+            "pt": "Caçador de Fósseis",
+        },
+        "magnet_warrior": {
+            "en": "Magnet Warrior",
+            "pt": "Guerreiro Magnético",
+        },
+        "hello_friend": {
+            "en": "Hello, Friend!",
+            "pt": "Olá, Amigo!",
+        },
+        "hello_brother": {
+            "en": "Hello, Brother!",
+            "pt": "Olá, Irmão!",
+        },
+        "hello_family": {
+            "en": "Hello, Family!",
+            "pt": "Olá, Família!",
+        },
+        "hello_saturday": {
+            "en": "Hello, Saturday!",
+            "pt": "Olá, Sábado!",
+        },
+        "hello_rival": {
+            "en": "Hello, Rival!",
+            "pt": "Olá, Rival!",
+        },
+        "fuse_into_karen": {
+            "en": "Fuse Into Karen",
+            "pt": "Funda para Karen",
+        },
+        "evolve_into_karen": {
+            "en": "Evolve Into Karen",
+            "pt": "Evolua para Karen",
+        },
+        "todays_strongest_deck": {
+            "en": "Today's Strongest Deck!",
+            "pt": "O Deck Mais Forte de Hoje!",
+        },
+        "rock_golem": {
+            "en": "Rock Golem",
+            "pt": "Golem de Rocha",
+        },
+        "gem_knight": {
+            "en": "Gem-Knight",
+            "pt": "Cavaleiro-Gema",
+        },
+        "hard_as_rock": {
+            "en": "Hard as Rock",
+            "pt": "Duro como Rocha",
+        },
+        "rock_bombardment": {
+            "en": "Rock Bombardment",
+            "pt": "Bombardeamento de Rocha",
+        },
+        "jim": {
+            "en": "Jim",
+            "pt": "Jim",
+        },
+        "going_at_once": {
+            "en": "Going at Once",
+            "pt": "Indo de Vez",
+        },
+        "no_problem": {
+            "en": "No Problem",
+            "pt": "Sem Problema",
+        },
+        "my_best_combo": {
+            "en": "My Best Combo",
+            "pt": "Meu Melhor Combo",
+        },
+        "i_like_it_here": {
+            "en": "I Like It Here!",
+            "pt": "Eu Gosto Daqui!",
+        },
+        "eye_of_orichalcum": {
+            "en": "Eye of Orichalcum",
+            "pt": "Olho de Orichalcum",
+        },
+        "fossil_fusion": {
+            "en": "Fossil Fusion",
+            "pt": "Fusão Fóssil",
+        },
+    },
     "kagemaru": {
         "sacred_beast": {
             "en": "Sacred Beast",
