@@ -236,6 +236,7 @@ ui_text = {
         "exodia_the_forbidden_one": "Exodia the Forbidden One",
         "elemental_hero_flame_wingman": "Elemental HERO Flame Wingman",
         "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
+        "jerry_beans_man": "Jerry Beans Man",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -279,7 +280,6 @@ ui_text = {
         "thelonious_viper": "Thelonious Viper",
         "marcel_bonaparte": "Marcel Bonaparte",
         "anger_mask": "Anger Mask",
-        "laughter_mask": "Laughter Mask",
         "emotionless_mask": "Emotionless Mask",
         "the_supreme_king": "The Supreme King",
         "skull_bishop": "Skull Bishop",
@@ -311,7 +311,6 @@ ui_text = {
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
-        "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",
         "sky_scout": "Sky Scout",
         "kabukid": "Kabukid",
@@ -584,6 +583,7 @@ ui_text = {
         "exodia_the_forbidden_one": "Exodia, \"O Proibido\"",
         "elemental_hero_flame_wingman": "Homem-Alado das Chamas, o HERÓI do Elemento",
         "crystal_beast_sapphire_pegasus": "Fera Cristalina Pégaso Safira",
+        "jerry_beans_man": "Jerry, Homem Feijão",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -626,8 +626,7 @@ ui_text = {
         "yubel": "Yubel",
         "thelonious_viper": "Thelonious Viper",
         "marcel_bonaparte": "Marcel Bonaparte",
-        "anger_mask": "Anger Mask",
-        "laughter_mask": "Laughter Mask",
+        "anger_mask": "Máscara da Raiva",
         "emotionless_mask": "Emotionless Mask",
         "the_supreme_king": "The Supreme King",
         "skull_bishop": "Skull Bishop",
@@ -659,7 +658,6 @@ ui_text = {
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
-        "jerry_beans_man": "Jerry Beans Man",
         "rainbow_dragon": "Rainbow Dragon",
         "sky_scout": "Sky Scout",
         "kabukid": "Kabukid",

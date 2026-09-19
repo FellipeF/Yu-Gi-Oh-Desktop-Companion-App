@@ -1,4 +1,7 @@
 OTHER_DUELISTS_DECKS_COVER_CARDS = {
+    "anger_mask": {
+        "yu_gi_oh_gx": 91862578,
+    },
     "anubis": {
         "pyramid_of_light": 53569894,
     },

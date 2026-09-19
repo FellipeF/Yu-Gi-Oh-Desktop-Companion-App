@@ -213,6 +213,20 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Verdadeiramente Honesto",
         },
     },
+    "jerry_beans_man": {
+        "the_worlds_strongest": {
+            "en": "The World's Strongest",
+            "pt": "O Mais Forte do Mundo",
+        },
+        "way_of_the_weak": {
+            "en": "Way of the Weak",
+            "pt": "Caminho dos Fracos",
+        },
+        "dd_homerun": {
+            "en": "D.D. Homerun",
+            "pt": "Homerun D.D.",
+        },
+    },
     "kuriboh": {
         "kuriboh_and_friends": {
             "en": "Kuriboh & Friends",

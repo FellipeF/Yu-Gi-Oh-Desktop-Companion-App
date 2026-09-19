@@ -1,3 +1,4 @@
+from data.other_duelists.decks.anger_mask import ANGER_MASK_DECKS
 from data.other_duelists.decks.anubis import ANUBIS_DECK
 from data.other_duelists.decks.arthur import ARTHUR_DECKS
 from data.other_duelists.decks.gozaburo_kaiba import GOZABURO_KAIBA_DECKS
@@ -26,6 +27,7 @@ LIST_OF_DECKS_OTHER_DUELISTS = {
     "johnny_steps": JOHNNY_STEPS_DECK,
     "roland": ROLAND_DECK,
     "heishin": HEISHIN_DECK,
+    "anger_mask": ANGER_MASK_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_OTHER_DUELISTS"]

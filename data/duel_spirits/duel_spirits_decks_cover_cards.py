@@ -75,6 +75,11 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
     "honest": {
         "truthfully_honest": 37742478,
     },
+    "jerry_beans_man": {
+        "the_worlds_strongest": 23635815,
+        "way_of_the_weak": 61528025,
+        "dd_homerun": 95472621,
+    },
     "kuriboh": {
         "kuriboh_and_friends": 40640057
     },

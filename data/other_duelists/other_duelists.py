@@ -12,4 +12,5 @@ OTHER_DUELISTS = {
     ("roland", "images/duelists/other_duelists/roland.webp", "other_duelist"),
     ("heishin", "images/duelists/other_duelists/heishin.webp", "other_duelist"),
     ("ventriloquist_of_the_dead", "images/duelists/other_duelists/ventriloquist.webp", "other_duelist"),
+    ("anger_mask", "images/duelists/other_duelists/anger_mask.webp", "other_duelist"),
 }
