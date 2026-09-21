@@ -227,6 +227,16 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Homerun D.D.",
         },
     },
+    "kozaky": {
+        "goodbye_kozaky": {
+            "en": "Goodbye Kozaky",
+            "pt": "Adeus, Kozaky",
+        },
+        "draw": {
+            "en": "Draw",
+            "pt": "Cave",
+        },
+    },
     "kuriboh": {
         "kuriboh_and_friends": {
             "en": "Kuriboh & Friends",

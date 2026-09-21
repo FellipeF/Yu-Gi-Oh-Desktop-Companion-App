@@ -12,6 +12,7 @@ from data.duel_spirits.decks.exodia_the_forbidden_one import EXODIA_THE_FORBIDDE
 from data.duel_spirits.decks.goblin_elite_attack_force import GOBLIN_ELITE_ATTACK_FORCE_DECKS
 from data.duel_spirits.decks.honest import HONEST_DECKS
 from data.duel_spirits.decks.jerry_beans_man import JERRY_BEANS_MAN_DECKS
+from data.duel_spirits.decks.kozaky import KOZAKY_DECKS
 from data.duel_spirits.decks.kuriboh import KURIBOH_DECKS
 from data.duel_spirits.decks.maiden_of_the_aqua import MAIDEN_OF_THE_AQUA_DECK
 from data.duel_spirits.decks.red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
@@ -36,6 +37,7 @@ LIST_OF_DECKS_DUEL_SPIRITS = {
     "elemental_hero_flame_wingman": ELEMENTAL_HERO_FLAME_WINGMAN_DECKS,
     "crystal_beast_sapphire_pegasus": CRYSTAL_BEAST_SAPPHIRE_PEGASUS_DECKS,
     "jerry_beans_man": JERRY_BEANS_MAN_DECKS,
+    "kozaky": KOZAKY_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_SPIRITS"]

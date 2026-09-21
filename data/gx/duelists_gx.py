@@ -53,7 +53,6 @@ DUELISTS_GX = [
     ("skull_bishop", "images/duelists/duelist_placeholder.png", "gx"),
     ("skilled_dark_magician", "images/duelists/duelist_placeholder.png", "gx"),
     ("zure_knight_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
-    ("kozaky", "images/duelists/duelist_placeholder.png", "gx"),
     ("trueman", "images/duelists/duelist_placeholder.png", "gx"),
     ("yusuke_fujiwara", "images/duelists/duelist_placeholder.png", "gx"),
     ("nightshroud", "images/duelists/duelist_placeholder.png", "gx"),

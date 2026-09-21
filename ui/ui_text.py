@@ -237,6 +237,7 @@ ui_text = {
         "elemental_hero_flame_wingman": "Elemental HERO Flame Wingman",
         "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
+        "kozaky": "Kozaky",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -285,7 +286,6 @@ ui_text = {
         "skull_bishop": "Skull Bishop",
         "skilled_dark_magician": "Skilled Dark Magician",
         "zure_knight_of_dark_world": "Zure, Knight of Dark World",
-        "kozaky": "Kozaky",
         "trueman": "Trueman",
         "yusuke_fujiwara": "Yusuke Fujiwara",
         "nightshroud": "Nightshroud",
@@ -584,6 +584,7 @@ ui_text = {
         "elemental_hero_flame_wingman": "Homem-Alado das Chamas, o HERÓI do Elemento",
         "crystal_beast_sapphire_pegasus": "Fera Cristalina Pégaso Safira",
         "jerry_beans_man": "Jerry, Homem Feijão",
+        "kozaky": "Kozaky",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -632,7 +633,6 @@ ui_text = {
         "skull_bishop": "Skull Bishop",
         "skilled_dark_magician": "Skilled Dark Magician",
         "zure_knight_of_dark_world": "Zure, Knight of Dark World",
-        "kozaky": "Kozaky",
         "trueman": "Trueman",
         "yusuke_fujiwara": "Yusuke Fujiwara",
         "nightshroud": "Nightshroud",

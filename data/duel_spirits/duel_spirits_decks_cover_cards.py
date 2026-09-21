@@ -80,6 +80,11 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "way_of_the_weak": 61528025,
         "dd_homerun": 95472621,
     },
+    "kozaky": {
+        "yu_gi_oh_gx": 47829960,
+        "goodbye_kozaky": 21908319,
+        "draw": 70368879,
+    },
     "kuriboh": {
         "kuriboh_and_friends": 40640057
     },
