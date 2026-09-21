@@ -1,0 +1,22 @@
+SKULL_KNIGHT_DECK = {
+    "lycanthrope": [
+        ("Archfiend Soldier", 1),
+        ("Clown Zombie", 1),
+        ("Fiend Scorpion", 1),
+        ("Gene-Warped Warwolf", 2),
+        ("Giant Soldier of Stone", 1),
+        ("Gigobyte", 1),
+        ("Luster Dragon", 1),
+        ("Mad Dog of Darkness", 1),
+        ("Mystical Elf", 1),
+        ("Soul Tiger", 1),
+        ("Spiral Serpent", 1),
+        ("Summoned Skull", 1),
+        ("Vorse Raider", 1),
+        ("Magical Merchant", 1),
+        ("Lycanthrope", 1),
+        ("Synthesis Spell", 1),
+        ("Undead Lineage [A]", 1),
+        ("Reverse Effector [A]", 1),
+    ],
+}

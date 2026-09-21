@@ -50,7 +50,6 @@ DUELISTS_GX = [
     ("yubel", "images/duelists/duelist_placeholder.png", "gx"),
     ("thelonious_viper", "images/duelists/duelist_placeholder.png", "gx"),
     ("the_supreme_king", "images/duelists/duelist_placeholder.png", "gx"),
-    ("skull_bishop", "images/duelists/duelist_placeholder.png", "gx"),
     ("skilled_dark_magician", "images/duelists/duelist_placeholder.png", "gx"),
     ("zure_knight_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
     ("trueman", "images/duelists/duelist_placeholder.png", "gx"),

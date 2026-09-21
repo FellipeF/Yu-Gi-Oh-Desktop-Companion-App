@@ -96,6 +96,9 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "who_needs_effects": 11321183,
         "black_flame": 67300516,
     },
+    "skull_knight": {
+        "lycanthrope": 84385264,
+    },
     "winged_kuriboh": {
         "war_bred_people": "00403847",
         "hello_hero": 78387742,

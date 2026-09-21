@@ -238,6 +238,7 @@ ui_text = {
         "crystal_beast_sapphire_pegasus": "Crystal Beast Sapphire Pegasus",
         "jerry_beans_man": "Jerry Beans Man",
         "kozaky": "Kozaky",
+        "skull_knight": "Skull Knight",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -283,7 +284,6 @@ ui_text = {
         "anger_mask": "Anger Mask",
         "emotionless_mask": "Emotionless Mask",
         "the_supreme_king": "The Supreme King",
-        "skull_bishop": "Skull Bishop",
         "skilled_dark_magician": "Skilled Dark Magician",
         "zure_knight_of_dark_world": "Zure, Knight of Dark World",
         "trueman": "Trueman",
@@ -585,6 +585,7 @@ ui_text = {
         "crystal_beast_sapphire_pegasus": "Fera Cristalina Pégaso Safira",
         "jerry_beans_man": "Jerry, Homem Feijão",
         "kozaky": "Kozaky",
+        "skull_knight": "Cavaleiro Caveira",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -630,7 +631,6 @@ ui_text = {
         "anger_mask": "Máscara da Raiva",
         "emotionless_mask": "Emotionless Mask",
         "the_supreme_king": "The Supreme King",
-        "skull_bishop": "Skull Bishop",
         "skilled_dark_magician": "Skilled Dark Magician",
         "zure_knight_of_dark_world": "Zure, Knight of Dark World",
         "trueman": "Trueman",

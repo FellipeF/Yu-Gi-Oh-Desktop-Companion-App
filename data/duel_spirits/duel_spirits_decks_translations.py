@@ -263,6 +263,12 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Chama Negra",
         },
     },
+    "skull_knight": {
+        "lycanthrope": {
+            "en": "Lycanthrope",
+            "pt": "Licantropo",
+        },
+    },
     "winged_kuriboh": {
         "war_bred_people": {
             "en": "War-bred People",
