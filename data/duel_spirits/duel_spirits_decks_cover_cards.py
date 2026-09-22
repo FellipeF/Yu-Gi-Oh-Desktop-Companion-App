@@ -96,6 +96,10 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
         "who_needs_effects": 11321183,
         "black_flame": 67300516,
     },
+    "skilled_dark_magician": {
+        "megaton": 32062913,
+        "dd_castle_emergence": 24721709,
+    },
     "skull_knight": {
         "lycanthrope": 84385264,
     },

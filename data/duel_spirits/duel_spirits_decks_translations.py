@@ -263,6 +263,16 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Chama Negra",
         },
     },
+    "skilled_dark_magician": {
+        "megaton": {
+            "en": "Megaton",
+            "pt": "Megaton",
+        },
+        "dd_castle_emergence": {
+            "en": "D.D. Castle: Emergence",
+            "pt": "Castelo D.D.: Emergência",
+        },
+    },
     "skull_knight": {
         "lycanthrope": {
             "en": "Lycanthrope",

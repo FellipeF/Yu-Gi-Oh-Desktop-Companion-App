@@ -239,6 +239,7 @@ ui_text = {
         "jerry_beans_man": "Jerry Beans Man",
         "kozaky": "Kozaky",
         "skull_knight": "Skull Knight",
+        "skilled_dark_magician": "Skilled Dark Magician",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -284,7 +285,6 @@ ui_text = {
         "anger_mask": "Anger Mask",
         "emotionless_mask": "Emotionless Mask",
         "the_supreme_king": "The Supreme King",
-        "skilled_dark_magician": "Skilled Dark Magician",
         "zure_knight_of_dark_world": "Zure, Knight of Dark World",
         "trueman": "Trueman",
         "yusuke_fujiwara": "Yusuke Fujiwara",
@@ -586,6 +586,7 @@ ui_text = {
         "jerry_beans_man": "Jerry, Homem Feijão",
         "kozaky": "Kozaky",
         "skull_knight": "Cavaleiro Caveira",
+        "skilled_dark_magician": "Mago Negro Habilidoso",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -631,7 +632,6 @@ ui_text = {
         "anger_mask": "Máscara da Raiva",
         "emotionless_mask": "Emotionless Mask",
         "the_supreme_king": "The Supreme King",
-        "skilled_dark_magician": "Skilled Dark Magician",
         "zure_knight_of_dark_world": "Zure, Knight of Dark World",
         "trueman": "Trueman",
         "yusuke_fujiwara": "Yusuke Fujiwara",
