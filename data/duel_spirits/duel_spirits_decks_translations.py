@@ -249,6 +249,12 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Dilúvio",
         },
     },
+    "rainbow_dragon": {
+        "over_the_rainbow": {
+            "en": "Over the Rainbow",
+            "pt": "Além do Arco-Íris",
+        },
+    },
     "red_eyes_black_dragon": {
         "september_2004": {
             "en": "September 2004",

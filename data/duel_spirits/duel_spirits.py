@@ -22,4 +22,5 @@ DUEL_SPIRITS = [
     ("kozaky", "images/duelists/duel_spirits/kozaky.webp", None),
     ("skull_knight", "images/duelists/duel_spirits/skull_knight.webp", None),
     ("skilled_dark_magician", "images/duelists/duel_spirits/skilled_dark_magician.webp", None),
+    ("rainbow_dragon", "images/duelists/duel_spirits/rainbow_dragon.webp", None),
 ]

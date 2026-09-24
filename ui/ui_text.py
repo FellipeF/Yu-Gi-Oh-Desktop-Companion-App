@@ -240,6 +240,7 @@ ui_text = {
         "kozaky": "Kozaky",
         "skull_knight": "Skull Knight",
         "skilled_dark_magician": "Skilled Dark Magician",
+        "rainbow_dragon": "Rainbow Dragon",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -311,7 +312,6 @@ ui_text = {
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
-        "rainbow_dragon": "Rainbow Dragon",
         "sky_scout": "Sky Scout",
         "kabukid": "Kabukid",
         "franz": "Franz",
@@ -587,6 +587,7 @@ ui_text = {
         "kozaky": "Kozaky",
         "skull_knight": "Cavaleiro Caveira",
         "skilled_dark_magician": "Mago Negro Habilidoso",
+        "rainbow_dragon": "Dragão Arco-Íris",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -658,7 +659,6 @@ ui_text = {
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
-        "rainbow_dragon": "Rainbow Dragon",
         "sky_scout": "Sky Scout",
         "kabukid": "Kabukid",
         "franz": "Franz",

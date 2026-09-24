@@ -91,6 +91,9 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
     "maiden_of_the_aqua": {
         "deluge": 17214465,
     },
+    "rainbow_dragon": {
+        "over_the_rainbow": 34487429,
+    },
     "red_eyes_black_dragon": {
         "september_2004": 74677422,
         "who_needs_effects": 11321183,

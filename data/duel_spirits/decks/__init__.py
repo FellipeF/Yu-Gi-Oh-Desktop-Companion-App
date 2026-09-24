@@ -15,6 +15,7 @@ from data.duel_spirits.decks.jerry_beans_man import JERRY_BEANS_MAN_DECKS
 from data.duel_spirits.decks.kozaky import KOZAKY_DECKS
 from data.duel_spirits.decks.kuriboh import KURIBOH_DECKS
 from data.duel_spirits.decks.maiden_of_the_aqua import MAIDEN_OF_THE_AQUA_DECK
+from data.duel_spirits.decks.rainbow_dragon import RAINBOW_DRAGON_DECK
 from data.duel_spirits.decks.red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
 from data.duel_spirits.decks.skilled_dark_magician import SKILLED_DARK_MAGICIAN_DECKS
 from data.duel_spirits.decks.skull_knight import SKULL_KNIGHT_DECK
@@ -42,6 +43,7 @@ LIST_OF_DECKS_DUEL_SPIRITS = {
     "kozaky": KOZAKY_DECKS,
     "skull_knight": SKULL_KNIGHT_DECK,
     "skilled_dark_magician": SKILLED_DARK_MAGICIAN_DECKS,
+    "rainbow_dragon": RAINBOW_DRAGON_DECK,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_SPIRITS"]

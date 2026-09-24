@@ -1,0 +1,21 @@
+RAINBOW_DRAGON_DECK = {
+    "over_the_rainbow": [
+        ("Crystal Beast Amber Mammoth", 3),
+        ("Crystal Beast Amethyst Cat", 2),
+        ("Crystal Beast Cobalt Eagle", 2),
+        ("Crystal Beast Emerald Tortoise", 3),
+        ("Crystal Beast Ruby Carbuncle", 3),
+        ("Crystal Beast Sapphire Pegasus", 3),
+        ("Crystal Beast Topaz Tiger", 3),
+        ("Rainbow Dragon", 2),
+        ("Ancient City - Rainbow Ruins", 3),
+        ("Crystal Abundance", 3),
+        ("Crystal Beacon", 3),
+        ("Crystal Blessing", 2),
+        ("Crystal Promise", 2),
+        ("Crystal Tree", 1),
+        ("Mystical Space Typhoon", 1),
+        ("Rare Value", 3),
+        ("Crystal Raigeki", 1),
+    ],
+}
