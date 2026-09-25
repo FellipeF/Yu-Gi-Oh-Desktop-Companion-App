@@ -16,6 +16,7 @@ DUELISTS_GX = [
     ("tyranno_hassleberry", "images/duelists/gx/tyranno_hassleberry.webp", "gx"),
     ("beauregard", "images/duelists/gx/beauregard.webp", "gx"),
     ("jim_crocodile_cook", "images/duelists/gx/jim_crocodile_cook.webp", "gx"),
+    ("trueman", "images/duelists/gx/trueman.png", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -51,7 +52,6 @@ DUELISTS_GX = [
     ("thelonious_viper", "images/duelists/duelist_placeholder.png", "gx"),
     ("the_supreme_king", "images/duelists/duelist_placeholder.png", "gx"),
     ("zure_knight_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
-    ("trueman", "images/duelists/duelist_placeholder.png", "gx"),
     ("yusuke_fujiwara", "images/duelists/duelist_placeholder.png", "gx"),
     ("nightshroud", "images/duelists/duelist_placeholder.png", "gx"),
     ("fonda_fontaine", "images/duelists/duelist_placeholder.png", "gx"),

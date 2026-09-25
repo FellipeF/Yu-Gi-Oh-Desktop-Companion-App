@@ -833,6 +833,36 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Oceano Mais Forte",
         },
     },
+    "trueman": {
+        "dark_archetype": {
+            "en": "Dark Archetype",
+            "pt": "Protótipo Negro",
+        },
+        "volcanic_burn": {
+            "en": "Volcanic Burn",
+            "pt": "Queima Vulcânica",
+        },
+        "soranos": {
+            "en": "Sorano's",
+            "pt": "Sorano",
+        },
+        "mister_tag": {
+            "en": "Mister Tag",
+            "pt": "Senhor Dupla",
+        },
+        "mister_trail": {
+            "en": "Mister Trail",
+            "pt": "Senhor Rastro",
+        },
+        "mister_true": {
+            "en": "Mister True",
+            "pt": "Senhor Verdade",
+        },
+        "mister_taunt": {
+            "en": "Mister Taunt",
+            "pt": "Senhor Provocação",
+        },
+    },
     "torrey": {
         "talk_to_the_beyond": {
             "en": "Talk to the Beyond",

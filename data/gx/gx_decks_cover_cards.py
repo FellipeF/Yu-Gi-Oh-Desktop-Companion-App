@@ -138,6 +138,15 @@ GX_DECK_COVER_CARDS = {
         "anime": 37721209,
         "strongest_ocean_deck": 63120904,
     },
+    "trueman": {
+        "dark_archetype": 99458769,
+        "volcanic_burn": 94804055,
+        "soranos": 48229808,
+        "mister_tag": 69279219,
+        "mister_trail": 30312361,
+        "mister_true": 74117290,
+        "mister_taunt": 51232472,
+    },
     "torrey": {
         "talk_to_the_beyond": 94212438,
         "sounds_of_darkness": 28933734,

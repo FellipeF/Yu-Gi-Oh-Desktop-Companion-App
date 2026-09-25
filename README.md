@@ -106,7 +106,8 @@ Please read the Card Consistency File - CFF on the /docs folder. It explains som
 * [AlanMac95](https://www.deviantart.com/alanmac95) for the Millennium Puzzle Icon used on placeholder images.
 * [Konami](https://www.yugioh.com/) for creating Yu-Gi-Oh! Trading Card Game and for character images.
 * [Yu-Gi-Oh! Fandom](https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Wiki) for decks lists.
-* DB Diagram for the Schema Builder.
+* [DB Diagram](https://dbdiagram.io/) for the Schema Builder.
+* [D-Evil6661](https://www.deviantart.com/d-evil6661) for Trueman Duelist Art.
 
 ## Legal Disclaimer
 
