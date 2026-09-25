@@ -15,7 +15,7 @@ DUELISTS_DUEL_MONSTERS = [
     ("mai_valentine", "images/duelists/duel_monsters_anime/mai.png", "duel_monsters_anime"),
     ("mako_tsunami", "images/duelists/duel_monsters_anime/mako.webp", "duel_monsters_anime"),
     ("bonz", "images/duelists/duel_monsters_anime/bonz.png", "duel_monsters_anime"),
-    ("alister", "images/duelists/duel_monsters_anime/alister.webp", "duel_monsters_anime"),
+    ("alister", "images/duelists/duel_monsters_anime/alister.png", "duel_monsters_anime"),
     ("rebecca", "images/duelists/duel_monsters_anime/rebecca.webp", "duel_monsters_anime"),
     ("ishizu_ishtar", "images/duelists/duel_monsters_anime/ishizu.png", "duel_monsters_anime"),
     ("duel_computers", "images/duelists/duel_monsters_anime/duel_computer.webp", "duel_monsters_anime"),
