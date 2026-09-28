@@ -41,7 +41,6 @@ DUELISTS_GX = [
     ("atticus_rhodes", "images/duelists/duelist_placeholder.png", "gx"),
     ("alien_of_light", "images/duelists/duelist_placeholder.png", "gx"),
     ("lorenzo", "images/duelists/duelist_placeholder.png", "gx"),
-    ("howard_x_miller", "images/duelists/duelist_placeholder.png", "gx"),
     ("rose", "images/duelists/duelist_placeholder.png", "gx"),
     ("sarina", "images/duelists/duelist_placeholder.png", "gx"),
     ("frost", "images/duelists/duelist_placeholder.png", "gx"),
