@@ -108,7 +108,8 @@ Please read the Card Consistency File - CFF on the /docs folder. It explains som
 * [Yu-Gi-Oh! Fandom](https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_Wiki) for decks lists.
 * [DB Diagram](https://dbdiagram.io/) for the Schema Builder.
 * [D-Evil6661](https://www.deviantart.com/d-evil6661) for Trueman Duelist Art.
-* [Jonathan Valentim](https://www.youtube.com/channel/UCgIT6sWZdjcR-cZouLiW-bg) for America Uchimura and Beauregard Duelists Arts
+* [Jonathan Valentim](https://www.youtube.com/channel/UCgIT6sWZdjcR-cZouLiW-bg) for America Uchimura and Beauregard Duelists Arts.
+* [GravekeepersBrewer](https://www.deviantart.com/gravekeepersbrewer/) for Nitemare Duelist Art.
 
 ## Legal Disclaimer
 

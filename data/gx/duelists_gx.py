@@ -1,10 +1,10 @@
 DUELISTS_GX = [
-    ("jean_louis_bonaparte", "images/duelists/gx/jean_louis_bonaparte.webp", "gx"),
+    ("jean_louis_bonaparte", "images/duelists/gx/jean_louis_bonaparte.png", "gx"),
     ("slade_princeton", "images/duelists/gx/slade_princeton.webp", "gx"),
     ("sadie", "images/duelists/gx/sadie.webp", "gx"),
     ("torrey", "images/duelists/gx/torrey.webp", "gx"),
     ("aster_phoenix", "images/duelists/gx/aster_phoenix.png", "gx"),
-    ("jasmine", "images/duelists/gx/jasmine.webp", "gx"),
+    ("jasmine", "images/duelists/gx/jasmine.png", "gx"),
     ("lyman_banner", "images/duelists/gx/lyman_banner.png", "gx"),
     ("america_uchimura", "images/duelists/gx/america_uchimura.png", "gx"),
     ("sartorius_kumar", "images/duelists/gx/sartorius.webp", "gx"),
@@ -12,10 +12,10 @@ DUELISTS_GX = [
     ("pierre_the_gambler", "images/duelists/gx/pierre_the_gambler.webp", "gx"),
     ("the_admiral", "images/duelists/gx/the_admiral.webp", "gx"),
     ("taiyou_torimaki", "images/duelists/gx/taiyou_torimaki.webp", "gx"),
-    ("kagemaru", "images/duelists/gx/kagemaru.webp", "gx"),
+    ("kagemaru", "images/duelists/gx/kagemaru.png", "gx"),
     ("tyranno_hassleberry", "images/duelists/gx/tyranno_hassleberry.webp", "gx"),
     ("beauregard", "images/duelists/gx/beauregard.png", "gx"),
-    ("jim_crocodile_cook", "images/duelists/gx/jim_crocodile_cook.webp", "gx"),
+    ("jim_crocodile_cook", "images/duelists/gx/jim_crocodile_cook.png", "gx"),
     ("trueman", "images/duelists/gx/trueman.png", "gx"),
     # =========================
     # TODO: Below
