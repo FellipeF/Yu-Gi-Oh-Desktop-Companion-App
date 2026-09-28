@@ -1,4 +1,15 @@
 DUEL_MONSTERS_DECK_COVER_CARDS = {
+    "aigami": {
+        "cubic": "08837932",
+        "aigami": "03775068",
+        "dimensional_truth": 96148285,
+        "dimensional_sentinel": 16135253,
+        "dimensional_thunder": "04998619",
+        "dimensional_destruction_reconstruction": 20137754,
+        "dimensional_pair": 90934570,
+        "enter_the_dimension_of_delight": 35058588,
+        "time_for_revenge": 80168720,
+    },
     "alister": {
         "toon_gorlag": 79447365,
         "army": 67532912,

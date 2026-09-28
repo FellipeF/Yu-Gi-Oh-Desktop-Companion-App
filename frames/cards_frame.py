@@ -67,6 +67,7 @@ class CardsFrame(tk.Frame):
         self.cards_scroll.config(command=self.searchable_list.yview)
 
         self.searchable_list.bind("<<ListboxSelect>>", self.show_card_image)
+        self.searchable_list.bind("<Double-Button-1>", self.on_card_double_click)
 
         #Right Side - Image and Button for Card Details
         right_frame = tk.Frame(main_container, width=300)
@@ -166,6 +167,20 @@ class CardsFrame(tk.Frame):
         self.tk_image = tk_img
         self.image_label.config(image=self.tk_image, text="")
         self.image_label.image = self.tk_image # Avoids losing reference
+
+    def on_card_double_click(self, event):
+        index = self.searchable_list.nearest(event.y)
+
+        if index < 0 or index >= len(self.current_cards):
+            return
+
+        self.searchable_list.selection_clear(0, tk.END)
+        self.searchable_list.selection_set(index)
+        self.searchable_list.activate(index)
+
+        self.selected_card_id = self.current_cards[index][0]
+
+        self.open_card_details_window()
 
     def open_card_details_window(self):
         if not self.selected_card_id:

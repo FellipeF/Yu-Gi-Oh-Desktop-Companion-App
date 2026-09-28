@@ -79,6 +79,7 @@ class CustomDeckEditorFrame(tk.Frame):
         self.search_results_list.config(yscrollcommand=self.search_scroll.set)
 
         self.search_results_list.bind("<<ListboxSelect>>", self.show_card_image)
+        self.search_results_list.bind("<Double-Button-1>", self.on_search_card_double_click)
 
         # CENTER - Card preview and actions
         center_frame = tk.Frame(main_container, width=CARD_WIDTH + 40)
@@ -150,6 +151,7 @@ class CustomDeckEditorFrame(tk.Frame):
         self.deck_cards_list.bind("<Up>", self.on_cards_arrow_key)
         self.deck_cards_list.bind("<Down>", self.on_cards_arrow_key)
         self.deck_cards_list.bind("<ButtonRelease-1>", self.on_cards_mouse_release)
+        self.deck_cards_list.bind("<Double-Button-1>", self.on_deck_card_double_click)
 
         self.deck_gallery_canvas = tk.Canvas(self.deck_gallery_frame)
         self.deck_gallery_scroll = ttk.Scrollbar(
@@ -623,6 +625,23 @@ class CustomDeckEditorFrame(tk.Frame):
         if not self.add_to_deck_button.winfo_ismapped():
             self.add_to_deck_button.pack(pady=(0, 8))
 
+    def on_search_card_double_click(self, event):
+        index = self.search_results_list.nearest(event.y)
+
+        if index < 0 or index >= len(self.current_found_cards):
+            return "break"
+
+        card = self.current_found_cards[index]
+        card_id = card[0]
+
+        if card_id is None:
+            return "break"
+
+        self.active_card_id = card_id
+        self.open_card_details_window()
+
+        return "break"
+
     def open_card_details_window(self):
         if not self.active_card_id:
             return
@@ -739,6 +758,23 @@ class CustomDeckEditorFrame(tk.Frame):
             self.select_card_index(next_index)
         else:
             self.deck_cards_list.selection_clear(0, tk.END)
+
+        return "break"
+
+    def on_deck_card_double_click(self, event):
+        index = self.deck_cards_list.nearest(event.y)
+
+        if not self.is_valid_card_index(index):
+            return "break"
+
+        card = self.displayed_deck_cards[index]
+        card_id = card[0]
+
+        if card_id is None:
+            return "break"
+
+        self.active_card_id = card_id
+        self.open_card_details_window()
 
         return "break"
 

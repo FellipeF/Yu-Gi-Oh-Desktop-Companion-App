@@ -1,3 +1,4 @@
+from .aigami import AIGAMI_DECKS
 from .alister import ALISTER_DECKS
 from .arkana import ARKANA_DECKS
 from .bakura_ryou import BAKURA_DECKS
@@ -90,6 +91,7 @@ LIST_OF_DECKS_DUEL_MONSTERS = {
     "yami_marik": YAMI_MARIK_DECKS,
     "yami_yugi": YAMI_YUGI_DECKS,
     "nitemare": NITEMARE_DECKS,
+    "aigami": AIGAMI_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_MONSTERS"]

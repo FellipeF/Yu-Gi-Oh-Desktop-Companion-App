@@ -1,6 +1,6 @@
 DUELISTS_GX = [
     ("jean_louis_bonaparte", "images/duelists/gx/jean_louis_bonaparte.png", "gx"),
-    ("slade_princeton", "images/duelists/gx/slade_princeton.webp", "gx"),
+    ("slade_princeton", "images/duelists/gx/slade_princeton.png", "gx"),
     ("sadie", "images/duelists/gx/sadie.webp", "gx"),
     ("torrey", "images/duelists/gx/torrey.webp", "gx"),
     ("aster_phoenix", "images/duelists/gx/aster_phoenix.png", "gx"),

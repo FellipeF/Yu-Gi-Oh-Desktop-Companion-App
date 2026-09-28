@@ -44,4 +44,5 @@ DUELISTS_DUEL_MONSTERS = [
     ("yami_marik", "images/duelists/duel_monsters_anime/yami_marik.png", "duel_monsters_anime"),
     ("yami_yugi", "images/duelists/duel_monsters_anime/yami_yugi.png", "duel_monsters_anime"),
     ("nitemare", "images/duelists/duel_monsters_anime/nitemare.png", "duel_monsters_anime"),
+    ("aigami", "images/duelists/duel_monsters_anime/aigami.png", "duel_monsters_anime"),
 ]

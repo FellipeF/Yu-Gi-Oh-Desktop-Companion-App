@@ -1,4 +1,42 @@
 DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
+    "aigami": {
+        "cubic": {
+            "en": "Cubic",
+            "pt": "Cúbico",
+        },
+        "aigami": {
+            "en": "Aigami",
+            "pt": "Aigami",
+        },
+        "dimensional_truth": {
+            "en": "Dimensional Truth",
+            "pt": "Verdade Dimensional",
+        },
+        "dimensional_sentinel": {
+            "en": "Dimensional Sentinel",
+            "pt": "Sentinela Dimensional",
+        },
+        "dimensional_thunder": {
+            "en": "Dimensional Thunder",
+            "pt": "Trovão Dimensional",
+        },
+        "dimensional_destruction_reconstruction": {
+            "en": "Dimensional Destruction/Reconstruction",
+            "pt": "Destruição/Reconstrução Dimensional",
+        },
+        "dimensional_pair": {
+            "en": "Dimensional Pair",
+            "pt": "Par Dimensional",
+        },
+        "enter_the_dimension_of_delight": {
+            "en": "Enter the Dimension of Delight",
+            "pt": "Entre na Dimensão do Prazer",
+        },
+        "time_for_revenge": {
+            "en": "Time for Revenge",
+            "pt": "Hora da Vingança",
+        },
+    },
     "alister": {
         "toon_gorlag": {
             "en": "Toon/Gorlag",

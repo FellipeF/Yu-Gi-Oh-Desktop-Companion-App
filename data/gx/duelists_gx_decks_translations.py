@@ -776,21 +776,25 @@ DUELISTS_DECKS_KEYS_GX = {
         },
     },
     "slade_princeton": {
+        "rare_dragon": {
+            "en": "Rare Dragon",
+            "pt": "Dragão Raro",
+        },
         "colossal_power": {
             "en": "Colossal Power",
             "pt": "Poder Colossal",
         },
         "lords_edict_a": {
             "en": "Lord's Edict A",
-            "pt": "Édito de Lorde A",
+            "pt": "Édito A de Lorde",
         },
         "lords_edict_aa": {
             "en": "Lord's Edict AA",
-            "pt": "Édito de Lorde AA",
+            "pt": "Édito AA de Lorde",
         },
         "lords_edict_aaa": {
             "en": "Lord's Edict AAA",
-            "pt": "Édito de Lorde AAA",
+            "pt": "Édito AAA de Lorde",
         },
         "academy_election": {
             "en": "Academy Election",

@@ -216,6 +216,7 @@ ui_text = {
         "lumis_and_umbra": "Lumis and Umbra",
         "paradox_brothers": "Paradox Brothers",
         "nitemare": "DarkNite/Nitemare",
+        "aigami": "Aigami",
         # ================================
         #  DUEL SPIRITS
         # ================================
@@ -562,6 +563,7 @@ ui_text = {
         "lumis_and_umbra": "Lumis e Umbra",
         "paradox_brothers": "Irmãos Paradox",
         "nitemare": "DarkNite/Nitemare",
+        "aigami": "Aigami",
         # ================================
         #  DUEL SPIRITS
         # ================================

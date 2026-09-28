@@ -129,6 +129,18 @@ GX_DECK_COVER_CARDS = {
         "no_skills_for_me": 99188141,
         "stop_it_with_the_skills": 41420027,
     },
+    "slade_princeton": {
+        "rare_dragon": 39191307,
+        "colossal_power": 99267150,
+        "lords_edict_a": 17985575,
+        "lords_edict_aa": 13756293,
+        "lords_edict_aaa": 62873545,
+        "academy_election": 71490127,
+        "those_who_control_people": 79109599,
+        "those_who_control_dragons": 62113340,
+        "those_who_control_everything": 51452091,
+        "those_who_control_the_future": 77565204,
+    },
     "taiyou_torimaki": {
         "dragons_roar": 28596933,
         "strategy_negator": 31476755,

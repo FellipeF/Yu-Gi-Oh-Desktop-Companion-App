@@ -74,6 +74,7 @@ class DuelistDeckViewerFrame(tk.Frame):
         self.cards_listbox.bind("<Up>", self.on_cards_arrow_key)
         self.cards_listbox.bind("<Down>", self.on_cards_arrow_key)
         self.cards_listbox.bind("<ButtonRelease-1>", self.on_cards_mouse_release)
+        self.cards_listbox.bind("<Double-Button-1>", self.on_card_double_click)
 
         self.gallery_canvas = tk.Canvas(self.gallery_view_frame)
         self.gallery_scroll = ttk.Scrollbar(
@@ -566,6 +567,20 @@ class DuelistDeckViewerFrame(tk.Frame):
             self.select_card_index(next_index)
         else:
             self.cards_listbox.selection_clear(0, tk.END)
+
+        return "break"
+
+    def on_card_double_click(self, event):
+        index = self.cards_listbox.nearest(event.y)
+
+        if not self.is_valid_card_index(index):
+            return "break"
+
+        card = self.displayed_cards[index]
+        card_id, *_ = card
+
+        self.selected_card_id = card_id
+        self.open_card_details_window()
 
         return "break"
 
