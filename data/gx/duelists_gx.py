@@ -17,6 +17,7 @@ DUELISTS_GX = [
     ("beauregard", "images/duelists/gx/beauregard.png", "gx"),
     ("jim_crocodile_cook", "images/duelists/gx/jim_crocodile_cook.png", "gx"),
     ("trueman", "images/duelists/gx/trueman.png", "gx"),
+    ("abidos_the_third", "images/duelists/gx/abidos_the_third.png", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -37,7 +38,6 @@ DUELISTS_GX = [
     ("camula", "images/duelists/duelist_placeholder.png", "gx"),
     ("tania", "images/duelists/duelist_placeholder.png", "gx"),
     ("titan", "images/duelists/duelist_placeholder.png", "gx"),
-    ("abidos_the_third", "images/duelists/duelist_placeholder.png", "gx"),
     ("atticus_rhodes", "images/duelists/duelist_placeholder.png", "gx"),
     ("alien_of_light", "images/duelists/duelist_placeholder.png", "gx"),
     ("lorenzo", "images/duelists/duelist_placeholder.png", "gx"),

@@ -1,3 +1,4 @@
+from data.gx.decks.abidos_the_third import ABIDOS_THE_THIRD_DECKS
 from data.gx.decks.aster_phoenix import ASTER_PHOENIX_DECKS
 from data.gx.decks.america_uchimura import AMERICA_UCHIMURA_DECKS
 from data.gx.decks.beauregard import BEAUREGARD_DECKS
@@ -36,6 +37,7 @@ LIST_OF_DECKS_GX = {
     "beauregard": BEAUREGARD_DECKS,
     "jim_crocodile_cook": JIM_CROCODILE_COOK_DECKS,
     "trueman": TRUEMAN_DECKS,
+    "abidos_the_third": ABIDOS_THE_THIRD_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_GX"]

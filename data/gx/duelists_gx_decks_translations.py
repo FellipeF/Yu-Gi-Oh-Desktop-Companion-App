@@ -1,4 +1,42 @@
 DUELISTS_DECKS_KEYS_GX = {
+    "abidos_the_third": {
+        "servants_of_the_pharaoh": {
+            "en": "Servants of the Pharaoh",
+            "pt": "Servos do Faraó",
+        },
+        "royal_casket": {
+            "en": "Royal Casket",
+            "pt": "Caixão Real",
+        },
+        "royal_tribute": {
+            "en": "Royal Tribute",
+            "pt": "Tributo Real",
+        },
+        "royal_mausoleum": {
+            "en": "Royal Mausoleum",
+            "pt": "Mausoléu Real",
+        },
+        "majesty": {
+            "en": "Majesty",
+            "pt": "Majestade",
+        },
+        "awakening_of_the_king": {
+            "en": "Awakening of the King",
+            "pt": "Despertar do Rei",
+        },
+        "wrath_of_the_king": {
+            "en": "Wrath of the King",
+            "pt": "Fúria do Rei",
+        },
+        "judgment_of_the_king": {
+            "en": "Judgment of the King",
+            "pt": "Julgamento do Rei",
+        },
+        "guardian_of_the_imperial_tomb": {
+            "en": "Guardian of the Imperial Tomb",
+            "pt": "Guardião da Tumba Imperial",
+        },
+    },
     "america_uchimura": {
         "stolen_strategy": {
             "en": "Stolen Strategy",

@@ -111,6 +111,7 @@ Please read the Card Consistency File - CFF on the /docs folder. It explains som
 * [Jonathan Valentim](https://www.youtube.com/channel/UCgIT6sWZdjcR-cZouLiW-bg) for America Uchimura and Beauregard Duelists Arts.
 * [GravekeepersBrewer](https://www.deviantart.com/gravekeepersbrewer/) for Nitemare Duelist Art.
 * [Mr-Artista](https://www.deviantart.com/mr-artista) for Mako Tsunami Duelist Art.
+* [Maxiuchiha22](https://www.deviantart.com/maxiuchiha22) for Abidos the Third Duelist Art.
 
 ## Legal Disclaimer
 

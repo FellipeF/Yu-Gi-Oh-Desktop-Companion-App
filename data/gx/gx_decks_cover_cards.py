@@ -1,4 +1,15 @@
 GX_DECK_COVER_CARDS = {
+    "abidos_the_third": {
+        "servants_of_the_pharaoh": 52550973,
+        "royal_casket": 75500286,
+        "royal_tribute": 31076103,
+        "royal_mausoleum": 	80921533,
+        "majesty": "03149764",
+        "awakening_of_the_king": 79759861,
+        "wrath_of_the_king": "05703682",
+        "judgment_of_the_king": 25343280,
+        "guardian_of_the_imperial_tomb": 80955168,
+    },
     "america_uchimura": {
         "stolen_strategy": 55348096,
         "toon_square": 47453433,

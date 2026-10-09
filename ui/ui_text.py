@@ -616,7 +616,7 @@ ui_text = {
         "camula": "Camula",
         "tania": "Tania",
         "titan": "Titan",
-        "abidos_the_third": "Abidos the Third",
+        "abidos_the_third": "Abidos, o Terceiro",
         "atticus_rhodes": "Atticus Rhodes",
         "sartorius_kumar": "Sartorius Kumar",
         "alien_of_light": "Alien of Light",
