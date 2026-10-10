@@ -37,6 +37,88 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Guardião da Tumba Imperial",
         },
     },
+    "adrian_gecko": {
+        "cloud": {
+            "en": "Cloud",
+            "pt": "Nuvem",
+        },
+        "exodia": {
+            "en": "Exodia",
+            "pt": "Exodia",
+        },
+        "in_the_cloudian": {
+            "en": "In the Cloudian",
+            "pt": "Na Cloudian",
+        },
+        "eye_of_the_cloudian": {
+            "en": "Eye of the Cloudian",
+            "pt": "Olho da Cloudian",
+        },
+        "turbulence": {
+            "en": "Turbulence",
+            "pt": "Turbulência",
+        },
+        "cloudians": {
+            "en": "Cloudians",
+            "pt": "Cloudians",
+        },
+        "intangible_cloud": {
+            "en": "Intangible Cloud",
+            "pt": "Nuvem Intangível",
+        },
+        "blowing_cloud": {
+            "en": "Blowing Cloud",
+            "pt": "Nuvem Soprante",
+        },
+        "raging_cloud": {
+            "en": "Raging Cloud",
+            "pt": "Nuvem Raivosa",
+        },
+        "drifting_cloud": {
+            "en": "Drifting Cloud",
+            "pt": "Nuvem Derivante",
+        },
+        "eye_of_the_cloud": {
+            "en": "Eye of the Cloud",
+            "pt": "Olho da Nuvem",
+        },
+        "gentle_cloud": {
+            "en": "Gentle Cloud",
+            "pt": "Nuvem Gentil",
+        },
+        "undulating_sun_cloud": {
+            "en": "Undulating Sun Cloud",
+            "pt": "Nuvem Solar Ondulante",
+        },
+        "release_from_the_seal": {
+            "en": "Release from the Seal",
+            "pt": "Libertar do Selo",
+        },
+        "beholding_in_silence": {
+            "en": "Beholding in Silence",
+            "pt": "Contemplando em Silêncio",
+        },
+        "flowing_clouds": {
+            "en": "Flowing Clouds",
+            "pt": "Nuvens Fluentes",
+        },
+        "swaying_clouds": {
+            "en": "Swaying Clouds",
+            "pt": "Nuvens Bamboleantes",
+        },
+        "the_sealed_ultimate_power": {
+            "en": "The Sealed Ultimate Power",
+            "pt": "O Poder Selado Definitivo",
+        },
+        "cover_the_sun": {
+            "en": "Cover the Sun",
+            "pt": "Cubra o Sol",
+        },
+        "cloudian": {
+            "en": "Cloudian",
+            "pt": "Cloudian",
+        },
+    },
     "america_uchimura": {
         "stolen_strategy": {
             "en": "Stolen Strategy",
