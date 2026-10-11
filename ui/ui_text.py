@@ -272,7 +272,6 @@ ui_text = {
         "abidos_the_third": "Abidos the Third",
         "atticus_rhodes": "Atticus Rhodes",
         "sartorius_kumar": "Sartorius Kumar",
-        "alien_of_light": "Alien of Light",
         "lorenzo": "Lorenzo",
         "rose": "Rose",
         "sarina": "Sarina",
@@ -343,6 +342,7 @@ ui_text = {
         "vivian_wong": "Vivian Wong",
         "leon_von_schroeder": "Leon von Schroeder",
         "zigfried_von_schroeder": "Zigfried von Schroeder",
+        "alien_of_light": "Alien of Light",
 },
     "pt": {
         #================================
@@ -619,7 +619,6 @@ ui_text = {
         "abidos_the_third": "Abidos, o Terceiro",
         "atticus_rhodes": "Atticus Rhodes",
         "sartorius_kumar": "Sartorius Kumar",
-        "alien_of_light": "Alien of Light",
         "lorenzo": "Lorenzo",
         "rose": "Rose",
         "sarina": "Sarina",
@@ -690,6 +689,7 @@ ui_text = {
         "vivian_wong": "Vivian Wong",
         "leon_von_schroeder": "Leon von Schroeder",
         "zigfried_von_schroeder": "Zigfried von Schroeder",
+        "alien_of_light": "Alien de Luz",
         # ================================
         #  CARDS DETAILS TRANSLATIONS
         # ================================

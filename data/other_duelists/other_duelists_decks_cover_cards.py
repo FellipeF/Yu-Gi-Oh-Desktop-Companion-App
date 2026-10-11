@@ -1,4 +1,7 @@
 OTHER_DUELISTS_DECKS_COVER_CARDS = {
+    "alien_of_light": {
+        "different_dimension": 50939127,
+    },
     "anger_mask": {
         "yu_gi_oh_gx": 91862578,
     },

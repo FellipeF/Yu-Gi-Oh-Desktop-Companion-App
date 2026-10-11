@@ -1,4 +1,10 @@
 OTHER_DUELISTS_DECKS_KEYS = {
+    "alien_of_light": {
+        "different_dimension": {
+            "en": "Different Dimension",
+            "pt": "Dimensão Diferente",
+        },
+    },
     "arthur_hopkins": {
         "past": {
             "en": "Past",
