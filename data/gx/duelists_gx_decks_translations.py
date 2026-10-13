@@ -317,6 +317,64 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Nascimento do Governante Sombrio",
         },
     },
+    "camula": {
+        "immortal_lady": {
+            "en": "Immortal Lady",
+            "pt": "Dama Imortal",
+        },
+        "eternal_banquet": {
+            "en": "Eternal Banquet",
+            "pt": "Banquete Eterno",
+        },
+        "immortal_ones": {
+            "en": "Immortal Ones",
+            "pt": "Imortais",
+        },
+        "our_ideal_city": {
+            "en": "Our Ideal City",
+            "pt": "Nossa Cidade Ideal",
+        },
+        "our_ideal_castle": {
+            "en": "Our Ideal Castle",
+            "pt": "Nosso Castelo Ideal",
+        },
+        "our_ideal_kingdom": {
+            "en": "Our Ideal Kingdom",
+            "pt": "Nosso Reino Ideal",
+        },
+        "our_ideal_world": {
+            "en": "Our Ideal World",
+            "pt": "Nosso Mundo Ideal",
+        },
+        "those_who_crawl_into_the_night": {
+            "en": "Those Who Crawl Into The Night",
+            "pt": "Aqueles Que Rastejam Noite Adentro",
+        },
+        "those_who_dance_into_the_night": {
+            "en": "Those Who Dance Into The Night",
+            "pt": "Aqueles Que Dançam Noite Adentro",
+        },
+        "those_who_control_the_night": {
+            "en": "Those Who Control The Night",
+            "pt": "Aqueles Que Controlam A Noite",
+        },
+        "vampire_kingdom": {
+            "en": "Vampire Kingdom",
+            "pt": "Reino Vampiro",
+        },
+        "vampire_kingdom_2": {
+            "en": "Vampire Kingdom (2)",
+            "pt": "Reino Vampiro (2)",
+        },
+        "shadow_of_the_vampire": {
+            "en": "Shadow of the Vampire",
+            "pt": "Sombra do Vampiro",
+        },
+        "shadow_of_the_vampire_2": {
+            "en": "Shadow of the Vampire (2)",
+            "pt": "Sombra do Vampiro (2)",
+        },
+    },
     "jasmine": {
         "female_warrior": {
             "en": "Female Warrior",

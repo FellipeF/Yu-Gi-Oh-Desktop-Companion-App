@@ -3,6 +3,7 @@ from data.gx.decks.adrian_gecko import ADRIAN_GECKO_DECKS
 from data.gx.decks.aster_phoenix import ASTER_PHOENIX_DECKS
 from data.gx.decks.america_uchimura import AMERICA_UCHIMURA_DECKS
 from data.gx.decks.beauregard import BEAUREGARD_DECKS
+from data.gx.decks.camula import CAMULA_DECKS
 from data.gx.decks.jasmine import JASMINE_DECKS
 from data.gx.decks.jean_louis_bonaparte import JEAN_LOUIS_BONAPARTE_DECKS
 from data.gx.decks.jim_crocodile_cook import JIM_CROCODILE_COOK_DECKS
@@ -40,6 +41,7 @@ LIST_OF_DECKS_GX = {
     "trueman": TRUEMAN_DECKS,
     "abidos_the_third": ABIDOS_THE_THIRD_DECKS,
     "adrian_gecko": ADRIAN_GECKO_DECKS,
+    "camula": CAMULA_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_GX"]
