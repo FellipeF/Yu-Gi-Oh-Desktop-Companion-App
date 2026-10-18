@@ -1015,6 +1015,52 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Oceano Mais Forte",
         },
     },
+    "thelonious_viper": {
+        "venomous_reptiles": {
+            "en": "Venomous Reptiles",
+            "pt": "Répteis Peçonhentos",
+        },
+        "invasion_of_the_worms": {
+            "en": "Invasion of the Worms",
+            "pt": "Invasão dos Vermes",
+        },
+        "snake_impaction": {
+            "en": "Snake Impaction",
+            "pt": "Impactação Cobra",
+        },
+        "snake_bite": {
+            "en": "Snake Bite",
+            "pt": "Mordida de Cobra",
+        },
+        "the_final_battle": {
+            "en": "The Final Battle",
+            "pt": "A Batalha Final",
+        },
+        "snake_abundance": {
+            "en": "Snake Abundance",
+            "pt": "Abundância Cobra",
+        },
+        "venom_pool": {
+            "en": "Venom Pool",
+            "pt": "Piscina Peçonha",
+        },
+        "venom_swamp": {
+            "en": "Venom Swamp",
+            "pt": "Pântano Peçonha",
+        },
+        "venom_lake": {
+            "en": "Venom Lake",
+            "pt": "Lago Peçonha",
+        },
+        "venon_ocean": {
+            "en": "Venom Ocean",
+            "pt": "Oceano Peçonha",
+        },
+        "parasite_of_light": {
+            "en": "Parasite of Light",
+            "pt": "Parasita de Luz",
+        },
+    },
     "trueman": {
         "dark_archetype": {
             "en": "Dark Archetype",

@@ -20,6 +20,7 @@ DUELISTS_GX = [
     ("abidos_the_third", "images/duelists/gx/abidos_the_third.png", "gx"),
     ("adrian_gecko", "images/duelists/gx/adrian_gecko.png", "gx"),
     ("camula", "images/duelists/gx/camula.png", "gx"),
+    ("thelonious_viper", "images/duelists/gx/thelonious_viper.png", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -47,7 +48,6 @@ DUELISTS_GX = [
     ("t_bone", "images/duelists/duelist_placeholder.png", "gx"),
     ("prince_ojin", "images/duelists/duelist_placeholder.png", "gx"),
     ("yubel", "images/duelists/duelist_placeholder.png", "gx"),
-    ("thelonious_viper", "images/duelists/duelist_placeholder.png", "gx"),
     ("the_supreme_king", "images/duelists/duelist_placeholder.png", "gx"),
     ("zure_knight_of_dark_world", "images/duelists/duelist_placeholder.png", "gx"),
     ("yusuke_fujiwara", "images/duelists/duelist_placeholder.png", "gx"),
