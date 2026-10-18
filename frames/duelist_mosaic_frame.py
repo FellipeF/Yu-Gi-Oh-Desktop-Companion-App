@@ -230,7 +230,7 @@ class DuelistMosaicFrame(tk.Frame):
         frame_width = 210
         frame_height = 240
 
-        img.thumbnail((220, 220),Image.LANCZOS)
+        img.thumbnail((210, 210),Image.LANCZOS)
 
         background = Image.new("RGBA",(frame_width, frame_height),(235, 235, 235, 255))
 
