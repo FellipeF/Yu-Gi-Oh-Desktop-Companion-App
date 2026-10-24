@@ -63,6 +63,11 @@ GX_DECK_COVER_CARDS = {
         "shadow_of_the_vampire": 14212201,
         "shadow_of_the_vampire_2": 94119480,
     },
+    "ishiki_erishi": {
+        "gravekeeper": 25262697,
+        "silent_magic": 70791313,
+        "quiet_circle": 19252988,
+    },
     "jasmine": {
         "female_warrior": 64751286,
         "cause_theyre_cool": 15150365,

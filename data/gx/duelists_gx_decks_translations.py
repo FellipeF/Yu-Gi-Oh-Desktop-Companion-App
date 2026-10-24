@@ -375,6 +375,20 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Sombra do Vampiro (2)",
         },
     },
+    "ishiki_erishi": {
+        "gravekeeper": {
+            "en": "Gravekeeper",
+            "pt": "Coveiro",
+        },
+        "silent_magic": {
+            "en": "Silent Magic",
+            "pt": "Magia Silenciosa",
+        },
+        "quiet_circle": {
+            "en": "Quiet Circle",
+            "pt": "Círculo Quieto",
+        }
+    },
     "jasmine": {
         "female_warrior": {
             "en": "Female Warrior",
