@@ -77,7 +77,6 @@ DUELISTS_GX = [
     ("lucien_grimley", "images/duelists/duelist_placeholder.png", "gx"),
     ("shido_gecko", "images/duelists/duelist_placeholder.png", "gx"),
     ("tom", "images/duelists/duelist_placeholder.png", "gx"),
-    ("osamu", "images/duelists/duelist_placeholder.png", "gx"),
     ("makoto_inotsume", "images/duelists/duelist_placeholder.png", "gx"),
     ("daigo_sorano", "images/duelists/duelist_placeholder.png", "gx"),
 ]

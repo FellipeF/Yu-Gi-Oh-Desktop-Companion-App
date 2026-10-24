@@ -321,7 +321,6 @@ ui_text = {
         "lucien_grimley": "Lucien Grimley",
         "shido_gecko": "Shido Gecko",
         "tom": "Tom",
-        "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
         "daigo_sorano": "Daigo Sorano",
         # ================================
@@ -666,7 +665,6 @@ ui_text = {
         "lucien_grimley": "Lucien Grimley",
         "shido_gecko": "Shido Gecko",
         "tom": "Tom",
-        "osamu": "Osamu",
         "makoto_inotsume": "Makoto Inotsume",
         "daigo_sorano": "Daigo Sorano",
         # ================================
