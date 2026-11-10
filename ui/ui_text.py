@@ -242,6 +242,7 @@ ui_text = {
         "skull_knight": "Skull Knight",
         "skilled_dark_magician": "Skilled Dark Magician",
         "rainbow_dragon": "Rainbow Dragon",
+        "ojama_trio": "Ojama Trio",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -305,7 +306,6 @@ ui_text = {
         "belowski": "Belowski",
         "reginald_van_howel": "Reginald Van Howel",
         "missy": "Missy",
-        "ojama_trio": "Ojama Trio",
         "neo_spacians": "Neo-Spacians",
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
@@ -586,6 +586,7 @@ ui_text = {
         "skull_knight": "Cavaleiro Caveira",
         "skilled_dark_magician": "Mago Negro Habilidoso",
         "rainbow_dragon": "Dragão Arco-Íris",
+        "ojama_trio": "Trio Ojama",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -649,7 +650,6 @@ ui_text = {
         "belowski": "Belowski",
         "reginald_van_howel": "Reginald Van Howel",
         "missy": "Missy",
-        "ojama_trio": "Ojama Trio",
         "neo_spacians": "Neo-Spacians",
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
