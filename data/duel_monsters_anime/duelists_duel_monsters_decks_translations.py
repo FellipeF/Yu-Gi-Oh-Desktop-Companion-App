@@ -459,7 +459,7 @@ DUELISTS_DECKS_KEYS_DUEL_MONSTERS = {
         },
         "i_hate_magic": {
             "en": "I Hate Magic",
-            "pt": "Eu Odeio Mágica",
+            "pt": "Eu Odeio Magia",
         },
         "a_man_with_dice_as_earrings": {
             "en": "A Man With Dice As Earrings",
