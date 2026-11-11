@@ -249,6 +249,16 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Dilúvio",
         },
     },
+    "ojama_trio": {
+        "battle_of_the_preventers": {
+            "en": "Battle of the Preventers",
+            "pt": "Batalha dos Preventivos",
+        },
+        "ojama_typhoon": {
+            "en": "Ojama Typhoon",
+            "pt": "Tufão Ojama",
+        },
+    },
     "rainbow_dragon": {
         "over_the_rainbow": {
             "en": "Over the Rainbow",

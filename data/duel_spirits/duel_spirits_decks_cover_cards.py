@@ -91,6 +91,10 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
     "maiden_of_the_aqua": {
         "deluge": 17214465,
     },
+    "ojama_trio": {
+        "battle_of_the_preventers": 29843091,
+        "ojama_typhoon": 19613556,
+    },
     "rainbow_dragon": {
         "over_the_rainbow": 34487429,
     },
