@@ -22,6 +22,7 @@ DUELISTS_GX = [
     ("camula", "images/duelists/gx/camula.png", "gx"),
     ("thelonious_viper", "images/duelists/gx/thelonious_viper.png", "gx"),
     ("ishiki_erishi", "images/duelists/gx/ishiki_erishi.png", "gx"),
+    ("mindy", "images/duelists/gx/mindy.png", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -54,7 +55,6 @@ DUELISTS_GX = [
     ("yusuke_fujiwara", "images/duelists/duelist_placeholder.png", "gx"),
     ("nightshroud", "images/duelists/duelist_placeholder.png", "gx"),
     ("fonda_fontaine", "images/duelists/duelist_placeholder.png", "gx"),
-    ("mindy", "images/duelists/duelist_placeholder.png", "gx"),
     ("sartyr", "images/duelists/duelist_placeholder.png", "gx"),
     ("raizou_mototani", "images/duelists/duelist_placeholder.png", "gx"),
     ("harrington_rosewood", "images/duelists/duelist_placeholder.png", "gx"),

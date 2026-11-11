@@ -781,6 +781,80 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "A Vinda de Exodia",
         },
     },
+    "mindy": {
+        "beatdown_male_monsters": {
+            "en": "Beatdown Male Monsters",
+            "pt": "Surra de Monstros Masculinos",
+        },
+        "so_pretty": {
+            "en": "So Pretty",
+            "pt": "Tão Bonitos",
+        },
+        "my_pretty_deck": {
+            "en": "My Pretty Deck",
+            "pt": "Meu Deck Bonito",
+        },
+        "looking_good": {
+            "en": "Looking Good!",
+            "pt": "Parece Bom!",
+        },
+        "hot_dude": {
+            "en": "Hot Dude!",
+            "pt": "Cara Gostoso!",
+        },
+        "totally_hot_dude": {
+            "en": "Totally Hot Dude!",
+            "pt": "Cara Totalmente Gostoso!",
+        },
+        "mark_of_defeat": {
+            "en": "Mark of Defeat",
+            "pt": "Marca da Derrota",
+        },
+        "wound_of_defeat": {
+            "en": "Wound of Defeat",
+            "pt": "Ferida da Derrota",
+        },
+        "plague_of_defeat": {
+            "en": "Plague of Defeat",
+            "pt": "Praga da Derrota",
+        },
+        "rescue_alexis": {
+            "en": "Rescue Alexis",
+            "pt": "Resgate Alexis",
+        },
+        "hunks_of_justice": {
+            "en": "Hunks of Justice",
+            "pt": "Garanhões da Justiça",
+        },
+        "wiggling_dark_snake": {
+            "en": "Wiggling Dark Snake",
+            "pt": "Cobra Negra Balançante",
+        },
+        "slithering_dark_snake": {
+            "en": "Slithering Dark Snake",
+            "pt": "Cobra Negra Rastejante",
+        },
+        "constricting_dark_snake": {
+            "en": "Constricting Dark Snake",
+            "pt": "Cobra Negra Constritora",
+        },
+        "brooding_dark_snake": {
+            "en": "Brooding Dark Snake",
+            "pt": "Cobra Negra Ruminante",
+        },
+        "atlantean_strong_man": {
+            "en": "Atlantean Strong Man",
+            "pt": "Homem Atlante Forte",
+        },
+        "atlantean_title_holder": {
+            "en": "Atlantean Title-Holder",
+            "pt": "Atlante Detentor do Título",
+        },
+        "atlantean_champion": {
+            "en": "Atlantean Champion",
+            "pt": "Campeão Atlante",
+        },
+    },
     "pierre_the_gambler": {
         "coin_toss": {
             "en": "Coin Toss",
