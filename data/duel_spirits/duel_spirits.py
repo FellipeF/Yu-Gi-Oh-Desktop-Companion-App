@@ -24,4 +24,5 @@ DUEL_SPIRITS = [
     ("skilled_dark_magician", "images/duelists/duel_spirits/skilled_dark_magician.png", None),
     ("rainbow_dragon", "images/duelists/duel_spirits/rainbow_dragon.png", None),
     ("ojama_trio", "images/duelists/duel_spirits/ojama_trio.png", None),
+    ("neo_spacian_air_hummingbird", "images/duelists/duel_spirits/neo_spacian_air_hummingbird.png", None),
 ]

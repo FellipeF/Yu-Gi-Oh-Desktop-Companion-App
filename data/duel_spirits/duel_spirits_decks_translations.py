@@ -249,6 +249,12 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Dilúvio",
         },
     },
+    "neo_spacian_air_hummingbird": {
+        "humming_healing": {
+            "en": "Humming Healing",
+            "pt": "Cura do Beija-Flor"
+        },
+    },
     "ojama_trio": {
         "battle_of_the_preventers": {
             "en": "Battle of the Preventers",

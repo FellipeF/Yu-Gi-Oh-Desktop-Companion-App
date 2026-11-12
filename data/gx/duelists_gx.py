@@ -63,8 +63,6 @@ DUELISTS_GX = [
     ("belowski", "images/duelists/duelist_placeholder.png", "gx"),
     ("reginald_van_howel", "images/duelists/duelist_placeholder.png", "gx"),
     ("missy", "images/duelists/duelist_placeholder.png", "gx"),
-    ("neo_spacians", "images/duelists/duelist_placeholder.png", "gx"),
-    ("neo_spacian_air_hummingbird", "images/duelists/duelist_placeholder.png", "gx"),
     ("neo_spacian_grand_mole", "images/duelists/duelist_placeholder.png", "gx"),
     ("neo_spacian_dark_panther", "images/duelists/duelist_placeholder.png", "gx"),
     ("sky_scout", "images/duelists/duelist_placeholder.png", "gx"),

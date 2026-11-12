@@ -243,6 +243,7 @@ ui_text = {
         "skilled_dark_magician": "Skilled Dark Magician",
         "rainbow_dragon": "Rainbow Dragon",
         "ojama_trio": "Ojama Trio",
+        "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -306,8 +307,6 @@ ui_text = {
         "belowski": "Belowski",
         "reginald_van_howel": "Reginald Van Howel",
         "missy": "Missy",
-        "neo_spacians": "Neo-Spacians",
-        "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "sky_scout": "Sky Scout",
@@ -587,6 +586,7 @@ ui_text = {
         "skilled_dark_magician": "Mago Negro Habilidoso",
         "rainbow_dragon": "Dragão Arco-Íris",
         "ojama_trio": "Trio Ojama",
+        "neo_spacian_air_hummingbird": "Beija-flor do Ar Neoespacial",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -650,8 +650,6 @@ ui_text = {
         "belowski": "Belowski",
         "reginald_van_howel": "Reginald Van Howel",
         "missy": "Missy",
-        "neo_spacians": "Neo-Spacians",
-        "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
         "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "sky_scout": "Sky Scout",

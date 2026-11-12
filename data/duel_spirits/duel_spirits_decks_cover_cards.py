@@ -91,6 +91,9 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
     "maiden_of_the_aqua": {
         "deluge": 17214465,
     },
+    "neo_spacian_air_hummingbird": {
+        "humming_healing": 	11868825,
+    },
     "ojama_trio": {
         "battle_of_the_preventers": 29843091,
         "ojama_typhoon": 19613556,
