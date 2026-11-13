@@ -375,6 +375,100 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Sombra do Vampiro (2)",
         },
     },
+    "chumley_huffington": {
+        "beast": {
+            "en": "Deck",
+            "pt": "Feras",
+        },
+        "ayers_rock_sunrise": {
+            "en": "Ayers Rock Sunrise",
+            "pt": "Amanhecer de Uluru",
+        },
+        "ayers_rock_sunrise_2": {
+            "en": "Ayers Rock Sunrise (2)",
+            "pt": "Amanhecer de Uluru (2)",
+        },
+        "sunrise_over_oz": {
+            "en": "Sunrise Over Oz",
+            "pt": "Amanhecer em Oz",
+        },
+        "des_koalas": {
+            "en": "Des Koalas",
+            "pt": "Koalas Des",
+        },
+        "the_fabled": {
+            "en": "The Fabled",
+            "pt": "Os Mitológicos",
+        },
+        "australian": {
+            "en": "Australian",
+            "pt": "Australiano",
+        },
+        "big_oz": {
+            "en": "Big OZ",
+            "pt": "Grande OZ",
+        },
+        "super_oz": {
+            "en": "Super OZ",
+            "pt": "Super OZ",
+        },
+        "forest_dweller": {
+            "en": "Forest Dweller",
+            "pt": "Habitante da Floresta",
+        },
+        "wrath_of_nature": {
+            "en": "Wrath of Nature",
+            "pt": "Fúria da Natureza",
+        },
+        "animal_mayhem": {
+            "en": "Animal Mayhem",
+            "pt": "Desordem Animal",
+        },
+        "beast_tamer": {
+            "en": "Beast Tamer",
+            "pt": "Domador de Feras",
+        },
+        "new_journey": {
+            "en": "New Journey",
+            "pt": "Nova Jornada",
+        },
+        "satsuma_dimension_style": {
+            "en": "Satsuma Dimension Style",
+            "pt": "Estilo Dimensão Satsuma",
+        },
+        "stir_of_nature": {
+            "en": "Stir of Nature",
+            "pt": "Agitação da Natureza",
+        },
+        "oz_dance": {
+            "en": "Oz Dance",
+            "pt": "Dança de Oz",
+        },
+        "oz_zoo": {
+            "en": "Oz Zoo",
+            "pt": "Zoológico de Oz",
+        },
+        "oz_parade": {
+            "en": "Oz Parade",
+            "pt": "Desfile de Oz",
+        },
+        "oz_carnival": {
+            "en": "Oz Carnival",
+            "pt": "Parque de Diversões de Oz",
+        },
+        "trailing_behind_my_dads_back": {
+            "en": "Trailing Behind My Dad's Back",
+            "pt": "Fazendo Trilha Escondido do Meu Pai",
+        },
+        "oz_beast_drama": {
+            "en": "Oz - Beast Drama",
+            "pt": "Oz - Drama de Feras",
+        },
+        "oz_beast_friendship": {
+            "en": "Oz - Beast Friendship",
+            "pt": "Oz - Amizade de Feras",
+        },
+    },
     "ishiki_erishi": {
         "gravekeeper": {
             "en": "Gravekeeper",

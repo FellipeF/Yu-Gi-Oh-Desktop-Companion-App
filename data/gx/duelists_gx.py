@@ -23,6 +23,7 @@ DUELISTS_GX = [
     ("thelonious_viper", "images/duelists/gx/thelonious_viper.png", "gx"),
     ("ishiki_erishi", "images/duelists/gx/ishiki_erishi.png", "gx"),
     ("mindy", "images/duelists/gx/mindy.png", "gx"),
+    ("chumley_huffington", "images/duelists/gx/chumley_huffington.png", "gx"),
     # =========================
     # TODO: Below
     # =========================
@@ -36,7 +37,6 @@ DUELISTS_GX = [
     ("blair_flannigan", "images/duelists/duelist_placeholder.png", "gx"),
     ("pharaoh", "images/duelists/duelist_placeholder.png", "gx"),
     ("sheppard", "images/duelists/duelist_placeholder.png", "gx"),
-    ("chumley_huffington", "images/duelists/duelist_placeholder.png", "gx"),
     ("jesse_anderson", "images/duelists/duelist_placeholder.png", "gx"),
     ("axel_brodie", "images/duelists/duelist_placeholder.png", "gx"),
     ("tania", "images/duelists/duelist_placeholder.png", "gx"),
