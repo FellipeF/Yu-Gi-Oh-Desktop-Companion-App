@@ -36,6 +36,24 @@ class AppUpdater:
         except requests.RequestException:
             return None, None, None, None
 
+    def get_current_release(self):
+        version = self.current_version
+
+        if not version.startswith("v"):
+            version = f"v{version}" #Future-proofing
+
+        url = (f"https://api.github.com/repos/{self.repo}/releases/tags/{version}")
+        try:
+            response = requests.get(url, headers = {"Accept": "application/vnd.github.html+json"}, timeout=5)
+            response.raise_for_status()
+
+            data = response.json()
+
+            return (data.get("tag_name"), data.get("body_html") or data.get("body", ""))
+
+        except requests.RequestException:
+            return None, None
+
     def is_update_available(self) -> Tuple[bool, Optional[str], Optional[str], Optional[str]]:
         latest_version, url, changelog, download_url = self.get_latest_release()
 

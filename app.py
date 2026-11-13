@@ -140,6 +140,9 @@ class App(tk.Tk):
         )
         self.language_menu.pack_forget()
 
+        self.whats_new_button = tk.Button(header, text=self.t("whats_new"), command=self.show_whats_new)
+        self.whats_new_button.pack(side="right", padx=10)
+
         self.docs_button = tk.Button(
             header,
             text=self.t("read_docs"),
@@ -619,6 +622,7 @@ class App(tk.Tk):
         """Calls the refresh_ui in each Frame that switches text to the currently selected language."""
         self.language_label.config(text=self.t("language"))
         self.docs_button.config(text=self.t("read_docs"))
+        self.whats_new_button.config(text=self.t("whats_new"))
 
         for frame in self.frames.values():
             if hasattr(frame, "refresh_ui"):
@@ -709,3 +713,45 @@ class App(tk.Tk):
         self.show_frame(previous_frame)
 
         messagebox.showerror(self.t("error"), f"{self.t('language_change_failed')}\n{error}")
+
+    def show_whats_new(self):
+        self.whats_new_button.config(state="disabled")
+
+        threading.Thread(target=self._load_whats_new_worker, daemon=True).start()
+
+    def _load_whats_new_worker(self):
+        updater = AppUpdater(GITHUB_REPO, CURRENT_VERSION)
+
+        version, changelog = updater.get_current_release()
+
+        self.after(0, lambda: self._display_whats_new(version, changelog))
+
+    def _display_whats_new(self, version, changelog):
+        self.whats_new_button.config(state="normal")
+
+        if not version:
+            messagebox.showinfo(self.t("changelog"), self.t("release_notes_unavailable"))
+
+            return
+
+        modal = tk.Toplevel(self)
+        modal.title(f"{self.t('changelog')} {version}")
+        modal.resizable(False, False)
+
+        self.center_window(modal, 700, 550)
+
+        tk.Label(modal, text=f"{self.t('changelog')} {version}", font=("Arial", 15, "bold")).pack(pady=15)
+
+        buttons_frame = tk.Frame(modal)
+        buttons_frame.pack(side="bottom", fill="x", pady=(5, 15))
+        tk.Button(buttons_frame, text=self.t("close"), command=modal.destroy, width=12).pack()
+
+        html_container = tk.Frame(modal)
+        html_container.pack(side="top", fill="both", expand=True, padx=15, pady=(0, 10))
+        html_frame = HtmlFrame(html_container, messages_enabled=False)
+
+        html_frame.pack(fill="both", expand=True)
+        html_frame.load_html(changelog or "")
+
+        modal.transient(self)
+

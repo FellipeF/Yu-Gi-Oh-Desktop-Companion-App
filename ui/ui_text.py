@@ -19,6 +19,10 @@ ui_text = {
         # ================================
         "read_docs": "Card Consistency File",
         "language": "Language",
+        "whats_new": "What's new",
+        "changelog": "Changelog",
+        "release_notes_unavailable": "Release notes are currently unavaiable",
+        "close": "Close",
         # ================================
         #   HOME FRAME
         # ================================
@@ -361,6 +365,10 @@ ui_text = {
         # ================================
         "read_docs": "Arquivo de Consistência de Cartas",
         "language": "Idioma",
+        "whats_new": "O que há de novo",
+        "changelog": "Notas de atualização",
+        "release_notes_unavailable": "As notas desta versão não estão disponíveis no momento.",
+        "close": "Fechar",
         # ================================
         #   HOME FRAME
         # ================================
