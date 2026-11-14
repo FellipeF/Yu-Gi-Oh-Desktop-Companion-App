@@ -133,6 +133,8 @@ ui_text = {
         #  UI
         # ================================
         "return": "Return",
+        "copy_description": "Copy description",
+        "description_copied": "✓ Copied!",
         "card_details": "Show card details",
         "select_card": "Select a card",
         "spell_card": "Spell card",
@@ -479,6 +481,8 @@ ui_text = {
         #  UI
         # ================================
         "return": "Voltar",
+        "copy_description": "Copiar descrição",
+        "description_copied": "✓ Copiado!",
         "select_card": "Escolha uma carta",
         "card_details": "Mostrar detalhes da carta",
         "spell_card": "Carta Mágica",

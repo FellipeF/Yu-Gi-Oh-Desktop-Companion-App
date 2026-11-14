@@ -37,6 +37,16 @@ class CardDetailsWindow(tk.Toplevel):
         self.description_label = tk.Label(self, wraplength=520, justify="left", anchor="w", font=("Tahoma", 12))
         self.description_label.pack(padx=12, pady=(0, 12), fill="x")
 
+        self.copy_description_button = tk.Button(
+            self,
+            text=self.controller.t("copy_description"),
+            font=("Tahoma", 11),
+            command=self.copy_description,
+            cursor="hand2"
+        )
+
+        self.copy_description_button.pack(anchor="e", padx=12, pady=(0,10))
+
         self.stats_label = tk.Label(self, font=("Arial", 12, "bold"), anchor="e", justify="right")
         self.stats_label.pack(fill="x", padx=12, pady=(0,10))
 
@@ -127,6 +137,7 @@ class CardDetailsWindow(tk.Toplevel):
         self.type_label.config(text=type_line)
 
         self.description_label.config(text=description)
+        self.copy_description_button.config(text=self.controller.t("copy_description"))
 
         stats = self._format_stats(card_type, atk, defense, linkval)
         self.stats_label.config(text=stats)
@@ -170,3 +181,20 @@ class CardDetailsWindow(tk.Toplevel):
         x = (self.winfo_screenwidth() // 2) - (w // 2)
         y = (self.winfo_screenheight() // 2) - (h // 2)
         self.geometry(f"{w}x{h}+{x}+{y}")
+
+    def copy_description(self):
+        description= self.description_label.cget("text")
+        if not description:
+            return
+
+        self.clipboard_clear()
+        self.clipboard_append(description)
+
+        self.copy_description_button.config(text=self.controller.t("description_copied"), state="disabled")
+        self.after(2000, self.restore_copy_button)
+
+    def restore_copy_button(self):
+        if not self.winfo_exists():
+            return
+
+        self.copy_description_button.config(text=self.controller.t("copy_description"), state="normal")
