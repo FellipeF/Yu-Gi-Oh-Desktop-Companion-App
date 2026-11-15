@@ -66,9 +66,6 @@ class CardsFrame(tk.Frame):
         right_frame.grid(row=1, column=1, sticky="n", padx=(10,0))
         right_frame.grid_propagate(False)
 
-        self.preview_title = tk.Label(right_frame, font=("Arial", 13, "bold"))
-        self.preview_title.pack(pady=(0,12))
-
         image_container = tk.Frame(right_frame, width=CARD_WIDTH, height=CARD_HEIGHT)
         image_container.pack(pady=(0,12))
         image_container.pack_propagate(False)
@@ -172,7 +169,6 @@ class CardsFrame(tk.Frame):
 
     def refresh_ui(self):
         self.title_label.config(text=self.controller.t("search_card"))
-        self.preview_title.config(text=self.controller.t("card_details"))
         self.search_bar.placeholder = self.controller.t("search_for_card")
 
         if self.search_bar.placeholder_active:
