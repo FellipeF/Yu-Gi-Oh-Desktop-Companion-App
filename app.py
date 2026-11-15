@@ -124,21 +124,45 @@ class App(tk.Tk):
         header = tk.Frame(self)
         header.pack(fill="x")
 
+        self.left_header = tk.Frame(header)
+        self.left_header.pack(side="left")
+
+        self.home_container = tk.Frame(self.left_header, width=44, height=36)
+        self.home_container.pack(side="left", padx=(4, 2))
+        self.home_container.pack_propagate(False)
+
+        self.back_button = tk.Button(   #TODO: Currently, back button returns to Home Screen, implement properly
+            self.home_container,
+            text="⌂",
+            font=("Segoe UI Symbol", 17),
+            width=2,
+            padx=2,
+            pady=0,
+            cursor="hand2",
+            command=self.go_back,
+            relief="flat",
+            bd=0,
+            highlightthickness=0
+        )
+
         self.language_var = tk.StringVar(value=self.current_language)
 
         # Preparing language menu here, but it won't be shown yet to prevent user from switching language when data is
         # being downloaded
-        self.language_label = tk.Label(header)
+        self.language_frame = tk.Frame(self.left_header, bd=0, padx=4, pady=0)
+        self.language_label = tk.Label(self.language_frame, font=("Segoe UI", 10), text=self.t("language"))
         self.language_label.pack_forget()
 
         self.language_menu = tk.OptionMenu(
-            header,
+            self.language_frame,
             self.language_var,
             "en",
             "pt",
             command=self.change_language
         )
         self.language_menu.pack_forget()
+
+        self.language_menu.config(font=("Segoe UI", 10), width=3, relief="flat", highlightthickness=0, bd=0, indicatoron=True)
 
         self.whats_new_button = tk.Button(header, text=self.t("whats_new"), command=self.show_whats_new)
         self.whats_new_button.pack(side="right", padx=10)
@@ -153,6 +177,20 @@ class App(tk.Tk):
     def open_docs(self):
         docs_path = resource_path("docs/CCF.html")
         webbrowser.open(Path(docs_path).resolve().as_uri())
+
+    def go_back(self):
+        if self.current_frame_name in ("HomeFrame", "LoadingFrame"):
+            return
+
+        self.show_frame("HomeFrame")
+
+    def update_back_button(self):
+        if self.current_frame_name in ("HomeFrame", "LoadingFrame"):
+            self.back_button.pack_forget()
+            return
+
+        if not self.back_button.winfo_manager():
+            self.back_button.pack(fill="both", expand=True)
 
     def create_main_container(self):
         self.container = tk.Frame(self)
@@ -237,8 +275,9 @@ class App(tk.Tk):
 
         self.update_ui_language()
 
-        self.language_label.pack(side="left", padx=5)
+        self.language_label.pack(side="left", padx=(0, 5))
         self.language_menu.pack(side = "left")
+        self.language_frame.pack(side="left", padx=(2,0), pady=3)
 
         self.show_frame("HomeFrame")
 
@@ -639,6 +678,8 @@ class App(tk.Tk):
         self.current_frame_name = name
         frame = self.frames[name]
         frame.tkraise()
+
+        self.update_back_button()
 
     def change_language(self, lang):
         """Changes language and populates the cards in that language. _should_skip_cards_seed inside seed_cards already
