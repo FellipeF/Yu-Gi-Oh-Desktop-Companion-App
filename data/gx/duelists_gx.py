@@ -24,13 +24,13 @@ DUELISTS_GX = [
     ("ishiki_erishi", "images/duelists/gx/ishiki_erishi.png", "gx"),
     ("mindy", "images/duelists/gx/mindy.png", "gx"),
     ("chumley_huffington", "images/duelists/gx/chumley_huffington.png", "gx"),
+    ("chazz_princeton", "images/duelists/gx/chazz_princeton.png", "gx"),
     # =========================
     # TODO: Below
     # =========================
     ("jaden_yuki", "images/duelists/duelist_placeholder.png", "gx"),
     ("syrus_truesdale", "images/duelists/duelist_placeholder.png", "gx"),
     ("alexis_rhodes", "images/duelists/duelist_placeholder.png", "gx"),
-    ("chazz_princeton", "images/duelists/duelist_placeholder.png", "gx"),
     ("bastion_misawa", "images/duelists/duelist_placeholder.png", "gx"),
     ("zane_truesdale", "images/duelists/duelist_placeholder.png", "gx"),
     ("vellian_crowler", "images/duelists/duelist_placeholder.png", "gx"),

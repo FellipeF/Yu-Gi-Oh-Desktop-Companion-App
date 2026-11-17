@@ -4,6 +4,7 @@ from data.gx.decks.aster_phoenix import ASTER_PHOENIX_DECKS
 from data.gx.decks.america_uchimura import AMERICA_UCHIMURA_DECKS
 from data.gx.decks.beauregard import BEAUREGARD_DECKS
 from data.gx.decks.camula import CAMULA_DECKS
+from data.gx.decks.chazz_princeton import CHAZZ_PRINCETON_DECKS
 from data.gx.decks.chumley_huffington import CHUMLEY_HUFFINGTON_DECKS
 from data.gx.decks.ishiki_erishi import ISHIKI_ERISHI_DECKS
 from data.gx.decks.jasmine import JASMINE_DECKS
@@ -50,6 +51,7 @@ LIST_OF_DECKS_GX = {
     "ishiki_erishi": ISHIKI_ERISHI_DECKS,
     "mindy": MINDY_DECKS,
     "chumley_huffington": CHUMLEY_HUFFINGTON_DECKS,
+    "chazz_princeton": CHAZZ_PRINCETON_DECKS,
 }
 
 __all__ = ["LIST_OF_DECKS_GX"]

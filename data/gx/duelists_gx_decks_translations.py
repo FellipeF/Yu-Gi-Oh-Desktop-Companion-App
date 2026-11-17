@@ -375,6 +375,324 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Sombra do Vampiro (2)",
         },
     },
+    "chazz_princeton": {
+        "hell": {
+            "en": "Hell",
+            "pt": "Inferno",
+        },
+        "vwxyz": {
+            "en": "VWXYZ",
+            "pt": "VWXYZ",
+        },
+        "north_academy": {
+            "en": "North Academy",
+            "pt": "Academia do Norte",
+        },
+        "armed_dragon": {
+            "en": "Armed Dragon",
+            "pt": "Dragão Armado",
+        },
+        "armed_dragon_2": {
+            "en": "Armed Dragon (2)",
+            "pt": "Dragão Armado (2)",
+        },
+        "zero_attack": {
+            "en": "0-ATK",
+            "pt": "ATK-0",
+        },
+        "ojama_armed_dragon": {
+            "en": "Ojama/Armed Dragon",
+            "pt": "Ojama/Dragão Armado",
+        },
+        "love": {
+            "en": "Love",
+            "pt": "Amor",
+        },
+        "reject_well": {
+            "en": "Reject Well",
+            "pt": "Poço da Rejeição",
+        },
+        "society_of_light": {
+            "en": "Society of Light",
+            "pt": "Sociedade da Luz",
+        },
+        "white_knight": {
+            "en": "White Knight",
+            "pt": "Cavaleiro Branco",
+        },
+        "dimension_world": {
+            "en": "Dimension World",
+            "pt": "Mundo Dimensional",
+        },
+        "darkness": {
+            "en": "Darkness",
+            "pt": "Escuridão",
+        },
+        "fiend_zombie": {
+            "en": "Fiend/Zombie",
+            "pt": "Demônio/Zumbi",
+        },
+        "chazz_it_up": {
+            "en": "Chazz It Up!",
+            "pt": "DeiChazz Comigo!",
+        },
+        "chazz_it_up_2": {
+            "en": "Chazz It Up! (2)",
+            "pt": "DeiChazz Comigo! (2)",
+        },
+        "chazz_it_up_3": {
+            "en": "Chazz It Up! (3)",
+            "pt": "DeiChazz Comigo! (3)",
+        },
+        "chazz_it_up_4": {
+            "en": "Chazz It Up! (4)",
+            "pt": "DeiChazz Comigo! (4)",
+        },
+        "chazz_princeton": {
+            "en": "Chazz Princeton",
+            "pt": "Chazz Princeton",
+        },
+        "ojama_power": {
+            "en": "Ojama Power",
+            "pt": "Poder Ojama",
+        },
+        "ojama_power_plus": {
+            "en": "Ojama Power Plus",
+            "pt": "Poder Ojama Aumentado",
+        },
+        "armed_dragon_plus": {
+            "en": "Armed Dragon Plus",
+            "pt": "Dragão Armado Aumentado",
+        },
+        "you_cant_beat_me": {
+            "en": "You Can't Beat Me",
+            "pt": "Você Não Pode Me Vencer",
+        },
+        "cuz_im_the_chazz": {
+            "en": "Cuz I'm the Chazz",
+            "pt": "Porque eu sou o Chazz",
+        },
+        "you_know_the_cheer": {
+            "en": "You Know the Cheer",
+            "pt": "Você Conhece a Alegria",
+        },
+        "mechanical_invasion": {
+            "en": "Mechanical Invasion",
+            "pt": "Invasão Mecânica",
+        },
+        "armed_ojama": {
+            "en": "Armed Ojama",
+            "pt": "Ojama Armado",
+        },
+        "chazz_it_up_upercase": {
+            "en": "CHAZZ IT UP!",
+            "pt": "DEICHAZZ COMIGO!",
+        },
+        "inferno_carnage": {
+            "en": "Inferno Carnage",
+            "pt": "Carnificina Infernal",
+        },
+        "absolute_incineration": {
+            "en": "Absolute Incineration",
+            "pt": "Incineração Absoluta",
+        },
+        "unions_combine": {
+            "en": "Unions Combine!",
+            "pt": "Uniões, Combinem!",
+        },
+        "vwxyz_or_bust": {
+            "en": "VWXYZ or Bust",
+            "pt": "VWXYZ ou Derrota",
+        },
+        "armed_dragon_rampage": {
+            "en": "Armed Dragon Rampage",
+            "pt": "Fúria do Dragão Armado",
+        },
+        "armed_banisher": {
+            "en": "Armed Banisher",
+            "pt": "Banidor Armado",
+        },
+        "chthonian_alliance": {
+            "en": "Chthonian Alliance",
+            "pt": "Aliança do Inferno",
+        },
+        "chthonian_alliance_2": {
+            "en": "Chthonian Alliance (2)",
+            "pt": "Aliança do Inferno (2)",
+        },
+        "the_white_light": {
+            "en": "The White Light",
+            "pt": "A Luz Branca",
+        },
+        "the_ojama_magic": {
+            "en": "The Ojama Magic",
+            "pt": "A Magia Ojama",
+        },
+        "xyz_ojama": {
+            "en": "XYZ Ojama",
+            "pt": "Ojama XYZ",
+        },
+        "last_level_of_the_dragon": {
+            "en": "Last Level of the Dragon",
+            "pt": "Último Nível do Dragão",
+        },
+        "ojama_trio": {
+            "en": "Ojama Trio",
+            "pt": "Trio Ojama",
+        },
+        "dragon_lv": {
+            "en": "Dragon LV",
+            "pt": "Dragão LV",
+        },
+        "underworld_corpse": {
+            "en": "Underworld Corpse",
+            "pt": "Corpo do Submundo",
+        },
+        "xyz_formation": {
+            "en": "XYZ Formation",
+            "pt": "Formação XYZ",
+        },
+        "rough_armed_dragon": {
+            "en": "Rough Armed Dragon",
+            "pt": "Dragão Armado Áspero",
+        },
+        "loser_of_losers": {
+            "en": "Loser of Losers",
+            "pt": "Perdedor dos Perdedores",
+        },
+        "loser_of_losers_2": {
+            "en": "Loser of Losers (2)",
+            "pt": "Perdedor dos Perdedores (2)",
+        },
+        "furious_armed_dragon": {
+            "en": "Furious Armed Dragon",
+            "pt": "Dragão Armado Furioso",
+        },
+        "armed_dragon_howl": {
+            "en": "Armed Dragon Howl",
+            "pt": "Rugido do Dragão Armado",
+        },
+        "armed_dragon_howl_2": {
+            "en": "Armed Dragon Howl (2)",
+            "pt": "Rugido do Dragão Armado (2)",
+        },
+        "black_flame_dragon": {
+            "en": "Black Flame Dragon",
+            "pt": "Dragão da Chama Negra",
+        },
+        "quintuple_combine_vwxyz": {
+            "en": "Quintuple Combine VWXYZ",
+            "pt": "Combinação VWXYZ Quíntupla",
+        },
+        "the_weak_and_strong": {
+            "en": "The Weak and Strong",
+            "pt": "Os Fracos e os Fortes",
+        },
+        "ressurected_dragon": {
+            "en": "Ressurrected Dragon",
+            "pt": "Dragão Ressuscitado",
+        },
+        "ending_interference": {
+            "en": "Ending Interference",
+            "pt": "Inteferência Finalizadora",
+        },
+        "persistent_pester": {
+            "en": "Persistent Pester",
+            "pt": "Incomodador Persistente",
+        },
+        "awakening_of_the_beasts": {
+            "en": "Awakening of the Beasts",
+            "pt": "Despertar das Feras",
+        },
+        "go_vwxyz": {
+            "en": "Go, VWXYZ!",
+            "pt": "Vão, VWXYZ!",
+        },
+        "go_ojama": {
+            "en": "Go, Ojama!",
+            "pt": "Vão, Ojamas!",
+        },
+        "romantic_chazz": {
+            "en": "Romantic Chazz",
+            "pt": "Chazz Romântico",
+        },
+        "white_chazz": {
+            "en": "White Chazz",
+            "pt": "Chazz Branco",
+        },
+        "white_chazz_rev": {
+            "en": "White Chazz Rev",
+            "pt": "Chazz Branco Rev",
+        },
+        "love_chazz": {
+            "en": "Love Chazz",
+            "pt": "Chazz Amoroso",
+        },
+        "dreamy_chazz": {
+            "en": "Dreamy Chazz",
+            "pt": "Chazz Sonhador",
+        },
+        "sad_chazz": {
+            "en": "Sad Chazz",
+            "pt": "Chazz Tristonho",
+        },
+        "ill_make_it_work": {
+            "en": "I'll Make It Work",
+            "pt": "Farei Dar Certo",
+        },
+        "hungry_heart": {
+            "en": "Hungry Heart",
+            "pt": "Coração Faminto",
+        },
+        "thoroughbred_fellows": {
+            "en": "Thoroughbred Fellows",
+            "pt": "Companheiros Puros-Sangues",
+        },
+        "thunder_love": {
+            "en": "Thunder Love!",
+            "pt": "Amor do Trovão!",
+        },
+        "only_one": {
+            "en": "Only One",
+            "pt": "O Único",
+        },
+        "worries_of_the_strong": {
+            "en": "Worries of the Strong",
+            "pt": "Preocupações dos Fortes",
+        },
+        "pride_of_the_elite": {
+            "en": "Pride of the Elite",
+            "pt": "Orgulho da Elite",
+        },
+        "last_winners": {
+            "en": "Last Winners",
+            "pt": "Últimos Vencedores",
+        },
+        "thunder_and_his_funny_companions": {
+            "en": "Thunder and his Funny Companions",
+            "pt": "Trovão e seus Companheiros Engraçados",
+        },
+        "the_reason_for_zero_attack": {
+            "en": "The Reason For 0 ATK",
+            "pt": "O Motivo para ATK 0",
+        },
+        "thunder_union_formation": {
+            "en": "Thunder Union Formation",
+            "pt": "Formação União Trovão",
+        },
+        "the_threat_of_armed_dragon": {
+            "en": "The Threat of Armed Dragon",
+            "pt": "A Ameaça do Dragão Armado",
+        },
+        "deep_down_grit": {
+            "en": "Deep Down Grit",
+            "pt": "Determinação Profunda",
+        },
+        "black_artifice": {
+            "en": "Black Artifice",
+            "pt": "Artifício Sombrio",
+        },
+    },
     "chumley_huffington": {
         "beast": {
             "en": "Deck",
