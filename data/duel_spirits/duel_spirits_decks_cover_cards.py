@@ -94,6 +94,9 @@ DUEL_SPIRITS_DECKS_COVER_CARDS = {
     "neo_spacian_air_hummingbird": {
         "humming_healing": 	11868825,
     },
+    "neo_spacian_grand_mole": {
+        "under_1000":  87350908,
+    },
     "ojama_trio": {
         "battle_of_the_preventers": 29843091,
         "ojama_typhoon": 19613556,

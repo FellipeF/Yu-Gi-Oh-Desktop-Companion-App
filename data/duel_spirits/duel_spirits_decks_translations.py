@@ -255,6 +255,12 @@ DUEL_SPIRITS_DECKS_KEYS = {
             "pt": "Cura do Beija-Flor"
         },
     },
+    "neo_spacian_grand_mole": {
+        "under_1000": {
+            "en": "Under 1000",
+            "pt": "Abaixo de 1000",
+        },
+    },
     "ojama_trio": {
         "battle_of_the_preventers": {
             "en": "Battle of the Preventers",

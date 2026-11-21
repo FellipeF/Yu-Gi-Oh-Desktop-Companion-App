@@ -250,6 +250,7 @@ ui_text = {
         "rainbow_dragon": "Rainbow Dragon",
         "ojama_trio": "Ojama Trio",
         "neo_spacian_air_hummingbird": "Neo-Spacian Air Hummingbird",
+        "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -313,7 +314,6 @@ ui_text = {
         "belowski": "Belowski",
         "reginald_van_howel": "Reginald Van Howel",
         "missy": "Missy",
-        "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "sky_scout": "Sky Scout",
         "franz": "Franz",
@@ -599,6 +599,7 @@ ui_text = {
         "rainbow_dragon": "Dragão Arco-Íris",
         "ojama_trio": "Trio Ojama",
         "neo_spacian_air_hummingbird": "Beija-flor do Ar Neoespacial",
+        "neo_spacian_grand_mole": "Grande Toupeira Neoespacial",
         # ================================
         #  DUELISTS - GX
         # ================================
@@ -662,7 +663,6 @@ ui_text = {
         "belowski": "Belowski",
         "reginald_van_howel": "Reginald Van Howel",
         "missy": "Missy",
-        "neo_spacian_grand_mole": "Neo-Spacian Grand Mole",
         "neo_spacian_dark_panther": "Neo-Spacian Dark Panther",
         "sky_scout": "Sky Scout",
         "franz": "Franz",

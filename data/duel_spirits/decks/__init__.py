@@ -16,6 +16,7 @@ from data.duel_spirits.decks.kozaky import KOZAKY_DECKS
 from data.duel_spirits.decks.kuriboh import KURIBOH_DECKS
 from data.duel_spirits.decks.maiden_of_the_aqua import MAIDEN_OF_THE_AQUA_DECK
 from data.duel_spirits.decks.neo_spacian_air_hummingbird import NEO_SPACIAN_AIR_HUMMINGBIRD_DECK
+from data.duel_spirits.decks.neo_spacian_grand_mole import NEO_SPACIAN_GRAND_MOLE_DECK
 from data.duel_spirits.decks.ojama_trio import OJAMA_TRIO_DECKS
 from data.duel_spirits.decks.rainbow_dragon import RAINBOW_DRAGON_DECK
 from data.duel_spirits.decks.red_eyes_black_dragon import RED_EYES_BLACK_DRAGON_DECKS
@@ -48,6 +49,7 @@ LIST_OF_DECKS_DUEL_SPIRITS = {
     "rainbow_dragon": RAINBOW_DRAGON_DECK,
     "ojama_trio": OJAMA_TRIO_DECKS,
     "neo_spacian_air_hummingbird": NEO_SPACIAN_AIR_HUMMINGBIRD_DECK,
+    "neo_spacian_grand_mole": NEO_SPACIAN_GRAND_MOLE_DECK,
 }
 
 __all__ = ["LIST_OF_DECKS_DUEL_SPIRITS"]

@@ -30,7 +30,7 @@ DUELISTS_DUEL_MONSTERS = [
     ("espa_roba", "images/duelists/duel_monsters_anime/espa_roba.png", "duel_monsters_anime"),
     ("yami_bakura", "images/duelists/duel_monsters_anime/yami_bakura.png", "duel_monsters_anime"),
     ("lumis_and_umbra", "images/duelists/duel_monsters_anime/lumis_and_umbra.png", "duel_monsters_anime"),
-    ("marik_ishtar", "images/duelists/duel_monsters_anime/marik_ishtar.webp", "duel_monsters_anime"),
+    ("marik_ishtar", "images/duelists/duel_monsters_anime/marik_ishtar.png", "duel_monsters_anime"),
     ("odion", "images/duelists/duel_monsters_anime/odion.webp", "duel_monsters_anime"),
     ("paradox_brothers", "images/duelists/duel_monsters_anime/paradox_brothers.png", "duel_monsters_anime"),
     ("para", "images/duelists/duel_monsters_anime/para.webp", "duel_monsters_anime"),
