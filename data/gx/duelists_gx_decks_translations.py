@@ -1509,6 +1509,68 @@ DUELISTS_DECKS_KEYS_GX = {
             "pt": "Selar Habilidade",
         },
     },
+    "tania": {
+        "deck_of_knowledge": {
+            "en": "Deck of Knowledge",
+            "pt": "Deck do Conhecimento",
+        },
+        "deck_of_courage": {
+            "en": "Deck of Courage",
+            "pt": "Deck da Coragem",
+        },
+        "amazoness_warriors": {
+            "en": "Amazoness Warriors",
+            "pt": "Guerreiras Amazoness",
+        },
+        "amazoness_warriors_2": {
+            "en": "Amazoness Warriors (2)",
+            "pt": "Guerreiras Amazoness (2)",
+        },
+        "the_brave_amazoness": {
+            "en": "The Brave Amazoness",
+            "pt": "A Amazoness Valente",
+        },
+        "proud_female_warriors": {
+            "en": "Proud Female Warriors",
+            "pt": "Orgulhosas Guerreiras",
+        },
+        "lady_warriors": {
+            "en": "Lady Warriors",
+            "pt": "Damas Guerreiras",
+        },
+        "fist_break": {
+            "en": "Fist Break",
+            "pt": "Fratura do Punho",
+        },
+        "pride_of_the_amazon": {
+            "en": "Pride of the Amazon",
+            "pt": "Orgulho da Amazônia",
+        },
+        "first_amazoness_military_unit": {
+            "en": "First Amazoness Military Unit",
+            "pt": "Primeira Unidade Militar Amazoness",
+        },
+        "second_amazoness_military_unit": {
+            "en": "Second Amazoness Military Unit",
+            "pt": "Segunda Unidade Militar Amazoness",
+        },
+        "third_amazoness_military_unit": {
+            "en": "Third Amazoness Military Unit",
+            "pt": "Terceira Unidade Militar Amazoness",
+        },
+        "special_amazoness_military_unit": {
+            "en": "Special Amazoness Military Unit",
+            "pt": "Unidade Militar Especial Amazoness",
+        },
+        "amazoness_code": {
+            "en": "Amazoness Code",
+            "pt": "Código Amazoness",
+        },
+        "mightywangfu": {
+            "en": "MightyWangfu",
+            "pt": "PoderosoWangfu",
+        },
+    },
     "the_admiral": {
         "strongest_ocean_deck": {
             "en": "Strongest Ocean",
