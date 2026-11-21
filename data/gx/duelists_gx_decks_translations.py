@@ -594,7 +594,7 @@ DUELISTS_DECKS_KEYS_GX = {
         },
         "ending_interference": {
             "en": "Ending Interference",
-            "pt": "Inteferência Finalizadora",
+            "pt": "Interferência Finalizadora",
         },
         "persistent_pester": {
             "en": "Persistent Pester",
