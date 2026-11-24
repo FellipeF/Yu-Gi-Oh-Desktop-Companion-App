@@ -8,3 +8,4 @@ DB_NAME = "yugi.db"
 LATEST_DB_CHANGE = "GROUPED DUEL SPIRITS ON A SINGLE DUELIST"
 IMG_FOLDER = "cache/images"
 EXTRA_TYPES = ["Fusion", "Synchro", "XYZ", "Link"]
+DEBUG_PERFORMANCE = True
